@@ -1,0 +1,28 @@
+{
+  "name": "gasbot",
+  "version": "1.0.0",
+  "description": "G.A.S. Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "enmap": "^5.3.3",
+    "fs": "^0.0.2",
+    "jquery": "^3.5.1",
+    "dblapi.js": "^2.4.0"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://github.com/h-projects/gas-bot"
+  },
+	"homepage": "https://github.com/h-projects/gas-bot#readme",
+  "license": "GPL-3.0",
+  "keywords": [
+    "gas",
+    "node"
+  ]
+}
