@@ -7,11 +7,12 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "dblapi.js": "^2.4.0",
     "discord.js": "^12.2.0",
     "enmap": "^5.3.3",
+    "express": "^4.17.1",
     "fs": "^0.0.2",
-    "jquery": "^3.5.1",
-    "dblapi.js": "^2.4.0"
+    "jquery": "^3.5.1"
   },
   "engines": {
     "node": "14.x"
@@ -19,7 +20,7 @@
   "repository": {
     "url": "https://github.com/h-projects/gasbot"
   },
-	"homepage": "https://github.com/h-projects/gasbot#readme",
+  "homepage": "https://github.com/h-projects/gasbot#readme",
   "license": "GPL-3.0",
   "keywords": [
     "gas",
