@@ -17,9 +17,9 @@
     "node": "14.x"
   },
   "repository": {
-    "url": "https://github.com/h-projects/gas-bot"
+    "url": "https://github.com/h-projects/gasbot"
   },
-	"homepage": "https://github.com/h-projects/gas-bot#readme",
+	"homepage": "https://github.com/h-projects/gasbot#readme",
   "license": "GPL-3.0",
   "keywords": [
     "gas",
