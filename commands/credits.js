@@ -1,38 +1,52 @@
 exports.run = (client, message, args) => {
   if (args.join(" ")) return;
-  let supertag = client.user.fetch("478823932913516544").tag; // k this doesnt work so its unused rn pls fix
+  
+          // Tags of G.A.S Bot devs
+  let supertag = client.users.cache.get("478823932913516544").tag
+  let indextag = client.users.cache.get("651511209585147904").tag
+  let senkotag = client.users.cache.get("348591272476540928").tag
+  let dicetag = client.users.cache.get("528229753258246145").tag
+  
+          // Tags of other users
+  let lunatag = client.users.cache.get("603635602809946113").tag
+  let razieltag = client.users.cache.get("270139230565433347").tag
+  let nyxtag = client.users.cache.get("186690073138298880").tag
+  let hhhhhhtag = client.users.cache.get("482708065838432267").tag
+  
+  
+  
   let creditsEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")
     .setTitle("__**Credits**__")
     .addField(
-      "**G Detector**",
-      `Superchupu#5249\nIndex#8155\nSenko#2137`,
+      "G Detector",
+      `${supertag}\n${indextag}\n${senkotag}`,
       true
     )
     .addField(
-      "**Loqs**",
-      `Superchupu#5249\nDice(disableMentions = true)#2213\nIndex#8155\nSenko#2137`,
+      "Loqs",
+      `${supertag}\n${dicetag}\n${indextag}\n${senkotag}`,
       true
     )
     .addField(
-      `**${client.config.prefix}help ${client.config.prefix}h ${client.config.prefix}info\n${client.config.prefix}invite ${client.config.prefix}vote**`,
-      "Superchupu#5249",
+      `${client.config.prefix}help ${client.config.prefix}h ${client.config.prefix}info\n${client.config.prefix}invite ${client.config.prefix}vote`,
+      `${supertag}`,
       true
     )
     .addField(
-      `**${client.config.prefix}eval\nCustom Status\nCode Optimization\nLogo**`,
-      "Index#8155",
+      `${client.config.prefix}eval\n${client.config.prefix}removed\nCode Optimization\nLogo`,
+      `${indextag}`,
       true
     )
     .addField(
-      `**${client.config.prefix}raidmode\nRaidmode\nGeneral Code Improvemts\n ${client.config.prefix}links**`,
-      "Senko#2137",
+      `Raidmode\nGeneral Code Improvements\n${client.config.prefix}links\n${client.config.prefix}pinq`,
+      `${senkotag}`,
       true
     )
     .addField(
-      "**Special Thanks**",
-      "**Lunah#0069** for the G Detector idea\n**Raziel#0072 & Nyx#7241** for creating G.A.S\n**hhhhhh#3720** for helping us with h!removed",
-      true
+      "Special Thanks",
+      `${lunatag} for the G Detector idea\n${razieltag} & ${nyxtag} for creating G.A.S\n${hhhhhhtag} for helping us with ${client.config.prefix}removed`,
+      false
     )
     .setTimestamp() // ok this is almost unreadable xd
     .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);

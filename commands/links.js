@@ -7,15 +7,11 @@ exports.run = (client, message, args) => {
       fields: [
         {
           name: "**Want to remove <:NoSeventhLetter:721649657146769449> in your server?**",
-          value: `<:gas:701854794989436950> Invite the bot [here](${client.config.botInvite})`
+          value: `<:gas:734396942653718561> Invite the bot [here](${client.config.botInvite})`
         },
         {
-          name: "**Do You hate <:NoSeventhLetter:721649657146769449>?**",
-          value: `<:gas:701854794989436950> Join the official G.A.S Server [here](${client.config.gasServer})`
-        },
-        {
-          name: "**Want to support G.A.S?**",
-          value: `<:gas:701854794989436950> Upvote the bot [here](${client.config.botUpvote})`
+          name: "**Want to support G.A.S Bot?**",
+          value: `<:gas:734396942653718561> Upvote the bot [here](${client.config.botUpvote})`
         },
         {
           name: "**Need Help?**",
@@ -24,6 +20,10 @@ exports.run = (client, message, args) => {
         {
           name: "**Need help settinq up the bot?**",
           value: `<:AytchSoftware:720949593696894996> Read the docs [here](${client.config.docs})`
+        },
+        {
+          name: "**Do You hate <:NoSeventhLetter:721649657146769449>?**",
+          value: `<:gas:734396942653718561> Join the official G.A.S Server [here](${client.config.gasServer})`
         }
       ],
       timestamp: new Date(),

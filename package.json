@@ -7,20 +7,18 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "dblapi.js": "^2.4.0",
-    "discord.js": "^12.2.0",
-    "enmap": "^5.3.3",
-    "express": "^4.17.1",
-    "fs": "^0.0.2",
-    "jquery": "^3.5.1"
+    "discord.js": "^12.3.1",
+    "enmap": "^5.6.1",
+    "jquery": "^3.5.1",
+    "dblapi.js": "^2.4.1",
+    "fs-extra": "^9.0.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": "12.x"
   },
   "repository": {
-    "url": "https://github.com/h-projects/gasbot"
+    "url": "https://glitch.com/edit/#!/gasbot"
   },
-  "homepage": "https://github.com/h-projects/gasbot#readme",
   "license": "GPL-3.0",
   "keywords": [
     "gas",
