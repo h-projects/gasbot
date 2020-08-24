@@ -8,9 +8,11 @@ exports.run = (client, message, args) => {
     )
     .addField("\u200b", `__**Bot**__`)
     .addField(`${client.prefix}info`, "Info about G.A.S")
-    .addField(`${client.prefix}help`, "This", true)
+    .addField(`${client.prefix}loqs`, "Enable loqs on your server so you can know if someone said G", true)
+    .addField(`${client.prefix}removed`, "A count of how many evil letters have been removed.", true)
     .addField(`${client.prefix}credits`, "Credits of the bot!", true)
     .addField(`${client.prefix}links`, "Links related to G.A.S", true)
+    .addField(`${client.prefix}pinq`, "Pinq of G.A.S Bot", true)
     .addField("\u200b", `__**Fun**__`)
     .addField(
       `${client.prefix}h`,
@@ -31,15 +33,8 @@ exports.run = (client, message, args) => {
     .addField(`${client.prefix}huh`, `<:thinkinH:702462510057521192>`, true)
     .addField("\u200b", "\u200b")
     .addField("\u200b", `__***EXPERIMENTAL***__`)
-    .addField(
-      `${client.prefix}raidmode`,
-      "~~Turn raidmode on usinq `h!raidmode enable` and off usinq `h!raidmode disable`~~ **This feature doesn't work yet**"
-    )
-    .addField(
-      `${client.prefix}removed`,
-      "A count of how many forbidden letters have been removed.",
-      true
-    )
+    .addField(`${client.prefix}raidmode`, "~~Turn raidmode on usinq `h!raidmode enable` and off usinq `h!raidmode disable`~~ **This feature doesn't work yet**")
+   
     .addField("\u200b", `__**Bot Admin**__`)
     .addField(`${client.prefix}eval`, "Returns var data", true)
     .setThumbnail(`${client.config.botLogo}`)
