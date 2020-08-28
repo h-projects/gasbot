@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
   if (args.join(" ")) return;
   message.channel.send(
-    `**Polish toilet spin basshunter dota homosex K19191**`,
+    `**Polish\n\nPolish toilet**`,
     {
       files: [
         {
