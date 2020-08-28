@@ -41,10 +41,9 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("G SUCK") ||
     upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
     upperCaseMsg.includes("G.A.S") ||
-    upperCaseMsg.includes(
-      "EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G."
-    ) ||
-    upperCaseMsg.includes("LEFT ME THE LETTER G HAS")
+    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
+    upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
+    upperCaseMsg.includes("🇴") // :regional_indicator_o: is detected as a type of :nog:, this miqht fix it
   ) {
     return;
   } else {
