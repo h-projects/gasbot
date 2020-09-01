@@ -19,8 +19,8 @@ module.exports = async (client, message, member) => {
 
   // G Detector™
   let upperCaseMsg = message.content.toUpperCase();
-  const ultimateRegrexDetectortm = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
-  const ultimateRegrexDetectorExceptItAlsoDetectsSpaceNogSpacetm = /(\s[g𝔤𝖌𝐠🅖𝘨ʛ𝙜ɓ⅁ꞡꍌᧁ🅶❡ᏀᏳ𝚐𝕘𝗀Ᏽ𝗴ɡg҉𝘨ℊ𝗚𝓰𝐠Ġ𝙶𝙂𝒢g̃ᶃᎶꓖ𝖦𝘎𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍ𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌Ᏽ𝐠❡🅖𝘨🅶𝙜ᧁ𝚐ʛĠ𝕘ᏀᏳ𝗀ɓ𝗴ɡᎶ𝘨ℊ𝗚𝓰𝐠𝙶𝙂𝒢ᶃꓖ𝖦𝘎g̃𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍg҉⅁𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖꞡ🄶ƃꍌᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨ʛ𝙜𝚐𝕘🅖❡𝗀𝗴ꍌɡg̃𝘨ℊ𝗚ɓᏵ𝓰𝐠𝙶𝙂𝒢ᶃꓖꞡ𝖦𝘎𝓖𝔾⅁𝔊𝕲ᧁ𝑔ģᏀᏳ𝐆ƍĠᎶ𝐺𝑮𝒈ꮐԍg̵ɢǵg҉ᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ🅶₲ꁅĜǧĞ🇬Ǥ]+$)/gi;
+  const ultimateRegrexDetectortm = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
+  const ultimateRegrexDetectorExceptItAlsoDetectsSpaceNogSpacetm = /(\s[g𝔤𝖌𝐠🅖𝘨ʛ𝙜ɓ⅁ꞡꍌᧁ🅶❡ᏀᏳᴳ𝚐𝕘𝗀Ᏽ𝗴ɡg҉𝘨ℊ𝗚𝓰𝐠Ġ𝙶𝙂𝒢g̃ᶃᎶꓖ𝖦𝘎𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍ𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌Ᏽ𝐠❡🅖𝘨🅶𝙜ᧁ𝚐ʛĠ𝕘ᏀᏳ𝗀ɓ𝗴ɡᎶ𝘨ℊ𝗚𝓰𝐠𝙶𝙂𝒢ᶃꓖ𝖦ᴳ𝘎g̃𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍg҉⅁𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖꞡ🄶ƃꍌᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨ʛ𝙜𝚐𝕘🅖❡𝗀𝗴ꍌɡg̃𝘨ℊ𝗚ɓᏵ𝓰𝐠𝙶𝙂𝒢ᶃꓖꞡ𝖦𝘎𝓖𝔾⅁𝔊𝕲ᧁ𝑔ģᏀᏳ𝐆ƍĠᎶ𝐺𝑮𝒈ᴳꮐԍg̵ɢǵg҉ᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ🅶₲ꁅĜǧĞ🇬Ǥ]+$)/gi;
   // sorry idk how to make regrex readable
 
   if (
