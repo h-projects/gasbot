@@ -8,7 +8,7 @@ By default, it removes standalone G, but by usinq `h!raidmode true`, the bot wil
 
 ## Code
 
-The bot is written in Discord.JS and hosted on qlitch, if you see any buqs, please tell us in the [Support Server](https://discord.gg/AbUw9fh)!
+The bot is written in Discord.JS and hosted on Linux, if you see any buqs, please tell us in the [Support Server](https://discord.gg/AbUw9fh)!
 
 ## Commands
 
