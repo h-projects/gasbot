@@ -10,5 +10,6 @@
   "serverInvite": "https://discord.gg/AbUw9fh",
   "raidmodeDbDir": "./database/raidmode.json",
   "docs": "https://aytchsoftware.tk/docs/bots/gas",
-  "gasServer": "https://discord.gg/nWpq6Vj"
+  "gasServer": "https://discord.gg/nWpq6Vj",
+  "token": "insert token here lol"
 }
