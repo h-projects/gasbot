@@ -11,5 +11,6 @@
   "raidmodeDbDir": "./database/raidmode.json",
   "docs": "https://aytchsoftware.tk/docs/bots/gas",
   "gasServer": "https://discord.gg/nWpq6Vj",
-  "token": "insert token here lol"
+  "token": "insert token here lol",
+  "TOPGGTOKEN": "topqq token here"
 }
