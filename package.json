@@ -2,9 +2,9 @@
   "name": "gasbot",
   "version": "1.0.0",
   "description": "G.A.S. Bot",
-  "main": "index.js",
+  "main": "gasbot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node gasbot.js"
   },
   "dependencies": {
     "discord.js": "^12.3.1",
@@ -14,10 +14,10 @@
     "fs-extra": "^9.0.1"
   },
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/gasbot"
+    "url": "https://github.com/h-projects/gasbot"
   },
   "license": "GPL-3.0",
   "keywords": [
