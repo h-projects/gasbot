@@ -1,4 +1,5 @@
-module.exports = async (guild, client) => {
+module.exports = async (client, guild) => {
+    
     let aytchLoqs = client.channels.cache.get("754681399499423764");
     let leftEmbed = new client.disc.MessageEmbed()
             .setFooter("G.A.S Bot", `${client.config.botLogo}`)
@@ -9,4 +10,5 @@ module.exports = async (guild, client) => {
             .setDescription(`Just left a server with ${guild.memberCount} members\nI'm in ${client.guilds.cache.size} servers now!`);
     
             aytchLoqs.send(leftEmbed);
+    
 };
