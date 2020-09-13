@@ -123,7 +123,7 @@ module.exports = async (client, message, member) => {
     upperCaseMsg === "<@702116355842768927> help" || upperCaseMsg === "<@!702116355842768927> help"
   ) {
     message.reply(
-      `my prefix is "${client.config.prefix}"`
+      "my prefix is `" + `${client.config.prefix}` + "`"
     );
   }
 
