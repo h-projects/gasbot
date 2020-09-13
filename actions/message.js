@@ -119,11 +119,11 @@ module.exports = async (client, message, member) => {
   }
 
   if (
-    message.content === "<@!702116355842768927>" ||
-    upperCaseMsg === "<@!702116355842768927> help"
+    message.content === `${client.user}` ||
+    upperCaseMsg === `${client.user} help`
   ) {
-    message.channel.send(
-      `<@!${message.author.id}>, my prefix is "${client.config.prefix}"`
+    message.channel.reply(
+      `my prefix is "${client.config.prefix}"`
     );
   }
 
