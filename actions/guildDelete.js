@@ -6,7 +6,7 @@ module.exports = async (guild, client) => {
             .setTimestamp()
             .setColor("E74C3C")
             .setTitle(`Left ${guild.name}`)
-            .setDescription(`Just left a server with ${guild.memberCount} members\nI'm in ${client.guilds.cache.size} servers now`);
+            .setDescription(`Just left a server with ${guild.memberCount} members\nI'm in ${client.guilds.cache.size} servers now!`);
     
             aytchLoqs.send(leftEmbed);
 };
