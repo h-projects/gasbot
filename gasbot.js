@@ -1,13 +1,13 @@
 const Discord = require("discord.js"),
   client = new Discord.Client(),
-  DBL = require("dblapi.js"),
+  // DBL = require("dblapi.js"),
   jquery = require("jquery"),
   fs = require("fs-extra"),
   enmap = require("enmap");
 client.disc = require("discord.js");
 client.config = require("./database/config.json");
-const dbl = new DBL(client.config.TOPGGTOKEN, client);
-const raidmode = require(client.config.raidmodeDbDir);
+// const dbl = new DBL(client.config.TOPGGTOKEN, client);
+client.raidmode = require(client.config.raidmodeDbDir);
 client.prefix = client.config.prefix;
 client.badLetterCount = require("./database/badLetterCount.json");
 client.statuses = [
