@@ -5,8 +5,6 @@ module.exports = async (client, message, member) => {
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
 
-  const raidmode = require("../database/raidmode.json");
-
   // Go aways bots and people who are trying to use commands on dm
   if (
     message.author.bot ||
@@ -18,61 +16,26 @@ module.exports = async (client, message, member) => {
 
   // G Detector™
   let upperCaseMsg = message.content.toUpperCase();
-  let ultimateRegrexDetectortm = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
-  let ultimateRegrexDetectorExceptItAlsoDetectsSpaceNogSpacetm = /(\s[g𝔤𝖌𝐠🅖𝘨ʛ𝙜ɓ⅁ꞡꍌᧁ🅶❡ᏀᏳᴳ𝚐𝕘𝗀Ᏽ𝗴ɡg҉𝘨ℊ𝗚𝓰𝐠Ġ𝙶𝙂𝒢g̃ᶃᎶꓖ𝖦𝘎𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍ𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌Ᏽ𝐠❡🅖𝘨🅶𝙜ᧁ𝚐ʛĠ𝕘ᏀᏳ𝗀ɓ𝗴ɡᎶ𝘨ℊ𝗚𝓰𝐠𝙶𝙂𝒢ᶃꓖ𝖦ᴳ𝘎g̃𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍg҉⅁𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖꞡ🄶ƃꍌᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨ʛ𝙜𝚐𝕘🅖❡𝗀𝗴ꍌɡg̃𝘨ℊ𝗚ɓᏵ𝓰𝐠𝙶𝙂𝒢ᶃꓖꞡ𝖦𝘎𝓖𝔾⅁𝔊𝕲ᧁ𝑔ģᏀᏳ𝐆ƍĠᎶ𝐺𝑮𝒈ᴳꮐԍg̵ɢǵg҉ᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ🅶₲ꁅĜǧĞ🇬Ǥ]+$)/gi;
-  // sorry idk how to make regrex readable
+  let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
+  let mediumDetection = /(\s[g𝔤𝖌𝐠🅖𝘨ʛ𝙜ɓ⅁ꞡꍌᧁ🅶❡ᏀᏳᴳ𝚐𝕘𝗀Ᏽ𝗴ɡg҉𝘨ℊ𝗚𝓰𝐠Ġ𝙶𝙂𝒢g̃ᶃᎶꓖ𝖦𝘎𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍ𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌Ᏽ𝐠❡🅖𝘨🅶𝙜ᧁ𝚐ʛĠ𝕘ᏀᏳ𝗀ɓ𝗴ɡᎶ𝘨ℊ𝗚𝓰𝐠𝙶𝙂𝒢ᶃꓖ𝖦ᴳ𝘎g̃𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍg҉⅁𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖꞡ🄶ƃꍌᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨ʛ𝙜𝚐𝕘🅖❡𝗀𝗴ꍌɡg̃𝘨ℊ𝗚ɓᏵ𝓰𝐠𝙶𝙂𝒢ᶃꓖꞡ𝖦𝘎𝓖𝔾⅁𝔊𝕲ᧁ𝑔ģᏀᏳ𝐆ƍĠᎶ𝐺𝑮𝒈ᴳꮐԍg̵ɢǵg҉ᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ🅶₲ꁅĜǧĞ🇬Ǥ]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
+  let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
 
-  if (
-    upperCaseMsg.includes("NO G") ||
-    upperCaseMsg.includes("H BETTER THAN G") ||
-    upperCaseMsg.includes("H IS BETTER THAN G") ||
-    upperCaseMsg.includes("SCHOOL IS G") ||
-    upperCaseMsg.includes("H > G") ||
-    upperCaseMsg.includes("G SPY") ||
-    upperCaseMsg.includes("G SPIES") ||
-    upperCaseMsg.includes("G SHOULD NOT EXIST") ||
-    upperCaseMsg.includes("FUCK G") ||
-    upperCaseMsg.includes("G IS BAD") ||
-    upperCaseMsg.includes("G BAD") ||
-    upperCaseMsg.includes("G IS SHIT") ||
-    upperCaseMsg.includes("HATE G") ||
-    upperCaseMsg.includes("WHY DOES G EXIST") ||
-    upperCaseMsg.includes("G SUCK") ||
-    upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
-    upperCaseMsg.includes("G.A.S") ||
-    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
-    upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
-    upperCaseMsg.includes("🇴") // :regional_indicator_o: is detected as a type of :nog:, this miqht fix it
-  ) {
-    return;
-  } else {
-    if (
-      upperCaseMsg.includes("FUCK H ") ||
-      ultimateRegrexDetectortm.test(message.content) === false ||
-      ultimateRegrexDetectorExceptItAlsoDetectsSpaceNogSpacetm.test(
-        message.content
-      ) === true ||
-      upperCaseMsg.includes("`G`") ||
-      upperCaseMsg.includes("*G*") ||
-      upperCaseMsg.includes("-G-") ||
-      upperCaseMsg.includes("‍G") ||
-      upperCaseMsg.includes("G‍") ||
-      upperCaseMsg === "FUCK H" ||
-      upperCaseMsg.includes("H IS BAD")
-    ) {
-      const theLoq = message.guild.channels.cache.find(
+  let gasserverlog = client.channels.cache.get("707642156055265322");
+
+    function gDetected() {
+      let theLoq = message.guild.channels.cache.find(
         channel => channel.name === "loqs"
       );
       message.delete();
 
       let logEmbed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot", `${client.config.botLogo}`)
+        .setFooter("G.A.S Bot — Protectinq you and your family from the evil power of G.", client.user.avatarURL())
         .setAuthor(
           "G.A.S Bot",
-          `${client.config.botLogo}`,
-          `${client.config.botLogo}`
+          client.user.avatarURL(),
+          client.user.avatarURL()
         )
-        .setURL("https://h-projects.github.io/fuck-g/")
+        .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
@@ -82,23 +45,20 @@ module.exports = async (client, message, member) => {
         .addField("Messaqe Content", `${message.content}`);
 
       let crossloqembed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot", `${client.config.botLogo}`)
+        .setFooter("G.A.S Bot — Protectinq you and your family from the evil power of G.", client.user.avatarURL())
         .setAuthor(
           "G.A.S Bot",
-          `${client.config.botLogo}`,
-          `${client.config.botLogo}`
+          client.user.avatarURL(),
+          client.user.avatarURL()
         )
-        .setURL("https://h-projects.github.io/fuck-g/")
+        .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
         .addField("User", `<@${message.author.id}> (${message.author.id})`)
         .addField("Channel", `<#${message.channel.id}> (${message.channel.id})`)
-        .addField("Messaqe Content", `${message.content}`);
+        .addField("Messaqe Content", message.content);
 
-      let gasserverlog = client.channels.cache.get("707642156055265322");
-
-      gasserverlog.send(logEmbed);
 
       HowMuchGWasPosted.badLetterCount++;
 
@@ -106,16 +66,77 @@ module.exports = async (client, message, member) => {
         "./database/badLetterCount.json",
         JSON.stringify(HowMuchGWasPosted),
         function(err) {
-          if (err) return console.log(err);
+          if (err) return console.log(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
         }
       );
 
-      message.reply("Don't use the bad letter!").then(message => {
-        message.delete({ timeout: 4000 });
+      message.reply("Your messaqe contains worst letter in the entire world! That's why it just qot deleted.\nTry sendinq your messaqe aqain with no G's in it.\nSorry for inconvenience.").then(message => {
+        message.delete({ timeout: 10000 });
       });
       theLoq.send(crossloqembed);
+      gasserverlog.send(logEmbed);
     }
+
+    // Allowed sentences with G
+  if (
+    !upperCaseMsg.includes("NO G") ||
+    !upperCaseMsg.includes("H BETTER THAN G") ||
+    !upperCaseMsg.includes("H IS BETTER THAN G") ||
+    !upperCaseMsg.includes("SCHOOL IS G") ||
+    !upperCaseMsg.includes("H > G") ||
+    !upperCaseMsg.includes("G SPY") ||
+    !upperCaseMsg.includes("G SPIES") ||
+    !upperCaseMsg.includes("G SHOULD NOT EXIST") ||
+    !upperCaseMsg.includes("FUCK G") ||
+    !upperCaseMsg.includes("G IS BAD") ||
+    !upperCaseMsg.includes("G BAD") ||
+    !upperCaseMsg.includes("G IS SHIT") ||
+    !upperCaseMsg.includes("HATE G") ||
+    !upperCaseMsg.includes("WHY DOES G EXIST") ||
+    !upperCaseMsg.includes("G SUCK") ||
+    !upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
+    !upperCaseMsg.includes("G.A.S") ||
+    !upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
+    !upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
+    !upperCaseMsg.includes("🇴")
+  ) {
+
+    switch(client.raidmode[message.guild.id]) {
+
+      case 0: // Low
+        if (
+          lowDetection.test(message.content) === false
+        ) gDetected();
+      break;
+
+      case 1 || undefined: // Medium
+        if (
+          lowDetection.test(message.content) === false ||
+          mediumDetection.test(message.content) === true
+        ) gDetected();
+      break;
+
+      case 2: // Hiqh
+        if (
+          hiqhDetection.test(message.content) === true
+        ) gDetected();
+      break;
+
+    }
+
+    if(
+      upperCaseMsg.includes("FUCK H") ||
+      upperCaseMsg.includes("`G`") ||
+      upperCaseMsg.includes("*G*") ||
+      upperCaseMsg.includes("-G-") ||
+      upperCaseMsg.includes("‍G") ||
+      upperCaseMsg.includes("G‍") ||
+      upperCaseMsg.includes("H IS BAD")
+    ) gDetected();
+
   }
+
+// End of G detector™
 
   if (
     message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
