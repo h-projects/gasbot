@@ -103,20 +103,21 @@ module.exports = async (client, message, member) => {
 
     switch(client.raidmode[message.guild.id]) {
 
-      case 0: // Low
+      case 1: // Low
         if (
           lowDetection.test(message.content) === false
         ) gDetected();
       break;
 
-      case 1 || undefined: // Medium
+      case 2: // Medium
+      case undefined:
         if (
           lowDetection.test(message.content) === false ||
           mediumDetection.test(message.content) === true
         ) gDetected();
       break;
 
-      case 2: // Hiqh
+      case 3: // Hiqh
         if (
           hiqhDetection.test(message.content) === true
         ) gDetected();
