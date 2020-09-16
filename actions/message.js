@@ -10,7 +10,8 @@ module.exports = async (client, message, member) => {
     message.author.bot ||
     message.author.system ||
     message.channel.type == "dm" ||
-    message.type !== "DEFAULT"
+    message.type !== "DEFAULT" ||
+    message.content === ""
   )
     return;
 
@@ -79,27 +80,29 @@ module.exports = async (client, message, member) => {
 
     // Allowed sentences with G
   if (
-    !upperCaseMsg.includes("NO G") ||
-    !upperCaseMsg.includes("H BETTER THAN G") ||
-    !upperCaseMsg.includes("H IS BETTER THAN G") ||
-    !upperCaseMsg.includes("SCHOOL IS G") ||
-    !upperCaseMsg.includes("H > G") ||
-    !upperCaseMsg.includes("G SPY") ||
-    !upperCaseMsg.includes("G SPIES") ||
-    !upperCaseMsg.includes("G SHOULD NOT EXIST") ||
-    !upperCaseMsg.includes("FUCK G") ||
-    !upperCaseMsg.includes("G IS BAD") ||
-    !upperCaseMsg.includes("G BAD") ||
-    !upperCaseMsg.includes("G IS SHIT") ||
-    !upperCaseMsg.includes("HATE G") ||
-    !upperCaseMsg.includes("WHY DOES G EXIST") ||
-    !upperCaseMsg.includes("G SUCK") ||
-    !upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
-    !upperCaseMsg.includes("G.A.S") ||
-    !upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
-    !upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
-    !upperCaseMsg.includes("🇴")
-  ) {
+    upperCaseMsg.includes("NO G") ||
+    upperCaseMsg.includes("H BETTER THAN G") ||
+    upperCaseMsg.includes("H IS BETTER THAN G") ||
+    upperCaseMsg.includes("SCHOOL IS G") ||
+    upperCaseMsg.includes("H > G") ||
+    upperCaseMsg.includes("G SPY") ||
+    upperCaseMsg.includes("G SPIES") ||
+    upperCaseMsg.includes("G SHOULD NOT EXIST") ||
+    upperCaseMsg.includes("FUCK G") ||
+    upperCaseMsg.includes("G IS BAD") ||
+    upperCaseMsg.includes("G IS A HARAM") ||
+    upperCaseMsg.includes("G IS HARAM") ||
+    upperCaseMsg.includes("G BAD") ||
+    upperCaseMsg.includes("G IS SHIT") ||
+    upperCaseMsg.includes("HATE G") ||
+    upperCaseMsg.includes("WHY DOES G EXIST") ||
+    upperCaseMsg.includes("G SUCK") ||
+    upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
+    upperCaseMsg.includes("G.A.S") ||
+    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
+    upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
+    upperCaseMsg.includes("🇴")
+  ) {return;} else {
 
     switch(client.raidmode[message.guild.id]) {
 
