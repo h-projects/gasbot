@@ -1,6 +1,6 @@
 const Discord = require("discord.js"),
   client = new Discord.Client(),
-  // DBL = require("dblapi.js"),
+  DBL = require("dblapi.js"),
   jquery = require("jquery"),
   fs = require("fs-extra"),
   enmap = require("enmap");
