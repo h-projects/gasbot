@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
   let fs =  require("fs");
 
-   if (!message.guild.member(message.author).hasPermission("ADMINSTRATOR"))
+  if (!message.member.hasPermission("MANAGE_MESSAGES"))
     return message.channel.send("You do not have permission to use that command!");
   
   function saveJSON() {
