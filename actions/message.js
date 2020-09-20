@@ -71,7 +71,7 @@ module.exports = async (client, message, member) => {
         }
       );
 
-      message.reply("Your messaqe contains worst letter in the entire world! That's why it just qot deleted.\nTry sendinq your messaqe aqain with no G's in it.\nSorry for inconvenience.").then(message => {
+      message.reply("Please do not use that uqly letter.").then(message => {
         message.delete({ timeout: 10000 });
       });
       theLoq.send(crossloqembed);
