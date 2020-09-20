@@ -72,7 +72,7 @@ module.exports = async (client, message, member) => {
       );
 
       message.reply("Please do not use that uqly letter.").then(message => {
-        message.delete({ timeout: 10000 });
+        message.delete({ timeout: 4000 });
       });
       theLoq.send(crossloqembed);
       gasserverlog.send(logEmbed);
