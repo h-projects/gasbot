@@ -30,12 +30,7 @@ module.exports = async (client, message, member) => {
       message.delete();
 
       let logEmbed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot — Protectinq you and your family from the evil power of G.", client.user.avatarURL())
-        .setAuthor(
-          "G.A.S Bot",
-          client.user.avatarURL(),
-          client.user.avatarURL()
-        )
+        .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
         .setColor("E74C3C")
@@ -46,12 +41,7 @@ module.exports = async (client, message, member) => {
         .addField("Messaqe Content", `${message.content}`);
 
       let crossloqembed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot — Protectinq you and your family from the evil power of G.", client.user.avatarURL())
-        .setAuthor(
-          "G.A.S Bot",
-          client.user.avatarURL(),
-          client.user.avatarURL()
-        )
+        .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
         .setColor("E74C3C")
@@ -71,7 +61,7 @@ module.exports = async (client, message, member) => {
         }
       );
 
-      message.reply("Please do not use that uqly letter.").then(message => {
+      message.reply("don't use the bad letter!").then(message => {
         message.delete({ timeout: 4000 });
       });
       theLoq.send(crossloqembed);
@@ -85,8 +75,11 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("H IS BETTER THAN G") ||
     upperCaseMsg.includes("SCHOOL IS G") ||
     upperCaseMsg.includes("H > G") ||
+    upperCaseMsg.includes("G < H") ||
     upperCaseMsg.includes("G SPY") ||
+    upperCaseMsg.includes("G-SPY") ||
     upperCaseMsg.includes("G SPIES") ||
+    upperCaseMsg.includes("G-SPIES") ||
     upperCaseMsg.includes("G SHOULD NOT EXIST") ||
     upperCaseMsg.includes("FUCK G") ||
     upperCaseMsg.includes("G IS BAD") ||
@@ -95,12 +88,10 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("G BAD") ||
     upperCaseMsg.includes("G IS SHIT") ||
     upperCaseMsg.includes("HATE G") ||
-    upperCaseMsg.includes("WHY DOES G EXIST") ||
     upperCaseMsg.includes("G SUCK") ||
     upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
     upperCaseMsg.includes("G.A.S") ||
     upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
-    upperCaseMsg.includes("LEFT ME THE LETTER G HAS") ||
     upperCaseMsg.includes("🇴")
   ) {return;} else {
 
@@ -133,8 +124,6 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.includes("`G`") ||
       upperCaseMsg.includes("*G*") ||
       upperCaseMsg.includes("-G-") ||
-      upperCaseMsg.includes("‍G") ||
-      upperCaseMsg.includes("G‍") ||
       upperCaseMsg.includes("H IS BAD")
     ) gDetected();
 
