@@ -17,9 +17,9 @@ module.exports = async (client, message, member) => {
 
   // G Detector™
   let upperCaseMsg = message.content.toUpperCase();
-  let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
-  let mediumDetection = /(\s[g𝔤𝖌𝐠🅖𝘨ʛ𝙜ɓ⅁ꞡꍌᧁ🅶❡ᏀᏳᴳ𝚐𝕘𝗀Ᏽ𝗴ɡg҉𝘨ℊ𝗚𝓰𝐠Ġ𝙶𝙂𝒢g̃ᶃᎶꓖ𝖦𝘎𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍ𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌Ᏽ𝐠❡🅖𝘨🅶𝙜ᧁ𝚐ʛĠ𝕘ᏀᏳ𝗀ɓ𝗴ɡᎶ𝘨ℊ𝗚𝓰𝐠𝙶𝙂𝒢ᶃꓖ𝖦ᴳ𝘎g̃𝓖𝔾𝔊𝕲𝑔ģ𝐆ƍg҉⅁𝐺𝑮𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖꞡ🄶ƃꍌᘜＧᘜg̔Ɠɢᶢᵍ₲ꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨ʛ𝙜𝚐𝕘🅖❡𝗀𝗴ꍌɡg̃𝘨ℊ𝗚ɓᏵ𝓰𝐠𝙶𝙂𝒢ᶃꓖꞡ𝖦𝘎𝓖𝔾⅁𝔊𝕲ᧁ𝑔ģᏀᏳ𝐆ƍĠᎶ𝐺𝑮𝒈ᴳꮐԍg̵ɢǵg҉ᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ🅶₲ꁅĜǧĞ🇬Ǥ]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
-  let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶g҉𝙂🅖𝒢ᶃg̃ꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜg̔Ɠɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
+  let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
+  let mediumDetection = /(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
+  let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
 
   let gasserverlog = client.channels.cache.get("707642156055265322");
 
@@ -29,7 +29,7 @@ module.exports = async (client, message, member) => {
       );
       message.delete();
 
-      let logEmbed = new client.disc.MessageEmbed()
+      let globalLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
@@ -40,7 +40,7 @@ module.exports = async (client, message, member) => {
         .addField("Channel", `${message.channel.name} (${message.channel.id})`)
         .addField("Messaqe Content", `${message.content}`);
 
-      let crossloqembed = new client.disc.MessageEmbed()
+      let loqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setTimestamp()
@@ -64,8 +64,8 @@ module.exports = async (client, message, member) => {
       message.reply("don't use the bad letter!").then(message => {
         message.delete({ timeout: 4000 });
       });
-      theLoq.send(crossloqembed);
-      gasserverlog.send(logEmbed);
+      theLoq.send(loqEmbed);
+      gasserverlog.send(globalLoqEmbed);
     }
 
     // Allowed sentences with G
@@ -123,7 +123,7 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.includes("FUCK H") ||
       upperCaseMsg.includes("`G`") ||
       upperCaseMsg.includes("*G*") ||
-      upperCaseMsg.includes("-G-") ||
+      upperCaseMsg.includes("~~G~~") ||
       upperCaseMsg.includes("H IS BAD")
     ) gDetected();
 
