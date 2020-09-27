@@ -19,15 +19,7 @@ client.statuses = [
 
 process.on("unhandledRejection", e => console.error(`Error: ${e}`));
 
-client.on("ready", () => {
-  client.user.setPresence({
-    status: `dnd`,
-    activity: {
-      name: `${client.config.prefix}help | Removinq G!`,
-      type: "PLAYING"
-    }
-  });
-});
+
 
 fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
