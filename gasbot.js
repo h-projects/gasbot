@@ -1,5 +1,11 @@
 const Discord = require("discord.js"),
-  client = new Discord.Client(),
+  client = new Discord.Client({
+    activity: {
+      name: `${client.config.prefix}help | Removinq G!`,
+      type: "PLAYING"
+    },
+    status: "dnd"
+  }),
   DBL = require("dblapi.js"),
   jquery = require("jquery"),
   fs = require("fs-extra"),
