@@ -1,7 +1,7 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
     activity: {
-      name: `${client.config.prefix}help | Removinq G!`,
+      name: `h!help | Removinq G!`,
       type: "PLAYING"
     },
     status: "dnd"
