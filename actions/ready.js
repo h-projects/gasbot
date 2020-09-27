@@ -1,7 +1,7 @@
 module.exports = async () => {
   
   client.user.setPresence({
-    status: `dnd`,
+    status: "dnd",
     activity: {
       name: `${client.config.prefix}help | Removinq G!`,
       type: "PLAYING"
