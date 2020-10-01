@@ -1,10 +1,9 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
-    activity: {
-      name: `h!help | Removinq G!`,
-      type: "PLAYING"
-    },
-    status: "dnd"
+    presence: {
+      activity: { name: "h!help | Removinq G!", type: "PLAYING" },
+      status: "dnd"
+    }
   }),
   DBL = require("dblapi.js"),
   jquery = require("jquery"),
