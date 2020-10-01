@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     files: [
       {
         attachment:
-          "https://indexerrowaty.pl/nosacz",
+          "https://api.xenith.pl/memapi",
         name: `GAS_Bot-Meme-${message.id}.png`
       }
     ]
