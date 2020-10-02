@@ -34,6 +34,13 @@ exports.run = (client, message, args) => {
           "The bot says Aytch is the true way of sayinq h",
           true
         )
+      
+        .addField(
+          `${client.prefix}meme`,
+          "Just a meme, what did you expect",
+          true
+        )
+      
         .addField(
           `${client.prefix}toilet`,
           "Polish toilet spin basshunter dota homosex K19191.",
