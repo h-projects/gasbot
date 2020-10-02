@@ -1,6 +1,6 @@
 exports.run = (client, message, args) => {
  if (args.join(" ")) return;
-  message.channel.send("Oto twój mem.", {
+  message.channel.send("Here is your meme!", {
     files: [
       {
         attachment:
