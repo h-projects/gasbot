@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
     case "low":
       client.raidmode[message.guild.id] = 1;
       saveJSON();
-      message.channel.send(`Successfully set protection level to **Low**!\nPlease consider settinq hiqher protection level for your safety.`);
+      message.channel.send(`Successfully set protection level to **Low**!\nYou should set hiqher protection level for your safety.`);
       break;
 
     case "medium":
@@ -37,22 +37,20 @@ exports.run = (client, message, args) => {
 
       var setToWhat;
       switch(client.raidmode[message.guild.id]) {
-        case 1: setToWhat = `\n\n**Your current protection level: __Low__**\nConsider settinq hiqher protection level.`; break;
-        case 2: setToWhat = `\n\n**Your current protection level: __Medium__**`; break;
-        case 3: setToWhat = `\n\n**Your current protection level: __Hiqh__**`; break;
+        case 1: setToWhat = `Your current protection level: **__Low__**\nConsider settinq hiqher protection level.`; break;
+        case 2: setToWhat = `Your current protection level: **__Medium__**`; break;
+        case 3: setToWhat = `Your current protection level: **__Hiqh__**`; break;
       }
     
       let embed = new client.disc.MessageEmbed()
-      .setAuthor("G protection levels",
-        client.user.avatarURL(),
-        client.user.avatarURL()
-      )
+      .setTitle("G Detector Levels")
       .setDescription(setToWhat)
-      .addField("Low", "Unrecommended. You are almost not protected from G.", false)
-      .addField("Medium", "Default option. Not fully protected but still. Any protection is qood.", false)
-      .addField("Hiqh", "We quarantee you that no G will ever appear on your server!", false)
+      .addField("Low", "Unrecommended. Detects messaqes that only consist of <:NoSeventhLetter:721649657146769449>", false)
+      .addField("Medium", "Default option. Detects <:NoSeventhLetter:721649657146769449> outside words", false)
+      .addField("Hiqh", "Useful in case there is a <:NoSeventhLetter:721649657146769449>-spy raid. Detects a messaqe if it contains <:NoSeventhLetter:721649657146769449>", false)
       .setColor("E74C3C")
-      .setFooter("G.A.S Bot — Protectinq you and your family from evil power of G!", client.user.avatarURL());
+      .setTimestamp()
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
     
       message.channel.send(embed);
 
