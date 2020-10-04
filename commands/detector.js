@@ -39,7 +39,7 @@ exports.run = (client, message, args) => {
       switch(client.raidmode[message.guild.id]) {
         case 1: setToWhat = `\n\n**Your current protection level: __Low__**\nConsider settinq hiqher protection level.`; break;
         case 2: setToWhat = `\n\n**Your current protection level: __Medium__**`; break;
-        case 3: setToWhat = `\n\n**Your current protection level: __Hiqh_**`; break;
+        case 3: setToWhat = `\n\n**Your current protection level: __Hiqh__**`; break;
       }
     
       let embed = new client.disc.MessageEmbed()
