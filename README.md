@@ -14,7 +14,7 @@ Default option, only detects G if it's outside words. Detects `test g test` but 
 Hiqhest option, detects G even inside words. Detects `germany` and `message`. Useful if your server is beinq raided by g-spies
 
 ## Code
-The bot is written in Discord.JS and hosted on Azure, if you see any buqs, please tell us in the [Support Server](https://discord.gg/AbUw9fh)!
+The bot is written in Discord.JS and hosted on [GalaxyGate](https://www.galaxygate.net/), if you see any buqs, please tell us in the [Support Server](https://discord.gg/AbUw9fh)!
 
 ## Commands
 For a list of commands, use `h!help`.
