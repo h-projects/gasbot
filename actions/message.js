@@ -4,6 +4,9 @@ module.exports = async (client, message, member) => {
 
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
+  let cmd = client.cmds.get(
+    array[0].replace(client.config.prefix, "").toLowerCase()
+  );
 
   // Go aways bots and people who are trying to use commands on dm
   if (
@@ -16,6 +19,7 @@ module.exports = async (client, message, member) => {
     return;
 
   // G Detector™
+  if (!cmd) {
   let upperCaseMsg = message.content.toUpperCase();
   let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]/gi;
   let mediumDetection = /(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+\s)|(^[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+\s)|(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥ]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
@@ -77,9 +81,7 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("H > G") ||
     upperCaseMsg.includes("G < H") ||
     upperCaseMsg.includes("G SPY") ||
-    upperCaseMsg.includes("G-SPY") ||
     upperCaseMsg.includes("G SPIES") ||
-    upperCaseMsg.includes("G-SPIES") ||
     upperCaseMsg.includes("G SHOULD NOT EXIST") ||
     upperCaseMsg.includes("FUCK G") ||
     upperCaseMsg.includes("G IS BAD") ||
@@ -90,7 +92,6 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("HATE G") ||
     upperCaseMsg.includes("G SUCK") ||
     upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
-    upperCaseMsg.includes("G.A.S") ||
     upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
     upperCaseMsg.includes("🇴")
   ) {return;} else {
@@ -120,14 +121,16 @@ module.exports = async (client, message, member) => {
     }
 
     if(
-      upperCaseMsg.includes("FUCK H") ||
+      upperCaseMsg.includes(" FUCK H ") ||
+      upperCaseMsg.startsWith("FUCK H ") ||
+      upperCaseMsg.endsWith(" FUCK H") ||
       upperCaseMsg.includes("`G`") ||
       upperCaseMsg.includes("*G*") ||
       upperCaseMsg.includes("~~G~~") ||
       upperCaseMsg.includes("H IS BAD")
     ) gDetected();
 
-  }
+  }}
 
 // End of G detector™
 
@@ -144,9 +147,6 @@ module.exports = async (client, message, member) => {
   if (!message.content.startsWith(client.config.prefix)) return;
 
   // Get command and execute it
-  let cmd = client.cmds.get(
-    array[0].replace(client.config.prefix, "").toLowerCase()
-  );
   if (!cmd)
     return message.reply({
       embed: {
