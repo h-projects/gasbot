@@ -45,6 +45,6 @@ module.exports = async (before, after) => {
     let newNickname = after.nickname
       .replace(new RegExp("G", "g"), "H")
       .replace(new RegExp("g", "g"), "h");
-    before.setNickname(newNickname);
+    after.setNickname(newNickname);
   }
 }};
