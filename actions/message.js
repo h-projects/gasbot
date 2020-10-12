@@ -133,7 +133,7 @@ module.exports = async (client, message, member) => {
 
   if (
     message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
-    upperCaseMsg === "<@702116355842768927> help" || upperCaseMsg === "<@!702116355842768927> help"
+    upperCaseMsg === "<@702116355842768927> HELP" || upperCaseMsg === "<@!702116355842768927> HELP"
   ) {
     message.reply(
       "my prefix is `" + `${client.config.prefix}` + "`"
