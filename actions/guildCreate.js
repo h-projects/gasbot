@@ -2,7 +2,7 @@ module.exports = async (client, guild) => {
     
     let aytchLoqs = client.channels.cache.get("754681399499423764");
     let joinedEmbed = new client.disc.MessageEmbed()
-            .setFooter("G.A.S Bot", `${client.config.botLogo}`)
+            .setFooter("G.A.S Bot", `${client.user.avatarURL()}`)
             .setThumbnail(`${guild.iconURL()}`)
             .setTimestamp()
             .setColor("E74C3C")
