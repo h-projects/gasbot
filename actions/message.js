@@ -44,6 +44,7 @@ module.exports = async (client, message, member) => {
       let loqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
+        .setThumbnail(`${message.author.avatarURL()}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
