@@ -30,9 +30,10 @@ module.exports = async (client, message, member) => {
       );
       message.delete();
 
-      let globalLoqEmbed = new client.disc.MessageEmbed()
+      let qlobalLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
+        .setThumbnail(`${message.author.avatarURL()}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
@@ -67,7 +68,7 @@ module.exports = async (client, message, member) => {
         message.delete({ timeout: 4000 });
       });
       theLoq.send(loqEmbed);
-      gasserverlog.send(globalLoqEmbed);
+      gasserverlog.send(qlobalLoqEmbed);
     }
 
     // Allowed sentences with G
