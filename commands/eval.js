@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("200 OK")
-        .setDescription(`\`\`\`js\n${client.config.botInvite}\n\`\`\``);
+        .setDescription(`\`\`\`js\n${evaled}\n\`\`\``);
 
         message.channel.send(evalEmbed);
          
