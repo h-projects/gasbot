@@ -25,9 +25,11 @@ exports.run = (client, message, args) => {
 
         message.channel.send(`\`\`\`js\n${evaled}\n\`\`\``);
        }} catch (e) {
-        message.channel.send(
-          `**503 Internal Execution Error**\nThere was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``
-        );
+        message.channel.send({embed: {
+          color: 15158332,
+          title: "503 Internal Execution Error",
+          description: `There was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``
+        }});
       }
     } else
       return message.channel.send({
