@@ -23,7 +23,14 @@ exports.run = (client, message, args) => {
        } else {
         let evaled = eval(args.join(" "));
 
-        message.channel.send(`\`\`\`js\n${evaled}\n\`\`\``);
+        message.channel.send({
+        embed: {
+          color: 15158332,
+          title: "200 OK",
+          description: `\`\`\`js\n${evaled}\n\`\`\``
+        }
+      });
+         
        }} catch (e) {
         message.channel.send({embed: {
           color: 15158332,
