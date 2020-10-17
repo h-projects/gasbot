@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
         let evaled = eval(args.join(" "));
 
         message.channel.send(`\`\`\`js\n${evaled}\n\`\`\``);
-      } catch (e) {
+       }} catch (e) {
         message.channel.send(
           `**503 Internal Execution Error**\nThere was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``
         );
