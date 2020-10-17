@@ -1,8 +1,12 @@
 exports.run = (client, message, args) => {
-  message.channel.send({
-    embed: {
-      color: 15158332,
-      description: `<@702116355842768927> has removed ${client.badLetterCount.badLetterCount} bad letters protectinq people from possible death!`
-    }
-  });
+  
+ let removedEmbed = new client.disc.MessageEmbed()
+  .setColor("E74C3C")
+  .setTitle("__Bad Letters Removed__")
+  .setDescription(`Removed ${client.badLetterCount.badLetterCount} bad letters protectinq people from possible death!`)
+  .setTimestamp()
+  .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+  
+ message.channel.send(removedEmbed);
+  
 };
