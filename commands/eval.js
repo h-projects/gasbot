@@ -21,10 +21,9 @@ exports.run = (client, message, args) => {
           description: "You can't abuse eval command!"
         }});
        } else {
+         
         let evaled = eval(args.join(" "));
-         
-         
-       let evalEmbed = new client.disc.MessageEmbed()
+        let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
         .setTimestamp()
         .setColor("E74C3C")
@@ -34,7 +33,6 @@ exports.run = (client, message, args) => {
         message.channel.send(evalEmbed);
          
        }} catch (e) {
-         
          
         let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
@@ -47,6 +45,7 @@ exports.run = (client, message, args) => {
          
       }
     } else
+      
       let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
         .setTimestamp()
