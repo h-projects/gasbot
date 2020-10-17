@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
           title: "403 Forbidden",
           description: "You can't abuse eval command!"
         }});
-       } else {
+        }}} else {
          
         let evaled = eval(args.join(" "));
         let evalEmbed = new client.disc.MessageEmbed()
