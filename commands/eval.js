@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
         message.channel.send(evalEmbed);
          
       }
-    } else
+    } else {
       
       let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
