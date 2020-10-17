@@ -150,13 +150,13 @@ module.exports = async (client, message, member) => {
     array[0].replace(client.config.prefix, "").toLowerCase()
   );
   if (!cmd)
-    return message.reply({
+    return; /* message.channel.send({
       embed: {
         color: 15158332,
         title: "404 Not Found",
         description: `Try usinq ${client.config.prefix}help`
       }
-    });
+    }); */
 
   cmd.run(client, message, args);
 };
