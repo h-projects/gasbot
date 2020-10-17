@@ -1,13 +1,26 @@
 exports.run = (client, message, args) => {
   let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
+  let rolePinq = /<@&\d+>/g;
   if (message.guild.id === "720009823458033705") {
     if (ids.includes(message.author.id)) {
       try {
-        if (message.content.includes("@everyone" || "@here" || "process.env")) {
-          return message.channel.send(
-            `**<@${message.author.id}>, NO! **That is not a valid eval!`
-          );
-        }
+        if (
+          
+          args.join(" ").includes("@everyone") ||
+          args.join(" ").includes("@here") ||
+          args.join(" ").includes(client.config.token) ||
+          args.join(" ").includes(client.token) ||
+          args.join(" ").includes(client.config.TOPGGTOKEN) ||
+          rolePinq.test(args.join(" ")) === true
+          
+        ) {
+        message.channel.send({
+        embed: {
+          color: 15158332,
+          title: "403 Forbidden",
+          description: "You can't abuse eval command!"
+        }});
+       } else {
         let evaled = eval(args.join(" "));
 
         message.channel.send(`\`\`\`js\n${evaled}\n\`\`\``);
@@ -17,7 +30,7 @@ exports.run = (client, message, args) => {
         );
       }
     } else
-      return message.reply({
+      return message.channel.send({
         embed: {
           color: 15158332,
           title: "403 Forbidden",
