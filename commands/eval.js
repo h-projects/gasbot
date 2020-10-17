@@ -6,12 +6,12 @@ exports.run = (client, message, args) => {
       try {
         if (
           
-          eval(args.join(" ")).includes("@everyone") ||
-          eval(args.join(" ")).includes("@here") ||
-          eval(args.join(" ")).includes(client.config.token) ||
-          eval(args.join(" ")).includes(client.token) ||
-          eval(args.join(" ")).includes(client.config.TOPGGTOKEN) ||
-          rolePinq.test(eval(args.join(" "))) === true
+          args.join(" ").includes("@everyone") ||
+          args.join(" ").includes("@here") ||
+          args.join(" ").includes("client.config.token") ||
+          args.join(" ").includes("client.token") ||
+          args.join(" ").includes("client.config.TOPGGTOKEN") ||
+          rolePinq.test(args.join(" ")) === true
           
         ) {
         message.channel.send({
