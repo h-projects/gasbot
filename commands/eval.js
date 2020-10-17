@@ -22,30 +22,39 @@ exports.run = (client, message, args) => {
         }});
        } else {
         let evaled = eval(args.join(" "));
+         
+         
+       let evalEmbed = new client.disc.MessageEmbed()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setTimestamp()
+        .setColor("E74C3C")
+        .setTitle("200 OK")
+        .setDescription(`\`\`\`js\n${client.config.botInvite}\n\`\`\``);
 
-        message.channel.send({
-        embed: {
-          color: 15158332,
-          title: "200 OK",
-          description: `\`\`\`js\n${evaled}\n\`\`\``
-        }
-      });
+        message.channel.send(evalEmbed);
          
        }} catch (e) {
-        message.channel.send({embed: {
-          color: 15158332,
-          title: "503 Internal Execution Error",
-          description: `There was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``
-        }});
+         
+         
+        let evalEmbed = new client.disc.MessageEmbed()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setTimestamp()
+        .setColor("E74C3C")
+        .setTitle("503 Internal Execution Error")
+        .setDescription(`There was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``);
+        
+        message.channel.send(evalEmbed);
+         
       }
     } else
-      return message.channel.send({
-        embed: {
-          color: 15158332,
-          title: "403 Forbidden",
-          description: "You do not have permission to use that command!"
-        }
-      });
+      let evalEmbed = new client.disc.MessageEmbed()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setTimestamp()
+        .setColor("E74C3C")
+        .setTitle("403 Forbidden")
+        .setDescription("You do not have permission to use that command!");
+    
+      return message.channel.send(evalEmbed);
   } else
     return;
 };
