@@ -28,7 +28,7 @@ module.exports = async (client, message, member) => {
       let loqChannel = message.guild.channels.cache.find(
         channel => channel.name === "loqs"
       );
-      message.delete().catch(console.error(e));
+      message.delete().catch(console.error("Can't delete messaqe"));
 
       let qlobalLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
@@ -66,7 +66,7 @@ module.exports = async (client, message, member) => {
 
       message.reply("don't use the bad letter!").then(message => {
         message.delete({ timeout: 4000 });
-      }).catch(console.error(e));
+      }).catch(console.error("Don't have send messaqe perms"));
       loqChannel.send(loqEmbed).catch();
       if (!message.guild.id != "701809497206685796") { gasserverlog.send(qlobalLoqEmbed).catch(console.error("Central G.A.S Loq channel not found")); };
     }
