@@ -18,17 +18,17 @@ module.exports = async (client, message, member) => {
 
   // G Detector™
   if (!message.content.startsWith("h!eval")) {
-  let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥᕤᘓ𝞋𝟅᠖ᡋᠪ໔]/gi;
-  let mediumDetection = /(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(^[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
-  let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ🅶𝓰𝐠ᴳ❡𝙶𝙂🅖𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐Ⓖ🄶ƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞ🇬Ǥᕤᘓ𝞋𝟅᠖ᡋᠪ໔␝]/gi;
+  let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]/gi;
+  let mediumDetection = /(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(^[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
+  let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔␝]/gi;
 
   let gasserverlog = client.channels.cache.get("707642156055265322");
 
     function gDetected() {
-      let theLoq = message.guild.channels.cache.find(
+      let loqChannel = message.guild.channels.cache.find(
         channel => channel.name === "loqs"
       );
-      message.delete();
+      message.delete().catch(console.error(e));
 
       let qlobalLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL())
@@ -66,9 +66,9 @@ module.exports = async (client, message, member) => {
 
       message.reply("don't use the bad letter!").then(message => {
         message.delete({ timeout: 4000 });
-      });
-      theLoq.send(loqEmbed);
-      gasserverlog.send(qlobalLoqEmbed);
+      }).catch(console.error(e));
+      loqChannel.send(loqEmbed).catch();
+      if (!message.guild.id != "701809497206685796") { gasserverlog.send(qlobalLoqEmbed).catch(console.error("Central G.A.S Loq channel not found")); };
     }
 
     // Allowed sentences with G
@@ -91,8 +91,7 @@ module.exports = async (client, message, member) => {
     upperCaseMsg.includes("HATE G") ||
     upperCaseMsg.includes("G SUCK") ||
     upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
-    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.") ||
-    upperCaseMsg.includes("🇴")
+    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.")
   ) {return;} else {
 
     switch(client.raidmode[message.guild.id]) {
@@ -126,12 +125,14 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.includes("`G`") ||
       upperCaseMsg.includes("*G*") ||
       upperCaseMsg.includes("~~G~~") ||
-      upperCaseMsg.includes("H IS BAD")
+      upperCaseMsg.includes(" H IS BAD ") ||
+      upperCaseMsg.startsWith("H IS BAD ") ||
+      upperCaseMsg.endsWith(" H IS BAD")
     ) gDetected();
 
   }}
 
-// End of G detector™
+// End of G Detector™
 
   if (
     message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
