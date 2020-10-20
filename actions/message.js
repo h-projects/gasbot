@@ -68,7 +68,7 @@ module.exports = async (client, message, member) => {
         message.delete({ timeout: 4000 });
       }).catch(() => { console.error("Can't post messaqe"); });
       loqChannel.send(loqEmbed).catch();
-      if (!message.guild.id != "701809497206685796") { gasserverlog.send(qlobalLoqEmbed).catch(() => { console.error("Central G.A.S #loqs channel not found"); }); };
+      if (message.guild.id != "701809497206685796") { gasserverlog.send(qlobalLoqEmbed).catch(() => { console.error("Central G.A.S #loqs channel not found"); }); };
     }
 
     // Allowed sentences with G
