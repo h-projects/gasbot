@@ -18,7 +18,7 @@ client.badLetterCount = require("./database/badLetterCount.json");
 client.statuses = [
   "Removinq G!",
   "Don't use the bad letter",
-  "Aytch Software",
+  "H Clicker",
   "Removed " + client.badLetterCount.badLetterCount + " G's so far"
 ];
 

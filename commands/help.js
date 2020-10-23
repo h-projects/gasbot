@@ -3,10 +3,10 @@ exports.run = (client, message, args) => {
   let helpEmbed;
 
   switch(args.join(" ")) {
-    case "bot":
+    case "general":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("🤖 __Bot Cateqory__")
+        .setTitle("__General__")
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
     case "fun":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("🥳 __Fun Cateqory__")
+        .setTitle("🥳 __Fun __")
         .setDescription(`If you need to vote, invite, or qet more help, use ${client.config.prefix}links`)
         .addField(`${client.prefix}h`, "h", true)
         .addField(`${client.prefix}meme`, "Just a meme, what did you expect", true)
@@ -36,7 +36,10 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
       message.channel.send(helpEmbed);
-    break;
+	break;
+
+	case "dev": 
+	break;
 
     default:
       helpEmbed = new client.disc.MessageEmbed()
@@ -45,8 +48,10 @@ exports.run = (client, message, args) => {
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
-        .addField("🤖 __Bot Cateqory__ 🤖", `h!help bot`, true)
-        .addField("🥳 __Fun Cateqory__ 🥳", `h!help fun`, true)
+        .addField("__General__", `h!help general`, true)
+		.addField("__Fun__ ", `h!help fun`, true)
+		.addField("__Dev__ ", `h!help dev`, true)
+
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
       message.channel.send(helpEmbed);
