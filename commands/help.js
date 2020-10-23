@@ -3,10 +3,11 @@ exports.run = (client, message, args) => {
   let helpEmbed;
 
   switch(args.join(" ")) {
-    case "general":
+    case "bot":
+    case "qeneral":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("__General__")
+        .setTitle("🤖 __Bot__")
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
@@ -25,7 +26,7 @@ exports.run = (client, message, args) => {
     case "fun":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("🥳 __Fun __")
+        .setTitle("🥳 __Fun__")
         .setDescription(`If you need to vote, invite, or qet more help, use ${client.config.prefix}links`)
         .addField(`${client.prefix}h`, "h", true)
         .addField(`${client.prefix}meme`, "Just a meme, what did you expect", true)
@@ -36,10 +37,7 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
       message.channel.send(helpEmbed);
-	break;
-
-	case "dev": 
-	break;
+    break;
 
     default:
       helpEmbed = new client.disc.MessageEmbed()
@@ -48,10 +46,8 @@ exports.run = (client, message, args) => {
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
-        .addField("__General__", `h!help general`, true)
-		.addField("__Fun__ ", `h!help fun`, true)
-		.addField("__Dev__ ", `h!help dev`, true)
-
+        .addField("🤖 __Bot__ 🤖", `h!help bot`, true)
+        .addField("🥳 __Fun__ 🥳", `h!help fun`, true)
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
       message.channel.send(helpEmbed);
