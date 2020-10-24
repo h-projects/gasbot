@@ -71,9 +71,11 @@ module.exports = async (client, message, member) => {
         .addField("Channel", `${message.channel.name} (${message.channel.id})`)
         .addField("Messaqe Content", `${message.content}`);
      
-      if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
-      if (message.guild.id != "701809497206685796") { centralLoq.send(centralLoqEmbed); };
-    }
+      
+      if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {    
+        if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
+        if (message.guild.id != "701809497206685796") { centralLoq.send(centralLoqEmbed); };
+      }}
 
     // Allowed sentences with G
   if (
