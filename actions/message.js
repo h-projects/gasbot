@@ -60,7 +60,6 @@ module.exports = async (client, message, member) => {
         .addField("Messaqe Content", message.content);
 	    
       let centralLoqEmbed = new client.disc.MessageEmbed()
-
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setThumbnail(`${message.author.avatarURL()}`)
@@ -79,61 +78,45 @@ module.exports = async (client, message, member) => {
       }}
 
     // Allowed sentences with G
-    if (
-      upperCaseMsg.includes("NO G") ||
-      upperCaseMsg.includes("H BETTER THAN G") ||
-      upperCaseMsg.includes("H IS BETTER THAN G") ||
-      upperCaseMsg.includes("SCHOOL IS G") ||
-      upperCaseMsg.includes("H > G") ||
-      upperCaseMsg.includes("G < H") ||
-      upperCaseMsg.includes("G SPY") ||
-      upperCaseMsg.includes("G SPIES") ||
-      upperCaseMsg.includes("G SHOULD NOT EXIST") ||
-      upperCaseMsg.includes("FUCK G") ||
-      upperCaseMsg.includes("G IS BAD") ||
-      upperCaseMsg.includes("G IS A HARAM") ||
-      upperCaseMsg.includes("G IS HARAM") ||
-      upperCaseMsg.includes("G BAD") ||
-      upperCaseMsg.includes("G IS SHIT") ||
-      upperCaseMsg.includes("HATE G") ||
-      upperCaseMsg.includes("G SUCK") ||
-      upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
-      upperCaseMsg.includes(
-        "EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G."
-      )
-    ) {
-      return;
-    } else {
-      switch (client.raidmode[message.guild.id]) {
-        case 1: // Low
-          if (lowDetection.test(message.content) === false) gDetected();
-          break;
-
-        case 2: // Medium
-          if (
-            lowDetection.test(message.content) === false &&
-            mediumDetection.test(message.content) === true
-          )
-            gDetected();
-          break;
-
-        case 3: // Hiqh
-          if (hiqhDetection.test(message.content) === true) gDetected();
-          break;
-      }
-      if (
-        upperCaseMsg.includes(" FUCK H ") ||
-        upperCaseMsg.startsWith("FUCK H ") ||
-        upperCaseMsg.endsWith(" FUCK H") ||
-        upperCaseMsg.includes("`G`") ||
-        upperCaseMsg.includes("*G*") ||
-        upperCaseMsg.includes("~~G~~") ||
-        upperCaseMsg.includes(" H IS BAD ") ||
-        upperCaseMsg.startsWith("H IS BAD ") ||
-        upperCaseMsg.endsWith(" H IS BAD")
-      )
-        gDetected();
-
+  if (
+    upperCaseMsg.includes("NO G") ||
+    upperCaseMsg.includes("H BETTER THAN G") ||
+    upperCaseMsg.includes("H IS BETTER THAN G") ||
+    upperCaseMsg.includes("SCHOOL IS G") ||
+    upperCaseMsg.includes("H > G") ||
+    upperCaseMsg.includes("G < H") ||
+    upperCaseMsg.includes("G SPY") ||
+    upperCaseMsg.includes("G SPIES") ||
+    upperCaseMsg.includes("G SHOULD NOT EXIST") ||
+    upperCaseMsg.includes("FUCK G") ||
+    upperCaseMsg.includes("G IS BAD") ||
+    upperCaseMsg.includes("G IS A HARAM") ||
+    upperCaseMsg.includes("G IS HARAM") ||
+    upperCaseMsg.includes("G BAD") ||
+    upperCaseMsg.includes("G IS SHIT") ||
+    upperCaseMsg.includes("HATE G") ||
+    upperCaseMsg.includes("G SUCK") ||
+    upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
+    upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.")
+  ) { return; } else {
+    switch(client.raidmode[message.guild.id]) {
+      case 1: // Low
+        if (
+          lowDetection.test(message.content) === false
+        ) gDetected();
+      break;
+      case 2: // Medium
+      case undefined:
+        if (
+          lowDetection.test(message.content) === false ||
+          mediumDetection.test(message.content) === true
+        ) gDetected();
+      break;
+      case 3: // Hiqh
+        if (
+          hiqhDetection.test(message.content) === true
+        ) gDetected();
+      break;
     }
     if(
       upperCaseMsg.includes(" FUCK H ") ||
@@ -146,7 +129,7 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.startsWith("H IS BAD ") ||
       upperCaseMsg.endsWith(" H IS BAD")
     ) gDetected();
-  }
+  }}
 
 	
 
