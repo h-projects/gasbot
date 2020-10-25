@@ -1,6 +1,7 @@
 exports.run = (client, message, args) => {
 
   let helpEmbed;
+  let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
 
   switch(args.join(" ")) {
     case "bot":
@@ -38,18 +39,61 @@ exports.run = (client, message, args) => {
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
       message.channel.send(helpEmbed);
     break;
-
-    default:
+      
+    case "dev":
+      if (ids.includes(message.author.id)) {
+        helpEmbed = new client.disc.MessageEmbed()
+        .setColor("E74C3C")
+        .setTitle(":VerifiedBotDev: __Dev Tools__")
+        .setDescription(
+          `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
+        )
+        .addField(`${client.prefix}eval`, "Execute code inside G.A.S Bot", true)
+        .setTimestamp()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        message.channel.send(helpEmbed);
+      } else {
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
         .setTitle("__Commands__")
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
-        .addField("🤖 __Bot__ 🤖", `h!help bot`, true)
-        .addField("🥳 __Fun__ 🥳", `h!help fun`, true)
+        .addField("🤖 __Bot__", `h!help bot`, true)
+        .addField("🥳 __Fun__", `h!help fun`, true)
+        .setTimestamp()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`); };
+      message.channel.send(helpEmbed);
+      };
+    break;
+
+    default:
+      
+      if (ids.includes(message.author.id)) {
+        
+      helpEmbed = new client.disc.MessageEmbed()
+        .setColor("E74C3C")
+        .setTitle("__Commands__")
+        .setDescription(
+          `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
+        )
+        .addField("🤖 __Bot__", `h!help bot`, true)
+        .addField("🥳 __Fun__", `h!help fun`, true)
+        .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `h!help dev`, true)
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        
+      } else {
+      helpEmbed = new client.disc.MessageEmbed()
+        .setColor("E74C3C")
+        .setTitle("__Commands__")
+        .setDescription(
+          `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
+        )
+        .addField("🤖 __Bot__", `h!help bot`, true)
+        .addField("🥳 __Fun__", `h!help fun`, true)
+        .setTimestamp()
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`); };
       message.channel.send(helpEmbed);
   }
 };
