@@ -48,8 +48,6 @@ module.exports = async (client, message, member) => {
         .addField("User", `${message.author.tag} (${message.author.id})`)
         .addField("Server", `${message.guild.name} (${message.guild.id})`)
 		.addField("Channel", `${message.channel.name} (${message.channel.id})`)
-
-		
         .addField("Messaqe Content", `${message.content}`);
 
       let loqEmbed = new client.disc.MessageEmbed()
@@ -124,9 +122,8 @@ module.exports = async (client, message, member) => {
           break;
 
         case 2: // Medium
-        case undefined:
           if (
-            lowDetection.test(message.content) === false ||
+            lowDetection.test(message.content) === false &&
             mediumDetection.test(message.content) === true
           )
             gDetected();
