@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
  
         let evaled = eval(args.join(" "));
         let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("200 OK")
@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
        } catch (e) {
          
         let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("503 Internal Execution Error")
@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
     } else {
       
       let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`)
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("403 Forbidden")

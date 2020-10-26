@@ -2,8 +2,8 @@ module.exports = async (client, guild) => {
     
     let aytchLoqs = client.channels.cache.get("754681399499423764");
     let leftEmbed = new client.disc.MessageEmbed()
-            .setFooter("G.A.S Bot", `${client.user.avatarURL()}`)
-            .setThumbnail(`${guild.iconURL()}`)
+            .setFooter("G.A.S Bot", `${client.user.avatarURL({dynamic: true})}`)
+            .setThumbnail(`${guild.iconURL({dynamic: true})}`)
             .setTimestamp()
             .setColor("E74C3C")
             .setTitle(`Left ${guild.name}`)

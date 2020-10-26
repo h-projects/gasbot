@@ -49,9 +49,9 @@ module.exports = async (client, message, member) => {
       let centralLoq = client.channels.cache.get("707642156055265322");
 	    
       let loqEmbed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot", client.user.avatarURL())
+        .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
         .setURL("https://aytchsoftware.tk/fuck-g/")
-        .setThumbnail(`${message.author.avatarURL()}`)
+        .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
@@ -60,9 +60,9 @@ module.exports = async (client, message, member) => {
         .addField("Messaqe Content", message.content);
 	    
       let centralLoqEmbed = new client.disc.MessageEmbed()
-        .setFooter("G.A.S Bot", client.user.avatarURL())
+        .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
         .setURL("https://aytchsoftware.tk/fuck-g/")
-        .setThumbnail(`${message.author.avatarURL()}`)
+        .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")

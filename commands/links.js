@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
       timestamp: new Date(),
       footer: {
         text: `${message.author.tag}`,
-        icon_url: `${message.author.avatarURL()}`
+        icon_url: `${message.author.avatarURL({dynamic: true})}`
       }
     }
   });

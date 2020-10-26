@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
     .addField("Why?", "Because G is evil and must be destroyed.", false)
     .setThumbnail(`${client.config.botLogo}`)
     .setTimestamp()
-    .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+    .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
 
   message.channel.send(infoEmbed);
 };

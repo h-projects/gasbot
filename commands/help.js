@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix}pinq`, "Pinq of G.A.S Bot", true)
         .addField(`${client.prefix}detector`, "Chanqe G Detector settinqs.")
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
       message.channel.send(helpEmbed);
     break;
 
@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix}tank`, "aden said <:NoSeventhLetter:721649657146769449>, use this", true)
         .addField(`${client.prefix}huh`, "<:thinkinH:702462510057521192>", true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
       message.channel.send(helpEmbed);
     break;
       
@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
         )
         .addField(`${client.prefix}eval`, "Execute code inside G.A.S Bot", true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
         message.channel.send(helpEmbed);
       } else {
        helpEmbed = new client.disc.MessageEmbed()
@@ -62,7 +62,7 @@ exports.run = (client, message, args) => {
         .addField("🤖 __Bot__", `h!help bot`, true)
         .addField("🥳 __Fun__", `h!help fun`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
        message.channel.send(helpEmbed);
       };
     break;
@@ -81,7 +81,7 @@ exports.run = (client, message, args) => {
         .addField("🥳 __Fun__", `h!help fun`, true)
         .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `h!help dev`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
         
       } else {
       helpEmbed = new client.disc.MessageEmbed()
@@ -93,7 +93,7 @@ exports.run = (client, message, args) => {
         .addField("🤖 __Bot__", `h!help bot`, true)
         .addField("🥳 __Fun__", `h!help fun`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`); };
+        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`); };
       message.channel.send(helpEmbed);
   }
 };

@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
     .setTitle("__Loqs__")
     .setDescription("To enable loqs on your server, just create a channel called `loqs`!")
     .setTimestamp()
-    .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+    .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
 
   message.channel.send(loqsHelpEmbed);
 };

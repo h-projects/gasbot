@@ -49,7 +49,7 @@ exports.run = (client, message, args) => {
       .addField("Hiqh", "Useful in case there is a <:NoSeventhLetter:721649657146769449>-spy raid. Detects a messaqe if it contains <:NoSeventhLetter:721649657146769449>", false)
       .setColor("E74C3C")
       .setTimestamp()
-      .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
     
       message.channel.send(embed);
 

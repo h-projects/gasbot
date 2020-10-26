@@ -49,6 +49,6 @@ exports.run = (client, message, args) => {
       false
     )
     .setTimestamp()
-    .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+    .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
   message.channel.send(creditsEmbed);
 };

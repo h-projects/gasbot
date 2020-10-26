@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   .setTitle("__Bad Letters Removed__")
   .setDescription(`Removed ${client.badLetterCount.badLetterCount} bad letters protectinq people from possible death!`)
   .setTimestamp()
-  .setFooter(`${message.author.tag}`, `${message.author.avatarURL()}`);
+  .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
   
  message.channel.send(removedEmbed);
   
