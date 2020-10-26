@@ -72,7 +72,6 @@ module.exports = async (client, message, member) => {
         .addField("Messaqe Content", message.content);
 
       let centralLoqEmbed = new client.disc.MessageEmbed()
-
         .setFooter("G.A.S Bot", client.user.avatarURL())
         .setURL("https://aytchsoftware.tk/fuck-g/")
         .setThumbnail(`${message.author.avatarURL()}`)
@@ -165,7 +164,7 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.includes(" H IS BAD ") ||
       upperCaseMsg.startsWith("H IS BAD ") ||
       upperCaseMsg.endsWith(" H IS BAD")
-    )
+    ) {
       gDetected();
   }
 
@@ -195,4 +194,4 @@ module.exports = async (client, message, member) => {
     });
 
   cmd.run(client, message, args);
-};
+}};
