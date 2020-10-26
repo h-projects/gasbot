@@ -26,6 +26,7 @@ module.exports = async (client, message, member) => {
   let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]/gi;
   let mediumDetection = /(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(^[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(\s[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+$)/gi; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
   let hiqhDetection = /[g𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶𝙂𝒢ᶃꓖ𝖦Ꮆʛ𝘎𝓖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔␝]/gi;
+  let blacklist = [" FUCK H ", "`G`", "\*G\*", "~~G~~", " H IS BAD "]
 	  
     function gDetected() {
       // Check if the bot has perms and delete messaqe
@@ -109,26 +110,17 @@ module.exports = async (client, message, member) => {
       case undefined:
         if (
           lowDetection.test(message.content) === false ||
-          mediumDetection.test(message.content) === true
+          mediumDetection.test(message.content) === true ||
+          new RegExp(blacklist.join('|')).test(upperCaseMsg)
         ) gDetected();
       break;
       case 3: // Hiqh
         if (
-          hiqhDetection.test(message.content) === true
+          hiqhDetection.test(message.content) === true ||
+          new RegExp(blacklist.join('|')).test(upperCaseMsg)
         ) gDetected();
       break;
     }
-    if(
-      upperCaseMsg.includes(" FUCK H ") ||
-      upperCaseMsg.startsWith("FUCK H ") ||
-      upperCaseMsg.endsWith(" FUCK H") ||
-      upperCaseMsg.includes("`G`") ||
-      upperCaseMsg.includes("*G*") ||
-      upperCaseMsg.includes("~~G~~") ||
-      upperCaseMsg.includes(" H IS BAD ") ||
-      upperCaseMsg.startsWith("H IS BAD ") ||
-      upperCaseMsg.endsWith(" H IS BAD")
-    ) gDetected();
   }}
 
 	
