@@ -4,9 +4,10 @@ exports.run = (client, message, args) => {
   if (message.guild.id === "720009823458033705" &&
       !args.join(" ").includes("@everyone") &&
       !args.join(" ").includes("@here") &&
-      !args.join(" ").includes("client.config.token") &&
-      !args.join(" ").includes("client.token") &&
-      !args.join(" ").includes("client.config.TOPGGTOKEN") &&
+      !args.join(" ").includes("token") &&
+      !args.join(" ").includes("TOKEN") &&
+      !args.join(" ").includes("TOPGGTOKEN") &&
+      !args.join(" ").includes("config.json") &&
       rolePinq.test(args.join(" ")) === false)
     if (ids.includes(message.author.id)) {
       try {
