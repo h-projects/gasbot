@@ -32,6 +32,7 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix}h`, "h", true)
         .addField(`${client.prefix}meme`, "Just a meme, what did you expect", true)
         .addField(`${client.prefix}toilet`, "Polish toilet", true)
+        .addField(`${client.prefix}juan`, "<:Juan:768187837043965982>", true)
         .addField(`${client.prefix}hromomento`, "tenemos un qran bro momento", true)
         .addField(`${client.prefix}tank`, "aden said <:NoSeventhLetter:721649657146769449>, use this", true)
         .addField(`${client.prefix}huh`, "<:thinkinH:702462510057521192>", true)
