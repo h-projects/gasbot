@@ -27,6 +27,7 @@ exports.run = (client, message, args) => {
       break;
 
     case "high":
+    case "hiqh":
       client.raidmode[message.guild.id] = 3;
       saveJSON();
       message.channel.send(`Successfully set protection level to **Hiqh**!`);
