@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
   if (args.join(" ")) return;
   
-          // Taqs of G.A.S Bot devs
+  /*        // Taqs of G.A.S Bot devs
   let supertag = client.users.cache.get("478823932913516544").tag
   let indextag = client.users.cache.get("651511209585147904").tag
   let senkotag = client.users.cache.get("348591272476540928").tag
@@ -12,13 +12,19 @@ exports.run = (client, message, args) => {
   let razieltag = client.users.cache.get("270139230565433347").tag
   let nyxtag = client.users.cache.get("186690073138298880").tag
   let hhhhhhtag = client.users.cache.get("482708065838432267").tag
-  
+  */
   
   
   let creditsEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")
     .setTitle("__Credits__")
+    .setDescription("Credits aren't workinq as intended riqht now, please check back later!")
     .addField(
+      "<:VerifiedBotDev:764412852395180032> Developers",
+      `Superchupu#5249\nIndex#1337\nSenkoDev#2137`,
+      true
+    )
+    /* .addField(
       "G Detector",
       `${supertag}\n${indextag}\n${senkotag}`,
       true
@@ -47,7 +53,7 @@ exports.run = (client, message, args) => {
       "Special Thanks",
       `${lunatag} for the G Detector idea\n${razieltag} & ${nyxtag} for creating G.A.S\n${hhhhhhtag} for helping us with ${client.config.prefix}removed`,
       false
-    )
+    )*/
     .setTimestamp()
     .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
   message.channel.send(creditsEmbed);
