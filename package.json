@@ -1,17 +1,17 @@
 {
   "name": "gasbot",
-  "version": "1.0.0",
-  "description": "G.A.S. Bot",
+  "version": "2.0.0",
+  "description": "A bot to remove and protect you from the letter G.",
   "main": "gasbot.js",
   "scripts": {
     "start": "node gasbot.js"
   },
   "dependencies": {
-    "discord.js": "^12.3.1",
-    "enmap": "^5.8.0",
-    "jquery": "^3.5.1",
-    "dblapi.js": "^2.4.1",
-    "fs-extra": "^9.0.1"
+    "discord.js": "^12.x.x",
+    "enmap": "^5.x.x",
+    "jquery": "^3.x.x",
+    "dblapi.js": "^2.x.x",
+    "fs-extra": "^9.x.x"
   },
   "engines": {
     "node": "14.x"
