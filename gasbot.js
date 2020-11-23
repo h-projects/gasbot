@@ -1,5 +1,6 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
+    disableMentions: 'everyone',
     presence: {
       activity: { name: "h!help | Removinq G!", type: "PLAYING" },
       status: "dnd"
