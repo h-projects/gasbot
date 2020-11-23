@@ -43,6 +43,6 @@ exports.run = (client, message, args) => {
         .setDescription("You do not have permission to use that command!");
     
       return message.channel.send(evalEmbed);
-  } else
+  };
     return;
 };
