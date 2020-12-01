@@ -2,6 +2,7 @@ exports.run = (client, message, args) => {
   let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
   
   if (message.guild.id === "720009823458033705" &&
+      !args.join(" ").includes("disableMentions") &&
       !args.join(" ").includes("ban") &&
       !args.join(" ").includes("kick") &&
       !args.join(" ").includes("token") &&
