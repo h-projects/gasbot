@@ -1,5 +1,4 @@
-module.exports = async (reaction, user) => {
-    console.log(reaction.emoji.name)
+module.exports = async (user, reaction) => {
     if (reaction.emoji.name == '🇬') {
     reaction.remove(user);     
     }
