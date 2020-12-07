@@ -1,10 +1,10 @@
-module.exports = async (before, after) => {
+module.exports = async (after, before) => {
   if (after.nickname === undefined || after.nickname === null || after.nickname === "") return;
-  let upperCaseNick = after.nickname.toUpperCase();
+  let upperCaseNick = before.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
 
   if (lowDetection.test(upperCaseNick) === false) {
-    let newNickname = after.nickname
+    let newNickname = before.nickname
       .replace(new RegExp("G", "g"), "H")
       .replace(new RegExp("g", "g"), "h");
     after.setNickname(newNickname);
