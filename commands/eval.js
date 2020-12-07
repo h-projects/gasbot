@@ -3,6 +3,7 @@ exports.run = (client, message, args) => {
   
   if (message.guild.id === "720009823458033705" &&
       !args.join(" ").includes("disableMentions") &&
+      !args.join(" ").includes("eval") &&
       !args.join(" ").includes("ban") &&
       !args.join(" ").includes("kick") &&
       !args.join(" ").includes("token") &&
