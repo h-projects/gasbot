@@ -5,11 +5,6 @@ module.exports = async (client, message, member) => {
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
   let upperCaseMsg = message.content.toUpperCase();
 	
-  // stupid goddamn function from stackoverflow
-  // stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
-  function cptlzeFrstLttr(str) {
-	str.charAt(0).toUpperCase() + str.slice(1);
-  }
   
   // Go aways bots and people who are trying to use commands on dm
   if (
@@ -129,7 +124,7 @@ module.exports = async (client, message, member) => {
     message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
     upperCaseMsg === "<@702116355842768927> HELP" || upperCaseMsg === "<@!702116355842768927> HELP"
   ) {
-    message.reply("my prefix is `" + `${client.config.prefix}` + "`");
+    message.reply("my prefix is `" + client.config.prefix + "`");
   };
 	
   // No prefix no fun

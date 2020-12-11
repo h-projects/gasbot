@@ -3,6 +3,7 @@ exports.run = (client, message, args) => {
   
   if (message.guild.id === "720009823458033705" &&
       !args.join(" ").includes("disableMentions") &&
+      !args.join(" ").includes("allowedMentions") &&
       !args.join(" ").includes("eval") &&
       !args.join(" ").includes("ban") &&
       !args.join(" ").includes("kick") &&
@@ -42,7 +43,7 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("403 Forbidden")
-        .setDescription("You do not have permission to use that command!");
+        .setDescription("You don't have permission to use that command!");
     
       return message.channel.send(evalEmbed);
   };
