@@ -23,6 +23,7 @@ exports.run = (client, message, args) => {
         .setDescription(`\`\`\`js\n${evaled}\n\`\`\``);
 
         message.channel.send(evalEmbed);
+        message.channel.send("test");
          
        } catch (e) {
          
