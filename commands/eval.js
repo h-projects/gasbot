@@ -11,6 +11,8 @@ exports.run = (client, message, args) => {
       !args.join(" ").includes("TOKEN") &&
       !args.join(" ").includes("TOPGGTOKEN") &&
       !args.join(" ").includes("config.json") &&
+      !args.join(" ").includes("require") &&
+      !args.join(" ").includes("shell") &&
       ids.includes(message.author.id)) {
       try {
  
