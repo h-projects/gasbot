@@ -53,6 +53,7 @@ exports.run = (client, message, args) => {
         )
         .addField(`${client.prefix}eval`, "Evaluate code inside G.A.S Bot", true)
         .addField(`${client.prefix}restart`, "Restart the bot", true)
+        .addField(`${client.prefix}update`, "Update the code from the repo", true)
         .setTimestamp()
         .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
         message.channel.send(helpEmbed);
