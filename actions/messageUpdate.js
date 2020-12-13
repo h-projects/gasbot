@@ -1,4 +1,4 @@
-module.exports = async (client, message) => {
+module.exports = async (client, oldMessage, message) => {
     const fs = require("fs-extra");
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
