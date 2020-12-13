@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
        .setTimestamp()
        .setColor("E74C3C")
        .setTitle("200 OK")
-       .setDescription(`<@${userID}> is a g-spy`);
+       .setDescription(`${member} is a g-spy`);
 
     if (message.guild.roles.cache.find(roles => roles.name === "g-spy") == undefined) { message.guild.roles.create({
       data: {
