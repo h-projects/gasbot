@@ -1,6 +1,7 @@
-module.exports = async (message, oldMessage) => {
+module.exports = async (client, message) => {
     const fs = require("fs-extra");
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
+    var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
     let upperCaseMsg = message.content.toUpperCase();
       
     

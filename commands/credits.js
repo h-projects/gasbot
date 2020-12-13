@@ -11,6 +11,7 @@ exports.run = (client, message, args) => {
   let makufontag = client.users.cache.get("444550944110149633").tag
   let dicetag = client.users.cache.get("528229753258246145").tag
   let farttag = client.users.cache.get("299921398992994304").tag
+  let kailstag = client.users.cache.get("692037827940057129").tag
   let lunatag = client.users.cache.get("603635602809946113").tag
   
 
@@ -18,7 +19,7 @@ exports.run = (client, message, args) => {
     .setColor("E74C3C")
     .setTitle("__Credits__")
     .addField("<:VerifiedBotDev:764412852395180032> Developers", `${supertag}\n${indextag}\n${senkotag}`, true)
-    .addField("⭐ Special Thanks", `${humantag}\n${makufontag}\n${dicetag}\n${farttag}\n${lunatag}`, true)
+    .addField("⭐ Special Thanks", `${humantag}\n${makufontag}\n${dicetag}\n${farttag}\n${kailstag}\n${lunatag}`, true)
     .setTimestamp()
     .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
   message.channel.send(creditsEmbed);
