@@ -3,6 +3,7 @@ module.exports = async (client, message, member) => {
     args = array.slice(1);
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
+  var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
   let upperCaseMsg = message.content.toUpperCase();
 	
   
@@ -37,6 +38,24 @@ module.exports = async (client, message, member) => {
         JSON.stringify(HowMuchGWasPosted),
         function(err) {
           if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
+        }
+      );
+
+      if (HowMuchGWasPostedUser[message.author.id] !== undefined) {
+
+        HowMuchGWasPostedUser[message.author.id]++;
+
+      } else {
+
+        HowMuchGWasPostedUser[message.author.id] = 1;
+        
+      };
+
+      fs.writeFile(
+        "./database/badLetterUser.json",
+        JSON.stringify(HowMuchGWasPostedUser),
+        function(err) {
+          if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
         }
       );
 	  
