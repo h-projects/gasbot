@@ -4,7 +4,8 @@ module.exports = async (client, oldMessage, message) => {
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
     let upperCaseMsg = message.content.toUpperCase();
       
-    
+    message.fetch().then(() => {
+	    
     // Go aways bots and people who are trying to use commands on dm
     if (
       message.author.bot ||
@@ -132,5 +133,5 @@ module.exports = async (client, oldMessage, message) => {
           ) gDetected();
         break;
       }
-    }
+    }})
 };
