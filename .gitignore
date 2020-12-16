@@ -1,4 +1,5 @@
 /database/*
+/.github
 /node_modules
 
 # General
