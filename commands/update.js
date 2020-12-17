@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
               .setTimestamp()
               .setColor("E74C3C")
               .setTitle("200 OK")
-              .setDescription(output);
+              .setDescription(`\`\`\`shell\n${output}\`\`\``);
               
               message.edit(updateEmbed);
               
