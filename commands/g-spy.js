@@ -22,9 +22,13 @@ exports.run = (client, message, args) => {
         return;
         };
     
-    let userID = /\d+/.exec(message.content).toString();
+    let userID = /\d+/.exec(message.content);
     let member = message.guild.members.cache.get(userID)
-
+    
+    if (userID !== null) {
+    userID = userID.toString()
+    }
+    
     if (member !== undefined && userID !== "702116355842768927") {
 
     let doneEmbed = new client.disc.MessageEmbed()
