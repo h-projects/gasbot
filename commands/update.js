@@ -6,9 +6,12 @@ exports.run = (client, message, args) => {
         try {
             
           const shell = require("shelljs");
-   
+          
+          let tag = message.author.tag
+          let avatar = message.author.avatarURL({dynamic: true})
+          
           let updateEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("200 OK")
@@ -17,7 +20,7 @@ exports.run = (client, message, args) => {
           message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(code, output) {
               
               updateEmbed = new client.disc.MessageEmbed()
-              .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+              .setFooter(tag, avatar)
               .setTimestamp()
               .setColor("E74C3C")
               .setTitle("200 OK")
@@ -30,7 +33,7 @@ exports.run = (client, message, args) => {
          } catch (e) {
            
           let updateEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("503 Internal Execution Error")
@@ -42,7 +45,7 @@ exports.run = (client, message, args) => {
       } else {
         if (otherIds.includes(message.author.id)) {
             let updateEmbed = new client.disc.MessageEmbed()
-            .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+            .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
             .setTimestamp()
             .setColor("E74C3C")
             .setTitle("403 Forbidden")
@@ -51,7 +54,7 @@ exports.run = (client, message, args) => {
           return message.channel.send(updateEmbed);
         };
         let updateEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("403 Forbidden")
