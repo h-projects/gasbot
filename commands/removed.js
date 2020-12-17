@@ -1,9 +1,12 @@
 exports.run = (client, message, args) => {
-    var userID = /\d+/.exec(message.content).toString();
+    var userID = /\d+/.exec(message.content);
 
     if (userID === null) {
         var userID = message.author.id
+    } else {
+        var userID = userID.toString()
     }
+   
 
     let member = message.guild.members.cache.get(userID)
 
