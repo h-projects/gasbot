@@ -1,11 +1,11 @@
 exports.run = (client, message, args) => {
-    var userID = /\d+/.exec(message.content);
+    var userID = /\d+/.exec(message.content).toString();
 
     if (userID === null) {
         var userID = message.author.id
     }
 
-    let member = message.guild.members.cache.get(`${userID}`)
+    let member = message.guild.members.cache.get(userID)
 
     if (member === undefined) {
 
@@ -17,11 +17,11 @@ exports.run = (client, message, args) => {
 
     } else {
 
-        if (client.badLetterUser[`${userID}`] === undefined) {
-            client.badLetterUser[`${userID}`] = 0;
+        if (client.badLetterUser[userID] === undefined) {
+            client.badLetterUser[userID] = 0;
         }
 
-        var removedUserText = `Removed ${client.badLetterUser[`${userID}`]} bad letters from ${member}`
+        var removedUserText = `Removed ${client.badLetterUser[userID]} bad letters from ${member}`
 
     }
 
