@@ -13,7 +13,10 @@ exports.run = (client, message, args) => {
           .setColor("E74C3C")
           .setTitle("200 OK")
           .setDescription("Updatinq the code...");
-          message.channel.send(updateEmbed).then(() => { shell.exec("git pull") });
+            
+          message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(output) {
+              message.channel.send(output);
+          }) });
            
          } catch (e) {
            
