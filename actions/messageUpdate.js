@@ -2,7 +2,6 @@ module.exports = async (client, oldMessage, message) => {
     const fs = require("fs-extra");
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
-    let upperCaseMsg = message.content.toUpperCase();
       
     message.fetch().then(() => {
 	    
@@ -15,6 +14,8 @@ module.exports = async (client, oldMessage, message) => {
       message.content === ""
     )
       return;
+	    
+    let upperCaseMsg = message.content.toUpperCase();
       
     // G Detector™
     let lowDetection = /[^\sg𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]/giu;
