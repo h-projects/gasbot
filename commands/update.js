@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
           .setTitle("200 OK")
           .setDescription("Updatinq the code...");
             
-          message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(output) {
+          message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(code, output) {
               message.channel.send(output);
           }) });
            
