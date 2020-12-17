@@ -22,10 +22,10 @@ exports.run = (client, message, args) => {
         return;
         };
     
-    let userID = /\d+/.exec(message.content);
-    let member = message.guild.members.cache.get(`${userID}`)
+    let userID = /\d+/.exec(message.content).toString();
+    let member = message.guild.members.cache.get(userID)
 
-    if (member !== undefined && userID != "702116355842768927") {
+    if (member !== undefined && userID !== "702116355842768927") {
 
     let doneEmbed = new client.disc.MessageEmbed()
        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
