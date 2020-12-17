@@ -15,7 +15,16 @@ exports.run = (client, message, args) => {
           .setDescription("Updatinq the code...");
             
           message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(code, output) {
-              message.channel.send(output);
+              
+              updateEmbed = new client.disc.MessageEmbed()
+              .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+              .setTimestamp()
+              .setColor("E74C3C")
+              .setTitle("200 OK")
+              .setDescription(output);
+              
+              message.edit(updateEmbed);
+              
           }) });
            
          } catch (e) {
