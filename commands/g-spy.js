@@ -23,11 +23,12 @@ exports.run = (client, message, args) => {
         };
     
     let userID = /\d+/.exec(message.content);
-    let member = message.guild.members.cache.get(userID)
     
     if (userID !== null) {
     userID = userID.toString()
     }
+    
+    let member = message.guild.members.cache.get(userID)
     
     if (member !== undefined && userID !== "702116355842768927") {
 
