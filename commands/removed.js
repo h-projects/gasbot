@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
         .setDescription(`Removed ${client.badLetterCount.badLetterCount} bad letters in total`)
         .addField("User", removedUserText)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
  
     message.channel.send(removedEmbed);
   
