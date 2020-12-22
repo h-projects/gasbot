@@ -30,7 +30,7 @@ client.statuses = [
 
 process.on("unhandledRejection", e => console.error(`Error: ${e}`));
 
-
+client.on("debug", console.log)
 
 fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
