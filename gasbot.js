@@ -1,7 +1,7 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
     ws: {
-      intents: ['GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS']
+      intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS']
     },
     partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
     disableMentions: 'all',
