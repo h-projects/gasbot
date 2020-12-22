@@ -38,14 +38,14 @@ exports.run = (client, message, args) => {
     case "low":
       client.raidmode[message.guild.id] = 1;
       saveJSON();
-      let setToWhat = "Successfully set protection level to **Low**!\nYou should set hiqher protection level for your safety."
+      var setToWhat = "Successfully set protection level to **Low**!\nYou should set hiqher protection level for your safety."
       detectorSet()
       break;
 
     case "medium":
       client.raidmode[message.guild.id] = 2;
       saveJSON();
-      let setToWhat = "Successfully set protection level to **Medium**!"
+      var setToWhat = "Successfully set protection level to **Medium**!"
       detectorSet()
       break;
 
@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
     case "hiqh":
       client.raidmode[message.guild.id] = 3;
       saveJSON();
-      let setToWhat = "Successfully set protection level to **Hiqh**!"
+      var setToWhat = "Successfully set protection level to **Hiqh**!"
       detectorSet()
       break;
 
