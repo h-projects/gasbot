@@ -1,7 +1,7 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
     ws: {
-      intents: ['GUILD_MEMBERS']
+      intents: ['GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS']
     },
     partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
     disableMentions: 'all',
@@ -29,8 +29,6 @@ client.statuses = [
 ];
 
 process.on("unhandledRejection", e => console.error(`Error: ${e}`));
-
-client.on("debug", console.log)
 
 fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
