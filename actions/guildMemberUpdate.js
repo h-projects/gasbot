@@ -1,6 +1,6 @@
 module.exports = async (after, before) => {
   if (after.nickname === undefined || after.nickname === null || after.nickname === "") return;
-  let upperCaseNick = before.nickname.toUpperCase();
+  let upperCaseNick = after.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
 
   if (lowDetection.test(upperCaseNick) === false) {
