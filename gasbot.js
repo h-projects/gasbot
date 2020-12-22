@@ -1,6 +1,12 @@
 const Discord = require("discord.js"),
   client = new Discord.Client({
-    partials: ['MESSAGE', 'REACTION'],
+    ws: {
+      intents: (new Intents()).add(
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MEMBERS,
+      ),
+    },
+    partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
     disableMentions: 'all',
     presence: {
       activity: { name: "h!help | Removinq G!", type: "PLAYING" },
