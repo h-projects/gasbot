@@ -3,9 +3,7 @@ module.exports = async (client, oldMessage, message) => {
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
       
-    if (message.partial) {
-	    message.fetch();
-    }
+    message.fetch();
 	    
     // Go aways bots and people who are trying to use commands on dm
     if (
