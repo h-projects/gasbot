@@ -64,6 +64,8 @@ module.exports = async (client, message, member) => {
 
       if (loqs[message.guild.id] !== undefined) {
         var loqChannel = message.guild.channels.cache.find(channel => channel.name === loqs[message.guild.id]);
+      } else {
+        var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
 
       let centralLoq = client.channels.cache.get("707642156055265322");
