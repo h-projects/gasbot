@@ -38,6 +38,16 @@ exports.run = (client, message, args) => {
           return message.channel.send(loqsEmbed)
         }
       }  else {
+        if (message.guild.channels.cache.get(loqsDatabase[message.guild.id]) == undefined) {
+
+          let loqsEmbed = new client.disc.MessageEmbed()
+          .setColor("E74C3C")
+          .setTitle("__Loqs__")
+          .setDescription(`The loqs channel is ${defaultLoqs}`)
+          .setTimestamp()
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
+        return message.channel.send(loqsEmbed)
+        }
         let loqsEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
           .setTitle("__Loqs__")
