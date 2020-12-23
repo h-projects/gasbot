@@ -64,7 +64,7 @@ module.exports = async (client, oldMessage, message) => {
       // Send loqs messaqe
 
       if (loqs[message.guild.id] !== undefined) {
-        message.guild.channels.cache.get(loqs[message.guild.id]);
+        var loqChannel = message.guild.channels.cache.get(loqs[message.guild.id]);
       } else {
         var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
