@@ -55,6 +55,8 @@ exports.run = (client, message, args) => {
   
      message.channel.send(loqsEmbed);
  
+    } else {
+      return message.channel.send("Please mention a valid channel");
     }     
  };
  
