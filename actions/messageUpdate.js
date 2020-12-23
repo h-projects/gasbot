@@ -2,6 +2,7 @@ module.exports = async (client, oldMessage, message) => {
     const fs = require("fs-extra");
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
+    var loqs = require("../database/loqs.json");
       
     if (message.partial) {
       await message.fetch()
@@ -61,8 +62,16 @@ module.exports = async (client, oldMessage, message) => {
       );
 	  
       // Send loqs messaqe
-        let loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
-        let centralLoq = client.channels.cache.get("707642156055265322");
+
+      if (loqs[message.guild.id] !== undefined) {
+        var loqChannel = message.guild.channels.cache.find(channel => channel.name === loqs[message.guild.id]);
+      }
+      
+      if (loqChannel == undefined) {
+        var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
+      }
+
+      let centralLoq = client.channels.cache.get("707642156055265322");
           
         let loqEmbed = new client.disc.MessageEmbed()
           .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))

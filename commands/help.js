@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
           `If you need to vote, invite, or qet more help, use ${client.config.prefix}links`
         )
         .addField(`${client.prefix}info`, "Info about G.A.S Bot", true)
-        .addField(`${client.prefix}loqs`, "Enable loqs on your server so you can know if someone said <:NoSeventhLetter:721649657146769449>", true)
+        .addField(`${client.prefix}loqs`, "Manaqe the loqs channel", true)
         .addField(`${client.prefix}removed`, "A count of how many evil letters have been removed", true)
         .addField(`${client.prefix}credits`, "Credits of the bot!", true)
         .addField(`${client.prefix}chanqeloq`, "Info about the latest version", true)

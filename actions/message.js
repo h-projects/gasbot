@@ -4,6 +4,7 @@ module.exports = async (client, message, member) => {
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
   var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
+  var loqs = require("../database/loqs.json");
   let upperCaseMsg = message.content.toUpperCase();
 	
   
@@ -60,13 +61,21 @@ module.exports = async (client, message, member) => {
       );
 	  
       // Send loqs messaqe
-      let loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
+
+      if (loqs[message.guild.id] !== undefined) {
+        var loqChannel = message.guild.channels.cache.find(channel => channel.name === loqs[message.guild.id]);
+      }
+      
+      if (loqChannel == undefined) {
+        var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
+      }
+
       let centralLoq = client.channels.cache.get("707642156055265322");
 	    
       let loqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
         .setURL("https://aytchsoftware.tk/fuck-g/")
-        .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
+        .setThumbnail(message.author.avatarURL({dynamic: true}))
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
@@ -77,7 +86,7 @@ module.exports = async (client, message, member) => {
       let centralLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
         .setURL("https://aytchsoftware.tk/fuck-g/")
-        .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
+        .setThumbnail(message.author.avatarURL({dynamic: true}))
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
