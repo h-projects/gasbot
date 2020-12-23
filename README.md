@@ -28,7 +28,7 @@ No, mod commands are out of the bot scope.
 No, The only settinq in the bot is `h!detector`.
 
 ### Loq is not workinq, what do I do?
-The bot checks for a `loqs` text chat to send the loq in, if it doesn't find a `loqs` chat, it will not loq anythinq.
+Use `h!loqs` to set up a loqs channel, if the bot doesn't find a channel, it will not loq anythinq.
 
 ## Why?
 Because G is evil and must be destroyed.
