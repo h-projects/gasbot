@@ -2,7 +2,7 @@ exports.run = (client, message, args) => {
 
     if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("MANAGE_ROLES")) {
         let errorEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("403 Forbidden")
@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
 
     if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
         let errorEmbed = new client.disc.MessageEmbed()
-         .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+         .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
          .setTimestamp()
          .setColor("E74C3C")
          .setTitle("Error")
@@ -33,7 +33,7 @@ exports.run = (client, message, args) => {
     if (member !== undefined && userID !== "702116355842768927") {
 
     let doneEmbed = new client.disc.MessageEmbed()
-       .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
        .setTimestamp()
        .setColor("E74C3C")
        .setTitle("200 OK")
@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
     }
     } else {
       let errorEmbed = new client.disc.MessageEmbed()
-       .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
        .setTimestamp()
        .setColor("E74C3C")
        .setTitle("Error")

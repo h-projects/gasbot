@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-  let fs =  require("fs");
+  const fs =  require("fs-extra");
 
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
 	  
