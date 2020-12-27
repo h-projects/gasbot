@@ -1,16 +1,14 @@
 module.exports = async (newMember, oldMember) => {
-  const after = newMember
-  const before = oldMember
-  if (after.nickname === undefined || after.nickname === null || after.nickname === "") return;
-  let upperCaseNick = after.nickname.toUpperCase();
+  if (newMember.nickname === undefined || newMember.nickname === null || newMember.nickname === "") return;
+  let upperCaseNick = newMember.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
-  console.log(`after.nickname: ${after.nickname}`)
-  console.log(`before.nickname: ${before.nickname}`)
+  console.log(`newMember.nickname: ${newMember.nickname}`)
+  console.log(`oldMember.nickname: ${oldMember.nickname}`)
 
   if (lowDetection.test(upperCaseNick) === false) {
-    let newNickname = before.nickname
+    let newNickname = oldMember.nickname
       .replace(new RegExp("G", "g"), "H")
       .replace(new RegExp("g", "g"), "h");
-    after.setNickname(newNickname);
+    newMember.setNickname(newNickname);
   }
 };
