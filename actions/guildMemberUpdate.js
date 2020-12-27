@@ -1,4 +1,6 @@
-module.exports = async (after, before) => {
+module.exports = async (newMember, oldMember) => {
+  const after = newMember
+  const before = oldMember
   if (after.nickname === undefined || after.nickname === null || after.nickname === "") return;
   let upperCaseNick = after.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
