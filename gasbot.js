@@ -21,6 +21,7 @@ client.raidmode = require(client.config.raidmodeDbDir);
 client.prefix = client.config.prefix;
 client.badLetterCount = require("./database/badLetterCount.json");
 client.badLetterUser = require("./database/badLetterUser.json");
+client.badLetterGuild = require("./database/badLetterGuild.json");
 client.statuses = [
   "Removinq G!",
   "Don't use the bad letter",

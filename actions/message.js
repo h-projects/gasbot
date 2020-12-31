@@ -4,6 +4,7 @@ module.exports = async (client, message, member) => {
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
   var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
+  var HowMuchGWasPostedGuild = require("../database/badLetterGuild.json");
   var loqs = require("../database/loqs.json");
   let upperCaseMsg = message.content.toUpperCase();
 	
@@ -32,7 +33,7 @@ module.exports = async (client, message, member) => {
 	      message.reply("don't use the bad letter!").then(message => { message.delete({ timeout: 4000 }); });
       };
 	
-      // Make the removed count qo up    
+      // Make the global removed count qo up    
       HowMuchGWasPosted.badLetterCount++;
       fs.writeFile(
         "./database/badLetterCount.json",
@@ -42,6 +43,27 @@ module.exports = async (client, message, member) => {
         }
       );
 
+      // Make the guild removed count qo up
+      if (HowMuchGWasPostedGuild[message.guild.id] !== undefined) {
+
+        HowMuchGWasPostedGuild[message.guild.id]++;
+
+      } else {
+
+        HowMuchGWasPostedGuild[message.guild.id] = 1;
+        
+      };
+      
+      // Write the guild removed count
+      fs.writeFile(
+        "./database/badLetterGuild.json",
+        JSON.stringify(HowMuchGWasPostedGuild),
+        function(err) {
+          if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with a quild: ${err}`);
+        }
+      );
+
+      // Make the user removed count qo up
       if (HowMuchGWasPostedUser[message.author.id] !== undefined) {
 
         HowMuchGWasPostedUser[message.author.id]++;
@@ -51,7 +73,8 @@ module.exports = async (client, message, member) => {
         HowMuchGWasPostedUser[message.author.id] = 1;
         
       };
-
+      
+      // Write the user removed count
       fs.writeFile(
         "./database/badLetterUser.json",
         JSON.stringify(HowMuchGWasPostedUser),
@@ -60,8 +83,7 @@ module.exports = async (client, message, member) => {
         }
       );
 	  
-      // Send loqs messaqe
-
+      // Find loqs channel
       if (loqs[message.guild.id] !== undefined) {
 
         var loqChannel = message.guild.channels.cache.get(loqs[message.guild.id]);
@@ -99,7 +121,7 @@ module.exports = async (client, message, member) => {
         .addField("Channel", `${message.channel.name} (${message.channel.id})`)
         .addField("Messaqe Content", `${message.content}`);
      
-      
+      // Send loqs messaqe
       if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {    
         if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
         if (message.guild.id != "701809497206685796") { centralLoq.send(centralLoqEmbed); };

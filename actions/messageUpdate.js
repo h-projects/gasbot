@@ -2,6 +2,7 @@ module.exports = async (client, oldMessage, message) => {
     const fs = require("fs-extra");
     var HowMuchGWasPosted = require("../database/badLetterCount.json");
     var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
+    var HowMuchGWasPostedGuild = require("../database/badLetterGuild.json");
     var loqs = require("../database/loqs.json");
       
     if (message.partial) {
@@ -33,65 +34,86 @@ module.exports = async (client, oldMessage, message) => {
             message.reply("don't use the bad letter!").then(message => { message.delete({ timeout: 4000 }); });
         };
       
-        // Make the removed count qo up    
-      HowMuchGWasPosted.badLetterCount++;
-      fs.writeFile(
-        "./database/badLetterCount.json",
-        JSON.stringify(HowMuchGWasPosted),
-        function(err) {
-          if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
-        }
-      );
-
-      if (HowMuchGWasPostedUser[message.author.id] !== undefined) {
-
-        HowMuchGWasPostedUser[message.author.id]++;
-
-      } else {
-
-        HowMuchGWasPostedUser[message.author.id] = 1;
-        
-      };
-
-      fs.writeFile(
-        "./database/badLetterUser.json",
-        JSON.stringify(HowMuchGWasPostedUser),
-        function(err) {
-          if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
-        }
-      );
-	  
-      // Send loqs messaqe
-
-      if (loqs[message.guild.id] !== undefined) {
-
-        var loqChannel = message.guild.channels.cache.get(loqs[message.guild.id]);
-
-        if (loqChannel == undefined) {
-           var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
-        }
-
-      } else {
-        var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
-      }
-
-      let centralLoq = client.channels.cache.get("707642156055265322");
+        // Make the global removed count qo up    
+        HowMuchGWasPosted.badLetterCount++;
+        fs.writeFile(
+          "./database/badLetterCount.json",
+          JSON.stringify(HowMuchGWasPosted),
+          function(err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
+          }
+        );
+  
+        // Make the guild removed count qo up
+        if (HowMuchGWasPostedGuild[message.guild.id] !== undefined) {
+  
+          HowMuchGWasPostedGuild[message.guild.id]++;
+  
+        } else {
+  
+          HowMuchGWasPostedGuild[message.guild.id] = 1;
           
+        };
+        
+        // Write the guild removed count
+        fs.writeFile(
+          "./database/badLetterGuild.json",
+          JSON.stringify(HowMuchGWasPostedGuild),
+          function(err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with a quild: ${err}`);
+          }
+        );
+  
+        // Make the user removed count qo up
+        if (HowMuchGWasPostedUser[message.author.id] !== undefined) {
+  
+          HowMuchGWasPostedUser[message.author.id]++;
+  
+        } else {
+  
+          HowMuchGWasPostedUser[message.author.id] = 1;
+          
+        };
+        
+        // Write the user removed count
+        fs.writeFile(
+          "./database/badLetterUser.json",
+          JSON.stringify(HowMuchGWasPostedUser),
+          function(err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
+          }
+        );
+      
+        // Find loqs channel
+        if (loqs[message.guild.id] !== undefined) {
+  
+          var loqChannel = message.guild.channels.cache.get(loqs[message.guild.id]);
+  
+          if (loqChannel == undefined) {
+             var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
+          }
+  
+        } else {
+          var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
+        }
+  
+        let centralLoq = client.channels.cache.get("707642156055265322");
+        
         let loqEmbed = new client.disc.MessageEmbed()
           .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
           .setURL("https://aytchsoftware.tk/fuck-g/")
-          .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
+          .setThumbnail(message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("G Removal")
           .addField("User", `<@${message.author.id}> (${message.author.id})`)
           .addField("Channel", `<#${message.channel.id}> (${message.channel.id})`)
           .addField("Messaqe Content", message.content);
-          
+        
         let centralLoqEmbed = new client.disc.MessageEmbed()
           .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
           .setURL("https://aytchsoftware.tk/fuck-g/")
-          .setThumbnail(`${message.author.avatarURL({dynamic: true})}`)
+          .setThumbnail(message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("G Removal")
@@ -100,7 +122,7 @@ module.exports = async (client, oldMessage, message) => {
           .addField("Channel", `${message.channel.name} (${message.channel.id})`)
           .addField("Messaqe Content", `${message.content}`);
        
-        
+        // Send loqs messaqe
         if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {    
           if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
           if (message.guild.id != "701809497206685796") { centralLoq.send(centralLoqEmbed); };
