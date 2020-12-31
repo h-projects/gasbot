@@ -6,7 +6,7 @@ const Discord = require("discord.js"),
     partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
     disableMentions: 'all',
     presence: {
-      activity: { name: "h!help | Removinq G!", type: "PLAYING" },
+      activity: { name: "h!appy 2021!", type: "PLAYING" },
       status: "dnd"
     }
   }),
