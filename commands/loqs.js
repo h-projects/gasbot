@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
 
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
         let errorEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("403 Forbidden")
@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
           let loqsEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
           .setTitle("__Loqs__")
-          .setDescription(`The loqs channel is ${defaultLoqs}`)
+          .setDescription(`The current loqs channel is ${defaultLoqs}`)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
           return message.channel.send(loqsEmbed)
@@ -43,7 +43,7 @@ exports.run = (client, message, args) => {
           let loqsEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
           .setTitle("__Loqs__")
-          .setDescription(`The loqs channel is ${defaultLoqs}`)
+          .setDescription(`The current loqs channel is ${defaultLoqs}`)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
         return message.channel.send(loqsEmbed)
@@ -51,7 +51,7 @@ exports.run = (client, message, args) => {
         let loqsEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
           .setTitle("__Loqs__")
-          .setDescription(`The loqs channel is <#${loqsDatabase[message.guild.id]}>`)
+          .setDescription(`The current loqs channel is <#${loqsDatabase[message.guild.id]}>`)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
         return message.channel.send(loqsEmbed)
