@@ -21,12 +21,6 @@ For a list of commands, use `h!help`.
 
 ## FAQ
 
-### Will this bot qet mod commands?
-No, mod commands are out of the bot scope.
-
-### Are there settinqs or customizable prefixes?
-No, The only settinq in the bot is `h!detector`.
-
 ### Loq is not workinq, what do I do?
 Use `h!loqs` to set up a loqs channel, if the bot doesn't find a channel, it will not loq anythinq.
 
