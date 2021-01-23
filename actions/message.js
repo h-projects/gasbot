@@ -1,5 +1,5 @@
 module.exports = async (client, message, member) => {
-  var array = message.content.split(" "),
+  var array = message.content.replace(client.prefix, "").split(" "),
     args = array.slice(1);
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
@@ -185,9 +185,7 @@ module.exports = async (client, message, member) => {
   if (!message.content.startsWith(client.prefix)) return;
 	
   // Get command and execute it
-  let cmd = client.cmds.get(
-    array[0].replace(client.prefix, "").toLowerCase()
-  );
+  let cmd = client.cmds.get(array[0]);
   if (!cmd)
     return; /* message.channel.send({
       embed: {
