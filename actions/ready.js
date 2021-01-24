@@ -1,6 +1,6 @@
 module.exports = async (client) => {
   client.users.fetch("478823932913516544")
-  client.users.fetch("651511209585147904")
+  client.users.fetch("682617926909427743")
   client.users.fetch("348591272476540928")
   client.users.fetch("429935667737264139")
   client.users.fetch("444550944110149633")
