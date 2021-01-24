@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
     
     let member = message.guild.members.cache.get(userID)
     
-    if (member !== undefined && userID !== "702116355842768927") {
+    if (member !== undefined && userID !== "702116355842768927" && userID !== message.author.id) {
 
     if (message.guild.roles.cache.find(roles => roles.name === "g-spy") == undefined) { message.guild.roles.create({
       data: {
