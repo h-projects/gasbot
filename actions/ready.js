@@ -9,5 +9,4 @@ module.exports = async (client) => {
   client.users.fetch("692037827940057129")
   client.users.fetch("603635602809946113")
   console.log("Bot is now H");
-  
 };

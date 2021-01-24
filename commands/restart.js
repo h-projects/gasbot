@@ -1,11 +1,11 @@
 exports.run = (client, message, args) => {
-    let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
+    let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
     
     if (ids.includes(message.author.id)) {
         try {
    
           let restartEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("200 OK")
@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
          } catch (e) {
            
           let restartEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("503 Internal Execution Error")
@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
       } else {
         
         let restartEmbed = new client.disc.MessageEmbed()
-          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+          .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
           .setTitle("403 Forbidden")

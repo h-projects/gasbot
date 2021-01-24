@@ -9,6 +9,6 @@ exports.run = (client, message, args) => {
         .addField("Need help settinq up the bot?", `<:AytchSoftware:720949593696894996> Read the docs [here](${client.config.docs})`)
         .addField("Do You hate <:NoSeventhLetter:721649657146769449>?", `<:gas:734396942653718561> Join the official G.A.S Server [here](${client.config.gasServer})`)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
   message.channel.send(linksEmbed);
 };

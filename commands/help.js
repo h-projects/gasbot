@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
 
   let helpEmbed;
-  let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
+  let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
   switch(args.join(" ")) {
     case "bot":
@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix[message.guild.id]}detector`, "Chanqe G Detector settinqs.", true)
         .addField(`${client.prefix[message.guild.id]}g-spy`, "Qive g-spy role to an user", true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
       message.channel.send(helpEmbed);
     break;
 
@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix[message.guild.id]}tank`, "aden said <:NoSeventhLetter:721649657146769449>, use this", true)
         .addField(`${client.prefix[message.guild.id]}huh`, "<:thinkinH:702462510057521192>", true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
       message.channel.send(helpEmbed);
     break;
       
@@ -68,7 +68,7 @@ exports.run = (client, message, args) => {
         .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
         .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
        message.channel.send(helpEmbed);
       };
     break;
@@ -87,7 +87,7 @@ exports.run = (client, message, args) => {
         .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
         .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `${client.prefix[message.guild.id]}help dev`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
         
       } else {
       helpEmbed = new client.disc.MessageEmbed()
@@ -99,7 +99,7 @@ exports.run = (client, message, args) => {
         .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
         .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
         .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`); };
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true})); };
       message.channel.send(helpEmbed);
   }
 };

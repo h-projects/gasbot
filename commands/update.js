@@ -1,15 +1,12 @@
 exports.run = (client, message, args) => {
     let ids = ["478823932913516544"];
-    let otherIds = ["651511209585147904", "348591272476540928"];
+    let otherIds = ["682617926909427743", "348591272476540928"];
 
     if (ids.includes(message.author.id)) {
         try {
             
           const shell = require("shelljs");
-          
-          let tag = message.author.tag
-          let avatar = message.author.avatarURL({dynamic: true})
-          
+
           let updateEmbed = new client.disc.MessageEmbed()
           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
@@ -20,7 +17,7 @@ exports.run = (client, message, args) => {
           message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(code, output) {
               
               updateEmbed = new client.disc.MessageEmbed()
-              .setFooter(tag, avatar)
+              .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
               .setTimestamp()
               .setColor("E74C3C")
               .setTitle("200 OK")

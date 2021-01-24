@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
 	  
 	  let errorEmbed = new client.disc.MessageEmbed()
-           .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
            .setTimestamp()
            .setColor("E74C3C")
            .setTitle("403 Forbidden")

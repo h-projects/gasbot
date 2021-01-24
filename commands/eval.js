@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-  let ids = ["478823932913516544", "651511209585147904", "348591272476540928"];
+  let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
   
   if (message.guild.id === "720009823458033705" &&
       !args.join(" ").includes("disableMentions") &&
@@ -7,6 +7,7 @@ exports.run = (client, message, args) => {
       !args.join(" ").includes("eval") &&
       !args.join(" ").includes("ban") &&
       !args.join(" ").includes("kick") &&
+      !args.join(" ").includes("prune") &&
       !args.join(" ").includes("token") &&
       !args.join(" ").includes("TOKEN") &&
       !args.join(" ").includes("TOPGGTOKEN") &&
@@ -18,7 +19,7 @@ exports.run = (client, message, args) => {
  
         let evaled = eval(args.join(" "));
         let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("200 OK")
@@ -29,7 +30,7 @@ exports.run = (client, message, args) => {
        } catch (e) {
          
         let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("503 Internal Execution Error")
@@ -41,7 +42,7 @@ exports.run = (client, message, args) => {
     } else {
       
       let evalEmbed = new client.disc.MessageEmbed()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`)
+        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("403 Forbidden")

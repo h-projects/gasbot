@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
   
           // Taqs of G.A.S Bot devs
   let supertag = client.users.cache.get("478823932913516544").tag
-  let indextag = client.users.cache.get("651511209585147904").tag
+  let indextag = client.users.cache.get("682617926909427743").tag
   let senkotag = client.users.cache.get("348591272476540928").tag
   
           // Taqs of other users
@@ -21,6 +21,6 @@ exports.run = (client, message, args) => {
     .addField("<:VerifiedBotDev:764412852395180032> Developers", `${supertag}\n${indextag}\n${senkotag}`, true)
     .addField("⭐ Special Thanks", `${humantag}\n${makufontag}\n${dicetag}\n${farttag}\n${kailstag}\n${lunatag}`, true)
     .setTimestamp()
-    .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+    .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
   message.channel.send(creditsEmbed);
 };
