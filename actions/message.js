@@ -1,6 +1,11 @@
 module.exports = async (client, message, member) => {
-  var array = message.content.replace(client.prefix, "").split(" "),
-    args = array.slice(1);
+
+  if (!client.prefix[message.guild.id]) {
+    client.prefix[message.guild.id] = client.config.prefix
+  }
+  
+  var array = message.content.replace(client.prefix[message.guild.id], "").split(" "),
+  args = array.slice(1);
   const fs = require("fs-extra");
   var HowMuchGWasPosted = require("../database/badLetterCount.json");
   var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
@@ -20,7 +25,7 @@ module.exports = async (client, message, member) => {
     return;
 	
   // G Detector™
-  if (!message.content.startsWith(client.prefix) && !message.content.startsWith("h+")) {
+  if (!message.content.startsWith(client.prefix[message.guild.id]) && !message.content.startsWith("h+")) {
   let lowDetection = /[^\sgḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]/giu;
   let mediumDetection = /(\s[gḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(^[gḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+\s)|(\s[gḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+$)/giu; // Medium level also uses low level detection. Ik that this is fucked up but whatever. It just works.
   let hiqhDetection = /[gḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔␝]/giu;
@@ -178,11 +183,17 @@ module.exports = async (client, message, member) => {
     message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
     upperCaseMsg === "<@702116355842768927> HELP" || upperCaseMsg === "<@!702116355842768927> HELP"
   ) {
-    message.reply("my prefix is `" + client.prefix + "`");
-  };
+    let helpEmbed = new client.disc.MessageEmbed()
+       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
+       .setTimestamp()
+       .setColor("E74C3C")
+       .setTitle("Prefix")
+       .setDescription(client.prefix[message.guild.id]);
+      message.channel.send(helpEmbed);
+    };
 	
   // No prefix no fun
-  if (!message.content.startsWith(client.prefix)) return;
+  if (!message.content.startsWith(client.prefix[message.guild.id])) return;
 	
   // Get command and execute it
   let cmd = client.cmds.get(array[0]);
@@ -191,7 +202,7 @@ module.exports = async (client, message, member) => {
       embed: {
         color: 15158332,
         title: "404 Not Found",
-        description: `Try usinq ${client.prefix}help`
+        description: `Try usinq ${client.prefix[message.guild.id]}help`
       }
     }); */
 	

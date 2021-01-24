@@ -70,7 +70,7 @@ exports.run = (client, message, args) => {
       "./database/loqs.json",
       JSON.stringify(loqsDatabase),
       function(err) {
-        if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
+        if (err) return console.error(`Somethinq qone G in updatinq loqs channel: ${err}`);
       }
     );
 
