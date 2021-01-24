@@ -32,13 +32,6 @@ exports.run = (client, message, args) => {
     
     if (member !== undefined && userID !== "702116355842768927") {
 
-    let doneEmbed = new client.disc.MessageEmbed()
-       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
-       .setTimestamp()
-       .setColor("E74C3C")
-       .setTitle("200 OK")
-       .setDescription(`${member} is a g-spy`);
-
     if (message.guild.roles.cache.find(roles => roles.name === "g-spy") == undefined) { message.guild.roles.create({
       data: {
         name: 'g-spy',
@@ -46,15 +39,30 @@ exports.run = (client, message, args) => {
       reason: 'Found a g-spy',
     }).then(role => {
     member.roles.add(role);
+    let doneEmbed = new client.disc.MessageEmbed()
+       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
+       .setTimestamp()
+       .setColor("E74C3C")
+       .setTitle("200 OK")
+       .setDescription(`${member} is a ${role}`);
     message.channel.send(doneEmbed);
     });
     } else {
     
     let role = message.guild.roles.cache.find(roles => roles.name === "g-spy")
     member.roles.add(role);
+
+    let doneEmbed = new client.disc.MessageEmbed()
+       .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
+       .setTimestamp()
+       .setColor("E74C3C")
+       .setTitle("200 OK")
+       .setDescription(`${member} is a ${role}`);
     message.channel.send(doneEmbed);
+
     }
     } else {
+
       let errorEmbed = new client.disc.MessageEmbed()
        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
        .setTimestamp()
