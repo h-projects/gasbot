@@ -13,11 +13,14 @@ exports.run = (client, message, args) => {
           .setColor("E74C3C")
           .setTitle("200 OK")
           .setDescription("Updatinq the code...");
+
+          let author = message.author.tag
+          let avatar = message.author.avatarURL({dynamic: true})
             
           message.channel.send(updateEmbed).then(message => { shell.exec("git pull", function(code, output) {
               
               updateEmbed = new client.disc.MessageEmbed()
-              .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
+              .setFooter(author, avatar)
               .setTimestamp()
               .setColor("E74C3C")
               .setTitle("200 OK")
