@@ -110,9 +110,9 @@ module.exports = async (client, message, member) => {
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
-        .addField("User", `<@${message.author.id}> (${message.author.id})`)
-        .addField("Channel", `<#${message.channel.id}> (${message.channel.id})`)
-        .addField("Messaqe Content", message.content);
+        .addField("User", `${message.author} (${message.author.id})`)
+        .addField("Channel", `${message.channel} (${message.channel.id})`)
+        .addField("Content", message.content);
 	    
       let centralLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
@@ -122,9 +122,9 @@ module.exports = async (client, message, member) => {
         .setColor("E74C3C")
         .setTitle("G Removal")
         .addField("User", `${message.author.tag} (${message.author.id})`)
-        .addField("Server", `${message.guild.name} (${message.guild.id})`)
+        .addField("Server", `${message.guild} (${message.guild.id})`)
         .addField("Channel", `${message.channel.name} (${message.channel.id})`)
-        .addField("Messaqe Content", `${message.content}`);
+        .addField("Content", message.content);
      
       // Send loqs messaqe
       if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {    
@@ -180,8 +180,8 @@ module.exports = async (client, message, member) => {
 	
 
   if (
-    message.content === "<@702116355842768927>" || message.content === "<@!702116355842768927>" ||
-    upperCaseMsg === "<@702116355842768927> HELP" || upperCaseMsg === "<@!702116355842768927> HELP"
+    message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>` ||
+    upperCaseMsg === `<@${client.user.id}> HELP` || upperCaseMsg === `<@!${client.user.id}> HELP`
   ) {
     let helpEmbed = new client.disc.MessageEmbed()
        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
