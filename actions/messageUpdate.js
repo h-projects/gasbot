@@ -146,6 +146,7 @@ module.exports = async (client, oldMessage, message) => {
       upperCaseMsg.includes("G BAD") ||
       upperCaseMsg.includes("G IS SHIT") ||
       upperCaseMsg.includes("HATE G") ||
+      upperCaseMsg.includes("DELETE G") ||
       upperCaseMsg.includes("G SUCK") ||
       upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
       upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.")
