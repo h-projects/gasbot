@@ -101,7 +101,7 @@ module.exports = async (client, message, member) => {
         var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
 
-      let centralLoq = client.channels.cache.get("707642156055265322");
+      let centralLoq = client.channels.cache.get("805472059790589974");
 	    
       let loqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({dynamic: true}))
@@ -129,7 +129,7 @@ module.exports = async (client, message, member) => {
       // Send loqs messaqe
       if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {    
         if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
-        if (message.guild.id != "701809497206685796") { centralLoq.send(centralLoqEmbed); };
+        if (message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
       }}
 
     // Allowed sentences with G
