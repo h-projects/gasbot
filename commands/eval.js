@@ -8,6 +8,7 @@ exports.run = (client, message, args) => {
       !args.join(" ").includes("ban") &&
       !args.join(" ").includes("kick") &&
       !args.join(" ").includes("prune") &&
+      !args.join(" ").includes("leave") &&
       !args.join(" ").includes("token") &&
       !args.join(" ").includes("TOKEN") &&
       !args.join(" ").includes("TOPGGTOKEN") &&
