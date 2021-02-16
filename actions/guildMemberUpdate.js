@@ -1,4 +1,5 @@
 module.exports = async (newMember, oldMember) => {
+  console.log(`old: ${oldMember}, new: ${newMember}`);
   if (newMember.nickname === undefined || newMember.nickname === null || newMember.nickname === "") return;
   let upperCaseNick = newMember.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
@@ -7,8 +8,8 @@ module.exports = async (newMember, oldMember) => {
 
   if (lowDetection.test(upperCaseNick) === false) {
     let newNickname = oldMember.nickname
-      .replace(new RegExp("G", "g"), "H")
-      .replace(new RegExp("g", "g"), "h");
+      .replaceAll(new RegExp("G", "g"), "H")
+      .replaceAll(new RegExp("g", "g"), "h");
     newMember.setNickname(newNickname);
   }
 };
