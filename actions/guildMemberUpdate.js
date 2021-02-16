@@ -1,15 +1,13 @@
-module.exports = async (newMember, oldMember, probablyNew) => {
-  console.log(`old: ${oldMember.nickname}, new: ${probablyNew.nickname}`);
-  if (newMember.nickname === undefined || newMember.nickname === null || newMember.nickname === "") return;
-  let upperCaseNick = newMember.nickname.toUpperCase();
-  let lowDetection = /[^\sG]/gi;
-  console.log(`newMember.nickname: ${newMember.nickname}`)
-  console.log(`oldMember.nickname: ${oldMember.nickname}`)
+module.exports = async (client, oldMember, newMember) => {
+  if (newMember.nickname === undefined || newMember.nickname === null || newMember.nickname === "") { return; }
+  let lowDetection = /[^\sgḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+/gi;
 
-  if (lowDetection.test(upperCaseNick) === false) {
-    let newNickname = oldMember.nickname
-      .replaceAll(new RegExp("G", "g"), "H")
-      .replaceAll(new RegExp("g", "g"), "h");
+  
+  if (lowDetection.test(newMember.nickname) === false) {
+    
+    let newNickname = newMember.nickname
+      .replaceAll(/[gḡᵷ𝔤𝖌𝐠𝘨𝙜𝚐𝕘𝗀𝗴ɡ𝘨ℊ𝗚ᧁɓ⅁ᏵᏀᏳ𝓰𝐠ᴳ❡𝙶🄶𝙂𝒢🇬ᶃꓖ𝖦Ꮆʛ𝘎Ⴚｇ🅶𝓖🅖𝔾𝔊ꞡ𝕲𝑔ģ𝐆ƍ𝐺𝑮Ġ𝒈ꮐԍg̵ɢǵᏻց𝚐ⒼƃᘜＧᘜƓɢᶢᵍ₲ꍌꁅĜǧĞǤᕤᘓ𝞋𝟅᠖ᡋᠪ໔]+/gi, "h");
     newMember.setNickname(newNickname);
+    
   }
 };
