@@ -1,5 +1,5 @@
-module.exports = async (newMember, oldMember) => {
-  console.log(`old: ${oldMember.nickname}, new: ${newMember}`);
+module.exports = async (newMember, oldMember, probablyNew) => {
+  console.log(`old: ${oldMember.nickname}, new: ${probablyNew.nickname}`);
   if (newMember.nickname === undefined || newMember.nickname === null || newMember.nickname === "") return;
   let upperCaseNick = newMember.nickname.toUpperCase();
   let lowDetection = /[^\sG]/gi;
