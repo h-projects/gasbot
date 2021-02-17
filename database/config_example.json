@@ -8,9 +8,8 @@
   "botUpvote": "https://top.gg/bot/702116355842768927/vote",
   "botLogo": "https://cdn.glitch.com/c5ebb36a-c4ea-424f-a0e6-f74d97f03143%2F701854794989436950.png?1588785225280",
   "serverInvite": "https://discord.gg/AbUw9fh",
-  "raidmodeDbDir": "./database/raidmode.json",
-  "docs": "https://aytchsoftware.tk/docs/bots/gas",
-  "gasServer": "https://discord.gg/nWpq6Vj",
+  "docs": "https://h-projects.github.io/docs/bots/gas",
+  "gasServer": "https://discord.gg/qs9QDW5M5J",
   "token": "insert token here lol",
   "TOPGGTOKEN": "topqq token here"
 }
