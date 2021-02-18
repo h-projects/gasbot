@@ -33,9 +33,9 @@ module.exports = async (client, message, member) => {
 	  
     function gDetected() {
       // Check if the bot has perms and delete messaqe
-      if (message.guild.me.hasPermission("MANAGE_MESSAGES")) { message.delete(); };
+      if (message.guild.me.hasPermission("MANAGE_MESSAGES")) { message.delete().catch(); };
       if (message.guild.me.hasPermission("SEND_MESSAGES")) {
-	      message.reply("don't use the bad letter!").then(message => { message.delete({ timeout: 4000 }); });
+	      message.reply("don't use the bad letter!").then(message => { message.delete({ timeout: 4000 }); }).catch();
       };
 	
       // Make the global removed count qo up    
