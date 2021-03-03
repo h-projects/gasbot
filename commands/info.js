@@ -1,6 +1,6 @@
 exports.run = (client, message, args) => {
   if (args.join(" ")) return;
-   let infoEmbed = new client.disc.MessageEmbed()
+  let infoEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")
     .setTitle("__Info__")
     .addField("G.A.S Bot", "G.A.S Bot was created to defeat the letter G.")
@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
     .addField("Why?", "Because G is evil and must be destroyed.", false)
     .setThumbnail(`${client.config.botLogo}`)
     .setTimestamp()
-    .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
+    .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
 
   message.channel.send(infoEmbed);
 };

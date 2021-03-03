@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
   let helpEmbed;
   let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
-  switch(args.join(" ")) {
+  switch (args.join(" ")) {
     case "bot":
     case "qeneral":
       helpEmbed = new client.disc.MessageEmbed()
@@ -23,9 +23,9 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix[message.guild.id]}detector`, "Chanqe G Detector settinqs.", true)
         .addField(`${client.prefix[message.guild.id]}g-spy`, "Qive g-spy role to an user", true)
         .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
+        .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
       message.channel.send(helpEmbed);
-    break;
+      break;
 
     case "fun":
       helpEmbed = new client.disc.MessageEmbed()
@@ -40,66 +40,67 @@ exports.run = (client, message, args) => {
         .addField(`${client.prefix[message.guild.id]}tank`, "aden said <:NoSeventhLetter:721649657146769449>, use this", true)
         .addField(`${client.prefix[message.guild.id]}huh`, "<:thinkinH:702462510057521192>", true)
         .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
+        .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
       message.channel.send(helpEmbed);
-    break;
-      
+      break;
+
     case "dev":
       if (ids.includes(message.author.id)) {
         helpEmbed = new client.disc.MessageEmbed()
-        .setColor("E74C3C")
-        .setTitle("<:VerifiedBotDev:764412852395180032> __Dev Tools__")
-        .setDescription(
-          `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
-        )
-        .addField(`${client.prefix[message.guild.id]}eval`, "Evaluate code inside G.A.S Bot", true)
-        .addField(`${client.prefix[message.guild.id]}restart`, "Restart the bot", true)
-        .addField(`${client.prefix[message.guild.id]}update`, "Update the code from the repo", true)
-        .setTimestamp()
-        .setFooter(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true})}`);
+          .setColor("E74C3C")
+          .setTitle("<:VerifiedBotDev:764412852395180032> __Dev Tools__")
+          .setDescription(
+            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+          )
+          .addField(`${client.prefix[message.guild.id]}eval`, "Evaluate code inside G.A.S Bot", true)
+          .addField(`${client.prefix[message.guild.id]}restart`, "Restart the bot", true)
+          .addField(`${client.prefix[message.guild.id]}update`, "Update the code from the repo", true)
+          .setTimestamp()
+          .setFooter(`${message.author.tag}`, `${message.author.avatarURL({ dynamic: true })}`);
         message.channel.send(helpEmbed);
       } else {
-       helpEmbed = new client.disc.MessageEmbed()
-        .setColor("E74C3C")
-        .setTitle("__Commands__")
-        .setDescription(
-          `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
-        )
-        .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-        .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
-        .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
-       message.channel.send(helpEmbed);
+        helpEmbed = new client.disc.MessageEmbed()
+          .setColor("E74C3C")
+          .setTitle("__Commands__")
+          .setDescription(
+            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+          )
+          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
+          .setTimestamp()
+          .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+        message.channel.send(helpEmbed);
       };
-    break;
+      break;
 
     default:
-      
+
       if (ids.includes(message.author.id)) {
-        
-      helpEmbed = new client.disc.MessageEmbed()
-        .setColor("E74C3C")
-        .setTitle("__Commands__")
-        .setDescription(
-          `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
-        )
-        .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-        .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
-        .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `${client.prefix[message.guild.id]}help dev`, true)
-        .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
-        
+
+        helpEmbed = new client.disc.MessageEmbed()
+          .setColor("E74C3C")
+          .setTitle("__Commands__")
+          .setDescription(
+            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+          )
+          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
+          .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `${client.prefix[message.guild.id]}help dev`, true)
+          .setTimestamp()
+          .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+
       } else {
-      helpEmbed = new client.disc.MessageEmbed()
-        .setColor("E74C3C")
-        .setTitle("__Commands__")
-        .setDescription(
-          `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
-        )
-        .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-        .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
-        .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true})); };
+        helpEmbed = new client.disc.MessageEmbed()
+          .setColor("E74C3C")
+          .setTitle("__Commands__")
+          .setDescription(
+            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+          )
+          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
+          .setTimestamp()
+          .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+      };
       message.channel.send(helpEmbed);
   }
 };

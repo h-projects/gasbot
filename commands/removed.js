@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
     } else {
         var userID = userID.toString()
     }
-   
+
     if (client.badLetterGuild[message.guild.id] === undefined) {
         client.badLetterGuild[message.guild.id] = 0;
     }
@@ -38,8 +38,8 @@ exports.run = (client, message, args) => {
         .addField("Server", `Removed ${client.badLetterGuild[message.guild.id]} bad letters in this server`)
         .addField("User", removedUserText)
         .setTimestamp()
-        .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}));
- 
+        .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+
     message.channel.send(removedEmbed);
-  
+
 };
