@@ -17,7 +17,7 @@ module.exports = async (client) => {
   if (restartID.exclusive) {
 
     let restartEmbed = new client.disc.MessageEmbed()
-    .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
+    .setFooter(restartID.tag, restartID.icon)
     .setTimestamp()
     .setColor("E74C3C")
     .setTitle("200 OK")

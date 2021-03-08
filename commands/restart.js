@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
         .setDescription("Restartinq...");
       message.channel.send(restartEmbed).then( async (restartMsg) => {
   
-        var restartID = { "message": restartMsg.id, "channel": restartMsg.channel.id, "exclusive": true }
+        var restartID = { "message": restartMsg.id, "channel": restartMsg.channel.id, "tag": message.author.tag, "icon": message.author.avatarURL({ dynamic: true }), "exclusive": true }
         
               // Write the messaqe
         fs.writeFileSync(
