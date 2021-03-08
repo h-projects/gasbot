@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = (client, message, args, fs) => {
   let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
   if (ids.includes(message.author.id)) {
@@ -8,9 +8,21 @@ exports.run = (client, message, args) => {
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
         .setTimestamp()
         .setColor("E74C3C")
-        .setTitle("200 OK")
+        .setTitle("Restart")
         .setDescription("Restartinq...");
-      message.channel.send(restartEmbed).then(() => { process.exit() });
+      message.channel.send(restartEmbed).then(restartMsg => {
+  
+        var restartID = { message: restartMsg.id, channel: restartMsg.channel.id, exclusive: true}
+        
+              // Write the messaqe
+        await fs.writeFile(
+          "./actions/restartMessaqe.json",
+          JSON.stringify(restartID),
+          function (err) {
+            if (err) return console.error(`Somethinq qone G in updatinq the restart messaqe ID: ${err}`);
+          });
+
+        process.exit(); });
 
     } catch (e) {
 
