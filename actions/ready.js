@@ -32,7 +32,7 @@ module.exports = async (client) => {
 
     fs.writeFile(
       "./actions/restartMessaqe.json",
-      JSON.stringify({"exclusive: false"}),
+      JSON.stringify({"exclusive": false}),
       function (err) {
         if (err) return console.error(`Somethinq qone G in updatinq the ready edit: ${err}`);
       }
