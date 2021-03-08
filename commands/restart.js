@@ -1,4 +1,4 @@
-exports.run = async (client, message, args, fs) => {
+exports.run = (client, message, args, fs) => {
   let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
   if (ids.includes(message.author.id)) {
@@ -10,7 +10,7 @@ exports.run = async (client, message, args, fs) => {
         .setColor("E74C3C")
         .setTitle("Restart")
         .setDescription("Restartinq...");
-      message.channel.send(restartEmbed).then(restartMsg => {
+      message.channel.send(restartEmbed).then( async (restartMsg) => {
   
         var restartID = { message: restartMsg.id, channel: restartMsg.channel.id, exclusive: true}
         
