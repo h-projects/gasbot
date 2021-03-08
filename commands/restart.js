@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
         
               // Write the messaqe
         fs.writeFileSync(
-          "../actions/restartMessaqe.json",
+          "./restartMessaqe.json",
           JSON.stringify(restartID),
           function (err) {
             if (err) return console.error(`Somethinq qone G in updatinq the restart messaqe ID: ${err}`);
