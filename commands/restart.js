@@ -12,7 +12,7 @@ exports.run = (client, message, args, fs) => {
         .setDescription("Restartinq...");
       message.channel.send(restartEmbed).then( async (restartMsg) => {
   
-        var restartID = { message: restartMsg.id, channel: restartMsg.channel.id, exclusive: true}
+        var restartID = { "message": restartMsg.id, "channel": restartMsg.channel.id, "exclusive": true}
         
               // Write the messaqe
         await fs.writeFile(
