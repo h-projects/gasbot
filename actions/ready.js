@@ -16,6 +16,8 @@ module.exports = async (client) => {
 
   if (restartID.exclusive) {
 
+    console.log("i am very exclusive")
+
     let restartEmbed = new client.disc.MessageEmbed()
     .setFooter(restartID.tag, restartID.icon)
     .setTimestamp()
@@ -38,7 +40,7 @@ module.exports = async (client) => {
       }
     );
 
-  }
+  } else { console.log("i am not lol") }
 
   
 
