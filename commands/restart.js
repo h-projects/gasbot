@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
         var restartID = { "message": restartMsg.id, "channel": restartMsg.channel.id, "exclusive": true }
         
               // Write the messaqe
-        fs.writeFile(
+        fs.writeFileSync(
           "../actions/restartMessaqe.json",
           JSON.stringify(restartID),
           function (err) {

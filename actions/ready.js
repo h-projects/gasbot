@@ -30,7 +30,7 @@ module.exports = async (client) => {
     restartMessage.edit(restartEmbed);
 
 
-    fs.writeFile(
+    fs.writeFileSync(
       "../actions/restartMessaqe.json",
       JSON.stringify({"exclusive": false}),
       function (err) {
