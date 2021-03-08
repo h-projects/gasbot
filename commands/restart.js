@@ -1,4 +1,4 @@
-exports.run = (client, message, args, fs) => {
+exports.run = async (client, message, args, fs) => {
   let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
   if (ids.includes(message.author.id)) {
