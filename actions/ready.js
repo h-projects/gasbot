@@ -35,7 +35,7 @@ module.exports = async (client) => {
 
     jsonObject.exclusive = false;
 
-    await fs.writeFileSync("./restartMessage.json", jsonObject);
+    await fs.writeFileSync("./restartMessage.json", JSON.stringify(jsonObject));
 
   }
 
