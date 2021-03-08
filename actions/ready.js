@@ -31,13 +31,11 @@ module.exports = async (client) => {
     restartMessage.edit(restartEmbed);
 
 
-    fs.writeFileSync(
-      "./restartMessaqe.json",
-      JSON.stringify({"exclusive": false}),
-      function (err) {
-        if (err) return console.error(`Somethinq qone G in updatinq the ready edit: ${err}`);
-      }
-    );
+    const jsonObject = restartID;
+
+    jsonObject.exclusive = false;
+
+    await fs.writeFileSync("./restartMessage.json", jsonObject);
 
   }
 
