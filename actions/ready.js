@@ -1,5 +1,5 @@
 module.exports = async (client) => {
-  const restartID = require("./actions/restartMessaqe.json");
+  const restartID = require("../actions/restartMessaqe.json");
   const fs = require("fs-extra");
 
 
@@ -31,7 +31,7 @@ module.exports = async (client) => {
 
 
     fs.writeFile(
-      "./actions/restartMessaqe.json",
+      "../actions/restartMessaqe.json",
       JSON.stringify({"exclusive": false}),
       function (err) {
         if (err) return console.error(`Somethinq qone G in updatinq the ready edit: ${err}`);
