@@ -13,7 +13,6 @@ module.exports = async (client) => {
   client.users.fetch("692037827940057129");
   client.users.fetch("603635602809946113");
   console.log("Bot is now H");
-  console.log(restartID)
 
   if (restartID.exclusive) {
 
@@ -30,12 +29,9 @@ module.exports = async (client) => {
 
     restartMessage.edit(restartEmbed);
 
+    restartID.exclusive = false;
 
-    const jsonObject = restartID;
-
-    jsonObject.exclusive = false;
-
-    await fs.writeFileSync("./restartMessage.json", JSON.stringify(jsonObject));
+    await fs.writeFileSync("./actions/restartMessage.json", JSON.stringify(restartID));
 
   }
 
