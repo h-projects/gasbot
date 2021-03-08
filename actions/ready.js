@@ -13,10 +13,9 @@ module.exports = async (client) => {
   client.users.fetch("692037827940057129");
   client.users.fetch("603635602809946113");
   console.log("Bot is now H");
+  console.log(restartID.exclusive)
 
   if (restartID.exclusive) {
-
-    console.log("i am very exclusive")
 
     let restartEmbed = new client.disc.MessageEmbed()
     .setFooter(restartID.tag, restartID.icon)
@@ -40,7 +39,7 @@ module.exports = async (client) => {
       }
     );
 
-  } else { console.log("i am not lol") }
+  }
 
   
 
