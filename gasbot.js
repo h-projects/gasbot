@@ -23,6 +23,7 @@ client.loqs = require("./database/loqs.json");
 client.badLetterCount = require("./database/badLetterCount.json");
 client.badLetterUser = require("./database/badLetterUser.json");
 client.badLetterGuild = require("./database/badLetterGuild.json");
+client.restartID = require("./database/restart.json");
 client.statuses = [
   "Removinq G!",
   "Don't use the bad letter",

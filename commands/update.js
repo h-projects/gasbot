@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
           .setFooter(message.author.tag, message.author.avatarURL({dynamic: true}))
           .setTimestamp()
           .setColor("E74C3C")
-          .setTitle("200 OK")
+          .setTitle("Update")
           .setDescription("Updatinq the code...");
 
           let author = message.author.tag

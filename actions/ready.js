@@ -1,7 +1,5 @@
 module.exports = async (client) => {
-  var restartID = require("./restartMessaqe.json");
   const fs = require("fs-extra");
-
 
   client.users.fetch("478823932913516544");
   client.users.fetch("682617926909427743");
@@ -14,26 +12,26 @@ module.exports = async (client) => {
   client.users.fetch("603635602809946113");
   console.log("Bot is now H");
 
-  if (restartID.exclusive) {
+  if (client.restartID.exclusive) {
 
     let restartEmbed = new client.disc.MessageEmbed()
-    .setFooter(restartID.tag, restartID.icon)
+    .setFooter(client.restartID.tag, client.restartID.icon)
     .setTimestamp()
     .setColor("E74C3C")
     .setTitle("200 OK")
     .setDescription(`\`\`\`\nThe bot was restarted\`\`\``);
 
-    await client.channels.cache.get(restartID.channel).messages.fetch(restartID.message);
+    await client.channels.cache.get(client.restartID.channel).messages.fetch(client.restartID.message);
 
-    let restartMessage = client.channels.cache.get(restartID.channel).messages.cache.get(restartID.message);
+    let restartMessage = client.channels.cache.get(client.restartID.channel).messages.cache.get(client.restartID.message);
 
     restartMessage.edit(restartEmbed);
 
-    restartID.exclusive = false;
+    client.restartID.exclusive = false;
 
-    await fs.writeFileSync("./actions/restartMessage.json", JSON.stringify(restartID));
+    await fs.writeFileSync("./database/restart.json", JSON.stringify(client.restartID));
 
-  }
+  };
 
   
 
