@@ -1,5 +1,5 @@
 module.exports = async (client) => {
-  const restartID = require("./restartMessaqe.json");
+  var restartID = require("./restartMessaqe.json");
   const fs = require("fs-extra");
 
 
