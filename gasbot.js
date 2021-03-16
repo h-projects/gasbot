@@ -29,6 +29,7 @@ client.statuses = [
   "H Clicker",
   "Removed " + client.badLetterCount.badLetterCount + " G's so far"
 ];
+client.restartID = require("./database/restart.json");
 
 // databse related requires
 client.raidmode = require("./database/raidmode.json");
