@@ -1,4 +1,5 @@
 exports.run = (client, message, args) => {
+  const fs = require("fs-extra");
   let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
 
   if (ids.includes(message.author.id)) {
@@ -8,9 +9,21 @@ exports.run = (client, message, args) => {
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
         .setTimestamp()
         .setColor("E74C3C")
-        .setTitle("200 OK")
+        .setTitle("Restart")
         .setDescription("Restartinq...");
-      message.channel.send(restartEmbed).then(() => { process.exit() });
+      message.channel.send(restartEmbed).then( async (restartMsg) => {
+  
+        client.restartID = { "message": restartMsg.id, "channel": restartMsg.channel.id, "tag": message.author.tag, "icon": message.author.avatarURL({ dynamic: true }), "exclusive": true }
+        
+              // Write the messaqe
+        fs.writeFileSync(
+          "./database/restart.json",
+          JSON.stringify(client.restartID),
+          function (err) {
+            if (err) return console.error(`Somethinq qone G in updatinq the restart messaqe ID: ${err}`);
+          });
+
+        process.exit(); });
 
     } catch (e) {
 

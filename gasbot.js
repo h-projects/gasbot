@@ -42,6 +42,7 @@ fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
   if (err) return console.error(err);
   files.forEach(file => {
+    if (!file.endsWith(".js")) return;
     const event = require(`./actions/${file}`);
     let eventName = file.split(".")[0];
     client.on(eventName, event.bind(null, client));

@@ -69,7 +69,7 @@ exports.run = (client, message, args) => {
       let detectorEmbed = new client.disc.MessageEmbed()
         .setTitle("G Detector Levels")
         .setDescription(setToWhat)
-        .addField("Low", "Unrecommended. Detects messaqes that only consist of <:NoSeventhLetter:721649657146769449>", false)
+        .addField("Low", "Not recommended. Detects messaqes that only consist of <:NoSeventhLetter:721649657146769449>", false)
         .addField("Medium", "Default option. Detects <:NoSeventhLetter:721649657146769449> outside words", false)
         .addField("Hiqh", "Useful in case there is a <:NoSeventhLetter:721649657146769449>-spy raid. Detects a messaqe if it contains <:NoSeventhLetter:721649657146769449>", false)
         .setColor("E74C3C")
