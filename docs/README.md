@@ -5,7 +5,7 @@ G.A.S Bot was created to defeat the letter G.
 By default, it removes standalone G, but by usinq `h!detector` this can be chanqed to one of these options:
 
 ### Low
-Lowest option, deletes a messaqe if it only consists of G. Detects `g` but not `test g test`
+Lowest option, deletes a messaqe if it only consists of G. Detects `g` but not `test g test`. This is not recommended.
 
 ### Medium
 Default option, only detects G if it's outside words. Detects `test g test` but not `germany`. Recommended option
