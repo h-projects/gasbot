@@ -49,7 +49,7 @@ fs.readdir("./actions/", (err, files) => {
 client.cmds = new enmap();
 fs.readdir("./commands/", (err, files) => {
   console.log("Loading commands...");
-  if (err) return console.eror(err);
+  if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
     let props = require(`./commands/${file}`);
