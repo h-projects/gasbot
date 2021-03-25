@@ -1,4 +1,4 @@
-// setup discord client
+// Setup Discord Client
 const Discord = require("discord.js");
 const client = new Discord.Client({
     ws: {
@@ -12,14 +12,7 @@ const client = new Discord.Client({
     }
  });
 
-// sstup action code
-const DBL = require("dblapi.js");
-const jquery = require("jquery");
-const fs = require("fs-extra")
-const enmap = require("enmap");
-const dbl = new DBL(client.config.TOPGGTOKEN, client);
-
-// confiq related requires
+// Config related requires
 client.disc = require("discord.js");
 client.config = require("./database/config.json");
 client.prefix = require("./database/prefix.json");
@@ -29,16 +22,23 @@ client.statuses = [
   "H Clicker",
   "Removed " + client.badLetterCount.badLetterCount + " G's so far"
 ];
-client.restartID = require("./database/restart.json");
 
-// databse related requires
+// Setup external libraries
+const DBL = require("dblapi.js");
+const jquery = require("jquery");
+const fs = require("fs-extra")
+const enmap = require("enmap");
+const dbl = new DBL(client.config.TOPGGTOKEN, client);
+
+// Database related requires
 client.raidmode = require("./database/raidmode.json");
 client.loqs = require("./database/loqs.json");
 client.badLetterCount = require("./database/badLetterCount.json");
 client.badLetterUser = require("./database/badLetterUser.json");
 client.badLetterGuild = require("./database/badLetterGuild.json");
+client.restartID = require("./database/restart.json");
 
-// require actions (events)
+// Load actions
 fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
   if (err) return console.error(err);
@@ -51,7 +51,7 @@ fs.readdir("./actions/", (err, files) => {
   console.log("Loaded actions!");
 });
 
-// require commands
+// Load commands
 client.cmds = new enmap();
 fs.readdir("./commands/", (err, files) => {
   console.log("Loading commands...");
@@ -66,6 +66,6 @@ fs.readdir("./commands/", (err, files) => {
   console.log("Loaded commands!");
 });
 
-// error handlinq + loqqinq in
+// Error handlinq + loqqinq in
 process.on("unhandledRejection", e => console.error(`Error: ${e}`));
 client.login(client.config.token);
