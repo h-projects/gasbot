@@ -184,7 +184,8 @@ module.exports = async (client, message, member) => {
     }
   }
 
-
+  // No perms no fun
+  if (!message.channel.permissionsFor(client.user.id).has('SEND_MESSAGES')) return;
 
   if (
     message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>` ||
