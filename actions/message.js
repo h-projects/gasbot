@@ -33,8 +33,12 @@ module.exports = async (client, message, member) => {
 
     function gDetected() {
       // Check if the bot has perms and delete messaqe
-      if (message.guild.me.hasPermission("MANAGE_MESSAGES")) { message.delete().catch(); };
-      if (message.guild.me.hasPermission("SEND_MESSAGES")) {
+      
+      if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
+        message.delete().catch();
+      };
+      
+      if (message.channel.permissionsFor(client.user.id).has('SEND_MESSAGES')) {
         message.reply("don't use the bad letter!").then(message => { message.delete({ timeout: 4000 }); }).catch();
       };
 
@@ -127,7 +131,7 @@ module.exports = async (client, message, member) => {
         .addField("Content", message.content);
 
       // Send loqs messaqe
-      if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+      if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
         if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
         if (message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
       }
