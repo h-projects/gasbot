@@ -4,13 +4,9 @@ module.exports = async (client, message, member) => {
     client.prefix[message.guild.id] = client.config.prefix
   }
 
-  var array = message.content.replace(client.prefix[message.guild.id], "").split(" "),
-    args = array.slice(1);
+  var array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
+  var args = array.slice(1);
   const fs = require("fs-extra");
-  var HowMuchGWasPosted = require("../database/badLetterCount.json");
-  var HowMuchGWasPostedUser = require("../database/badLetterUser.json");
-  var HowMuchGWasPostedGuild = require("../database/badLetterGuild.json");
-  var loqs = require("../database/loqs.json");
   let upperCaseMsg = message.content.toUpperCase();
 
 
@@ -43,59 +39,59 @@ module.exports = async (client, message, member) => {
       };
 
       // Make the global removed count qo up    
-      HowMuchGWasPosted.badLetterCount++;
+      client.badLetterCount.badLetterCount++;
       fs.writeFile(
         "./database/badLetterCount.json",
-        JSON.stringify(HowMuchGWasPosted),
+        JSON.stringify(client.badLetterCount),
         function (err) {
           if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
         }
       );
 
       // Make the guild removed count qo up
-      if (HowMuchGWasPostedGuild[message.guild.id] !== undefined) {
+      if (client.badLetterGuild[message.guild.id] !== undefined) {
 
-        HowMuchGWasPostedGuild[message.guild.id]++;
+        client.badLetterGuild[message.guild.id]++;
 
       } else {
 
-        HowMuchGWasPostedGuild[message.guild.id] = 1;
+        client.badLetterGuild[message.guild.id] = 1;
 
       };
 
       // Write the guild removed count
       fs.writeFile(
         "./database/badLetterGuild.json",
-        JSON.stringify(HowMuchGWasPostedGuild),
+        JSON.stringify(client.badLetterGuild),
         function (err) {
           if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with a quild: ${err}`);
         }
       );
 
       // Make the user removed count qo up
-      if (HowMuchGWasPostedUser[message.author.id] !== undefined) {
+      if (client.badLetterUser[message.author.id] !== undefined) {
 
-        HowMuchGWasPostedUser[message.author.id]++;
+        client.badLetterUser[message.author.id]++;
 
       } else {
 
-        HowMuchGWasPostedUser[message.author.id] = 1;
+        client.badLetterUser[message.author.id] = 1;
 
       };
 
       // Write the user removed count
       fs.writeFile(
         "./database/badLetterUser.json",
-        JSON.stringify(HowMuchGWasPostedUser),
+        JSON.stringify(client.badLetterUser),
         function (err) {
           if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
         }
       );
 
       // Find loqs channel
-      if (loqs[message.guild.id] !== undefined) {
+      if (client.loqs[message.guild.id] !== undefined) {
 
-        var loqChannel = message.guild.channels.cache.get(loqs[message.guild.id]);
+        var loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]);
 
         if (loqChannel == undefined) {
           var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
@@ -109,7 +105,7 @@ module.exports = async (client, message, member) => {
 
       let loqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({ dynamic: true }))
-        .setURL("https://aytchsoftware.tk/fuck-g/")
+        .setURL("https://h-projects.github.io/app/fuck-g/")
         .setThumbnail(message.author.avatarURL({ dynamic: true }))
         .setTimestamp()
         .setColor("E74C3C")
@@ -120,7 +116,7 @@ module.exports = async (client, message, member) => {
 
       let centralLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({ dynamic: true }))
-        .setURL("https://aytchsoftware.tk/fuck-g/")
+        .setURL("https://h-projects.github.io/app/fuck-g/")
         .setThumbnail(message.author.avatarURL({ dynamic: true }))
         .setTimestamp()
         .setColor("E74C3C")

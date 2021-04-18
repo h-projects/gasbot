@@ -28,7 +28,7 @@ const dbl = new DBL(client.config.TOPGGTOKEN, client);
 client.raidmode = require("./database/raidmode.json");
 client.loqs = require("./database/loqs.json");
 client.badLetterCount = require("./database/badLetterCount.json");
-client.badLetterUser = require("./database/badLetterUser.json");
+client.badLetterUser = require("./database/badLetterUser.json");  // TODO: improve this
 client.badLetterGuild = require("./database/badLetterGuild.json");
 client.restartID = require("./database/restart.json");
 
