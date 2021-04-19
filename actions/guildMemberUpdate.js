@@ -10,7 +10,7 @@ module.exports = async (client, oldMember, newMember) => {
   let array = [...cleanNickname.matchAll(detection)];
 
 
-  if ((cleanNickname.length / array.length) >= 0.75) {
+  if (array.length / cleanNickname.length >= 0.75) {
 
     let newNickname = newMember.nickname.replace(detection, "h");
     newMember.setNickname(newNickname);
