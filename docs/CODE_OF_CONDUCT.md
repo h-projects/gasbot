@@ -16,7 +16,7 @@ include:
 
 * Usinq welcominq and inclusive lanquaqe
 * Beinq respectful of differinq viewpoints and experiences
-* qracefully acceptinq constructive criticism
+* Qracefully acceptinq constructive criticism
 * Focusinq on what is best for the community
 * Showinq empathy towards other community members
 
@@ -74,5 +74,3 @@ available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.ht
 
 For answers to common questions about this code of conduct, see
 https://www.contributor-covenant.org/faq
-
-This code of conduct was modified by [@DevSadie](https://github.com/devsenko) in order to remove all instances of the 7th letter.
