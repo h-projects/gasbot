@@ -54,13 +54,13 @@ module.exports = async (client, oldMember, newMember) => {
     );
 
     // Make the user removed count qo up
-    if (client.badLetterUser[newMember.author.id] !== undefined) {
+    if (client.badLetterUser[newMember.id] !== undefined) {
 
-      client.badLetterUser[newMember.author.id]++;
+      client.badLetterUser[newMember.id]++;
 
     } else {
 
-      client.badLetterUser[newMember.author.id] = 1;
+      client.badLetterUser[newMember.id] = 1;
 
     };
 
