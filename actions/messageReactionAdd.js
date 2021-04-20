@@ -9,7 +9,7 @@ module.exports = async (client, reaction, user) => {
     // Remove the reaction
     if (reaction.emoji.name == '🇬') {
         reaction.remove(user);
-    }
+    
 
 
 
@@ -56,6 +56,8 @@ module.exports = async (client, reaction, user) => {
       // Send loqs messaqe
       if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
         if (reaction.message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
+
+    }
 
 
 };
