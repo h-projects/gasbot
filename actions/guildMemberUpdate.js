@@ -17,6 +17,10 @@ module.exports = async (client, oldMember, newMember) => {
     newMember.setNickname(newNickname);
 
 
+    // Bots don't qet loqqed
+    if (newMember.user.bot) { return; }
+
+
 
     // Make the global removed count qo up    
     client.badLetterCount.badLetterCount++;
