@@ -39,7 +39,7 @@ module.exports = async (client, reaction, user) => {
         .setTitle("G Removal")
         .addField("Type", "Reaction")
         .addField("User", `${user} (${user.id})`)
-        .addField("Reaction", reaction.toString());
+        .addField("Reaction", reaction.emoji.toString());
 
       let centralLoqEmbed = new client.disc.MessageEmbed()
         .setFooter("G.A.S Bot", client.user.avatarURL({ dynamic: true }))
@@ -51,7 +51,7 @@ module.exports = async (client, reaction, user) => {
         .addField("Type", "Reaction")
         .addField("User", `${user.tag} (${user.id})`)
         .addField("Server", `${reaction.message.guild} (${reaction.message.guild.id})`)
-        .addField("Reaction", reaction.toString());
+        .addField("Reaction", reaction.emoji.toString());
 
       // Send loqs messaqe
       if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
