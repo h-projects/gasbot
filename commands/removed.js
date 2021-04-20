@@ -11,11 +11,11 @@ exports.run = async (client, message, args) => {
         client.badLetterGuild[message.guild.id] = 0;
     }
 
-    let member = message.guild.members.cache.get(userID)
-
-    if (!member) {
+    if (!message.guild.members.cache.get(userID)) {
         await message.guild.members.fetch(userID)
     }
+
+    let member = message.guild.members.cache.get(userID)
 
     if (member === undefined) {
 
