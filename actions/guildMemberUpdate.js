@@ -34,13 +34,13 @@ module.exports = async (client, oldMember, newMember) => {
     );
 
     // Make the guild removed count qo up
-    if (client.badLetterGuild[message.guild.id] !== undefined) {
+    if (client.badLetterGuild[newMember.guild.id] !== undefined) {
 
-      client.badLetterGuild[message.guild.id]++;
+      client.badLetterGuild[newMember.guild.id]++;
 
     } else {
 
-      client.badLetterGuild[message.guild.id] = 1;
+      client.badLetterGuild[newMember.guild.id] = 1;
 
     };
 
@@ -54,13 +54,13 @@ module.exports = async (client, oldMember, newMember) => {
     );
 
     // Make the user removed count qo up
-    if (client.badLetterUser[message.author.id] !== undefined) {
+    if (client.badLetterUser[newMember.author.id] !== undefined) {
 
-      client.badLetterUser[message.author.id]++;
+      client.badLetterUser[newMember.author.id]++;
 
     } else {
 
-      client.badLetterUser[message.author.id] = 1;
+      client.badLetterUser[newMember.author.id] = 1;
 
     };
 

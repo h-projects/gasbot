@@ -27,33 +27,33 @@ module.exports = async (client, reaction, user) => {
         );
 
         // Make the guild removed count qo up
-        if (client.badLetterGuild[message.guild.id] !== undefined) {
+        if (client.badLetterGuild[reaction.message.guild.id] !== undefined) {
   
-          client.badLetterGuild[message.guild.id]++;
+          client.badLetterGuild[reaction.message.guild.id]++;
 
         } else {
 
-          client.badLetterGuild[message.guild.id] = 1;
+          client.badLetterGuild[reaction.message.guild.id] = 1;
 
         };
 
         // Write the guild removed count
         fs.writeFile(
           "./database/badLetterGuild.json",
-          JSON.stringify(client.badLetterGuild),
+          JSON.stringify(reaction.client.badLetterGuild),
           function (err) {
             if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with a quild: ${err}`);
           }
         );
 
         // Make the user removed count qo up
-        if (client.badLetterUser[message.author.id] !== undefined) {
+        if (client.badLetterUser[reaction.message.author.id] !== undefined) {
 
-          client.badLetterUser[message.author.id]++;
+          client.badLetterUser[reaction.message.author.id]++;
 
         } else {
 
-          client.badLetterUser[message.author.id] = 1;
+          client.badLetterUser[reaction.message.author.id] = 1;
 
         };
 
