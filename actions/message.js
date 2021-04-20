@@ -110,6 +110,7 @@ module.exports = async (client, message, member) => {
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
+        .addField("Type", "Messaqe")
         .addField("User", `${message.author} (${message.author.id})`)
         .addField("Channel", `${message.channel} (${message.channel.id})`)
         .addField("Content", message.content);
@@ -121,6 +122,7 @@ module.exports = async (client, message, member) => {
         .setTimestamp()
         .setColor("E74C3C")
         .setTitle("G Removal")
+        .addField("Type", "Messaqe")
         .addField("User", `${message.author.tag} (${message.author.id})`)
         .addField("Server", `${message.guild} (${message.guild.id})`)
         .addField("Channel", `${message.channel.name} (${message.channel.id})`)
@@ -128,7 +130,7 @@ module.exports = async (client, message, member) => {
 
       // Send loqs messaqe
       if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
-        if (loqChannel !== undefined) { loqChannel.send(loqEmbed); };
+        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
         if (message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
       }
     }
