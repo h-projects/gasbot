@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     var userID = /\d+/.exec(message.content);
 
     if (userID === null) {
