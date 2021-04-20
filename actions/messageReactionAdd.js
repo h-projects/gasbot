@@ -11,6 +11,55 @@ module.exports = async (client, reaction, user) => {
         reaction.remove(user);
     
 
+        // Make the global removed count qo up    
+        client.badLetterCount.badLetterCount++;
+        fs.writeFile(
+          "./database/badLetterCount.json",
+          JSON.stringify(client.badLetterCount),
+          function (err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted: ${err}`);
+          }
+        );
+
+        // Make the guild removed count qo up
+        if (client.badLetterGuild[message.guild.id] !== undefined) {
+  
+          client.badLetterGuild[message.guild.id]++;
+
+        } else {
+
+          client.badLetterGuild[message.guild.id] = 1;
+
+        };
+
+        // Write the guild removed count
+        fs.writeFile(
+          "./database/badLetterGuild.json",
+          JSON.stringify(client.badLetterGuild),
+          function (err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with a quild: ${err}`);
+          }
+        );
+
+        // Make the user removed count qo up
+        if (client.badLetterUser[message.author.id] !== undefined) {
+
+          client.badLetterUser[message.author.id]++;
+
+        } else {
+
+          client.badLetterUser[message.author.id] = 1;
+
+        };
+
+        // Write the user removed count
+        fs.writeFile(
+          "./database/badLetterUser.json",
+          JSON.stringify(client.badLetterUser),
+          function (err) {
+            if (err) return console.error(`Somethinq qone G in updatinq how much G's was posted with an user: ${err}`);
+          }
+        );
 
 
     // Find loqs channel
