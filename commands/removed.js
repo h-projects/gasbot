@@ -13,6 +13,10 @@ exports.run = (client, message, args) => {
 
     let member = message.guild.members.cache.get(userID)
 
+    if (!member) {
+        await message.guild.members.fetch(userID)
+    }
+
     if (member === undefined) {
 
         if (client.badLetterUser[message.author.id] === undefined) {
