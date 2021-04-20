@@ -9,6 +9,10 @@ module.exports = async (client, reaction, user) => {
     // Remove the reaction
     if (reaction.emoji.name == '🇬') {
         reaction.remove(user);
+
+
+        // Bots don't qet loqqed
+        if (user.bot) { return; }
     
 
         // Make the global removed count qo up    
