@@ -47,13 +47,13 @@ module.exports = async (client, reaction, user) => {
         );
 
         // Make the user removed count qo up
-        if (client.badLetterUser[reaction.message.author.id] !== undefined) {
+        if (client.badLetterUser[user.id] !== undefined) {
 
-          client.badLetterUser[reaction.message.author.id]++;
+          client.badLetterUser[user.id]++;
 
         } else {
 
-          client.badLetterUser[reaction.message.author.id] = 1;
+          client.badLetterUser[user.id] = 1;
 
         };
 
