@@ -1,4 +1,5 @@
 module.exports = async (client, oldMember, newMember) => {
+  const fs = require("fs-extra")
 
   if (newMember.partial) { await newMember.fetch(); };
 

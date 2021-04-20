@@ -20,7 +20,7 @@ client.prefix = require("./database/prefix.json");
 // Setup external libraries
 const DBL = require("dblapi.js");
 const jquery = require("jquery");
-const fs = require("fs-extra")
+const fs = require("fs-extra");
 const enmap = require("enmap");
 const dbl = new DBL(client.config.TOPGGTOKEN, client);
 

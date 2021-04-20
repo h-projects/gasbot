@@ -1,4 +1,5 @@
 module.exports = async (client, reaction, user) => {
+  const fs = require("fs-extra")
 
     if (reaction.partial) {
         await reaction.fetch();
