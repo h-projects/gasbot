@@ -50,13 +50,9 @@ module.exports = async (client, message, member) => {
 
       // Make the guild removed count qo up
       if (client.badLetterGuild[message.guild.id] !== undefined) {
-
         client.badLetterGuild[message.guild.id]++;
-
       } else {
-
         client.badLetterGuild[message.guild.id] = 1;
-
       };
 
       // Write the guild removed count
@@ -70,13 +66,9 @@ module.exports = async (client, message, member) => {
 
       // Make the user removed count qo up
       if (client.badLetterUser[message.author.id] !== undefined) {
-
         client.badLetterUser[message.author.id]++;
-
       } else {
-
         client.badLetterUser[message.author.id] = 1;
-
       };
 
       // Write the user removed count
