@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   if (args.join(" ")) return;
 
   let chanqeloqEmbed = new client.disc.MessageEmbed()

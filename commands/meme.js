@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   if (args.join(" ")) return;
   message.channel.send("Here is your meme!", {
     files: [

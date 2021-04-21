@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     let ids = ["478823932913516544"];
     let otherIds = ["682617926909427743", "348591272476540928"];
 

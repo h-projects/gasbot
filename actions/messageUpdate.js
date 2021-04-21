@@ -2,7 +2,7 @@ module.exports = async (client, oldMessage, message) => {
   const fs = require("fs-extra");
 
   if (message.partial) {
-    await message.fetch()
+    await message.fetch();
   };
 
   // Go aways bots and people who are trying to use commands on dm
@@ -174,6 +174,6 @@ module.exports = async (client, oldMessage, message) => {
             new RegExp(blacklist.join('|')).test(upperCaseMsg)
           ) gDetected();
           break;
-      }
-    }
+      };
+    };
 };
