@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
 
   if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("MANAGE_ROLES")) {
     let errorEmbed = new client.disc.MessageEmbed()

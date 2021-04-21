@@ -1,5 +1,5 @@
-exports.run = (client, message, args) => {
-  let ids = ["478823932913516544", "682617926909427743", "348591272476540928"];
+exports.run = async (client, message, args) => {
+  let ids = ["478823932913516544", "682617926909427743"];
 
   if (message.guild.id === "720009823458033705" &&
     !args.join(" ").includes("disableMentions") &&

@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   if (args.join(" ")) return;
 
   // Taqs of G.A.S Bot devs

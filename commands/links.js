@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   if (args.join(" ")) return;
   let linksEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")

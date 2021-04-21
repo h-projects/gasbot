@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     var userID = /\d+/.exec(message.content);
 
     if (userID === null) {
@@ -9,6 +9,10 @@ exports.run = (client, message, args) => {
 
     if (client.badLetterGuild[message.guild.id] === undefined) {
         client.badLetterGuild[message.guild.id] = 0;
+    }
+
+    if (!message.guild.members.cache.get(userID)) {
+        await message.guild.members.fetch(userID)
     }
 
     let member = message.guild.members.cache.get(userID)
