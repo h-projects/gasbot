@@ -7,7 +7,7 @@ const client = new Discord.Client({
     partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
     disableMentions: 'all',
     presence: {
-      activity: { name: "h!help | Removinq G!", type: "PLAYING" },
+      activity: { name: "out for G! h!help", type: "WATCHING" },
       status: "dnd"
     }
  });
