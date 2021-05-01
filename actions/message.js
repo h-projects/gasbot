@@ -194,9 +194,9 @@ module.exports = async (client, message, member) => {
     let arrayPrefix = message.content.replace(client.user.toString(), "").replace(`<@!${client.user.id}>`, "").split(" ")
     let argsPrefix = arrayPrefix.slice(1);
 
-    let cmd = client.cmds.get("prefix");
-    cmd.run(client, message, argsPrefix);
-  }
+    let cmdPrefix = client.cmds.get("prefix");
+    cmdPrefix.run(client, message, argsPrefix);
+  };
 
   // No prefix no fun
   if (!message.content.startsWith(client.prefix[message.guild.id])) return;
