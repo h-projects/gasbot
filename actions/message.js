@@ -178,8 +178,8 @@ module.exports = async (client, message, member) => {
   if (!message.channel.permissionsFor(client.user.id).has('SEND_MESSAGES')) return;
 
   if (
-    message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>` ||
-    upperCaseMsg === `<@${client.user.id}> HELP` || upperCaseMsg === `<@!${client.user.id}> HELP`
+    message.content === `${client.user}` || message.content === `<@!${client.user.id}>` ||
+    upperCaseMsg === `${client.user} HELP` || upperCaseMsg === `<@!${client.user.id}> HELP`
   ) {
     let helpEmbed = new client.disc.MessageEmbed()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
@@ -189,6 +189,14 @@ module.exports = async (client, message, member) => {
       .setDescription(client.prefix[message.guild.id]);
     message.channel.send(helpEmbed);
   };
+
+  if (message.content.startsWith(`${client.user} prefix`) || message.content.startsWith(`<@!${client.user.id}> prefix`)) {
+    let arrayPrefix = message.content.replace(client.user.toString(), "").replace(`<@!${client.user.id}>`, "").split(" ")
+    let argsPrefix = arrayPrefix.slice(1);
+
+    let cmd = client.cmds.get("prefix");
+    cmd.run(client, message, argsPrefix);
+  }
 
   // No prefix no fun
   if (!message.content.startsWith(client.prefix[message.guild.id])) return;

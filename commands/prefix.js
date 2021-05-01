@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
 
   }
 
-  if (!/[<>*_\[\]@g/\\\n﷽]/i.test(args.join(" ")) && (args.join(" ").length <= 100)) {
+  if (!/[<>/*_\[\]@g/\\\n﷽]/i.test(args.join(" ")) && (args.join(" ").length <= 100)) {
     client.prefix[message.guild.id] = args.join(" ")
 
     fs.writeFile(
