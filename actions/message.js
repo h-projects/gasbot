@@ -191,11 +191,11 @@ module.exports = async (client, message, member) => {
   };
 
   if (message.content.startsWith(`${client.user} prefix`) || message.content.startsWith(`<@!${client.user.id}> prefix`)) {
-    let arrayPrefix = message.content.replace(client.user.toString(), "").replace(`<@!${client.user.id}>`, "").split(" ")
+    let arrayPrefix = message.content.replace(`${client.user} prefix`, "").replace(`<@!${client.user.id}> prefix`, "").split(" ")
     let argsPrefix = arrayPrefix.slice(1);
 
-    let cmdPrefix = client.cmds.get("prefix");
-    cmdPrefix.run(client, message, argsPrefix);
+    let cmd = client.cmds.get("prefix");
+    cmd.run(client, message, argsPrefix);
   };
 
   // No prefix no fun
