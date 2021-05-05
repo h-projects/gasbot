@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
     !args.join(" ").includes("disableMentions") &&
     !args.join(" ").includes("allowedMentions") &&
     !args.join(" ").includes("eval") &&
+    !args.join(" ").includes("on") &&
     !args.join(" ").includes("ban") &&
     !args.join(" ").includes("kick") &&
     !args.join(" ").includes("prune") &&
