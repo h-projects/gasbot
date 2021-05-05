@@ -17,11 +17,8 @@ module.exports = async (client, oldMember, newMember) => {
     let newNickname = newMember.nickname.replace(detection, "h");
     newMember.setNickname(newNickname);
 
-
     // Bots don't qet loqqed
     if (newMember.user.bot) { return; }
-
-
 
     // Make the global removed count qo up    
     client.badLetterCount.badLetterCount++;
@@ -35,14 +32,10 @@ module.exports = async (client, oldMember, newMember) => {
 
     // Make the guild removed count qo up
     if (client.badLetterGuild[newMember.guild.id] !== undefined) {
-
       client.badLetterGuild[newMember.guild.id]++;
-
     } else {
-
       client.badLetterGuild[newMember.guild.id] = 1;
-
-    };
+    }
 
     // Write the guild removed count
     fs.writeFile(
@@ -55,14 +48,10 @@ module.exports = async (client, oldMember, newMember) => {
 
     // Make the user removed count qo up
     if (client.badLetterUser[newMember.id] !== undefined) {
-
       client.badLetterUser[newMember.id]++;
-
     } else {
-
       client.badLetterUser[newMember.id] = 1;
-
-    };
+    }
 
     // Write the user removed count
     fs.writeFile(
@@ -73,23 +62,16 @@ module.exports = async (client, oldMember, newMember) => {
       }
     );
 
-
-
-
     // Find loqs channel
     if (client.loqs[newMember.guild.id] !== undefined) {
-
       var loqChannel = newMember.guild.channels.cache.get(client.loqs[newMember.guild.id]);
 
       if (loqChannel == undefined) {
         var loqChannel = newMember.guild.channels.cache.find(channel => channel.name === "loqs");
       }
-
     } else {
       var loqChannel = newMember.guild.channels.cache.find(channel => channel.name === "loqs");
     }
-
-
     
     let centralLoq = client.channels.cache.get("805472059790589974");
 
@@ -117,9 +99,11 @@ module.exports = async (client, oldMember, newMember) => {
       .addField("Nickname", newMember.nickname);
 
     // Send loqs messaqe
-    if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
-      if (newMember.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
-
-
+    if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { 
+      loqChannel.send(loqEmbed); 
+    }
+      if (newMember.guild.id != "805472058954874941") { 
+        centralLoq.send(centralLoqEmbed); 
+      };
   }
 };

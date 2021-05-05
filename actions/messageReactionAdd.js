@@ -11,10 +11,8 @@ module.exports = async (client, reaction, user) => {
     if (reaction.emoji.name == '🇬') {
         reaction.remove(user);
 
-
         // Bots don't qet loqqed
         if (user.bot) { return; }
-    
 
         // Make the global removed count qo up    
         client.badLetterCount.badLetterCount++;
@@ -28,14 +26,10 @@ module.exports = async (client, reaction, user) => {
 
         // Make the guild removed count qo up
         if (client.badLetterGuild[reaction.message.guild.id] !== undefined) {
-  
           client.badLetterGuild[reaction.message.guild.id]++;
-
         } else {
-
           client.badLetterGuild[reaction.message.guild.id] = 1;
-
-        };
+        }
 
         // Write the guild removed count
         fs.writeFile(
@@ -48,14 +42,10 @@ module.exports = async (client, reaction, user) => {
 
         // Make the user removed count qo up
         if (client.badLetterUser[user.id] !== undefined) {
-
           client.badLetterUser[user.id]++;
-
         } else {
-
           client.badLetterUser[user.id] = 1;
-
-        };
+        }
 
         // Write the user removed count
         fs.writeFile(
@@ -69,18 +59,14 @@ module.exports = async (client, reaction, user) => {
 
     // Find loqs channel
     if (client.loqs[reaction.message.guild.id] !== undefined) {
-
         var loqChannel = reaction.message.guild.channels.cache.get(client.loqs[reaction.message.guild.id]);
 
         if (loqChannel == undefined) {
           var loqChannel = reaction.message.guild.channels.cache.find(channel => channel.name === "loqs");
         }
-
       } else {
         var loqChannel = reaction.message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
-
-
       
       let centralLoq = client.channels.cache.get("805472059790589974");
 
@@ -108,10 +94,11 @@ module.exports = async (client, reaction, user) => {
         .addField("Reaction", reaction.emoji.toString());
 
       // Send loqs messaqe
-      if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
-        if (reaction.message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
-
+      if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { 
+        loqChannel.send(loqEmbed); 
+      }
+      if (reaction.message.guild.id != "805472058954874941") { 
+        centralLoq.send(centralLoqEmbed); 
+      }
     }
-
-
 };

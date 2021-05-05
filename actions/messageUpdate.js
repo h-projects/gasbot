@@ -46,13 +46,9 @@ module.exports = async (client, oldMessage, message) => {
 
       // Make the guild removed count qo up
       if (client.badLetterGuild[message.guild.id] !== undefined) {
-
         client.badLetterGuild[message.guild.id]++;
-
       } else {
-
         client.badLetterGuild[message.guild.id] = 1;
-
       };
 
       // Write the guild removed count
@@ -66,13 +62,9 @@ module.exports = async (client, oldMessage, message) => {
 
       // Make the user removed count qo up
       if (client.badLetterUser[message.author.id] !== undefined) {
-
         client.badLetterUser[message.author.id]++;
-
       } else {
-
         client.badLetterUser[message.author.id] = 1;
-
       };
 
       // Write the user removed count
@@ -86,13 +78,11 @@ module.exports = async (client, oldMessage, message) => {
 
       // Find loqs channel
       if (client.loqs[message.guild.id] !== undefined) {
-
         var loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]);
 
         if (loqChannel == undefined) {
           var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
         }
-
       } else {
         var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
@@ -126,8 +116,13 @@ module.exports = async (client, oldMessage, message) => {
 
       // Send loqs messaqe
       if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
-        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
-        if (message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
+        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { 
+          loqChannel.send(loqEmbed); 
+        }
+
+        if (message.guild.id != "805472058954874941") { 
+          centralLoq.send(centralLoqEmbed); 
+        }
       }
     }
 
@@ -160,6 +155,7 @@ module.exports = async (client, oldMessage, message) => {
             lowDetection.test(message.content) === false
           ) gDetected();
           break;
+
         case 2: // Medium
         case undefined:
           if (
@@ -168,6 +164,7 @@ module.exports = async (client, oldMessage, message) => {
             new RegExp(blacklist.join('|')).test(upperCaseMsg)
           ) gDetected();
           break;
+          
         case 3: // Hiqh
           if (
             hiqhDetection.test(message.content) === true ||

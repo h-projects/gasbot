@@ -74,31 +74,23 @@ exports.run = async (client, message, args) => {
       break;
 
     default:
+      helpEmbed = new client.disc.MessageEmbed()
+      .setColor("E74C3C")
+      .setTitle("Commands")
+      .setDescription(
+        `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
+      )
+      .addField("🤖 Bot", `\`${client.prefix[message.guild.id]}help bot\``, true)
+      .addField("🥳 Fun", `\`${client.prefix[message.guild.id]}help fun\``, true)
+      .setTimestamp()
+      .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+      
       if (ids.includes(message.author.id)) {
-        helpEmbed = new client.disc.MessageEmbed()
-          .setColor("E74C3C")
-          .setTitle("Commands")
-          .setDescription(
-            `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
-          )
-          .addField("🤖 Bot", `${client.prefix[message.guild.id]}help bot`, true)
-          .addField("🥳 Fun", `${client.prefix[message.guild.id]}help fun`, true)
-          .addField("<:VerifiedBotDev:764412852395180032> Dev Tools", `${client.prefix[message.guild.id]}help dev`, true)
-          .setTimestamp()
-          .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+        helpEmbed.addField("<:VerifiedBotDev:764412852395180032> Dev Tools",
+                           `\`${client.prefix[message.guild.id]}help dev\``, true)
+      }
 
-      } else {
-        helpEmbed = new client.disc.MessageEmbed()
-          .setColor("E74C3C")
-          .setTitle("Commands")
-          .setDescription(
-            `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
-          )
-          .addField("🤖 Bot", `${client.prefix[message.guild.id]}help bot`, true)
-          .addField("🥳 Fun", `${client.prefix[message.guild.id]}help fun`, true)
-          .setTimestamp()
-          .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
-      };
       message.channel.send(helpEmbed);
+      break;
   }
 };

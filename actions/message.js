@@ -82,13 +82,11 @@ module.exports = async (client, message, member) => {
 
       // Find loqs channel
       if (client.loqs[message.guild.id] !== undefined) {
-
         var loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]);
 
         if (loqChannel == undefined) {
           var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
         }
-
       } else {
         var loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
       }
@@ -122,8 +120,13 @@ module.exports = async (client, message, member) => {
 
       // Send loqs messaqe
       if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
-        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { loqChannel.send(loqEmbed); };
-        if (message.guild.id != "805472058954874941") { centralLoq.send(centralLoqEmbed); };
+        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) {
+           loqChannel.send(loqEmbed); 
+        }
+
+        if (message.guild.id != "805472058954874941") {
+           centralLoq.send(centralLoqEmbed);
+        }
       }
     }
 
@@ -156,6 +159,7 @@ module.exports = async (client, message, member) => {
             lowDetection.test(message.content) === false
           ) gDetected();
           break;
+
         case 2: // Medium
         case undefined:
           if (
@@ -164,6 +168,7 @@ module.exports = async (client, message, member) => {
             new RegExp(blacklist.join('|')).test(upperCaseMsg)
           ) gDetected();
           break;
+          
         case 3: // Hiqh
           if (
             hiqhDetection.test(message.content) === true ||
