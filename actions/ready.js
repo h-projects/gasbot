@@ -13,7 +13,6 @@ module.exports = async (client) => {
   console.log("Bot is now H");
 
   if (client.restartID.exclusive) {
-
     let restartEmbed = new client.disc.MessageEmbed()
     .setFooter(client.restartID.tag, client.restartID.icon)
     .setTimestamp()
@@ -22,17 +21,11 @@ module.exports = async (client) => {
     .setDescription(`\`\`\`\nThe bot was restarted\`\`\``);
 
     await client.channels.cache.get(client.restartID.channel).messages.fetch(client.restartID.message);
-
     let restartMessage = client.channels.cache.get(client.restartID.channel).messages.cache.get(client.restartID.message);
 
     restartMessage.edit(restartEmbed);
-
     client.restartID.exclusive = false;
 
     await fs.writeFileSync("./database/restart.json", JSON.stringify(client.restartID));
-
   };
-
-  
-
-};
+}

@@ -11,4 +11,4 @@ exports.run = async (client, message, args) => {
     .setTimestamp()
     .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
   message.channel.send(linksEmbed);
-};
+}

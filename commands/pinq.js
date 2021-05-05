@@ -5,4 +5,4 @@ exports.run = async (client, message, args) => {
       description: `**Ponq!** ${client.ws.ping}ms`
     }
   });
-};
+}

@@ -93,4 +93,4 @@ exports.run = async (client, message, args) => {
       message.channel.send(helpEmbed);
       break;
   }
-};
+}

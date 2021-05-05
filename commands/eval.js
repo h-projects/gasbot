@@ -18,7 +18,6 @@ exports.run = async (client, message, args) => {
     !args.join(" ").includes("shell") &&
     ids.includes(message.author.id)) {
     try {
-
       let evaled = eval(args.join(" "));
       let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
@@ -30,7 +29,6 @@ exports.run = async (client, message, args) => {
       message.channel.send(evalEmbed);
 
     } catch (e) {
-
       let evalEmbed = new client.disc.MessageEmbed()
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
         .setTimestamp()
@@ -39,10 +37,8 @@ exports.run = async (client, message, args) => {
         .setDescription(`There was an error executinq the requested evaluation.\n\`\`\`js\n${e}\n\`\`\``);
 
       message.channel.send(evalEmbed);
-
     }
   } else {
-
     let evalEmbed = new client.disc.MessageEmbed()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
       .setTimestamp()
@@ -53,4 +49,4 @@ exports.run = async (client, message, args) => {
     return message.channel.send(evalEmbed);
   };
   return;
-};
+}

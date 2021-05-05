@@ -16,4 +16,4 @@ exports.run = async (client, message, args) => {
     .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
 
   message.channel.send(infoEmbed);
-};
+}

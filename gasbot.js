@@ -22,7 +22,7 @@ const DBL = require("dblapi.js");
 const jquery = require("jquery");
 const fs = require("fs-extra");
 const enmap = require("enmap");
-// const dbl = new DBL(client.config.TOPGGTOKEN, client);
+const dbl = new DBL(client.config.TOPGGTOKEN, client);
 
 // Database related requires
 client.raidmode = require("./database/raidmode.json");

@@ -101,4 +101,4 @@ module.exports = async (client, reaction, user) => {
         centralLoq.send(centralLoqEmbed); 
       }
     }
-};
+}

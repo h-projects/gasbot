@@ -218,4 +218,4 @@ module.exports = async (client, message, member) => {
     }); */
 
   cmd.run(client, message, args);
-};
+}

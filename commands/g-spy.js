@@ -31,7 +31,6 @@ exports.run = async (client, message, args) => {
   let member = message.guild.members.cache.get(userID)
 
   if (member !== undefined && userID !== "702116355842768927" && userID !== message.author.id) {
-
     if (message.guild.roles.cache.find(roles => roles.name === "g-spy") == undefined) {
       message.guild.roles.create({
         data: {
@@ -49,7 +48,6 @@ exports.run = async (client, message, args) => {
         message.channel.send(doneEmbed);
       });
     } else {
-
       let role = message.guild.roles.cache.find(roles => roles.name === "g-spy")
       member.roles.add(role);
 
@@ -59,17 +57,17 @@ exports.run = async (client, message, args) => {
         .setColor("E74C3C")
         .setTitle("200 OK")
         .setDescription(`${member} is a ${role}`);
-      message.channel.send(doneEmbed);
 
+      message.channel.send(doneEmbed);
     }
   } else {
-
     let errorEmbed = new client.disc.MessageEmbed()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
       .setTimestamp()
       .setColor("E74C3C")
       .setTitle("Error")
       .setDescription("Please mention a valid user");
+      
     message.channel.send(errorEmbed);
   };
 

@@ -173,4 +173,4 @@ module.exports = async (client, oldMessage, message) => {
           break;
       };
     };
-};
+}
