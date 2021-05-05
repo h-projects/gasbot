@@ -22,7 +22,7 @@ const DBL = require("dblapi.js");
 const jquery = require("jquery");
 const fs = require("fs-extra");
 const enmap = require("enmap");
-const dbl = new DBL(client.config.TOPGGTOKEN, client);
+// const dbl = new DBL(client.config.TOPGGTOKEN, client);
 
 // Database related requires
 client.raidmode = require("./database/raidmode.json");
@@ -35,6 +35,7 @@ client.restartID = require("./database/restart.json");
 // Load actions
 fs.readdir("./actions/", (err, files) => {
   console.log("Loading actions...");
+
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
@@ -42,6 +43,7 @@ fs.readdir("./actions/", (err, files) => {
     let eventName = file.split(".")[0];
     client.on(eventName, event.bind(null, client));
   });
+
   console.log("Loaded actions!");
 });
 
@@ -49,14 +51,15 @@ fs.readdir("./actions/", (err, files) => {
 client.cmds = new enmap();
 fs.readdir("./commands/", (err, files) => {
   console.log("Loading commands...");
+
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
     let props = require(`./commands/${file}`);
-    let eventName = file.split(".")[0];
     let commandName = file.split(".")[0];
     client.cmds.set(commandName, props);
   });
+
   console.log("Loaded commands!");
 });
 

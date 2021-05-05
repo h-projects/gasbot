@@ -2,7 +2,7 @@ exports.run = async (client, message, args) => {
   if (args.join(" ")) return;
   let infoEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")
-    .setTitle("__Info__")
+    .setTitle("Info")
     .addField("G.A.S Bot", "G.A.S Bot was created to defeat the letter G.")
     .addField("G Removal", "By default, it removes standalone G, but by usinq `h!detector` this can be chanqed to one of these options:", false)
     .addField("Low", "Lowest option, deletes a messaqe if it only consists of G. Detects `g` but not `test g test`", false)

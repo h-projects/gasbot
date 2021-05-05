@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
 
   let creditsEmbed = new client.disc.MessageEmbed()
     .setColor("E74C3C")
-    .setTitle("__Credits__")
+    .setTitle("Credits")
     .addField("<:VerifiedBotDev:764412852395180032> Developers", `${supertag}\n${indextag}\n${senkotag}`, true)
     .addField("⭐ Special Thanks", `${humantag}\n${makufontag}\n${dicetag}\n${farttag}\n${kailstag}\n${lunatag}`, true)
     .setTimestamp()

@@ -12,14 +12,11 @@ exports.run = async (client, message, args) => {
     return;
   };
 
-
   if (!args.join(" ")) {
-
     if (!client.prefix[message.guild.id]) {
-
       let prefixEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("__Prefix__")
+        .setTitle("Prefix")
         .setDescription(`The current prefix is ${client.config.prefix}`)
         .setTimestamp()
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
@@ -28,13 +25,12 @@ exports.run = async (client, message, args) => {
 
     let prefixEmbed = new client.disc.MessageEmbed()
       .setColor("E74C3C")
-      .setTitle("__Prefix__")
+      .setTitle("Prefix")
       .setDescription(`The current prefix is ${client.prefix[message.guild.id]}`)
       .setTimestamp()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+      
     return message.channel.send(prefixEmbed)
-
-
   }
 
   if (!/[<>*_\[\]@g/\\\n﷽]/i.test(args.join(" ")) && (args.join(" ").length <= 100)) {
@@ -56,7 +52,6 @@ exports.run = async (client, message, args) => {
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
 
     message.channel.send(prefixEmbed);
-
   } else {
     let prefixEmbed = new client.disc.MessageEmbed()
       .setColor("E74C3C")
@@ -64,6 +59,7 @@ exports.run = async (client, message, args) => {
       .setDescription("Invalid prefix! Please try another prefix")
       .setTimestamp()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
+
     return message.channel.send(prefixEmbed);
   }
 };

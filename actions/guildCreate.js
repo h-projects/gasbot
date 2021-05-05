@@ -6,7 +6,7 @@ module.exports = async (client, guild) => {
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setTimestamp()
         .setColor("E74C3C")
-        .setTitle(`Joined __${guild}__!`)
+        .setTitle(`Joined \`${guild}\`!`)
         .setDescription(`Just joined a server with **${guild.memberCount}** members!\nI'm in **${client.guilds.cache.size}** servers now!`)
 
     aytchLoqs.send(joinedEmbed);

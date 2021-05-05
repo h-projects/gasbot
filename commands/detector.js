@@ -61,9 +61,9 @@ exports.run = async (client, message, args) => {
 
       var setToWhat;
       switch (client.raidmode[message.guild.id]) {
-        case 1: setToWhat = "Your current protection level: **__Low__**\nConsider settinq hiqher protection level."; break;
-        case 2: setToWhat = "Your current protection level: **__Medium__**"; break;
-        case 3: setToWhat = "Your current protection level: **__Hiqh__**"; break;
+        case 1: setToWhat = "Your current protection level: **Low**\nConsider settinq hiqher protection level."; break;
+        case 2: setToWhat = "Your current protection level: **Medium**"; break;
+        case 3: setToWhat = "Your current protection level: **Hiqh**"; break;
       }
 
       let detectorEmbed = new client.disc.MessageEmbed()

@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     case "qeneral":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("🤖 __Bot__")
+        .setTitle("🤖 Bot")
         .setDescription(
           `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
         )
@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
     case "fun":
       helpEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
-        .setTitle("🥳 __Fun__")
+        .setTitle("🥳 Fun")
         .setDescription(`If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`)
         .addField(`${client.prefix[message.guild.id]}h`, "h", true)
         .addField(`${client.prefix[message.guild.id]}meme`, "Just a meme, what did you expect", true)
@@ -48,7 +48,7 @@ exports.run = async (client, message, args) => {
       if (ids.includes(message.author.id)) {
         helpEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
-          .setTitle("<:VerifiedBotDev:764412852395180032> __Dev Tools__")
+          .setTitle("<:VerifiedBotDev:764412852395180032> Dev Tools")
           .setDescription(
             `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
           )
@@ -61,12 +61,12 @@ exports.run = async (client, message, args) => {
       } else {
         helpEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
-          .setTitle("__Commands__")
+          .setTitle("Commands")
           .setDescription(
-            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+            `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
           )
-          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
+          .addField("🤖 Bot", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 Fun", `${client.prefix[message.guild.id]}help fun`, true)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
         message.channel.send(helpEmbed);
@@ -74,30 +74,28 @@ exports.run = async (client, message, args) => {
       break;
 
     default:
-
       if (ids.includes(message.author.id)) {
-
         helpEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
-          .setTitle("__Commands__")
+          .setTitle("Commands")
           .setDescription(
-            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+            `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
           )
-          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
-          .addField("<:VerifiedBotDev:764412852395180032> __Dev Tools__", `${client.prefix[message.guild.id]}help dev`, true)
+          .addField("🤖 Bot", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 Fun", `${client.prefix[message.guild.id]}help fun`, true)
+          .addField("<:VerifiedBotDev:764412852395180032> Dev Tools", `${client.prefix[message.guild.id]}help dev`, true)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
 
       } else {
         helpEmbed = new client.disc.MessageEmbed()
           .setColor("E74C3C")
-          .setTitle("__Commands__")
+          .setTitle("Commands")
           .setDescription(
-            `If you need to vote, invite, or qet more help, use ${client.prefix[message.guild.id]}links`
+            `If you need to vote, invite, or qet more help, use \`${client.prefix[message.guild.id]}links\``
           )
-          .addField("🤖 __Bot__", `${client.prefix[message.guild.id]}help bot`, true)
-          .addField("🥳 __Fun__", `${client.prefix[message.guild.id]}help fun`, true)
+          .addField("🤖 Bot", `${client.prefix[message.guild.id]}help bot`, true)
+          .addField("🥳 Fun", `${client.prefix[message.guild.id]}help fun`, true)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
       };
