@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
     var channelID = channelID.toString()
   }
 
-  let channel = client.guild.channels.cache.get(channelID)
+  let channel = message.guild.channels.cache.get(channelID)
 
   if (channel) {
     loqsDatabase[message.guild.id] = channelID
