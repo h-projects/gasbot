@@ -6,7 +6,7 @@ module.exports = async (client, message, member) => {
   var array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
   var args = array.slice(1);
   const fs = require("fs-extra");
-  let upperCaseMsg = message.content.toUpperCase();
+  var upperCaseMsg = message.content.toUpperCase();
 
 
   // Go aways bots and people who are trying to use commands on dm
