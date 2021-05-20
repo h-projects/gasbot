@@ -152,7 +152,7 @@ module.exports = async (client, message, member) => {
       upperCaseMsg.includes("G ANNIHILATION SQUAD") ||
       upperCaseMsg.includes("EVERY DAY, COUNTLESS LIVES ARE LOST BY MISUSE OF THE LETTER G.")
     ) { return; } else {
-      var messageContent = message.content.replace(/<:\w+:\d+>/gi, "")
+      var messageContent = message.content.replace(/<:NoSeventhLetter:\d+>/gi, "").replace(/<:nog:\d+>/gi, "").replace(/<:NoGSiqn:\d+>/gi, "")
       var upperCaseMsg = messageContent.toUpperCase();
       switch (client.raidmode[message.guild.id]) {
         case 1: // Low
