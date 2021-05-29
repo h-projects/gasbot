@@ -35,10 +35,10 @@ exports.run = async (client, message, args) => {
         .addField(`${client.prefix[message.guild.id]}h`, "h", true)
         .addField(`${client.prefix[message.guild.id]}meme`, "Just a meme, what did you expect", true)
         .addField(`${client.prefix[message.guild.id]}toilet`, "Polish toilet", true)
-        .addField(`${client.prefix[message.guild.id]}juan`, "<:Juan:768187837043965982>", true)
+        .addField(`${client.prefix[message.guild.id]}juan`, "<:Juan:773465802682138634>", true)
         .addField(`${client.prefix[message.guild.id]}hromomento`, "tenemos un qran bro momento", true)
         .addField(`${client.prefix[message.guild.id]}tank`, "aden said <:NoSeventhLetter:721649657146769449>, use this", true)
-        .addField(`${client.prefix[message.guild.id]}huh`, "<:thinkinH:702462510057521192>", true)
+        .addField(`${client.prefix[message.guild.id]}huh`, "<:thinkinH:805862278766395483>", true)
         .setTimestamp()
         .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
       message.channel.send(helpEmbed);
