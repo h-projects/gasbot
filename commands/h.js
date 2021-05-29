@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
     files: [
       {
         attachment:
-          "https://cdn.discordapp.com/emojis/699995508810317895.gif",
+          "https://cdn.discordapp.com/attachments/701593186598125611/831503732096499762/h1.gif",
         name: `GAS_Bot-H-${message.id}.gif`
       }
     ]
