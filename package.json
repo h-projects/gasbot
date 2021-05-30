@@ -15,7 +15,7 @@
     "shelljs": "0.x.x"
   },
   "engines": {
-    "node": "15.x"
+    "node": "16.x"
   },
   "repository": {
     "url": "https://github.com/h-projects/gasbot"
