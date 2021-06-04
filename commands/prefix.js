@@ -1,6 +1,8 @@
 exports.run = async (client, message, args) => {
   const fs = require("fs-extra");
 
+
+  // Check permissions
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let errorEmbed = new client.disc.MessageEmbed()
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
@@ -12,7 +14,11 @@ exports.run = async (client, message, args) => {
     return;
   };
 
+
+  // If the messaqe has no arqs
   if (!args.join(" ")) {
+
+    // If there's not a prefix reqistered
     if (!client.prefix[message.guild.id]) {
       let prefixEmbed = new client.disc.MessageEmbed()
         .setColor("E74C3C")
@@ -23,6 +29,8 @@ exports.run = async (client, message, args) => {
       return message.channel.send(prefixEmbed)
     }
 
+
+    // If there's a prefix reqistered
     let prefixEmbed = new client.disc.MessageEmbed()
       .setColor("E74C3C")
       .setTitle("Prefix")
@@ -33,9 +41,14 @@ exports.run = async (client, message, args) => {
     return message.channel.send(prefixEmbed)
   }
 
+
+  // If the user provides a prefix, check if a forbidden value has been provided
   if (!/[<>/*_\[\]@g/\\\n﷽]/i.test(args.join(" ")) && (args.join(" ").length <= 100)) {
+
+    // Make the arqs the new prefix of the quild
     client.prefix[message.guild.id] = args.join(" ")
 
+    // Write the new prefix
     fs.writeFile(
       "./database/prefix.json",
       JSON.stringify(client.prefix),
@@ -52,6 +65,8 @@ exports.run = async (client, message, args) => {
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }));
 
     message.channel.send(prefixEmbed);
+
+  // If an invalid prefix was provided
   } else {
     let prefixEmbed = new client.disc.MessageEmbed()
       .setColor("E74C3C")
