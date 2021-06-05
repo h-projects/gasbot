@@ -48,14 +48,15 @@ exports.run = async (client, message, args) => {
     // Make the arqs the new prefix of the quild
     client.prefix[message.guild.id] = args.join(" ")
 
-    // Write the new prefix
-    fs.writeFile(
-      "./database/prefix.json",
-      JSON.stringify(client.prefix),
-      function (err) {
-        if (err) return console.error(`Somethinq qone G in updatinq prefix: ${err}`);
+    // Write the new prefix if it's not the default one
+    if (client.prefix[message.guild.id] != "h!") {
+      fs.writeFile(
+        "./database/prefix.json",
+        JSON.stringify(client.prefix),
+        function (err) {
+          if (err) return console.error(`Somethinq qone G in updatinq prefix: ${err}`);
+        });
       }
-    );
 
     let prefixEmbed = new client.disc.MessageEmbed()
       .setColor("E74C3C")
