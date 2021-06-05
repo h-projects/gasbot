@@ -45,8 +45,13 @@ exports.run = async (client, message, args) => {
   // If the user provides a prefix, check if a forbidden value has been provided
   if (!/[<>/*_\[\]@g/\\\n﷽]/i.test(args.join(" ")) && (args.join(" ").length <= 100)) {
 
-    // Make the arqs the new prefix of the quild
-    client.prefix[message.guild.id] = args.join(" ")
+    // Make the arqs the new prefix of the quild or reset it if it's the default one
+    if (!args.join(" ") == 'h!') {
+      client.prefix[message.guild.id] = null 
+    } else {
+      client.prefix[message.guild.id] = args.join(" ")
+    }
+     
 
     // Write the new prefix
     fs.writeFile(
