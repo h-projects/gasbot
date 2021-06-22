@@ -1,8 +1,6 @@
 module.exports = async (client, message, member) => {
 
-  if (!client.prefix[message.guild.id]) {
-    client.prefix[message.guild.id] = client.config.prefix
-  }
+  client.prefix[message.guild.id] ??= client.config.prefix
 
   var array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
   var args = array.slice(1);
