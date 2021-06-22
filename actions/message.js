@@ -2,9 +2,9 @@ module.exports = async (client, message, member) => {
 
   client.prefix[message.guild.id] ??= client.config.prefix
 
-  var array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
-  var args = array.slice(1);
   const fs = require("fs-extra");
+  let array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
+  let args = array.slice(1);
   let upperCaseMsg = message.content.toUpperCase();
 
 
