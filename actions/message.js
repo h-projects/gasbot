@@ -79,16 +79,8 @@ module.exports = async (client, message, member) => {
       );
 
       // Find loqs channel
-      let loqChannel;
-      if (client.loqs[message.guild.id] !== undefined) {
-        loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]);
-
-        if (loqChannel == undefined) {
-          loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
-        }
-      } else {
-        loqChannel = message.guild.channels.cache.find(channel => channel.name === "loqs");
-      }
+      let loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]); 
+      loqChannel ??= message.guild.channels.cache.find(channel => channel.name === "loqs");
 
       let centralLoq = client.channels.cache.get("805472059790589974");
 
@@ -119,7 +111,7 @@ module.exports = async (client, message, member) => {
 
       // Send loqs messaqe
       if (message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES')) {
-        if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) {
+        if (loqChannel && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) {
            loqChannel.send(loqEmbed); 
         }
 

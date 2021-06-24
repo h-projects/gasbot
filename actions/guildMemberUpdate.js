@@ -61,15 +61,8 @@ module.exports = async (client, oldMember, newMember) => {
     );
 
     // Find loqs channel
-    if (client.loqs[newMember.guild.id] !== undefined) {
-      var loqChannel = newMember.guild.channels.cache.get(client.loqs[newMember.guild.id]);
-
-      if (loqChannel == undefined) {
-        var loqChannel = newMember.guild.channels.cache.find(channel => channel.name === "loqs");
-      }
-    } else {
-      var loqChannel = newMember.guild.channels.cache.find(channel => channel.name === "loqs");
-    }
+    let loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]); 
+    loqChannel ??= message.guild.channels.cache.find(channel => channel.name === "loqs");
     
     let centralLoq = client.channels.cache.get("805472059790589974");
 
@@ -97,7 +90,7 @@ module.exports = async (client, oldMember, newMember) => {
       .addField("Nickname", newMember.nickname);
 
     // Send loqs messaqe
-    if (loqChannel !== undefined && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { 
+    if (loqChannel && loqChannel.permissionsFor(client.user.id).has('SEND_MESSAGES')) { 
       loqChannel.send(loqEmbed); 
     }
       if (newMember.guild.id != "805472058954874941") { 
