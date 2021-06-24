@@ -57,8 +57,8 @@ module.exports = async (client, reaction, user) => {
         );
         
         // Find loqs channel
-        let loqChannel = message.guild.channels.cache.get(client.loqs[message.guild.id]); 
-        loqChannel ??= message.guild.channels.cache.find(channel => channel.name === "loqs");
+        let loqChannel = reaction.guild.channels.cache.get(client.loqs[reaction.guild.id]); 
+        loqChannel ??= reaction.guild.channels.cache.find(channel => channel.name === "loqs");
       
         let centralLoq = client.channels.cache.get("805472059790589974");
 
