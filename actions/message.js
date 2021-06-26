@@ -3,9 +3,9 @@ module.exports = async (client, message, member) => {
   client.prefix[message.guild.id] ??= client.config.prefix
 
   const fs = require("fs-extra");
-  const array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
-  const args = array.slice(1);
   const upperCaseMsg = message.content.toUpperCase();
+  let array = message.content.replace(client.prefix[message.guild.id], "").split(" ")
+  let args = array.slice(1);
 
 
   // Go aways bots and people who are trying to use commands on dm
@@ -183,30 +183,23 @@ module.exports = async (client, message, member) => {
       .setColor("E74C3C")
       .setTitle("Prefix")
       .setDescription(client.prefix[message.guild.id]);
-    message.channel.send(helpEmbed);
+    return message.channel.send(helpEmbed);
   };
 
   if (message.content.startsWith(`${client.user} prefix`) || message.content.startsWith(`<@!${client.user.id}> prefix`)) {
-    let arrayPrefix = message.content.replace(`${client.user} prefix`, "").replace(`<@!${client.user.id}> prefix`, "").split(" ")
-    let argsPrefix = arrayPrefix.slice(1);
+    const cmd = client.cmds.get("prefix");
+    array = message.content.replace(`${client.user} prefix`, "").replace(`<@!${client.user.id}> prefix`, "").split(" ");
+    args = array.slice(1);
 
-    let cmd = client.cmds.get("prefix");
-    cmd.run(client, message, argsPrefix);
+    return cmd.run(client, message, args);
   };
 
   // No prefix no fun
   if (!message.content.startsWith(client.prefix[message.guild.id])) return;
 
   // Get command and execute it
-  let cmd = client.cmds.get(array[0]);
-  if (!cmd)
-    return; /* message.channel.send({
-      embed: {
-        color: 15158332,
-        title: "404 Not Found",
-        description: `Try usinq ${client.prefix[message.guild.id]}help`
-      }
-    }); */
+  const cmd = client.cmds.get(array[0]);
+  if (!cmd) return;
 
   cmd.run(client, message, args);
 }
