@@ -11,7 +11,7 @@
     "dblapi.js": "^2.x.x",
     "discord.js": "^12.x.x",
     "enmap": "^5.x.x",
-    "fs-extra": "^9.x.x",
+    "fs-extra": "^10.x.x",
     "jquery": "^3.x.x",
     "shelljs": "0.x.x",
     "utf-8-validate": "^5.x.x",
