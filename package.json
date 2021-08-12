@@ -1,0 +1,27 @@
+{
+  "name": "gasbot",
+  "version": "3.0.0-dev",
+  "description": "A bot to remove and protect you from the letter G.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Aytch Software",
+  "license": "MIT",
+  "dependencies": {
+    "bufferutil": "^4.0.3",
+    "discord.js": "^13.x.x",
+    "eslint": "^7.32.0",
+    "fs-extra": "^10.x.x",
+    "node": "^16.x.x",
+    "utf-8-validate": "^5.0.5",
+    "zlib-sync": "^0.1.7"
+  },
+  "engines": {
+    "node": "14.x.x"
+  },
+  "repository": {
+    "url": "https://github.com/h-projects/gasbot"
+  }
+}
