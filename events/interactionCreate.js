@@ -6,10 +6,11 @@ module.exports = {
     switch(interaction.type) {
         
       case 'APPLICATION_COMMAND':
-        
-        if (!client.interactions.commands.has(interaction.commandName)) return;
-        client.interactions.commands.get(interaction.commandName).execute(client, interaction);
-        
+        const name = interaction.commandName
+        const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(command => name == command.contextMenu)
+
+        if (!command) return;
+        return command.execute(client, interaction);
       break;
         
         
