@@ -11,15 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "bufferutil": "^4.0.3",
-    "discord.js": "^13.x.x",
+    "discord.js": "^13.1.0",
     "eslint": "^7.32.0",
-    "fs-extra": "^10.x.x",
-    "node": "^16.x.x",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
   "engines": {
-    "node": "14.x.x"
+    "node": "16.6.2"
   },
   "repository": {
     "url": "https://github.com/h-projects/gasbot"
