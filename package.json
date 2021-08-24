@@ -12,14 +12,16 @@
   "dependencies": {
     "bufferutil": "^4.0.3",
     "discord.js": "^13.1.0",
-    "eslint": "^7.32.0",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
   "engines": {
-    "node": "16.6.2"
+    "node": "16.7.0"
   },
   "repository": {
     "url": "https://github.com/h-projects/gasbot"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
   }
 }
