@@ -1,5 +1,4 @@
-module.exports = async (client) => {
-  
+module.exports = async client => {
   const { Collection } = require('discord.js');
   const { readdirSync } = require('fs');
 

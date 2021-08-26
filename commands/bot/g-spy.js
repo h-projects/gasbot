@@ -1,14 +1,14 @@
 module.exports = {
   name: 'g-spy',
-	description: 'Mark an user as a g-spy',
+  description: 'Mark an user as a g-spy',
   permissions: ['MANAGE_MESSAGES', 'MANAGE_ROLES'],
-  
-  async execute(client, message, args) {
-    const userId = /\d+/.exec(message.content)?.toString();
+
+  async execute(client, message) {
+    const userId = /\d+/u.exec(message.content)?.toString();
     const member = userId ? await message.guild.members.fetch(userId).catch(() => null) : null;
-    
-    
-    if (!member || userId == message.author.id || userId == client.user.id) {
+
+
+    if (!member || userId === message.author.id || userId === client.user.id) {
       return message.channel.send({
         embeds: [{
         title: 'Invalid User',
@@ -17,13 +17,13 @@ module.exports = {
         }]
       });
     }
-    
-    let role = message.guild.roles.cache.find(role => role.name == 'g-spy') ?? await message.guild.roles.create({
+
+    const role = message.guild.roles.cache.find(r => r.name === 'g-spy') ?? await message.guild.roles.create({
       name: 'g-spy',
-      reason: 'Found a g-spy',
+      reason: 'Found a g-spy'
     });
-    
-    member.roles.add(role)
+
+    member.roles.add(role);
     message.channel.send({
       embeds: [{
         title: 'Done',
@@ -36,11 +36,9 @@ module.exports = {
           type: 'BUTTON',
           style: 'SECONDARY',
           label: 'Revert',
-          custom_id: `g-spy:${member.id}:${message.author.id}`,
+          customId: `g-spy:${member.id}:${message.author.id}`
         }]
       }]
     });
-    
   }
-  
-}
+};

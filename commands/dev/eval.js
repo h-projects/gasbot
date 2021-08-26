@@ -1,6 +1,6 @@
 module.exports = {
-  name: "eval",
-  description: "Evaluate code inside G.A.S Bot",
+  name: 'eval',
+  description: 'Evaluate code inside G.A.S Bot',
 
   async execute(client, message, args) {
     if (client.config.owners.includes(message.author.id)) {
@@ -34,7 +34,7 @@ module.exports = {
       if (client.config.owners.includes(message.author.id)) {
         let evaled;
         try {
-          evaled = eval(args.join(" "));
+          evaled = eval(args.join(' '));
         } catch (e) {
           evaled = e;
         }
@@ -42,7 +42,8 @@ module.exports = {
           embeds: [
             {
               color: client.config.color,
-              description: `\`\`\`js\n${evaled}\`\`\`` // should we replace it to client.disc.Formatters.codeBlock('js', evaled.toString())? its cleaner
+              description: `\`\`\`js\n${evaled}\`\`\``
+              // should we replace it to client.disc.Formatters.codeBlock('js', evaled.toString())? its cleaner
             }
           ]
         });

@@ -3,29 +3,29 @@ module.exports = {
   description: 'Views all commands in the bot',
   hidden: true,
 
-  async execute(client, message, args) {
+  async execute(client, message) {
     const buttons = [
       {
         type: 'BUTTON',
         style: 'SECONDARY',
         label: 'Bot',
-        custom_id: `help:bot:${message.author.id}`,
+        customId: `help:bot:${message.author.id}`,
         emoji: '🤖'
       },
       {
         type: 'BUTTON',
         style: 'SECONDARY',
         label: 'Fun',
-        custom_id: `help:fun:${message.author.id}`,
+        customId: `help:fun:${message.author.id}`,
         emoji: '🥳'
       }
     ];
-    
+
     client.config.owners.includes(message.author.id) && buttons.push({
       type: 'BUTTON',
       style: 'SECONDARY',
       label: 'Dev',
-      custom_id: `help:dev:${message.author.id}`,
+      customId: `help:dev:${message.author.id}`,
       emoji: '855104541967384616'
     });
 

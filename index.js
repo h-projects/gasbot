@@ -15,7 +15,6 @@ client.config = require('./config.json');
 client.prefix = client.config.prefix;
 
 
-
 const loaders = readdirSync('./loaders').filter(file => file.endsWith('.js'));
 
 loaders.forEach(file => {
@@ -23,5 +22,5 @@ loaders.forEach(file => {
 });
 
 
-process.on("unhandledRejection", console.error);
+process.on('unhandledRejection', console.error);
 client.login(process.env.DISCORD_TOKEN);

@@ -3,8 +3,8 @@ module.exports = {
   contextMenu: 'Mark As g-spy',
   async execute(client, interaction) {
     const member = interaction.options.getMember('user');
-    
-    if (!member || member.id == interaction.user.id || member.id == client.user.id) {
+
+    if (!member || member.id === interaction.user.id || member.id === client.user.id) {
       return interaction.reply({
         embeds: [{
         title: 'Invalid User',
@@ -14,13 +14,13 @@ module.exports = {
         ephemeral: true
       });
     }
-    
-    const role = interaction.guild.roles.cache.find(role => role.name == 'g-spy') ?? await interaction.guild.roles.create({
+
+    const role = interaction.guild.roles.cache.find(r => r.name === 'g-spy') ?? await interaction.guild.roles.create({
       name: 'g-spy',
-      reason: 'Found a g-spy',
+      reason: 'Found a g-spy'
     });
-    
-    member.roles.add(role)
+
+    member.roles.add(role);
     interaction.reply({
       embeds: [{
         title: 'Done',
@@ -33,11 +33,10 @@ module.exports = {
           type: 'BUTTON',
           style: 'SECONDARY',
           label: 'Revert',
-          custom_id: `g-spy:${member.id}:${interaction.user.id}`,
+          customId: `g-spy:${member.id}:${interaction.user.id}`
         }]
       }]
     });
-    
   }
-  
-}
+
+};

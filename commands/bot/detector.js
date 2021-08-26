@@ -1,32 +1,31 @@
 module.exports = {
   name: 'detector',
-	description: 'Check the detection level',
+  description: 'Check the detection level',
   permissions: 'MANAGE_MESSAGES',
-  
-  async execute(client, message, args) {
-    
+
+  async execute(client, message) {
     const buttons = [
       {
         type: 'BUTTON',
         style: 'SECONDARY',
         label: 'Low',
-        custom_id: `detector:low:${message.author.id}`,
+        customId: `detector:low:${message.author.id}`
       },
       {
         type: 'BUTTON',
         style: 'SECONDARY',
         label: 'Medium',
-        custom_id: `detector:medium:${message.author.id}`,
+        customId: `detector:medium:${message.author.id}`
       },
       {
         type: 'BUTTON',
         style: 'SECONDARY',
         label: 'Hiqh',
-        custom_id: `detector:hiqh:${message.author.id}`,
+        customId: `detector:hiqh:${message.author.id}`
       }
     ];
-    
-		message.channel.send({
+
+    message.channel.send({
       embeds: [{
         title: 'G Detector Levels',
         description: 'Your current protection level: **Low**',
@@ -51,6 +50,5 @@ module.exports = {
         components: buttons
       }]
     });
-    
-	}
-}
+  }
+};

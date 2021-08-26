@@ -1,7 +1,7 @@
 module.exports = {
-	name: 'ready',
-	once: true,
-	async execute(client) {
-		console.log('Ready!');
-	},
+  name: 'ready',
+  once: true,
+  async execute() {
+    console.log('Ready!');
+  }
 };
