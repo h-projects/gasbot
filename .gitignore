@@ -1,5 +1,5 @@
-/.github
 /node_modules
+database.sqlite3
 
 # General
 .DS_Store

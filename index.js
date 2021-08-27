@@ -1,4 +1,5 @@
 const { Client } = require('discord.js');
+const Database = require('better-sqlite3');
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS'],
   partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
@@ -9,12 +10,12 @@ const client = new Client({
   }
 });
 
-const { readdirSync } = require('fs');
+client.db = new Database('database.sqlite3', { fileMustExist: true, verbose: console.log });
 
 client.config = require('./config.json');
 client.prefix = client.config.prefix;
 
-
+const { readdirSync } = require('fs');
 const loaders = readdirSync('./loaders').filter(file => file.endsWith('.js'));
 
 loaders.forEach(file => {
@@ -23,4 +24,5 @@ loaders.forEach(file => {
 
 
 process.on('unhandledRejection', console.error);
-client.login(process.env.DISCORD_TOKEN);
+process.on('exit', client.db.close);
+client.login(client.config.token);
