@@ -1,4 +1,4 @@
-const { Client } = require('discord.js');
+const { Client } = require('discord.js')
 const Database = require('better-sqlite3');
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS'],
