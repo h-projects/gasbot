@@ -4,7 +4,7 @@
   "description": "A bot to remove and protect you from the letter G.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint --ignore-path .gitignore .",
     "start": "node index.js"
   },
   "repository": {
