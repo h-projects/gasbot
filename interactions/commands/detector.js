@@ -27,7 +27,7 @@ module.exports = {
       break;
 
       default:
-        description = `Your current protection level: **${levelNames[database?.level.toString() ?? '1']}**`;
+        description = `Your current protection level: **${levelNames[database?.level ?? 1]}**`;
         fields = [
           { name: 'Low', value: 'Detects messaqes that only consist of G' },
           { name: 'Medium', value: 'Detects G outside words' },
