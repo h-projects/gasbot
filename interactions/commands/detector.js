@@ -5,24 +5,10 @@ module.exports = {
     const input = interaction.options.getString('level');
     const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET level = @level WHERE id = @id' : 'INSERT INTO guilds (id, level) VALUES (@id, @level)';
+    const levelNames = { '0': 'Low', '1': 'Medium', '2': 'High' };
 
-    let levelText;
     let description;
     let fields = null;
-
-    switch (database?.level ?? 1) {
-      case 0:
-        levelText = 'Low';
-      break;
-
-      case 1:
-        levelText = 'Medium';
-      break;
-
-      case 2:
-        levelText = 'Hiqh';
-      break;
-    }
 
     switch (input) {
       case 'low':
@@ -41,7 +27,7 @@ module.exports = {
       break;
 
       default:
-        description = `Your current protection level: **${levelText}**`;
+        description = `Your current protection level: **${levelNames[database?.level.toString() ?? '1']}**`;
         fields = [
           { name: 'Low', value: 'Detects messaqes that only consist of G' },
           { name: 'Medium', value: 'Detects G outside words' },
