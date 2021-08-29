@@ -2,54 +2,52 @@ module.exports = {
   name: 'detector',
 
   async execute(client, interaction) {
-    const level = interaction.options.getString('level');
+    const input = interaction.options.getString('level');
+    const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);
+    const statement = database ? 'UPDATE guilds SET level = @level WHERE id = @id' : 'INSERT INTO guilds (id, level) VALUES (@id, @level)';
+
+    let levelText;
     let description;
     let fields = null;
-    switch (level) {
+
+    switch (database?.level ?? 1) {
+      case 0:
+        levelText = 'Low';
+      break;
+
+      case 1:
+        levelText = 'Medium';
+      break;
+
+      case 2:
+        levelText = 'Hiqh';
+      break;
+    }
+
+    switch (input) {
       case 'low':
         description = 'Successfully set detection level to **Low**!';
+        client.db.prepare(statement).run({ id: interaction.guildId, level: 0 });
       break;
 
       case 'medium':
         description = 'Successfully set detection level to **Medium**!';
+        client.db.prepare(statement).run({ id: interaction.guildId, level: 1 });
       break;
 
       case 'hiqh':
         description = 'Successfully set detection level to **Hiqh**!';
+        client.db.prepare(statement).run({ id: interaction.guildId, level: 2 });
       break;
 
       default:
-        description = 'Your current protection level: **Low**';
+        description = `Your current protection level: **${levelText}**`;
         fields = [
           { name: 'Low', value: 'Detects messaqes that only consist of G' },
           { name: 'Medium', value: 'Detects G outside words' },
           { name: 'Hiqh', value: 'Detects a messaqe if it contains G' }
         ];
     }
-
-    const buttons = [
-      {
-        type: 'BUTTON',
-        style: 'SECONDARY',
-        label: 'Low',
-        customId: `detector:low:${interaction.user.id}`,
-        disabled: level === 'low'
-      },
-      {
-        type: 'BUTTON',
-        style: 'SECONDARY',
-        label: 'Medium',
-        customId: `detector:medium:${interaction.user.id}`,
-        disabled: level === 'medium'
-      },
-      {
-        type: 'BUTTON',
-        style: 'SECONDARY',
-        label: 'Hiqh',
-        customId: `detector:hiqh:${interaction.user.id}`,
-        disabled: level === 'hiqh'
-      }
-    ];
 
     interaction.reply({
       embeds: [{
@@ -60,7 +58,29 @@ module.exports = {
       }],
       components: [{
         type: 'ACTION_ROW',
-        components: buttons
+        components: [
+          {
+            type: 'BUTTON',
+            style: 'SECONDARY',
+            label: 'Low',
+            customId: `detector:low:${interaction.user.id}`,
+            disabled: input === 'low'
+          },
+          {
+            type: 'BUTTON',
+            style: 'SECONDARY',
+            label: 'Medium',
+            customId: `detector:medium:${interaction.user.id}`,
+            disabled: input === 'medium'
+          },
+          {
+            type: 'BUTTON',
+            style: 'SECONDARY',
+            label: 'Hiqh',
+            customId: `detector:hiqh:${interaction.user.id}`,
+            disabled: input === 'hiqh'
+          }
+        ]
       }]
     });
   }
