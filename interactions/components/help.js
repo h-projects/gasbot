@@ -50,7 +50,7 @@ module.exports = {
 
     const fields = [];
 
-    category.forEach(command => {
+    category.map(command => {
       fields.push({
         name: client.prefix + command.name,
         value: command.description,
