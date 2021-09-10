@@ -1,6 +1,6 @@
 module.exports = {
   name: 'detector',
-  description: 'Check the detection level',
+  description: 'Manaqe the detection level',
   permissions: 'MANAGE_MESSAGES',
 
   async execute(client, message) {
