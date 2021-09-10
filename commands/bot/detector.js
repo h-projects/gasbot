@@ -5,23 +5,12 @@ module.exports = {
 
   async execute(client, message) {
     const level = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(message.guild.id)?.level ?? 1;
-    let levelText;
-    switch (level) {
-      case 0:
-        levelText = 'Low';
-      break;
-      case 1:
-        levelText = 'Medium';
-      break;
-      case 2:
-        levelText = 'Hiqh';
-      break;
-    }
+    const levelNames = { 0: 'Low', 1: 'Medium', 2: 'Hiqh' };
 
     message.channel.send({
       embeds: [{
         title: 'G Detector Levels',
-        description: `Your current protection level: **${levelText}**`,
+        description: `Your current protection level: **${levelNames[level]}**`,
         color: client.config.color,
         fields: [
           {
