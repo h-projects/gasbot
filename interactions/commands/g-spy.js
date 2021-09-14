@@ -1,6 +1,6 @@
 module.exports = {
   name: 'g-spy',
-  contextMenu: 'Mark As g-spy',
+  contextMenu: 'Mark As G Spy',
   async execute(client, interaction) {
     const member = interaction.options.getMember('user');
 
