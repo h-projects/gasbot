@@ -8,7 +8,7 @@ module.exports = {
     const member = userId ? await message.guild.members.fetch(userId).catch(() => null) : null;
 
 
-    if (!member || userId === message.author.id || userId === client.user.id) {
+    if (!member || userId === message.author.id || member.user.bot) {
       return message.channel.send({
         embeds: [{
         title: 'Invalid User',

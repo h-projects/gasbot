@@ -4,7 +4,7 @@ module.exports = {
   async execute(client, interaction) {
     const member = interaction.options.getMember('user');
 
-    if (!member || member.id === interaction.user.id || member.id === client.user.id) {
+    if (!member || member.id === interaction.user.id || member.user.bot) {
       return interaction.reply({
         embeds: [{
         title: 'Invalid User',
