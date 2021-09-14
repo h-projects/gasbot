@@ -38,15 +38,16 @@ module.exports = {
       }
     ];
 
-    client.config.owners.includes(interaction.author) && buttons.push({
-      type: 'BUTTON',
-      style: 'SECONDARY',
-      label: 'Dev',
-      customId: `help:dev:${interaction.author}`,
-      disabled: interaction.value === 'dev',
-      emoji: '855104541967384616'
-    });
-
+    if (client.config.owners.includes(interaction.author)) {
+      buttons.push({
+        type: 'BUTTON',
+        style: 'SECONDARY',
+        label: 'Dev',
+        customId: `help:dev:${interaction.author}`,
+        disabled: interaction.value === 'dev',
+        emoji: '855104541967384616'
+      });
+    }
 
     const fields = [];
 
