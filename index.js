@@ -10,7 +10,7 @@ const client = new Client({
   }
 });
 
-client.db = new Database('database.sqlite3', { fileMustExist: true, verbose: console.log });
+client.db = new Database('database.sqlite3', { fileMustExist: true });
 
 client.config = require('./config.json');
 client.prefix = client.config.prefix;
