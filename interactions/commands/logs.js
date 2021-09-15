@@ -20,24 +20,13 @@ module.exports = {
       });
     }
 
-    if (channel.isText() && !channel.isThread()) {
-      client.db.prepare(statement).run({ id: interaction.guildId, logs: channel.id });
-      return interaction.reply({
-        embeds: [{
-          title: 'Loqs',
-          description: `The loqs channel is now ${channel}`,
-          color: client.config.color
-        }]
-      });
-    }
-
-    interaction.reply({
+    client.db.prepare(statement).run({ id: interaction.guildId, logs: channel.id });
+    return interaction.reply({
       embeds: [{
         title: 'Loqs',
-        description: 'You need to mention a valid text channel',
+        description: `The loqs channel is now ${channel}`,
         color: client.config.color
-      }],
-      ephemeral: true
+      }]
     });
   }
 };
