@@ -1,6 +1,7 @@
 module.exports = {
   name: 'g-spy',
   contextMenu: 'Mark As G Spy',
+  permissions: ['MANAGE_ROLES'],
   async execute(client, interaction) {
     const member = interaction.options.getMember('user');
 

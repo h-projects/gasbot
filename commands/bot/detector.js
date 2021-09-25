@@ -1,8 +1,7 @@
 module.exports = {
   name: 'detector',
   description: 'Manaqe the detection level',
-  permissions: 'MANAGE_MESSAGES',
-
+  permissions: ['MANAGE_MESSAGES'],
   async execute(client, message) {
     const level = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(message.guild.id)?.level ?? 1;
     const levelNames = { 0: 'Low', 1: 'Medium', 2: 'Hiqh' };

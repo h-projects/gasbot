@@ -1,6 +1,6 @@
 module.exports = {
   name: 'loqs',
-
+  permissions: ['MANAGE_CHANNELS'],
   async execute(client, interaction) {
     const database = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET logs = @logs WHERE id = @id' : 'INSERT INTO guilds (id, logs) VALUES (@id, @logs)';

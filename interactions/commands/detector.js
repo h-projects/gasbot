@@ -1,6 +1,6 @@
 module.exports = {
   name: 'detector',
-
+  permissions: ['MANAGE_MESSAGES'],
   async execute(client, interaction) {
     const input = interaction.options.getString('level');
     const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);

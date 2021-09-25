@@ -1,6 +1,6 @@
 module.exports = {
   name: 'detector',
-
+  permissions: ['MANAGE_MESSAGES'],
   async execute(client, interaction) {
     const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET level = @level WHERE id = @id' : 'INSERT INTO guilds (id, level) VALUES (@id, @level)';

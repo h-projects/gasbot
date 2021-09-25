@@ -1,6 +1,5 @@
 module.exports = {
   name: 'pinq',
-
   async execute(client, interaction) {
     interaction.reply({
       embeds: [{

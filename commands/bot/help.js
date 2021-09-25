@@ -2,7 +2,6 @@ module.exports = {
   name: 'help',
   description: 'Views all commands in the bot',
   hidden: true,
-
   async execute(client, message) {
     const buttons = [
       {

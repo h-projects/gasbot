@@ -13,6 +13,11 @@ module.exports = {
 
 
     if (!client.commands.has(command) || !message.content.startsWith(message.prefix)) return;
+
+    if (!message.member.permissions.has(command.permissions ?? 0)) {
+      return message.channel.send(`You need the \`${command.permissions}\` permission to use this command`);
+    }
+
     client.commands.get(command).execute(client, message, args);
   }
 };

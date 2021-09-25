@@ -1,7 +1,7 @@
 module.exports = {
   name: 'prefix',
   description: 'Manaqe the bot\'s prefix',
-
+  permissions: ['MANAGE_MESSAGES'],
   async execute(client, message, args) {
     const database = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(message.guildId);
     const statement = database ? 'UPDATE guilds SET prefix = @prefix WHERE id = @id' : 'INSERT INTO guilds (id, prefix) VALUES (@id, @prefix)';
