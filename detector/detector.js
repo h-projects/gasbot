@@ -19,6 +19,10 @@ module.exports = async (client, message, database, edited) => {
   const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(message.guildId)?.logs;
   const channel = message.guild.channels.cache.get(logs);
 
+  if (!channel.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
+    return true;
+  }
+
   channel?.send({
     embeds: [{
       title: 'G Removal',

@@ -21,6 +21,10 @@ module.exports = {
     const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(reaction.message.guildId)?.logs;
     const channel = reaction.message.guild.channels.cache.get(logs);
 
+    if (!channel.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
+      return;
+    }
+
     channel?.send({
       embeds: [{
         title: 'G Removal',
