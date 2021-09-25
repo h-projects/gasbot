@@ -1,4 +1,4 @@
-module.exports = async (client, message, database) => {
+module.exports = async (client, message, database, edited) => {
   const levelNames = { 0: 'low', 1: 'medium', 2: 'high' };
   const detect = require(`./levels/${levelNames[database?.level ?? 1]}.js`);
 
@@ -25,7 +25,7 @@ module.exports = async (client, message, database) => {
       url: 'https://h-projects.github.io/app/fuck-g/',
       color: client.config.color,
       fields: [
-        { name: 'Type', value: 'Messaqe' },
+        { name: 'Type', value: edited ? 'Edited Messaqe' : 'Messaqe' },
         { name: 'User', value: `${message.author} (${message.author.id})` },
         { name: 'Channel', value: `${message.channel} (${message.channelId})` },
         { name: 'Content', value: message.content }
