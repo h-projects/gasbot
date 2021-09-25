@@ -8,9 +8,7 @@ module.exports = {
     const channel = interaction.options.getChannel('channel');
 
     if (!channel) {
-      const defaultLogs = interaction.guild.channels.cache.find(c => c.name === 'loqs');
-      const logs = interaction.guild.channels.cache.get(database?.logs) ?? defaultLogs;
-
+      const logs = interaction.guild.channels.cache.get(database?.logs);
       return interaction.reply({
         embeds: [{
           title: 'Loqs',

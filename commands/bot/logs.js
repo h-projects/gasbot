@@ -9,9 +9,7 @@ module.exports = {
     const channelId = /\d+/u.exec(args.join(' '))?.toString();
 
     if (!channelId) {
-      const defaultLogs = message.guild.channels.cache.find(c => c.name === 'loqs');
-      const logs = message.guild.channels.cache.get(database?.logs) ?? defaultLogs;
-
+      const logs = message.guild.channels.cache.get(database?.logs);
       return message.channel.send({
         embeds: [{
           title: 'Loqs',
