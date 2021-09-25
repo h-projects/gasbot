@@ -35,4 +35,6 @@ module.exports = async (client, message, database, edited) => {
       }
     }]
   });
+
+  return true;
 };
