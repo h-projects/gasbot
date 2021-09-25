@@ -10,7 +10,7 @@ module.exports = async (client, message, database, edited) => {
     message.delete();
   }
 
-  if (message.channel.permissionsFor(client.user.id).has('SEND_MESSAGES')) {
+  if (message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
     message.channel.send(`${message.author}, don't use the bad letter!`).then(m => setTimeout(() => m.delete(), 4000));
   }
 
