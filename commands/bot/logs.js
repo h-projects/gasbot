@@ -15,7 +15,16 @@ module.exports = {
           title: 'Loqs',
           description: logs ? `The current loqs channel is ${logs}` : 'You don\'t have a loqs channel set up!',
           color: client.config.color
-        }]
+        }],
+        components: logs ? [{
+          type: 'ACTION_ROW',
+          components: [{
+            type: 'BUTTON',
+            style: 'SECONDARY',
+            label: 'Reset',
+            customId: `loqs::${message.author.id}`
+          }]
+        }] : null
       });
     }
 
@@ -28,6 +37,15 @@ module.exports = {
           title: 'Loqs',
           description: `The loqs channel is now ${channel}`,
           color: client.config.color
+        }],
+        components: [{
+          type: 'ACTION_ROW',
+          components: [{
+            type: 'BUTTON',
+            style: 'SECONDARY',
+            label: 'Reset',
+            customId: `loqs::${message.author.id}`
+          }]
         }]
       });
     }
