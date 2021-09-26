@@ -30,7 +30,7 @@ module.exports = {
 
         if (!interaction.member.permissions.has(component.permissions ?? 0)) {
           return interaction.reply({
-            content: `You need the \`${command.permissions}\` permission to use this component`,
+            content: `You need the \`${component.permissions}\` permission to use this component`,
             ephemeral: true
           });
         }
