@@ -28,7 +28,7 @@
     "implicit-arrow-linebreak": ["error", "beside"],
     "keyword-spacing": "error",
     "line-comment-position": ["error", { "position": "above" }],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "unix"],
     "lines-around-comment": "error",
     "no-alert": "error",
     "no-await-in-loop": "error",
