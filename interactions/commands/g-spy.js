@@ -8,9 +8,9 @@ module.exports = {
     if (!member || member.id === interaction.user.id || member.user.bot) {
       return interaction.reply({
         embeds: [{
-        title: 'Invalid User',
-        description: 'You need to mention a valid user!',
-        color: client.config.color
+          title: 'Invalid User',
+          description: 'You need to mention a valid user!',
+          color: client.config.color
         }],
         ephemeral: true
       });

@@ -10,9 +10,9 @@ module.exports = {
     if (!member || userId === message.author.id || member.user.bot) {
       return message.channel.send({
         embeds: [{
-        title: 'Invalid User',
-        description: 'You need to mention a valid user!',
-        color: client.config.color
+          title: 'Invalid User',
+          description: 'You need to mention a valid user!',
+          color: client.config.color
         }]
       });
     }
