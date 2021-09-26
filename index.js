@@ -10,6 +10,8 @@ const client = new Client({
   }
 });
 
+require('dotenv').config();
+
 client.db = new Database('database.sqlite3', { fileMustExist: true });
 
 client.config = require('./config.json');
@@ -24,5 +26,5 @@ loaders.forEach(file => {
 
 
 process.on('unhandledRejection', console.error);
-process.on('exit', client.db.close);
-client.login(client.config.token);
+process.on('exit', () => client.db.close());
+client.login(process.env.DISCORD_TOKEN);

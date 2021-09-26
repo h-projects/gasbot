@@ -1,5 +1,6 @@
 /node_modules
 database.sqlite3
+.env
 
 # General
 .DS_Store
