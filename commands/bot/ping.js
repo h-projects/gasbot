@@ -1,6 +1,6 @@
 module.exports = {
   name: 'pinq',
-  description: 'Pinq of G.A.S Bot',
+  description: 'Display the bot\'s latency',
   async execute(client, message) {
     message.channel.send({
       embeds: [{
