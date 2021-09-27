@@ -1,29 +1,36 @@
-const snoo = require('snoowrap');
-
-const r = new snoo({
-    userAgent: 'G.A.S-Bot<Next>',
-    clientId: '49z0Xcek_8DeB8LyDjsjyA',
-    clientSecret: process.env.REDDIT_TOKEN,
-    refreshToken: process.env.REDDIT_REFRESH
+const Snoowrap = require('snoowrap');
+const reddit = new Snoowrap({
+  userAgent: 'gasbot',
+  clientId: process.env.REDDIT_CLIENT_ID,
+  clientSecret: process.env.REDDIT_TOKEN,
+  refreshToken: process.env.REDDIT_REFRESH
 });
 
 module.exports = {
-    name: 'meme',
-    description: 'Shows you a meme!',
+  name: 'meme',
+  description: 'Displays a meme from Reddit',
 
-    async execute(client, message) {
-        const memeReddits = ['memes', 'dankmemes', 'comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'comedyheaven'];
-        const sourceReddit = memeReddits[Math.floor(Math.random() * memeReddits.length)];
+  async execute(client, message) {
+    const subreddits = ['memes', 'dankmemes', 'comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'comedyheaven'];
+    const randomSubreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 
-        const post = r.getHot(sourceReddit);
-        console.log(post);
+    const listing = (await reddit.getHot(randomSubreddit)).filter(p => !p.over_18 && p.is_reddit_media_domain && !p.is_video);
+    const post = listing[Math.floor(Math.random() * listing.length)];
 
-        message.channel.send({
-            embeds: [{
-                title: 'this is supposed to be real',
-                description: sourceReddit,
-                color: client.config.color
-            }]
-        });
-    }
+    message.channel.send({
+      embeds: [{
+        title: post.title.replaceAll(/g/giu, 'q'),
+        url: `https://reddit.com${post.permalink}`,
+        image: post.preview.images[0].variants.gif?.source ?? post.preview.images[0].source,
+        author: {
+          name: post.subreddit_name_prefixed
+        },
+        footer: {
+          text: `u/${post.author.name}`
+        },
+        timestamp: post.created * 1000,
+        color: client.config.color
+      }]
+    });
+  }
 };
