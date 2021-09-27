@@ -11,8 +11,7 @@ module.exports = {
     name: 'meme',
     description: 'Shows you a meme!',
 
-    // eslint-disable-next-line no-unused-vars
-    async execute(client, message, args) {
+    async execute(client, message) {
         const memeReddits = ['memes', 'dankmemes', 'comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'comedyheaven'];
         const sourceReddit = memeReddits[Math.floor(Math.random() * memeReddits.length)];
 
