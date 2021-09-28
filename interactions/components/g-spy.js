@@ -1,6 +1,7 @@
 module.exports = {
   name: 'g-spy',
   permissions: ['MANAGE_ROLES'],
+  botPermissions: ['MANAGE_ROLES'],
   async execute(client, interaction) {
     const member = await interaction.guild.members.fetch(interaction.value).catch(() => null);
     const role = interaction.guild.roles.cache.find(r => r.name === 'g-spy');
@@ -18,7 +19,6 @@ module.exports = {
     }
 
     member?.roles.remove(role);
-
     interaction.update({
       components: [{
         type: 'ACTION_ROW',

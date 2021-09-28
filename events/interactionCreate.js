@@ -9,9 +9,20 @@ module.exports = {
 
         if (!command || !interaction.inGuild()) return;
 
-        if (!interaction.member.permissions.has(command.permissions ?? 0)) {
+        if (!interaction.member.permissions.has(command.permissions ?? 0n)) {
           return interaction.reply({
             content: `You need the \`${command.permissions}\` permission to use this command`,
+            ephemeral: true
+          });
+        }
+
+        if (!interaction.guild.me.permissions.has(command.botPermissions ?? 0n)) {
+          return interaction.reply({
+            embeds: [{
+              title: 'Missinq Permissions',
+              description: `I need the \`${command.botPermissions}\` permission to use this command`,
+              color: client.config.color
+            }],
             ephemeral: true
           });
         }
@@ -28,9 +39,20 @@ module.exports = {
           return interaction.deferUpdate();
         }
 
-        if (!interaction.member.permissions.has(component.permissions ?? 0)) {
+        if (!interaction.member.permissions.has(component.permissions ?? 0n)) {
           return interaction.reply({
             content: `You need the \`${component.permissions}\` permission to use this component`,
+            ephemeral: true
+          });
+        }
+
+        if (!interaction.guild.me.permissions.has(component.botPermissions ?? 0n)) {
+          return interaction.reply({
+            embeds: [{
+              title: 'Missinq Permissions',
+              description: `I need the \`${component.botPermissions}\` permission to use this component`,
+              color: client.config.color
+            }],
             ephemeral: true
           });
         }

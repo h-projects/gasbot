@@ -2,6 +2,7 @@ module.exports = {
   name: 'g-spy',
   description: 'Mark an user as a g-spy',
   permissions: ['MANAGE_ROLES'],
+  botPermissions: ['MANAGE_ROLES'],
   async execute(client, message) {
     const userId = /\d+/u.exec(message.content)?.toString();
     const member = userId ? await message.guild.members.fetch(userId).catch(() => null) : null;
