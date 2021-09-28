@@ -2,7 +2,9 @@ module.exports = {
   name: 'messageCreate',
   once: false,
   async execute(message, client) {
-    if (message.author.bot || message.author.system || message.type !== 'DEFAULT' || !message.content) return;
+    if (message.author.bot || message.author.system || message.type !== 'DEFAULT' || !message.content) {
+      return;
+    }
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(message.guildId);
     message.prefix = database?.prefix ?? client.prefix;
 
@@ -10,7 +12,9 @@ module.exports = {
     const args = array.slice(1);
 
     const badLetterDetected = await require('../detector/detector.js')(client, message, database);
-    if (badLetterDetected || !client.commands.has(array[0]) || !message.content.startsWith(message.prefix)) return;
+    if (badLetterDetected || !client.commands.has(array[0]) || !message.content.startsWith(message.prefix) || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+      return;
+    }
 
     const command = client.commands.get(array[0]);
     if (!message.member.permissions.has(command.permissions ?? 0n)) {
