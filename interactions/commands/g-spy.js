@@ -21,6 +21,17 @@ module.exports = {
       reason: 'Found a g-spy'
     });
 
+    if (!role.editable) {
+      return interaction.reply({
+        embeds: [{
+          title: 'Missinq Permissions',
+          description: `Make sure ${role} is lower than my hiqhest role`,
+          color: client.config.color
+        }],
+        ephemeral: true
+      });
+    }
+
     member.roles.add(role);
     interaction.reply({
       embeds: [{
