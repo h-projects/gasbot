@@ -5,6 +5,8 @@ module.exports = {
   async execute(client, message, args) {
     const database = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(message.guildId);
     const statement = database ? 'UPDATE guilds SET prefix = @prefix WHERE id = @id' : 'INSERT INTO guilds (id, prefix) VALUES (@id, @prefix)';
+    const badLetters = require('../../detector/detection.json').join('');
+    const detector = RegExp(`[${badLetters}]`, 'giu');
 
     if (!args.join(' ')) {
       const prefix = database?.prefix ?? client.prefix;
@@ -17,11 +19,11 @@ module.exports = {
       });
     }
 
-    if (args.join(' ').length >= 10) {
+    if (args.join(' ').length >= 10 || detector.test(args.join(' '))) {
       return message.channel.send({
         embeds: [{
-          title: 'Prefix',
-          description: 'Prefix must be less than 10 characters lonq',
+          title: 'Invalid Prefix',
+          description: 'It must be shorter than 10 characters and it can\'t contain the bad letter',
           color: client.config.color
         }]
       });
