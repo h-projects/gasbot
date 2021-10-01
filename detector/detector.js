@@ -1,9 +1,16 @@
 module.exports = async (client, message, database, edited) => {
   const levelNames = { 0: 'low', 1: 'medium', 2: 'high' };
   const detect = require(`./levels/${levelNames[database?.level ?? 1]}.js`);
+  const whitelist = require('./whitelist.json');
+
+  for (const word of whitelist) {
+    if (RegExp(`${word}\\b`, 'iu').test(message.content)) {
+      return;
+    }
+  }
 
   if (!detect(message.content)) {
-    return false;
+    return;
   }
 
   if (message.deletable) {
@@ -20,7 +27,7 @@ module.exports = async (client, message, database, edited) => {
   const channel = message.guild.channels.cache.get(logs);
 
   if (!channel?.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
-    return true;
+    return;
   }
 
   channel?.send({
@@ -39,6 +46,4 @@ module.exports = async (client, message, database, edited) => {
       }
     }]
   });
-
-  return true;
 };

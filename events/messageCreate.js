@@ -11,8 +11,12 @@ module.exports = {
     const array = message.content.replace(message.prefix, '').split(' ');
     const args = array.slice(1);
 
-    const badLetterDetected = await require('../detector/detector.js')(client, message, database);
-    if (badLetterDetected || !client.commands.has(array[0]) || !message.content.startsWith(message.prefix) || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+    if (!message.content.startsWith(message.prefix)) {
+      await require('../detector/detector.js')(client, message, database);
+      return;
+    }
+
+    if (!client.commands.has(array[0]) || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
       return;
     }
 
