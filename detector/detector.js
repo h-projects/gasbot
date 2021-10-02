@@ -4,7 +4,7 @@ module.exports = async (client, message, database, edited) => {
   const whitelist = require('./whitelist.json');
 
   for (const word of whitelist) {
-    if (RegExp(`${word}\\b`, 'iu').test(message.content)) {
+    if (RegExp(`\\b${word}\\b`, 'iu').test(message.content)) {
       return;
     }
   }
