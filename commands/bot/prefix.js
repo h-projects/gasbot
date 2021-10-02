@@ -9,7 +9,7 @@ module.exports = {
     const detector = RegExp(`[${badLetters}]`, 'giu');
 
     if (!args.join(' ')) {
-      const prefix = database?.prefix ?? client.prefix;
+      const prefix = database?.prefix ?? client.config.prefix;
       return message.channel.send({
         embeds: [{
           title: 'Prefix',
@@ -29,7 +29,7 @@ module.exports = {
       });
     }
 
-    const newPrefix = args.join(' ') === client.prefix ? null : args.join(' ');
+    const newPrefix = args.join(' ') === client.config.prefix ? null : args.join(' ');
     client.db.prepare(statement).run({ id: message.guildId, prefix: newPrefix });
     message.channel.send({
       embeds: [{

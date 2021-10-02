@@ -4,7 +4,7 @@ module.exports = {
   async execute(client, interaction) {
     const fields = [];
     const category = client.commands.filter(command => command.category === interaction.value && !command.hidden);
-    const prefix = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId)?.prefix ?? client.prefix;
+    const prefix = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId)?.prefix ?? client.config.prefix;
 
     category.map(command => {
       fields.push({

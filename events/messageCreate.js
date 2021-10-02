@@ -6,7 +6,7 @@ module.exports = {
       return;
     }
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(message.guildId);
-    message.prefix = database?.prefix ?? client.prefix;
+    message.prefix = database?.prefix ?? client.config.prefix;
 
     const array = message.content.replace(message.prefix, '').split(' ');
     const args = array.slice(1);

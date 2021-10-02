@@ -19,9 +19,7 @@ const client = new Client({
 require('dotenv').config();
 
 client.db = new Database('database.sqlite3', { fileMustExist: true });
-
 client.config = require('./config.json');
-client.prefix = client.config.prefix;
 
 const { readdirSync } = require('fs');
 const loaders = readdirSync('./loaders').filter(file => file.endsWith('.js'));
