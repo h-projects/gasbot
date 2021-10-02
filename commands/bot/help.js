@@ -20,7 +20,7 @@ module.exports = {
       }
     ];
 
-    client.config.owners.includes(message.author.id) && buttons.push({
+    client.config.developers.includes(message.author.id) && buttons.push({
       type: 'BUTTON',
       style: 'SECONDARY',
       label: 'Dev',

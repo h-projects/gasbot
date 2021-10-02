@@ -48,7 +48,7 @@ module.exports = {
       }
     ];
 
-    if (client.config.owners.includes(interaction.author)) {
+    if (client.config.developers.includes(interaction.author)) {
       buttons.push({
         type: 'BUTTON',
         style: 'SECONDARY',
