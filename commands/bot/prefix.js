@@ -9,11 +9,10 @@ module.exports = {
     const detector = RegExp(`[${badLetters}]`, 'giu');
 
     if (!args.join(' ')) {
-      const prefix = database?.prefix ?? client.config.prefix;
       return message.channel.send({
         embeds: [{
           title: 'Prefix',
-          description: `The current prefix is \`${prefix}\``,
+          description: `The current prefix is \`${message.prefix}\``,
           color: client.config.color
         }]
       });
