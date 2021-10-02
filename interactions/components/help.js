@@ -17,7 +17,7 @@ module.exports = {
     const info = {
       bot: {
         title: '🤖 Bot Commands',
-        description: `${client.emojis.cache.get('855794356904656906')} Works in Slash Commands too!`
+        description: '<:new:855794356904656906> Works in Slash Commands too!'
       },
 
       fun: {
@@ -25,7 +25,7 @@ module.exports = {
       },
 
       dev: {
-        title: `${client.emojis.cache.get('855104541967384616')} Dev Tools`
+        title: '<:VerifiedBotDev:855104541967384616> Dev Tools'
       }
     };
 
