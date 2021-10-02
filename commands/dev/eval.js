@@ -3,7 +3,7 @@ module.exports = {
   description: 'Evaluate code inside G.A.S Bot',
 
   async execute(client, message, args) {
-    if (client.config.owners.includes(message.author.id)) {
+    if (client.config.developers.includes(message.author.id)) {
       //   try {
       //     const evaled = eval(args.join(" "));
       //     message.channel.send({

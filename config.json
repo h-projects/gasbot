@@ -1,6 +1,7 @@
 {
   "prefix": "ha!",
-  "owners": ["478823932913516544", "682617926909427743", "348591272476540928"],
+  "developers": ["478823932913516544", "682617926909427743", "348591272476540928"],
+  "specialThanksUsers": [],
   "invite": {
     "permissions": ["ADD_REACTIONS", "VIEW_CHANNEL", "SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "READ_MESSAGE_HISTORY", "USE_EXTERNAL_EMOJIS", "CHANGE_NICKNAME", "MANAGE_NICKNAMES", "MANAGE_ROLES"],
     "scopes": ["bot", "applications.commands"]
