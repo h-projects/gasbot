@@ -1,5 +1,7 @@
 const { Client } = require('discord.js');
 const Database = require('better-sqlite3');
+// eslint-disable-next-line no-unused-vars
+const { DJSPoster } = require('topgg-autoposter');
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MEMBERS'],
   partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
@@ -10,6 +12,10 @@ const client = new Client({
   }
 });
 
+// TODO: uncomment DJSPoster on release
+/*
+  DJSPoster(process.env.TOPGG_TOKEN, client);
+*/
 require('dotenv').config();
 
 client.db = new Database('database.sqlite3', { fileMustExist: true });
