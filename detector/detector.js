@@ -9,7 +9,7 @@ module.exports = async (client, message, database, edited) => {
     }
   }
 
-  if (!detect(message.content)) {
+  if (!detect(message.content.replaceAll('.', ''))) {
     return;
   }
 
