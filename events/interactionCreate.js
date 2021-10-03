@@ -28,7 +28,7 @@ module.exports = {
         }
 
         command.execute(client, interaction);
-      break;
+        break;
 
 
       case 'MESSAGE_COMPONENT':
@@ -58,7 +58,7 @@ module.exports = {
         }
 
         component.execute(client, interaction);
-      break;
+        break;
     }
   }
 };

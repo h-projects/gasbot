@@ -10,17 +10,17 @@ module.exports = {
       case 'low':
         description = 'Successfully set detection level to **Low**!';
         client.db.prepare(statement).run({ id: interaction.guildId, level: 0 });
-      break;
+        break;
 
       case 'medium':
         description = 'Successfully set detection level to **Medium**!';
         client.db.prepare(statement).run({ id: interaction.guildId, level: 1 });
-      break;
+        break;
 
       case 'hiqh':
         description = 'Successfully set detection level to **Hiqh**!';
         client.db.prepare(statement).run({ id: interaction.guildId, level: 2 });
-      break;
+        break;
     }
 
     interaction.update({
