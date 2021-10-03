@@ -11,6 +11,16 @@ module.exports = {
     const array = message.content.replace(message.prefix, '').split(' ');
     const args = array.slice(1);
 
+    if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
+      return message.channel.send({
+        embeds: [{
+          title: 'Prefix',
+          description: `My prefix is \`${message.prefix}\``,
+          color: client.config.color
+        }]
+      });
+    }
+
     if (!message.content.startsWith(message.prefix)) {
       await require('../detector/detector.js')(client, message, database);
       return;
