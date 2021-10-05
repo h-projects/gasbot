@@ -42,7 +42,7 @@ module.exports = async (client, message, database, edited) => {
         { name: 'Content', value: message.content }
       ],
       thumbnail: {
-        url: message.author.displayAvatarURL({ dynamic: true })
+        url: message.member.displayAvatarURL({ dynamic: true })
       }
     }]
   });

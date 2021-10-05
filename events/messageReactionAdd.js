@@ -20,6 +20,7 @@ module.exports = {
 
     const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(reaction.message.guildId)?.logs;
     const channel = reaction.message.guild.channels.cache.get(logs);
+    const member = await reaction.message.guild.members.fetch(user);
 
     if (!channel?.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
       return;
@@ -37,7 +38,7 @@ module.exports = {
           { name: 'Reaction', value: `${reaction.emoji}` }
         ],
         thumbnail: {
-          url: user.displayAvatarURL({ dynamic: true })
+          url: member.displayAvatarURL({ dynamic: true })
         }
       }]
     });

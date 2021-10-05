@@ -42,7 +42,7 @@ module.exports = {
           { name: 'Nickname', value: newMember.nickname }
         ],
         thumbnail: {
-          url: newMember.user.displayAvatarURL({ dynamic: true })
+          url: newMember.displayAvatarURL({ dynamic: true })
         }
       }]
     });
