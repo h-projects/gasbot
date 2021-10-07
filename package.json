@@ -4,9 +4,9 @@
   "description": "A bot to remove and protect you from the letter G.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint --fix --ignore-path .gitignore .",
-    "start": "node index.js"
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "start": "node ."
   },
   "repository": {
     "url": "https://github.com/h-projects/gasbot"
