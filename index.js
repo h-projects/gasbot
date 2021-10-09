@@ -11,9 +11,9 @@ const client = new Client({
   }
 });
 
+require('dotenv').config();
 // eslint-disable-next-line no-new
 new DJSPoster(process.env.TOPGG_TOKEN, client);
-require('dotenv').config();
 
 client.db = new Database('database.sqlite3', { fileMustExist: true });
 client.config = require('./config.json');
