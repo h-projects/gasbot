@@ -4,9 +4,9 @@ module.exports = {
   async execute(client, message) {
     message.channel.send({
       embeds: [{
-        title: 'juan',
+        title: 'Juan',
         image: {
-          url: 'https://cdn.discordapp.com/attachments/713675042143076356/896326660826206218/GAS_Bot-Juan-896326625355001896.png'
+          url: 'https://cdn.discordapp.com/attachments/729730142125031505/768799803009269771/hYrZ6QK.png'
         },
         color: client.config.color
       }]

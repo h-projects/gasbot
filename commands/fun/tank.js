@@ -1,12 +1,12 @@
 module.exports = {
   name: 'tank',
-  description: 'aden said <:NoSeventhLetter:721649657146769449>, use this',
+  description: 'aden said <:nog:676105350306594819>, use this',
   async execute(client, message) {
     message.channel.send({
       embeds: [{
-        title: 'the ultimate g destroyer',
+        title: 'THE ULTIMATE G DESTROYER',
         image: {
-          url: 'https://cdn.discordapp.com/attachments/713675042143076356/896324390252322826/GAS_Bot-Tank-896324388658499584.png'
+          url: 'https://cdn.discordapp.com/attachments/896351395484164116/896351420461240390/tank.png'
         },
         color: client.config.color
       }]

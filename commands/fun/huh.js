@@ -6,7 +6,7 @@ module.exports = {
       embeds: [{
         title: 'huh',
         image: {
-          url: 'https://cdn.discordapp.com/attachments/713675042143076356/896325444029267998/GAS_Bot-Huh-896325442695479297.png'
+          url: 'https://cdn.discordapp.com/attachments/896351890609143808/896352500062498846/huh.png'
         },
         color: client.config.color
       }]
