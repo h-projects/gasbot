@@ -23,28 +23,6 @@ module.exports = {
     }
 
     require('../detector/counter.js')(client, newMember.guild.id, newMember.id);
-
-    const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(newMember.guild.id)?.logs;
-    const channel = newMember.guild.channels.cache.get(logs);
-
-    if (!channel?.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
-      return;
-    }
-
-    channel?.send({
-      embeds: [{
-        title: 'G Removal',
-        url: 'https://h-projects.github.io/app/fuck-g/',
-        color: client.config.color,
-        fields: [
-          { name: 'Type', value: 'Nickname' },
-          { name: 'User', value: `${newMember} (${newMember.id})` },
-          { name: 'Nickname', value: newMember.nickname }
-        ],
-        thumbnail: {
-          url: newMember.displayAvatarURL({ dynamic: true })
-        }
-      }]
-    });
+    require('../detector/logger.js')({ client, member: newMember, type: 'Nickname' });
   }
 };

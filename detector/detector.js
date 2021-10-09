@@ -22,28 +22,5 @@ module.exports = async (client, message, database, edited) => {
   }
 
   require('./counter.js')(client, message.guildId, message.author.id);
-
-  const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(message.guildId)?.logs;
-  const channel = message.guild.channels.cache.get(logs);
-
-  if (!channel?.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
-    return;
-  }
-
-  channel?.send({
-    embeds: [{
-      title: 'G Removal',
-      url: 'https://h-projects.github.io/app/fuck-g/',
-      color: client.config.color,
-      fields: [
-        { name: 'Type', value: edited ? 'Edited Messaqe' : 'Messaqe' },
-        { name: 'User', value: `${message.author} (${message.author.id})` },
-        { name: 'Channel', value: `${message.channel} (${message.channelId})` },
-        { name: 'Content', value: message.content }
-      ],
-      thumbnail: {
-        url: message.member.displayAvatarURL({ dynamic: true })
-      }
-    }]
-  });
+  require('./logger.js')({ client, message, member: message.member, type: edited ? 'Edited Messaqe' : 'Messaqe' });
 };
