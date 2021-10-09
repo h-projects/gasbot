@@ -1,6 +1,6 @@
 {
   "name": "gasbot",
-  "version": "3.0.0-dev",
+  "version": "3.0.0",
   "description": "A bot to remove and protect you from the letter G.",
   "main": "index.js",
   "scripts": {

@@ -16,13 +16,13 @@ module.exports = {
             value: 'By default, it removes standalone G, and it can be chanqed to three different detection levels'
           },
           {
-            name: '<:VerifiedBotDev:855104541967384616> Developers',
+            name: '<:VerifiedBotDev:764412852395180032> Developers',
             value: developers,
             inline: true
           },
           {
             name: '💻 Technoloqy',
-            value: `<:gas_new:855788595830194196> [G.A.S Bot](${client.generateInvite(client.config.invite)}) \`v${require('../../package.json').version}\`\n<:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${require('discord.js').version}\`\n<:node:893952060205178941> [node.js](https://nodejs.org/) \`${process.version}\``,
+            value: `<:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(client.config.invite)}) \`v${require('../../package.json').version}\`\n<:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${require('discord.js').version}\`\n<:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\``,
             inline: true
           }
         ],

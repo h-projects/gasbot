@@ -17,7 +17,7 @@ module.exports = {
     const info = {
       bot: {
         title: '🤖 Bot Commands',
-        description: '<:new:855794356904656906> Works in Slash Commands too!'
+        description: '<:new:736926339113680976> Works in Slash Commands too!'
       },
 
       fun: {
@@ -25,7 +25,7 @@ module.exports = {
       },
 
       dev: {
-        title: '<:VerifiedBotDev:855104541967384616> Dev Tools'
+        title: '<:VerifiedBotDev:764412852395180032> Dev Tools'
       }
     };
 

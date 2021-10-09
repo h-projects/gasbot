@@ -31,7 +31,7 @@ module.exports = {
 
     message.channel.send({
       embeds: [{
-        title: '<:gas_new:855788595830194196> G.A.S Bot Help',
+        title: '<:gas:896370532751147028> G.A.S Bot Help',
         description: 'Press a button to view commands in that cateqory',
         color: client.config.color
       }],

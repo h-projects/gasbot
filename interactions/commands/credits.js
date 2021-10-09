@@ -7,7 +7,7 @@ module.exports = {
       embeds: [{
         title: 'Credits',
         fields: [
-          { name: '<:VerifiedBotDev:855104541967384616> Developers', value: developers, inline: true },
+          { name: '<:VerifiedBotDev:764412852395180032> Developers', value: developers, inline: true },
           { name: '⭐ Special Thanks', value: specialThanksUsers, inline: true }
         ],
         color: client.config.color

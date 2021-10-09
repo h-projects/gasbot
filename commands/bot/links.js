@@ -3,7 +3,7 @@ module.exports = {
   description: 'Useful bot links',
   async execute(client, message) {
     const nog = '<:nog:676105350306594819>';
-    const gas = '<:gas_new:855788595830194196>';
+    const gas = '<:gas:896370532751147028>';
     const aytchSoftware = '<:AytchSoftware:720949593696894996>';
     message.channel.send({
       embeds: [{
