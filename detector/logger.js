@@ -39,4 +39,23 @@ module.exports = async ({ client, message, member, reaction, type }) => {
       }
     }]
   });
+
+  if (logs === client.config.globalLogs) {
+    return;
+  }
+
+  fields.splice(1, 0, { name: 'Server', value: `${member.guild} (${member.guild.id})` });
+
+  const globalLogs = client.channels.cache.get(client.config.globalLogs);
+  globalLogs.send({
+    embeds: [{
+      title: 'G Removal',
+      url: 'https://h-projects.github.io/app/fuck-g/',
+      color: client.config.color,
+      fields,
+      thumbnail: {
+        url: member.displayAvatarURL({ dynamic: true })
+      }
+    }]
+  });
 };

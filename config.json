@@ -7,6 +7,7 @@
     "scopes": ["bot", "applications.commands"]
   },
   "guildLogs": "854374012667166750",
+  "globalLogs": "805472059790589974", 
   "support": "https://discord.gg/AbUw9fh",
   "gasServer": "https://discord.gg/qs9QDW5M5J",
   "docs": "https://h-projects.github.io/docs/bots/gas",
