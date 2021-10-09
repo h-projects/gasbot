@@ -8,6 +8,18 @@ module.exports = {
     }
 
     const [ action, ...statement ] = args;
+
+    if (action === 'backup') {
+      await client.db.backup(`./backup/backup-${Date.now()}.sqlite3`);
+      return message.channel.send({
+        embeds: [{
+          title: 'SQL',
+          description: 'Backup complete',
+          color: client.config.color
+        }]
+      });
+    }
+
     let db;
     let error;
     try {
