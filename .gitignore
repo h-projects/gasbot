@@ -1,4 +1,5 @@
 /node_modules
+/commands/dev/eval.js
 database.sqlite3
 .env
 
