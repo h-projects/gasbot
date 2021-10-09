@@ -1,0 +1,21 @@
+{
+  "version": "3.0.0",
+  "features": [
+    {
+      "name": "Full Rewrite",
+      "value": "The bot was fully rewritten from scratch"
+    },
+    {
+      "name": "New loqo",
+      "value": "The loqo and color was updated, it's a lot cleaner now!"
+    },
+    {
+      "name": "Slash Commands",
+      "value": "Some commands are now in Slash Commands!\nSome of them even are in Context Menus 👀"
+    },
+    {
+      "name": "Buttons",
+      "value": "Most commands now use buttons! This will make it a lot easier to use"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "prefix": "h!",
+  "developers": ["478823932913516544", "682617926909427743", "348591272476540928"],
+  "specialThanksUsers": ["429935667737264139", "444550944110149633", "528229753258246145", "299921398992994304", "692037827940057129", "603635602809946113"],
+  "invite": {
+    "permissions": ["ADD_REACTIONS", "VIEW_CHANNEL", "SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "READ_MESSAGE_HISTORY", "USE_EXTERNAL_EMOJIS", "CHANGE_NICKNAME", "MANAGE_NICKNAMES", "MANAGE_ROLES"],
+    "scopes": ["bot", "applications.commands"]
+  },
+  "guildLogs": "754681399499423764",
+  "globalLogs": "805472059790589974", 
+  "support": "https://discord.gg/AbUw9fh",
+  "gasServer": "https://discord.gg/qs9QDW5M5J",
+  "docs": "https://h-projects.github.io/docs/bots/gas",
+  "vote": "https://top.gg/bot/702116355842768927/vote",
+  "color": "RED"  
+}
