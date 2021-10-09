@@ -2,12 +2,14 @@ module.exports = {
   name: 'interactionCreate',
   once: false,
   async execute(interaction, client) {
+    if (!interaction.inCachedGuild()) return;
+
     switch (interaction.type) {
       case 'APPLICATION_COMMAND':
         const name = interaction.commandName;
         const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(cmd => name === cmd.contextMenu);
 
-        if (!command || !interaction.inGuild()) return;
+        if (!command) return;
 
         if (!interaction.member.permissions.has(command.permissions ?? 0n)) {
           return interaction.reply({
