@@ -2,6 +2,9 @@ module.exports = {
   name: 'guildDelete',
   once: false,
   async execute(guild, client) {
+    if (guild.available === false) {
+      return;
+    }
     const channel = client.channels.cache.get(client.config.guildLogs);
     channel.send({
       embeds: [{
