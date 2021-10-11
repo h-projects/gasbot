@@ -8,7 +8,7 @@ module.exports = {
         title: `Joined ${guild}`,
         fields: [
           { name: 'ID', value: guild.id },
-          { name: 'Owner', value: (await guild.fetchOwner()).user.tag },
+          { name: 'Owner', value: (await client.users.fetch(guild.ownerId)).tag },
           { name: 'Member Count', value: `${guild.memberCount}`, inline: true },
           { name: 'Server Count', value: `${client.guilds.cache.size}`, inline: true }
         ],
