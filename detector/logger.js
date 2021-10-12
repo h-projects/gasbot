@@ -24,21 +24,19 @@ module.exports = async ({ client, message, member, reaction, type }) => {
       break;
   }
 
-  if (!channel?.permissionsFor(client.user).has('SEND_MESSAGES') || !channel.viewable) {
-    return;
+  if (channel?.permissionsFor(client.user).has('SEND_MESSAGES') && channel.viewable) {
+    channel.send({
+      embeds: [{
+        title: 'G Removal',
+        url: 'https://h-projects.github.io/app/fuck-g/',
+        color: client.config.color,
+        fields,
+        thumbnail: {
+          url: member.displayAvatarURL({ dynamic: true })
+        }
+      }]
+    });
   }
-
-  channel?.send({
-    embeds: [{
-      title: 'G Removal',
-      url: 'https://h-projects.github.io/app/fuck-g/',
-      color: client.config.color,
-      fields,
-      thumbnail: {
-        url: member.displayAvatarURL({ dynamic: true })
-      }
-    }]
-  });
 
   if (logs === client.config.globalLogs) {
     return;
