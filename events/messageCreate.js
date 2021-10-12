@@ -2,7 +2,7 @@ module.exports = {
   name: 'messageCreate',
   once: false,
   async execute(message, client) {
-    if (message.author.bot || message.author.system || message.type !== 'DEFAULT' || !message.content) {
+    if (message.author.bot || message.author.system || message.type !== 'DEFAULT' && message.type !== 'REPLY' || !message.content) {
       return;
     }
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(message.guildId);
