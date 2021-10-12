@@ -3,7 +3,11 @@ module.exports = {
   once: false,
   async execute(reaction, user, client) {
     if (reaction.partial) {
-      await reaction.fetch();
+      try {
+        await reaction.fetch();
+      } catch {
+        return;
+      }
     }
 
     if (!reaction.message.channel.permissionsFor(client.user.id).has('MANAGE_MESSAGES') || reaction.emoji.name !== '🇬') {
