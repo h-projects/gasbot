@@ -2,7 +2,8 @@ module.exports = {
   name: 'messageCreate',
   once: false,
   async execute(message, client) {
-    if (message.author.bot || message.author.system || message.type !== 'DEFAULT' && message.type !== 'REPLY' || !message.content) {
+    const { author, type } = message;
+    if (author.bot || author.system || type !== 'DEFAULT' && type !== 'REPLY' || !message.content || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
       return;
     }
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(message.guildId);
@@ -26,7 +27,7 @@ module.exports = {
       return;
     }
 
-    if (!client.commands.has(array[0]) || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+    if (!client.commands.has(array[0])) {
       return;
     }
 
