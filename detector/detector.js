@@ -15,12 +15,12 @@ module.exports = async (client, message, database, edited) => {
 
   if (message.deletable) {
     message.delete();
+
+    require('./counter.js')(client, message.guildId, message.author.id);
+    require('./logger.js')({ client, message, member: message.member, type: edited ? 'Edited Messaqe' : 'Messaqe' });
   }
 
   if (message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
     message.channel.send(`${message.author}, don't use the bad letter!`).then(m => setTimeout(() => m.delete(), 4000));
   }
-
-  require('./counter.js')(client, message.guildId, message.author.id);
-  require('./logger.js')({ client, message, member: message.member, type: edited ? 'Edited Messaqe' : 'Messaqe' });
 };
