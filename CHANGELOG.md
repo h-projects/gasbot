@@ -1,3 +1,23 @@
+## [3.0.1](https://github.com/h-projects/gasbot/compare/3.0.0...3.0.1) (2021-10-15)
+
+
+### Bug Fixes
+
+* add `guild.available` checking `false` ([f2e44b8](https://github.com/h-projects/gasbot/commit/f2e44b89612ace2394669c9ec5b1cefff2201dcb))
+* **detector:** only trigger logger and counter if the bot has `MANAGE_MESSAGES` permission ([08c8d29](https://github.com/h-projects/gasbot/commit/08c8d29106bdf24a5ad279ba66c7f3af36dff51c))
+* **detector:** return if the reaction message was deleted ([641c19a](https://github.com/h-projects/gasbot/commit/641c19a09225b64e4cf546c541e5b75fae4b5092))
+* **logs:** don't return when there is not a log channel ([d3078db](https://github.com/h-projects/gasbot/commit/d3078db562b72328775ac90e20af838849d6f04c))
+* **logs:** don't set to 2 when the count is not set ([76cb992](https://github.com/h-projects/gasbot/commit/76cb99287f24392a70766e81fc1b521616502db1))
+* make replies don't return ([a7352b1](https://github.com/h-projects/gasbot/commit/a7352b1a3279e3d613a0a88b4a1bc2ea38432d88))
+* **message:** return if the bot doesn't have `SEND_MESSAGES` permission ([2ec00ed](https://github.com/h-projects/gasbot/commit/2ec00ed16f24e038965a712c06e3d912a008dcec))
+
+
+### Reverts
+
+* `guild.available check` ([1a1efb6](https://github.com/h-projects/gasbot/commit/1a1efb63a5d704118661f97808af631f2a4d2ad3))
+
+
+
 # 3.0.0 (2021-10-09)
 
 
