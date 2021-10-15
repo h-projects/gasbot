@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "Aytch Software",
-  "license": "MIT",
+  "license": "GPL-2.0-or-later",
   "dependencies": {
     "better-sqlite3": "^7.4.3",
     "bufferutil": "^4.0.5",
