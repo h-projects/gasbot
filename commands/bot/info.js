@@ -1,3 +1,5 @@
+const { stripIndents } = require('common-tags');
+
 module.exports = {
   name: 'info',
   description: 'Display information about the bot',
@@ -23,7 +25,11 @@ module.exports = {
           },
           {
             name: '💻 Technoloqy',
-            value: `<:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(client.config.invite)}) \`v${require('../../package.json').version}\`\n<:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${require('discord.js').version}\`\n<:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\``,
+            value: stripIndents`
+              <:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(client.config.invite)}) \`v${require('../../package.json').version}\`
+              <:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${require('discord.js').version}\`
+              <:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\`
+            `,
             inline: true
           }
         ],
