@@ -7,7 +7,7 @@ module.exports = {
     switch (interaction.type) {
       case 'APPLICATION_COMMAND':
         const name = interaction.commandName;
-        const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(cmd => name === cmd.contextMenu);
+        const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(cmd => cmd.contextMenu === name);
 
         if (!command) return;
 
