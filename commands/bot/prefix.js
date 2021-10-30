@@ -1,14 +1,13 @@
 module.exports = {
   name: 'prefix',
   description: 'Manaqe the bot\'s prefix',
-  permissions: ['MANAGE_MESSAGES'],
   async execute(client, message, args) {
     const database = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(message.guildId);
     const statement = database ? 'UPDATE guilds SET prefix = @prefix WHERE id = @id' : 'INSERT INTO guilds (id, prefix) VALUES (@id, @prefix)';
     const badLetters = require('../../detector/detection.json').join('');
     const detector = RegExp(`[${badLetters}]`, 'giu');
 
-    if (!args.join(' ')) {
+    if (!args.length) {
       return message.channel.send({
         embeds: [{
           title: 'Prefix',
@@ -16,6 +15,10 @@ module.exports = {
           color: client.config.color
         }]
       });
+    }
+
+    if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+      return message.channel.send('You need the `MANAGE_MESSAGES` permission to chanqe the prefix');
     }
 
     if (args.join(' ').length >= 10 || detector.test(args.join(' '))) {
