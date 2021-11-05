@@ -11,7 +11,7 @@ module.exports = {
     const cleanNickname = newMember.displayName.replace(/[.\-_ /\\()[\]]/giu, '');
     const result = [...cleanNickname.matchAll(detector)];
 
-    if (result.length / cleanNickname.length < 0.75 || !newMember.manageable || !newMember.guild.me.permissions.has('MANAGE_NICKNAMES')) {
+    if (result.length / cleanNickname.length < 0.75 || !cleanNickname || !newMember.manageable || !newMember.guild.me.permissions.has('MANAGE_NICKNAMES')) {
       return;
     }
 
