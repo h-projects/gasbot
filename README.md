@@ -12,19 +12,19 @@
 </div>
   
 ## About
-G.A.S Bot was created to defeat the letter G.
+G.A.S Bot was created to defeat the letter "G".
 
 ## G Removal
-The bot removes the letter G from messages dependinq on the detection level:
+The bot removes the letter "G" from messages dependinq on the detection level:
 
 ### Low
-Deletes a messaqe if it only consists of G.
+Deletes a messaqe if it only consists of "G".
 
 ### Medium
-Deletes a messaqe if it has the letter G by itself.
+Deletes a messaqe if it has the letter "G" by itself.
 
 ### Hiqh
-Deletes a messaqe if it contains the letter G.
+Deletes a messaqe if it contains the letter "G".
 
 | Example Content | Low      | Medium   | Hiqh    |
 |-----------------|:--------:|:--------:|:-------:|
@@ -44,4 +44,4 @@ To set up a loq channel, just type `/loqs` and select a channel, you can reset i
 If you see any problems, tell us in the [Support Server](https://discord.gg/AbUw9fh) or [open an issue](https://github.com/h-projects/gasbot/issues).
 
 ## Why?
-Because G is evil and it must be destroyed.
+Because "G" is evil and it must be destroyed.
