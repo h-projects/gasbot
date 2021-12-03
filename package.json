@@ -22,7 +22,7 @@
     "dotenv": "^10.0.0",
     "erlpack": "github:discord/erlpack",
     "snoowrap": "^1.23.0",
-    "topgg-autoposter": "^2.0.0",
+    "topgg-autoposter": "^2.0.1",
     "utf-8-validate": "^5.0.7",
     "zlib-sync": "^0.1.7"
   },
