@@ -1,6 +1,7 @@
 module.exports = async ({ client, message, member, reaction, type }) => {
   const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(member.guild.id)?.logs;
   const channel = member.guild.channels.cache.get(logs);
+  const content = message.content.length > 1024 ? `${message.content.substring(0, 1021).trimEnd()}...` : message.content;
 
   const fields = [
     { name: 'Type', value: type },
@@ -11,7 +12,7 @@ module.exports = async ({ client, message, member, reaction, type }) => {
     case 'Messaqe':
     case 'Edited Messaqe':
       fields.push({ name: 'Channel', value: `${message.channel} (${message.channelId})` });
-      fields.push({ name: 'Content', value: message.content });
+      fields.push({ name: 'Content', value: content });
       break;
 
     case 'Nickname':
