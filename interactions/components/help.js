@@ -2,17 +2,13 @@ module.exports = {
   name: 'help',
 
   async execute(client, interaction) {
-    const fields = [];
     const category = client.commands.filter(command => command.category === interaction.value && !command.hidden);
     const prefix = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId)?.prefix ?? client.config.prefix;
 
-    category.map(command => {
-      fields.push({
-        name: `\`${prefix}${command.name}\``,
-        value: command.description,
-        inline: false
-      });
-    });
+    const fields = category.map(command => ({
+      name: `\`${prefix}${command.name}\``,
+      value: command.description
+    }));
 
     const info = {
       bot: {
