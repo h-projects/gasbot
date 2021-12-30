@@ -7,7 +7,7 @@ module.exports = {
     }
 
     const { author, type } = newMessage;
-    if (author.bot || author.system || type !== 'DEFAULT' && type !== 'REPLY' || !newMessage.content || !newMessage.channel.permissionsFor(client.user).has('SEND_MESSAGES')){
+    if (author.bot || author.system || type !== 'DEFAULT' && type !== 'REPLY' || !newMessage.content || !newMessage.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
       return;
     }
 
