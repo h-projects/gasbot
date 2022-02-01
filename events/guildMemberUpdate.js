@@ -15,7 +15,7 @@ module.exports = {
       return;
     }
 
-    const newNickname = newMember.nickname.replace(detector, 'h');
+    const newNickname = newMember.displayName.replace(detector, 'h');
     newMember.setNickname(newNickname);
 
     if (newMember.user.bot) {
