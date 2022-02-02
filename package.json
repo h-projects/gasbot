@@ -19,7 +19,7 @@
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
     "discord.js": "^13.6.0",
-    "dotenv": "^15.0.0",
+    "dotenv": "^15.0.1",
     "erlpack": "github:discord/erlpack",
     "snoowrap": "^1.23.0",
     "topgg-autoposter": "^2.0.1",
