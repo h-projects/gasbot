@@ -23,7 +23,7 @@
     "erlpack": "github:discord/erlpack",
     "snoowrap": "^1.23.0",
     "topgg-autoposter": "^2.0.1",
-    "utf-8-validate": "^5.0.8",
+    "utf-8-validate": "^5.0.9",
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
