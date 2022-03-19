@@ -1,5 +1,5 @@
 module.exports = async (client, message, database, edited) => {
-  const levelNames = { 0: 'low', 1: 'medium', 2: 'high' };
+  const levelNames = ['low', 'medium', 'high'];
   const detect = require(`./levels/${levelNames[database?.level ?? 1]}.js`);
   const whitelist = require('./whitelist.json');
 
@@ -17,7 +17,12 @@ module.exports = async (client, message, database, edited) => {
     message.delete();
 
     require('./counter.js')(client, message.guildId, message.author.id);
-    require('./logger.js')({ client, message, member: message.member, type: edited ? 'Edited Messaqe' : 'Messaqe' });
+    require('./logger.js')({
+      client,
+      message,
+      member: message.member,
+      type: edited ? 'Edited Messaqe' : 'Messaqe'
+    });
   }
 
   if (message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {

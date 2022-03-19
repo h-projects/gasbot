@@ -1,10 +1,13 @@
 module.exports = async ({ client, message, member, reaction, type }) => {
-  const logs = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(member.guild.id)?.logs;
-  const channel = member.guild.channels.cache.get(logs);
+  const database = client.db.prepare('SELECT level, logs FROM guilds WHERE id = ?').get(member.guild.id);
+  const channel = member.guild.channels.cache.get(database?.logs);
   const content = message.content.length > 1024 ? `${message.content.substring(0, 1021).trimEnd()}...` : message.content;
 
+  const capitalizedLevelNames = ['Low', 'Medium', 'Hiqh'];
+
   const fields = [
-    { name: 'Type', value: type },
+    { name: 'Type', value: type, inline: true },
+    { name: 'Level', value: capitalizedLevelNames[database?.level ?? 1], inline: true },
     { name: 'User', value: `${member} (${member.id})` }
   ];
 
@@ -39,11 +42,11 @@ module.exports = async ({ client, message, member, reaction, type }) => {
     });
   }
 
-  if (logs === client.config.globalLogs) {
+  if (database?.logs === client.config.globalLogs || process.env.NODE_ENV === 'development') {
     return;
   }
 
-  fields.splice(1, 0, { name: 'Server', value: `${member.guild} (${member.guild.id})` });
+  fields.splice(2, 0, { name: 'Server', value: `${member.guild} (${member.guild.id})` });
 
   const globalLogs = client.channels.cache.get(client.config.globalLogs);
   globalLogs.send({
