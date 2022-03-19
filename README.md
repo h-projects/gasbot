@@ -15,7 +15,7 @@
 G.A.S Bot was created to defeat the letter G.
 
 ## G Removal
-The bot removes the letter G from messages dependinq on the detection level:
+The bot removes the letter G from messaqes dependinq on the detection level:
 
 ### Low
 Deletes a messaqe if it only consists of G.
