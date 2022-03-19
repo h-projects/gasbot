@@ -3,7 +3,11 @@ module.exports = {
   once: false,
   async execute(oldMessage, newMessage, client) {
     if (newMessage.partial) {
-      await newMessage.fetch();
+      try {
+        await newMessage.fetch();
+      } catch {
+        return console.warn('Failed to fetch partial edited message');
+      }
     }
 
     const { author, type } = newMessage;

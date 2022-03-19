@@ -6,7 +6,7 @@ module.exports = {
       try {
         await reaction.fetch();
       } catch {
-        return;
+        return console.warn('Failed to fetch partial reaction');
       }
     }
 
