@@ -1,8 +1,8 @@
 module.exports = {
   name: 'hromomento',
-  description: 'aqui tenemos un qran bro momento',
-  async execute(client, message) {
-    message.channel.send({
+
+  async execute(client, interaction) {
+    interaction.reply({
       embeds: [{
         title: 'hro momento',
         image: {
