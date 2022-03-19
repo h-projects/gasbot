@@ -4,7 +4,7 @@
     <a href="https://discord.com/api/oauth2/authorize?client_id=702116355842768927&permissions=470150208&scope=applications.commands%20bot"><img src="https://media.discordapp.net/attachments/800010867685064715/854782206304190464/GASlogo.png" alt="G.A.S Bot" width="128"/></a>
   </p>
   <p>
-    <a href="https://discord.gg/AbUw9fh"><img src="https://img.shields.io/discord/720009823458033705?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+    <a href="https://discord.gg/qyK6Q9t33a"><img src="https://img.shields.io/discord/720009823458033705?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
     <a href="https://github.com/h-projects/gasbot/releases/latest"><img src="https://img.shields.io/github/package-json/v/h-projects/gasbot" alt="Version" /></a>
     <a href="https://github.com/h-projects/gasbot/actions"><img src="https://github.com/h-projects/gasbot/workflows/Testing/badge.svg" alt="Build status" /></a>
     <a href="https://github.com/h-projects/gasbot/network/dependencies"><img src="https://img.shields.io/librariesio/github/h-projects/gasbot" alt="Dependencies" /></a>
@@ -41,7 +41,7 @@ The bot is maintained by [Aytch Software](https://h-projects.github.io) and uses
 To set up a loq channel, just type `/loqs` and select a channel, you can reset it from there too.
 
 ### Report a buq
-If you see any problems, tell us in the [Support Server](https://discord.gg/AbUw9fh) or [open an issue](https://github.com/h-projects/gasbot/issues).
+If you see any problems, tell us in the [Support Server](https://discord.gg/qyK6Q9t33a) or [open an issue](https://github.com/h-projects/gasbot/issues).
 
 ## Why?
 Because G is evil and it must be destroyed.

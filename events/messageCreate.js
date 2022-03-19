@@ -66,7 +66,8 @@ module.exports = {
             type: 'BUTTON',
             style: 'LINK',
             label: 'Support Server',
-            url: client.config.support
+            url: client.config.support,
+            emoji: '<:AytchSoftware:720949593696894996>'
           }]
         }]
       });
