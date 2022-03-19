@@ -1,3 +1,5 @@
+const { stripIndents } = require('common-tags');
+
 module.exports = {
   name: 'messageCreate',
   once: false,
@@ -42,6 +44,30 @@ module.exports = {
           title: 'Missinq Permissions',
           description: `I need the \`${command.botPermissions}\` permission to use this command`,
           color: client.config.color
+        }]
+      });
+    }
+
+    const chance = 10;
+    if (Math.floor(Math.random() * chance) + 1 === 1) {
+      message.channel.send({
+        embeds: [{
+          title: 'Switch to Slash Commands',
+          // TODO: decide a date, will probably be 2 months after release
+          description: stripIndents`
+            <:slash_command:954763657861033994> G.A.S Bot now has [Slash Commands](https://support.discord.com/hc/articles/1500000368501)!
+            Due to Discord chanqes, slash commands will be required startinq [timestamp], and text-based commands like the one you just ran will stop workinq.
+          `,
+          color: client.config.color
+        }],
+        components: [{
+          type: 'ACTION_ROW',
+          components: [{
+            type: 'BUTTON',
+            style: 'LINK',
+            label: 'Support Server',
+            url: client.config.support
+          }]
         }]
       });
     }
