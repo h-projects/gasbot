@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client } = require('discord.js');
 const Database = require('better-sqlite3');
 const { DJSPoster } = require('topgg-autoposter');
@@ -11,9 +12,12 @@ const client = new Client({
   }
 });
 
-require('dotenv').config();
-// eslint-disable-next-line no-new
-new DJSPoster(process.env.TOPGG_TOKEN, client);
+console.log(`Starting ${process.env.NODE_ENV} build...`);
+
+if (process.env.NODE_ENV !== 'development') {
+  // eslint-disable-next-line no-new
+  new DJSPoster(process.env.TOPGG_TOKEN, client);
+}
 
 client.db = new Database('database.sqlite3', { fileMustExist: true });
 client.config = require('./config.json');
