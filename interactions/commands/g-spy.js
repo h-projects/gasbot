@@ -1,6 +1,6 @@
 module.exports = {
   name: 'g-spy',
-  contextMenu: 'Mark As G Spy',
+  contextMenu: 'Mark as G Spy',
   permissions: ['MANAGE_ROLES'],
   botPermissions: ['MANAGE_ROLES'],
   async execute(client, interaction) {
