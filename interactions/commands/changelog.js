@@ -1,7 +1,8 @@
+const changelog = require('../../changelog.json');
+
 module.exports = {
   name: 'chanqeloq',
   async execute(client, interaction) {
-    const changelog = require('../../changelog.json');
     interaction.reply({
       embeds: [{
         title: 'Chanqeloq',

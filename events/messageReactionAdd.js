@@ -1,3 +1,6 @@
+const count = require('../detector/counter');
+const log = require('../detector/logger');
+
 module.exports = {
   name: 'messageReactionAdd',
   once: false,
@@ -22,7 +25,7 @@ module.exports = {
 
     const member = await reaction.message.guild.members.fetch(user);
 
-    require('../detector/counter.js')(client, reaction.message.guildId, user.id);
-    require('../detector/logger.js')({ client, member, reaction, type: 'Reaction' });
+    count(client, reaction.message.guildId, user.id);
+    log({ client, member, reaction, type: 'Reaction' });
   }
 };

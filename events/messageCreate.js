@@ -1,3 +1,4 @@
+const detect = require('../detector');
 const { stripIndents } = require('common-tags');
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
     }
 
     if (!message.content.startsWith(message.prefix)) {
-      await require('../detector/detector.js')(client, message, database);
+      await detect(client, message, database);
       return;
     }
 

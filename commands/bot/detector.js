@@ -4,7 +4,7 @@ module.exports = {
   permissions: ['MANAGE_MESSAGES'],
   async execute(client, message) {
     const level = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(message.guild.id)?.level ?? 1;
-    const levelNames = { 0: 'Low', 1: 'Medium', 2: 'Hiqh' };
+    const levelNames = ['Low', 'Medium', 'Hiqh'];
 
     message.channel.send({
       embeds: [{

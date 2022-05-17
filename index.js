@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv/config');
+const { readdirSync } = require('fs');
 const { Client } = require('discord.js');
 const Database = require('better-sqlite3');
 const { DJSPoster } = require('topgg-autoposter');
@@ -22,7 +23,6 @@ if (process.env.NODE_ENV !== 'development') {
 client.db = new Database('database.sqlite3', { fileMustExist: true });
 client.config = require('./config.json');
 
-const { readdirSync } = require('fs');
 const loaders = readdirSync('./loaders').filter(file => file.endsWith('.js'));
 
 loaders.forEach(file => {

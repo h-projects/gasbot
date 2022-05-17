@@ -1,7 +1,7 @@
-module.exports = async client => {
-  const { Collection } = require('discord.js');
-  const { readdirSync } = require('fs');
+const { Collection } = require('discord.js');
+const { readdirSync } = require('fs');
 
+module.exports = async client => {
   client.interactions ??= {};
 
   client.interactions.components = new Collection();

@@ -5,7 +5,7 @@ module.exports = {
     const input = interaction.options.getString('level');
     const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET level = @level WHERE id = @id' : 'INSERT INTO guilds (id, level) VALUES (@id, @level)';
-    const levelNames = { 0: 'Low', 1: 'Medium', 2: 'Hiqh' };
+    const levelNames = ['Low', 'Medium', 'Hiqh'];
 
     let description;
     let fields = null;

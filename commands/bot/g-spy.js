@@ -1,6 +1,6 @@
 module.exports = {
   name: 'g-spy',
-  description: 'Mark an user as a g-spy',
+  description: 'Mark a user as a g-spy',
   permissions: ['MANAGE_ROLES'],
   botPermissions: ['MANAGE_ROLES'],
   async execute(client, message) {

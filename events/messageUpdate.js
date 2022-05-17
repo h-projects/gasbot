@@ -1,3 +1,5 @@
+const detect = require('../detector');
+
 module.exports = {
   name: 'messageUpdate',
   once: false,
@@ -16,6 +18,6 @@ module.exports = {
     }
 
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(newMessage.guildId);
-    require('../detector/detector.js')(client, newMessage, database, true);
+    detect(client, newMessage, database, true);
   }
 };

@@ -1,3 +1,8 @@
+const badLetters = require('../detector/detection.json').join();
+const detector = RegExp(`[${badLetters}]`, 'giu');
+const count = require('../detector/counter');
+const log = require('../detector/logger');
+
 module.exports = {
   name: 'guildMemberUpdate',
   once: false,
@@ -6,8 +11,6 @@ module.exports = {
       await newMember.fetch();
     }
 
-    const badLetters = require('../detector/detection.json').join('');
-    const detector = RegExp(`[${badLetters}]`, 'giu');
     const cleanNickname = newMember.displayName.replace(/[.\-_ /\\()[\]]/giu, '');
     const result = [...cleanNickname.matchAll(detector)];
 
@@ -22,7 +25,7 @@ module.exports = {
       return;
     }
 
-    require('../detector/counter.js')(client, newMember.guild.id, newMember.id);
-    require('../detector/logger.js')({ client, member: newMember, type: 'Nickname' });
+    count(client, newMember.guild.id, newMember.id);
+    log({ client, member: newMember, type: 'Nickname' });
   }
 };

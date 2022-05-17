@@ -1,4 +1,3 @@
-module.exports = content => {
-  const badLetters = require('../detection.json').join('');
-  return RegExp(`[${badLetters}]`, 'iu').test(content);
-};
+const badLetters = require('../detection.json').join('');
+
+module.exports = content => RegExp(`[${badLetters}]`, 'iu').test(content);

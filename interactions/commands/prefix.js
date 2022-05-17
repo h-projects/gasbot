@@ -1,10 +1,11 @@
+const badLetters = require('../../detector/detection.json').join('');
+const detector = RegExp(`[${badLetters}]`, 'giu');
+
 module.exports = {
   name: 'prefix',
   async execute(client, interaction) {
     const database = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET prefix = @prefix WHERE id = @id' : 'INSERT INTO guilds (id, prefix) VALUES (@id, @prefix)';
-    const badLetters = require('../../detector/detection.json').join('');
-    const detector = RegExp(`[${badLetters}]`, 'giu');
 
     const prefix = interaction.options.getString('prefix');
 

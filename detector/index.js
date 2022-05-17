@@ -1,7 +1,10 @@
+const count = require('./counter');
+const log = require('./logger');
+const whitelist = require('./whitelist.json');
+
 module.exports = async (client, message, database, edited) => {
   const levelNames = ['low', 'medium', 'high'];
   const detect = require(`./levels/${levelNames[database?.level ?? 1]}.js`);
-  const whitelist = require('./whitelist.json');
 
   for (const word of whitelist) {
     if (RegExp(`\\b${word}\\b`, 'iu').test(message.content)) {
@@ -16,8 +19,8 @@ module.exports = async (client, message, database, edited) => {
   if (message.deletable) {
     message.delete();
 
-    require('./counter.js')(client, message.guildId, message.author.id);
-    require('./logger.js')({
+    count(client, message.guildId, message.author.id);
+    log({
       client,
       message,
       member: message.member,
