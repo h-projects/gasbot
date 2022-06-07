@@ -30,7 +30,7 @@ module.exports = {
 
     const channel = message.guild.channels.cache.get(channelId);
 
-    if (channel?.isText() && !channel?.isThread()) {
+    if (channel?.isText() && !channel.isVoice() && !channel.isThread()) {
       client.db.prepare(statement).run({ id: message.guildId, logs: channelId });
       return message.channel.send({
         embeds: [{
