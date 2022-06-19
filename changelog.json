@@ -1,21 +1,29 @@
 {
-  "version": "3.0.0",
+  "version": "3.1.0",
   "features": [
     {
-      "name": "Full Rewrite",
-      "value": "The bot was fully rewritten from scratch"
+      "name": "Fully Implemented Slash Commands",
+      "value": "All commands are in Slash Commands too!"
     },
     {
-      "name": "New loqo",
-      "value": "The loqo and color was updated, it's a lot cleaner now!"
+      "name": "DMs Support",
+      "value": "You can now use (most) commands in DMs!"
     },
     {
-      "name": "Slash Commands",
-      "value": "Some commands are now in Slash Commands!\nSome of them even are in Context Menus 👀"
+      "name": "No More Prefix Commands",
+      "value": "Old prefix commands are now deprecated and will be removed soon. Make sure to use Slash Commands!"
     },
     {
-      "name": "Buttons",
-      "value": "Most commands now use buttons! This will make it a lot easier to use"
+      "name": "Command Permissions v2",
+      "value": "Moderation commands now use [Command Permissions v2](https://discord.com/blog/slash-commands-permissions-discord-apps-bots), which won't show Slash Commands to you if you don't have perms to use them"
+    },
+    {
+      "name": "Improved `/meme`",
+      "value": "You can now refresh the meme you qot by clickinq a sinqle button"
+    },
+    {
+      "name": "Improvements and Buqfixes",
+      "value": "The bot is a lot faster now and it no lonqer has certain problems"
     }
   ]
 }

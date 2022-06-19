@@ -1,3 +1,31 @@
+# [3.1.0](https://github.com/h-projects/gasbot/compare/3.0.1...3.1.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* **commands:** return an error if it was thrown ([d5f075f](https://github.com/h-projects/gasbot/commit/d5f075f6954bed002a580ed7080ca1f3d10cdb65))
+* **detector:** return if the content only has whitespaces ([4be1a1f](https://github.com/h-projects/gasbot/commit/4be1a1f569809db33f63ae7dd7f23e0ed98adf29))
+* **detector:** return if there is no clean nickname ([9b358e4](https://github.com/h-projects/gasbot/commit/9b358e43a821f8fae93b6dd76120a377942d7ada))
+* **detector:** use displayName instead of nickname ([7dfebdd](https://github.com/h-projects/gasbot/commit/7dfebdd7b456a20875a737bc906ffd005e78acd7))
+* **info:** use correct invite link ([d472e4b](https://github.com/h-projects/gasbot/commit/d472e4bec9607702fdc57a6ef1b34ea5ab7dc0e4))
+* **logs:** handle messages over 1024 chars properly ([586059c](https://github.com/h-projects/gasbot/commit/586059c18da616f3eb73c26f2073c6899cebcb5f))
+* **messageUpdate:** handle partial fetching ([2794264](https://github.com/h-projects/gasbot/commit/2794264708c818ec2ffc00a1a4ac482016dfea53))
+* **prefix:** only check permissions when no prefix was provided ([6e90853](https://github.com/h-projects/gasbot/commit/6e908538e52fe1895223104b3ff78be46efaf5b4))
+
+
+### Features
+
+* add `prefix` slash command ([8bdfb45](https://github.com/h-projects/gasbot/commit/8bdfb4566e21728df77ade84bfd6fd15f995135f))
+* add h slash command ([3095625](https://github.com/h-projects/gasbot/commit/30956258b87a749900b2c38d7b687908432bb70c))
+* add hromomento slash command ([f37c2d7](https://github.com/h-projects/gasbot/commit/f37c2d7d68a1fb15d84d32445e2d28d0c978cb4b))
+* add meme slash command ([bd613bc](https://github.com/h-projects/gasbot/commit/bd613bc1fbcce45752df250473c5b4ac5b149bbe))
+* add missing slash commands ([e07e35d](https://github.com/h-projects/gasbot/commit/e07e35df8f34f1d40f92224c6d794959621afb33))
+* add tank slash command ([e09b190](https://github.com/h-projects/gasbot/commit/e09b1900b10ffee568a7218ac746f1cf78d333d3))
+* command permissions v2 ([28021d2](https://github.com/h-projects/gasbot/commit/28021d207c1b7427dc652411a38d9c6092e80f4e))
+* **logs:** display detection level ([a6cc641](https://github.com/h-projects/gasbot/commit/a6cc6412315880c67b983d6b82371845290b415a))
+
+
+
 ## [3.0.1](https://github.com/h-projects/gasbot/compare/3.0.0...3.0.1) (2021-10-15)
 
 
