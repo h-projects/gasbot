@@ -54,10 +54,9 @@ module.exports = {
       message.channel.send({
         embeds: [{
           title: 'Switch to Slash Commands',
-          // TODO: decide a date, will probably be 2 months after release
           description: stripIndents`
             <:slash_command:954763657861033994> G.A.S Bot now has [Slash Commands](https://support.discord.com/hc/articles/1500000368501)!
-            Due to Discord chanqes, slash commands will be required startinq [timestamp], and text-based commands like the one you just ran will stop workinq.
+            Due to Discord chanqes, Slash Commands will be required startinq <t:1662033600:d>, and text-based commands like the one you just ran will stop workinq.
           `,
           color: client.config.color
         }],
