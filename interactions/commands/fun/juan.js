@@ -1,6 +1,6 @@
-module.exports = {
-  name: 'juan',
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
+module.exports = {
   async execute(client, interaction) {
     interaction.reply({
       embeds: [{
@@ -11,5 +11,9 @@ module.exports = {
         color: client.config.color
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('juan')
+    .setDescription('🐴')
 };

@@ -1,7 +1,7 @@
+const { SlashCommandBuilder, ContextMenuCommandBuilder } = require('@discordjs/builders');
+const { PermissionFlagsBits, ApplicationCommandType } = require('discord-api-types/v10');
+
 module.exports = {
-  name: 'g-spy',
-  contextMenu: 'Mark as G Spy',
-  permissions: ['MANAGE_ROLES'],
   botPermissions: ['MANAGE_ROLES'],
   async execute(client, interaction) {
     const member = interaction.options.getMember('user');
@@ -50,6 +50,21 @@ module.exports = {
         }]
       }]
     });
-  }
+  },
 
+  data: new SlashCommandBuilder()
+    .setName('g-spy')
+    .setDescription('Mark a user as a g-spy')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('User to mark as g-spy')
+    ),
+
+  contextData: new ContextMenuCommandBuilder()
+    .setName('Mark as G Spy')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+    .setDMPermission(false)
+    .setType(ApplicationCommandType.User)
 };

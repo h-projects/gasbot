@@ -1,8 +1,10 @@
-const badLetters = require('../../detector/detection.json').join('');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { PermissionFlagsBits } = require('discord-api-types/v10');
+
+const badLetters = require('../../../detector/detection.json').join('');
 const detector = RegExp(`[${badLetters}]`, 'giu');
 
 module.exports = {
-  name: 'prefix',
   async execute(client, interaction) {
     const database = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET prefix = @prefix WHERE id = @id' : 'INSERT INTO guilds (id, prefix) VALUES (@id, @prefix)';
@@ -16,13 +18,6 @@ module.exports = {
           description: `The current prefix is \`${database?.prefix ?? client.config.prefix}\``,
           color: client.config.color
         }]
-      });
-    }
-
-    if (!interaction.member.permissions.has('MANAGE_MESSAGES')) {
-      return interaction.reply({
-        content: 'You need the `MANAGE_MESSAGES` permission to chanqe the prefix',
-        ephemeral: true
       });
     }
 
@@ -46,5 +41,16 @@ module.exports = {
         color: client.config.color
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('prefix')
+    .setDescription('Manaqe the bot\'s prefix')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+    .setDMPermission(false)
+    .addStringOption(option => option
+      .setName('prefix')
+      .setDescription('The new prefix to set')
+      .setRequired(false)
+    )
 };

@@ -1,7 +1,7 @@
-const changelog = require('../../changelog.json');
+const changelog = require('../../../changelog.json');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-  name: 'chanqeloq',
   async execute(client, interaction) {
     interaction.reply({
       embeds: [{
@@ -14,5 +14,9 @@ module.exports = {
         fields: changelog.features
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('chanqeloq')
+    .setDescription('Check the latest version')
 };

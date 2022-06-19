@@ -15,9 +15,12 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
     "better-sqlite3": "^7.5.3",
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
+    "discord-api-types": "^0.33.5",
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
     "erlpack": "github:discord/erlpack",

@@ -1,9 +1,9 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const { stripIndents } = require('common-tags');
 const { version } = require('discord.js');
-const { version: botVersion } = require('../../package.json');
+const { version: botVersion } = require('../../../package.json');
 
 module.exports = {
-  name: 'info',
   async execute(client, interaction) {
     const developers = (await Promise.all(client.config.developers.map(async id => (await client.users.fetch(id)).tag))).join('\n');
     interaction.reply({
@@ -39,5 +39,9 @@ module.exports = {
         }
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('info')
+    .setDescription('Display information about the bot')
 };

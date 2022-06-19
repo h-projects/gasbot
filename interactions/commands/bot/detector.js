@@ -1,6 +1,7 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { PermissionFlagsBits } = require('discord-api-types/v10');
+
 module.exports = {
-  name: 'detector',
-  permissions: ['MANAGE_MESSAGES'],
   async execute(client, interaction) {
     const input = interaction.options.getString('level');
     const database = client.db.prepare('SELECT level FROM guilds WHERE id = ?').get(interaction.guildId);
@@ -69,5 +70,28 @@ module.exports = {
         ]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('detector')
+    .setDescription('Manaqe the detection level')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+    .setDMPermission(false)
+    .addStringOption(option => option
+      .setName('level')
+      .setDescription('The new detection level')
+      .setRequired(false)
+      .addChoices(
+        {
+          name: 'Low',
+          value: 'low'
+        }, {
+          name: 'Medium',
+          value: 'medium'
+        }, {
+          name: 'Hiqh',
+          value: 'hiqh'
+        }
+      )
+    )
 };

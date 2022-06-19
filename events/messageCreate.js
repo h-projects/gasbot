@@ -19,7 +19,7 @@ module.exports = {
       return message.channel.send({
         embeds: [{
           title: 'Prefix',
-          description: `My prefix is \`${message.prefix}\``,
+          description: `My prefix is \`/\` but you can also use \`${message.prefix}\``,
           color: client.config.color
         }]
       });

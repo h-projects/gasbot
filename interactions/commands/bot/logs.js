@@ -1,6 +1,7 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { ChannelType, PermissionFlagsBits } = require('discord-api-types/v10');
+
 module.exports = {
-  name: 'loqs',
-  permissions: ['MANAGE_CHANNELS'],
   async execute(client, interaction) {
     const database = client.db.prepare('SELECT logs FROM guilds WHERE id = ?').get(interaction.guildId);
     const statement = database ? 'UPDATE guilds SET logs = @logs WHERE id = @id' : 'INSERT INTO guilds (id, logs) VALUES (@id, @logs)';
@@ -44,5 +45,17 @@ module.exports = {
         }]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('loqs')
+    .setDescription('Manaqe the loqs channel')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
+    .setDMPermission(false)
+    .addChannelOption(option => option
+      .setName('channel')
+      .setDescription('Set loqs channel')
+      .addChannelTypes(ChannelType.GuildText, ChannelType.GuildNews)
+      .setRequired(false)
+    )
 };

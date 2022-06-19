@@ -6,7 +6,7 @@ module.exports = {
       embeds: [{
         title: 'polish toilet',
         image: {
-          url: 'https://cdn.discordapp.com/attachments/896351890609143808/896351917872136222/htoilet.gif'
+          url: 'https://c.tenor.com/4vgPhxKQw_MAAAAS/polish-toilet.gif'
         },
         color: client.config.color
       }]

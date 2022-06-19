@@ -1,6 +1,5 @@
 module.exports = {
   name: 'loqs',
-  permissions: ['MANAGE_CHANNELS'],
   async execute(client, interaction) {
     client.db.prepare('UPDATE guilds SET logs = @logs WHERE id = @id').run({ id: interaction.guildId, logs: null });
     interaction.update({

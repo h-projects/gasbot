@@ -1,5 +1,6 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-  name: 'pinq',
   async execute(client, interaction) {
     interaction.reply({
       embeds: [{
@@ -7,5 +8,9 @@ module.exports = {
         description: `**Ponq!** ${client.ws.ping}ms`
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('pinq')
+    .setDescription('Display the bot\'s latency')
 };

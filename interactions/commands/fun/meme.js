@@ -1,3 +1,4 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const Snoowrap = require('snoowrap');
 const reddit = new Snoowrap({
   userAgent: 'gasbot',
@@ -7,8 +8,6 @@ const reddit = new Snoowrap({
 });
 
 module.exports = {
-  name: 'meme',
-
   async execute(client, interaction) {
     const subreddits = ['memes', 'dankmemes', 'comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'comedyheaven'];
     const randomSubreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
@@ -40,5 +39,9 @@ module.exports = {
         }]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('meme')
+    .setDescription('Displays a extremely funny hilarious meme from Reddit')
 };

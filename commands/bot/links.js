@@ -5,13 +5,16 @@ module.exports = {
     const nog = '<:nog:676105350306594819>';
     const gas = '<:gas:896370532751147028>';
     const aytchSoftware = '<:AytchSoftware:720949593696894996>';
+
+    await client.application.fetch();
+
     message.channel.send({
       embeds: [{
         title: 'Links',
         fields: [
           {
             name: `Want to remove ${nog} in your server?`,
-            value: `${gas} Invite the bot [here](${client.generateInvite(client.config.invite)})`
+            value: `${gas} Invite the bot [here](${client.generateInvite(client.application.installParams ?? client.config.invite)})`
           },
           {
             name: 'Want to support the bot?',

@@ -1,6 +1,7 @@
+const { SlashCommandBuilder, ContextMenuCommandBuilder } = require('@discordjs/builders');
+const { ApplicationCommandType } = require('discord-api-types/v10');
+
 module.exports = {
-  name: 'removed',
-  contextMenu: 'Removed Count',
   async execute(client, interaction) {
     const member = interaction.options.getMember('user') ?? interaction.member;
     const user = interaction.options.getUser('user');
@@ -31,5 +32,20 @@ module.exports = {
         ]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('removed')
+    .setDescription('Check how many bad letters were removed')
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('User to check')
+      .setRequired(false)
+    ),
+
+  contextData: new ContextMenuCommandBuilder()
+    .setName('Removed Count')
+    .setDMPermission(false)
+    .setType(ApplicationCommandType.User)
 };

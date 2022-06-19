@@ -2,22 +2,20 @@ module.exports = {
   name: 'interactionCreate',
   once: false,
   async execute(interaction, client) {
-    if (!interaction.inCachedGuild()) return;
+    if (interaction.inRawGuild()) {
+      return interaction.reply({
+        content: 'The bot wasn\'t invited correctly, please invite it with the correct scopes',
+        ephemeral: true
+      });
+    }
 
     if (interaction.isApplicationCommand()) {
       const name = interaction.commandName;
-      const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(c => c.contextMenu === name);
+      const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(c => c.contextData?.name === name);
 
       if (!command) return;
 
-      if (!interaction.member.permissions.has(command.permissions ?? 0n)) {
-        return interaction.reply({
-          content: `You need the \`${command.permissions}\` permission to use this command`,
-          ephemeral: true
-        });
-      }
-
-      if (!interaction.guild.me.permissions.has(command.botPermissions ?? 0n)) {
+      if (interaction.guild && !interaction.guild.me.permissions.has(command.botPermissions ?? 0n)) {
         return interaction.reply({
           embeds: [{
             title: 'Missinq Permissions',
@@ -28,10 +26,14 @@ module.exports = {
         });
       }
 
+      if (!client.config.developers.includes(interaction.user.id) && command.category === 'dev') {
+        return;
+      }
+
       return command.execute(client, interaction);
     }
 
-    if (interaction.isMessageComponent) {
+    if (interaction.isMessageComponent()) {
       [interaction.name, interaction.value, interaction.author] = interaction.customId.split(':');
       const component = client.interactions.components.get(interaction.name);
 
@@ -39,14 +41,7 @@ module.exports = {
         return interaction.deferUpdate();
       }
 
-      if (!interaction.member.permissions.has(component.permissions ?? 0n)) {
-        return interaction.reply({
-          content: `You need the \`${component.permissions}\` permission to use this component`,
-          ephemeral: true
-        });
-      }
-
-      if (!interaction.guild.me.permissions.has(component.botPermissions ?? 0n)) {
+      if (interaction.guild && !interaction.guild.me.permissions.has(component.botPermissions ?? 0n)) {
         return interaction.reply({
           embeds: [{
             title: 'Missinq Permissions',

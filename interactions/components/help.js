@@ -1,28 +1,17 @@
 module.exports = {
   name: 'help',
-
   async execute(client, interaction) {
-    const category = client.commands.filter(command => command.category === interaction.value && !command.hidden);
-    const prefix = client.db.prepare('SELECT prefix FROM guilds WHERE id = ?').get(interaction.guildId)?.prefix ?? client.config.prefix;
+    const category = client.interactions.commands.filter(command => command.category === interaction.value && !command.hidden);
 
     const fields = category.map(command => ({
-      name: `\`${prefix}${command.name}\``,
-      value: command.description
+      name: `\`/${command.data.name}\``,
+      value: command.data.description
     }));
 
-    const info = {
-      bot: {
-        title: '🤖 Bot Commands',
-        description: '<:new:736926339113680976> Works in Slash Commands too!'
-      },
-
-      fun: {
-        title: '🥳 Fun Commands'
-      },
-
-      dev: {
-        title: '<:VerifiedBotDev:764412852395180032> Dev Tools'
-      }
+    const categoryTitle = {
+      bot: '🤖 Bot Commands',
+      fun: '🥳 Fun Commands',
+      dev: '<:VerifiedBotDev:764412852395180032> Dev Tools'
     };
 
     const buttons = [
@@ -55,11 +44,9 @@ module.exports = {
       });
     }
 
-
     interaction.update({
       embeds: [{
-        title: info[interaction.value].title,
-        description: info[interaction.value].description,
+        title: categoryTitle[interaction.value],
         color: client.config.color,
         fields
       }],
