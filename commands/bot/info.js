@@ -7,6 +7,7 @@ module.exports = {
   description: 'Display information about the bot',
   async execute(client, message) {
     const developers = (await Promise.all(client.config.developers.map(async id => (await client.users.fetch(id)).tag))).join('\n');
+    await client.application.fetch();
     message.channel.send({
       embeds: [{
         title: 'Info',
@@ -28,7 +29,7 @@ module.exports = {
           {
             name: '💻 Technoloqy',
             value: stripIndents`
-              <:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(client.config.invite)}) \`v${botVersion}\`
+              <:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(client.application.installParams ?? client.config.invite)}) \`v${botVersion}\`
               <:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${version}\`
               <:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\`
             `,
