@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "start": "node ."
   },
   "repository": {
@@ -30,6 +31,7 @@
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
+    "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.17.0"
   },
   "engines": {
