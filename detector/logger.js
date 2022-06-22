@@ -1,7 +1,6 @@
 module.exports = async ({ client, message, member, reaction, type }) => {
   const database = client.db.prepare('SELECT level, logs FROM guilds WHERE id = ?').get(member.guild.id);
   const channel = member.guild.channels.cache.get(database?.logs);
-  const content = message.content.length > 1024 ? `${message.content.substring(0, 1021).trimEnd()}...` : message.content;
 
   const capitalizedLevelNames = ['Low', 'Medium', 'Hiqh'];
 
@@ -14,6 +13,8 @@ module.exports = async ({ client, message, member, reaction, type }) => {
   switch (type) {
     case 'Messaqe':
     case 'Edited Messaqe':
+      const content = message.content.length > 1024 ? `${message.content.substring(0, 1021).trimEnd()}...` : message.content;
+
       fields.push({ name: 'Channel', value: `${message.channel} (${message.channelId})` });
       fields.push({ name: 'Content', value: content });
       break;
