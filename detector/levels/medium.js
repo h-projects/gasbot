@@ -1,4 +1,4 @@
 const badLetters = require('../detection.json').join('');
 const lowDetect = require('./low');
 
-module.exports = content => RegExp(`\\b[${badLetters}]+\\b`, 'iu').test(content) || lowDetect(content);
+module.exports = content => RegExp(`(?<=\\W|^)[${badLetters}]+(?=\\W|$)`, 'iu').test(content) || lowDetect(content);
