@@ -1,3 +1,13 @@
+## [3.1.1](https://github.com/h-projects/gasbot/compare/3.1.0...3.1.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* **detector:** support unicode in word boundary ([3a2b549](https://github.com/h-projects/gasbot/commit/3a2b54970e6eb8527465c3b5417f1d45fd4f1261))
+* **logs:** only cut content on message type ([e255c6c](https://github.com/h-projects/gasbot/commit/e255c6cb947c968c5fd073eb92db10fa966321c0))
+
+
+
 # [3.1.0](https://github.com/h-projects/gasbot/compare/3.0.1...3.1.0) (2022-06-19)
 
 
