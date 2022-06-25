@@ -1,3 +1,13 @@
+## [3.1.2](https://github.com/h-projects/gasbot/compare/3.1.1...3.1.2) (2022-06-25)
+
+
+### Bug Fixes
+
+* **detector:** only count some chars as boundaries ([cb79e7b](https://github.com/h-projects/gasbot/commit/cb79e7b0d879c4e9025e4d3f896d4190fc4bd7ce))
+* **logs:** log detected nickname properly ([dc34f62](https://github.com/h-projects/gasbot/commit/dc34f626ac4dc14381cf4307d01e916ae9b63836))
+
+
+
 ## [3.1.1](https://github.com/h-projects/gasbot/compare/3.1.0...3.1.1) (2022-06-22)
 
 
