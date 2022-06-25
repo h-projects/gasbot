@@ -7,7 +7,7 @@ module.exports = {
     const commands = [];
     const devCommands = [];
 
-    if (process.argv[2] === 'no-deploy') return console.log('Ready!');
+    if (process.argv[2] !== 'deploy') return console.log('Ready!');
     client.interactions.commands.forEach(command => {
       command.category === 'dev' ?
         devCommands.push(command.data.toJSON()) :
