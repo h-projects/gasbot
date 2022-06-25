@@ -20,7 +20,7 @@ module.exports = async ({ client, message, member, reaction, type }) => {
       break;
 
     case 'Nickname':
-      fields.push({ name: 'Nickname', value: member.nickname });
+      fields.push({ name: 'Nickname', value: member.displayName });
       break;
 
     case 'Reaction':
