@@ -21,7 +21,7 @@
     "better-sqlite3": "^7.5.3",
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
-    "discord-api-types": "^0.35.0",
+    "discord-api-types": "^0.37.4",
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "erlpack": "github:discord/erlpack",
