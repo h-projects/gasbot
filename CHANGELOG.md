@@ -1,3 +1,8 @@
+## [3.1.3](https://github.com/h-projects/gasbot/compare/3.1.2...3.1.3) (2022-09-02)
+
+### Refactor
+* remove prefix commands ([058e1e7](https://github.com/h-projects/gasbot/commit/058e1e7bc73b30cdef89d6da752375ff71dac5e3))
+
 ## [3.1.2](https://github.com/h-projects/gasbot/compare/3.1.1...3.1.2) (2022-06-25)
 
 
