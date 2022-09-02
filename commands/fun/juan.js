@@ -1,8 +1,8 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-  name: 'juan',
-  description: '<:Juan:773465802682138634>',
-  async execute(client, message) {
-    message.channel.send({
+  async execute(client, interaction) {
+    interaction.reply({
       embeds: [{
         title: 'Juan',
         image: {
@@ -11,5 +11,9 @@ module.exports = {
         color: client.config.color
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('juan')
+    .setDescription('🐴')
 };

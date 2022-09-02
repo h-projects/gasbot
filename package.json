@@ -16,14 +16,14 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@discordjs/builders": "^0.15.0",
-    "@discordjs/rest": "^0.5.0",
-    "better-sqlite3": "^7.5.3",
+    "@discordjs/builders": "^1.2.0",
+    "@discordjs/rest": "^1.1.0",
+    "better-sqlite3": "^7.6.2",
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
-    "discord-api-types": "^0.35.0",
-    "discord.js": "^13.8.1",
-    "dotenv": "^16.0.1",
+    "discord-api-types": "^0.37.5",
+    "discord.js": "^13.10.3",
+    "dotenv": "^16.0.2",
     "erlpack": "github:discord/erlpack",
     "snoowrap": "^1.23.0",
     "topgg-autoposter": "^2.0.1",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.2.2",
-    "eslint": "^8.17.0"
+    "eslint": "^8.23.0"
   },
   "engines": {
     "node": ">=16.6.0"

@@ -3,7 +3,7 @@
   "features": [
     {
       "name": "Fully Implemented Slash Commands",
-      "value": "All commands are in Slash Commands too!"
+      "value": "The bot now fully uses Slash Commands!"
     },
     {
       "name": "DMs Support",
@@ -11,7 +11,7 @@
     },
     {
       "name": "No More Prefix Commands",
-      "value": "Old prefix commands are now deprecated and will be removed soon. Make sure to use Slash Commands!"
+      "value": "Old prefix commands have been removed. Make sure to use Slash Commands!"
     },
     {
       "name": "Command Permissions v2",

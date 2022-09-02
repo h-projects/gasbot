@@ -1,7 +1,7 @@
 module.exports = {
   name: 'help',
   async execute(client, interaction) {
-    const category = client.interactions.commands.filter(command => command.category === interaction.value && !command.hidden);
+    const category = client.commands.filter(command => command.category === interaction.value && !command.hidden);
 
     const fields = category.map(command => ({
       name: `\`/${command.data.name}\``,

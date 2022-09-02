@@ -2,13 +2,12 @@ const { Routes } = require('discord-api-types/v10');
 
 module.exports = {
   name: 'ready',
-  once: true,
   async execute(client) {
     const commands = [];
     const devCommands = [];
 
     if (process.argv[2] !== 'deploy') return console.log('Ready!');
-    client.interactions.commands.forEach(command => {
+    client.commands.forEach(command => {
       command.category === 'dev' ?
         devCommands.push(command.data.toJSON()) :
         commands.push(command.data.toJSON());

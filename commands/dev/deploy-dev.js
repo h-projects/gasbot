@@ -7,7 +7,7 @@ module.exports = {
     const guildId = interaction.options.getString('guild');
     const create = interaction.options.getBoolean('create') ?? true;
 
-    client.interactions.commands.filter(c => c.category === 'dev').forEach(command => {
+    client.commands.filter(c => c.category === 'dev').forEach(command => {
       commands.push(command.data.toJSON());
 
       if (command.contextData) {

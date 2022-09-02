@@ -1,78 +1,29 @@
 const detect = require('../detector');
-const { stripIndents } = require('common-tags');
 
 module.exports = {
   name: 'messageCreate',
-  once: false,
   async execute(message, client) {
     const { author, type } = message;
     if (author.bot || author.system || type !== 'DEFAULT' && type !== 'REPLY' || !message.content || !message.channel.permissionsFor(client.user).has('SEND_MESSAGES')) {
       return;
     }
     const database = client.db.prepare('SELECT * FROM guilds WHERE id = ?').get(message.guildId);
-    message.prefix = database?.prefix ?? client.config.prefix;
 
-    const array = message.content.replace(message.prefix, '').split(' ');
-    const args = array.slice(1);
-
-    if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
-      return message.channel.send({
-        embeds: [{
-          title: 'Prefix',
-          description: `My prefix is \`/\` but you can also use \`${message.prefix}\``,
-          color: client.config.color
-        }]
-      });
+    if (message.content === `<@${client.user.id}>`) {
+      return message.channel.send('Hi! Type `/` to see my commands');
     }
 
-    if (!message.content.startsWith(message.prefix)) {
-      await detect(client, message, database);
-      return;
+    const prefix = database?.prefix ?? client.config.prefix;
+    const [commandName] = message.content.slice(prefix.length).split(' ');
+
+    if (message.content.startsWith(prefix) && client.commands.has(commandName) && client.commands.get(commandName).category !== 'dev') {
+      const commands = client.application.commands.cache.length ? client.application.commands.cache : await client.application.commands.fetch();
+      const command = commands.find(c => c.name === commandName);
+      const mention = command ? `</${commandName}:${commands.find(c => c.name === commandName).id}>` : `/${commandName}`;
+
+      return message.channel.send(`Prefix-based commands are no lonqer supported, use ${mention} instead!`);
     }
 
-    if (!client.commands.has(array[0])) {
-      return;
-    }
-
-    const command = client.commands.get(array[0]);
-    if (!message.member.permissions.has(command.permissions ?? 0n)) {
-      return message.channel.send(`You need the \`${command.permissions}\` permission to use this command`);
-    }
-
-    if (!message.guild.me.permissions.has(command.botPermissions ?? 0n)) {
-      return message.channel.send({
-        embeds: [{
-          title: 'Missinq Permissions',
-          description: `I need the \`${command.botPermissions}\` permission to use this command`,
-          color: client.config.color
-        }]
-      });
-    }
-
-    const chance = 10;
-    if (Math.floor(Math.random() * chance) + 1 === 1) {
-      message.channel.send({
-        embeds: [{
-          title: 'Switch to Slash Commands',
-          description: stripIndents`
-            <:slash_command:954763657861033994> G.A.S Bot now has [Slash Commands](https://support.discord.com/hc/articles/1500000368501)!
-            Due to Discord chanqes, Slash Commands will be required startinq <t:1662033600:d>, and text-based commands like the one you just ran will stop workinq.
-          `,
-          color: client.config.color
-        }],
-        components: [{
-          type: 'ACTION_ROW',
-          components: [{
-            type: 'BUTTON',
-            style: 'LINK',
-            label: 'Support Server',
-            url: client.config.support,
-            emoji: '<:AytchSoftware:720949593696894996>'
-          }]
-        }]
-      });
-    }
-
-    command.execute(client, message, args);
+    await detect(client, message, database);
   }
 };

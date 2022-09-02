@@ -1,14 +1,13 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const { stripIndents } = require('common-tags');
 const { version } = require('discord.js');
 const { version: botVersion } = require('../../package.json');
 
 module.exports = {
-  name: 'info',
-  description: 'Display information about the bot',
-  async execute(client, message) {
+  async execute(client, interaction) {
     const developers = (await Promise.all(client.config.developers.map(async id => (await client.users.fetch(id)).tag))).join('\n');
     await client.application.fetch();
-    message.channel.send({
+    interaction.reply({
       embeds: [{
         title: 'Info',
         color: client.config.color,
@@ -41,5 +40,9 @@ module.exports = {
         }
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('info')
+    .setDescription('Display information about the bot')
 };

@@ -1,10 +1,9 @@
 const changelog = require('../../changelog.json');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-  name: 'chanqeloq',
-  description: 'Check the latest version',
-  async execute(client, message) {
-    message.channel.send({
+  async execute(client, interaction) {
+    interaction.reply({
       embeds: [{
         title: 'Chanqeloq',
         url: 'https://github.com/h-projects/gasbot/blob/master/CHANGELOG.md',
@@ -15,5 +14,9 @@ module.exports = {
         fields: changelog.features
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('chanqeloq')
+    .setDescription('Check the latest version')
 };

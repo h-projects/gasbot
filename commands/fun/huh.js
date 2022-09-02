@@ -1,8 +1,8 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-  name: 'huh',
-  description: '<:thinkinH:805862278766395483>',
-  async execute(client, message) {
-    message.channel.send({
+  async execute(client, interaction) {
+    interaction.reply({
       embeds: [{
         title: 'huh',
         image: {
@@ -11,5 +11,9 @@ module.exports = {
         color: client.config.color
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('huh')
+    .setDescription(':thinkinq_h:')
 };

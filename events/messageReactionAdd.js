@@ -3,7 +3,6 @@ const log = require('../detector/logger');
 
 module.exports = {
   name: 'messageReactionAdd',
-  once: false,
   async execute(reaction, user, client) {
     if (reaction.partial) {
       try {

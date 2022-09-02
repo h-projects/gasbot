@@ -1,6 +1,5 @@
 module.exports = {
   name: 'guildCreate',
-  once: false,
   async execute(guild, client) {
     if (!guild.available) {
       return;

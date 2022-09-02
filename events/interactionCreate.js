@@ -1,6 +1,5 @@
 module.exports = {
   name: 'interactionCreate',
-  once: false,
   async execute(interaction, client) {
     if (interaction.inRawGuild()) {
       return interaction.reply({
@@ -11,15 +10,15 @@ module.exports = {
 
     if (interaction.isApplicationCommand()) {
       const name = interaction.commandName;
-      const command = client.interactions.commands.get(name) ?? client.interactions.commands.find(c => c.contextData?.name === name);
+      const command = client.commands.get(name) ?? client.commands.find(c => c.contextData?.name === name);
 
       if (!command) return;
 
-      if (interaction.guild && !interaction.guild.me.permissions.has(command.botPermissions ?? 0n)) {
+      if (interaction.guild && !interaction.appPermissions.has(command.appPermissions ?? 0n)) {
         return interaction.reply({
           embeds: [{
             title: 'Missinq Permissions',
-            description: `I need the \`${command.botPermissions}\` permission to use this command`,
+            description: `I need the \`${command.appPermissions}\` permission to use this command`,
             color: client.config.color
           }],
           ephemeral: true
@@ -35,17 +34,17 @@ module.exports = {
 
     if (interaction.isMessageComponent()) {
       [interaction.name, interaction.value, interaction.author] = interaction.customId.split(':');
-      const component = client.interactions.components.get(interaction.name);
+      const component = client.components.get(interaction.name);
 
       if (!component || interaction.author !== interaction.user.id) {
         return interaction.deferUpdate();
       }
 
-      if (interaction.guild && !interaction.guild.me.permissions.has(component.botPermissions ?? 0n)) {
+      if (interaction.guild && !interaction.appPermissions.has(component.appPermissions ?? 0n)) {
         return interaction.reply({
           embeds: [{
             title: 'Missinq Permissions',
-            description: `I need the \`${component.botPermissions}\` permission to use this component`,
+            description: `I need the \`${component.appPermissions}\` permission to use this component`,
             color: client.config.color
           }],
           ephemeral: true

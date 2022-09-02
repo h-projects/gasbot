@@ -1,10 +1,10 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-  name: 'credits',
-  description: 'People who helped in the development',
-  async execute(client, message) {
+  async execute(client, interaction) {
     const developers = (await Promise.all(client.config.developers.map(async id => (await client.users.fetch(id)).tag))).join('\n');
     const specialThanksUsers = (await Promise.all(client.config.specialThanksUsers.map(async id => (await client.users.fetch(id)).tag))).join('\n');
-    message.channel.send({
+    interaction.reply({
       embeds: [{
         title: 'Credits',
         fields: [
@@ -14,5 +14,9 @@ module.exports = {
         color: client.config.color
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('credits')
+    .setDescription('People who helped in the development')
 };

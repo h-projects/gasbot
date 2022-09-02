@@ -12,7 +12,7 @@ module.exports = async (client, message, database, edited) => {
     }
   }
 
-  if (!detect(message.content.replaceAll('.', ''))) {
+  if (!detect(message.content.replaceAll(/[.,]/gu, ''))) {
     return;
   }
 

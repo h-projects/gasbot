@@ -1,6 +1,6 @@
 module.exports = {
   name: 'g-spy',
-  botPermissions: ['MANAGE_ROLES'],
+  appPermissions: ['MANAGE_ROLES'],
   async execute(client, interaction) {
     const member = await interaction.guild.members.fetch(interaction.value).catch(() => null);
     const role = interaction.guild.roles.cache.find(r => r.name === 'g-spy');

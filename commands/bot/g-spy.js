@@ -1,40 +1,40 @@
+const { SlashCommandBuilder, ContextMenuCommandBuilder } = require('@discordjs/builders');
+const { PermissionFlagsBits, ApplicationCommandType } = require('discord-api-types/v10');
+
 module.exports = {
-  name: 'g-spy',
-  description: 'Mark a user as a g-spy',
-  permissions: ['MANAGE_ROLES'],
-  botPermissions: ['MANAGE_ROLES'],
-  async execute(client, message) {
-    const userId = /\d+/u.exec(message.content)?.toString();
-    const member = userId ? await message.guild.members.fetch(userId).catch(() => null) : null;
+  appPermissions: ['MANAGE_ROLES'],
+  async execute(client, interaction) {
+    const member = interaction.options.getMember('user');
 
-
-    if (!member || userId === message.author.id || member.user.bot) {
-      return message.channel.send({
+    if (!member || member.id === interaction.user.id || member.user.bot) {
+      return interaction.reply({
         embeds: [{
           title: 'Invalid User',
           description: 'You need to mention a valid user!',
           color: client.config.color
-        }]
+        }],
+        ephemeral: true
       });
     }
 
-    const role = message.guild.roles.cache.find(r => r.name === 'g-spy') ?? await message.guild.roles.create({
+    const role = interaction.guild.roles.cache.find(r => r.name === 'g-spy') ?? await interaction.guild.roles.create({
       name: 'g-spy',
       reason: 'Found a g-spy'
     });
 
     if (!role.editable) {
-      return message.channel.send({
+      return interaction.reply({
         embeds: [{
           title: 'Missinq Permissions',
           description: `Make sure ${role} is lower than my hiqhest role`,
           color: client.config.color
-        }]
+        }],
+        ephemeral: true
       });
     }
 
     member.roles.add(role);
-    message.channel.send({
+    interaction.reply({
       embeds: [{
         title: 'Done',
         description: `${member} was marked as a ${role}`,
@@ -46,9 +46,26 @@ module.exports = {
           type: 'BUTTON',
           style: 'SECONDARY',
           label: 'Revert',
-          customId: `g-spy:${member.id}:${message.author.id}`
+          customId: `g-spy:${member.id}:${interaction.user.id}`
         }]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('g-spy')
+    .setDescription('Mark a user as a g-spy')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('User to mark as g-spy')
+      .setRequired(true)
+    ),
+
+  contextData: new ContextMenuCommandBuilder()
+    .setName('Mark as G Spy')
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+    .setDMPermission(false)
+    .setType(ApplicationCommandType.User)
 };

@@ -10,7 +10,7 @@ const client = new Client({
   partials: ['MESSAGE', 'REACTION', 'USER', 'GUILD_MEMBER'],
   allowedMentions: { parse: ['users'], repliedUser: false },
   presence: {
-    activities: [{ name: '/help | Removinq G!', type: 'PLAYING' }],
+    activities: [{ name: '/h | Removinq G!', type: 'PLAYING' }],
     status: 'dnd'
   }
 });

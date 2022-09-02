@@ -1,25 +1,27 @@
-module.exports = {
-  name: 'removed',
-  description: 'Check how many bad letters were removed',
-  async execute(client, message) {
-    const userId = /\d+/u.exec(message.content)?.toString();
-    const member = userId ? await message.guild.members.fetch(userId).catch(() => null) ?? message.member : message.member;
+const { SlashCommandBuilder, ContextMenuCommandBuilder } = require('@discordjs/builders');
+const { ApplicationCommandType } = require('discord-api-types/v10');
 
-    if (member.user.bot) {
-      return message.channel.send({
+module.exports = {
+  async execute(client, interaction) {
+    const member = interaction.options.getMember('user') ?? interaction.member;
+    const user = interaction.options.getUser('user');
+
+    if (!member && user || member.user.bot) {
+      return interaction.reply({
         embeds: [{
           title: 'Invalid User',
           description: 'You need to mention a valid user!',
           color: client.config.color
-        }]
+        }],
+        ephemeral: true
       });
     }
 
     const { count } = client.db.prepare('SELECT count FROM global_data').get();
     const userCount = client.db.prepare('SELECT count FROM users WHERE id = ?').get(member.id)?.count ?? 0;
-    const guildCount = client.db.prepare('SELECT count FROM guilds WHERE id = ?').get(message.guildId)?.count ?? 0;
+    const guildCount = client.db.prepare('SELECT count FROM guilds WHERE id = ?').get(interaction.guildId)?.count ?? 0;
 
-    message.channel.send({
+    interaction.reply({
       embeds: [{
         title: 'Bad Letters Removed',
         color: client.config.color,
@@ -30,5 +32,20 @@ module.exports = {
         ]
       }]
     });
-  }
+  },
+
+  data: new SlashCommandBuilder()
+    .setName('removed')
+    .setDescription('Check how many bad letters were removed')
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('User to check')
+      .setRequired(false)
+    ),
+
+  contextData: new ContextMenuCommandBuilder()
+    .setName('Removed Count')
+    .setDMPermission(false)
+    .setType(ApplicationCommandType.User)
 };

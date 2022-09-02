@@ -5,7 +5,6 @@ const log = require('../detector/logger');
 
 module.exports = {
   name: 'guildMemberUpdate',
-  once: false,
   async execute(oldMember, newMember, client) {
     if (newMember.partial) {
       await newMember.fetch();
