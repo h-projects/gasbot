@@ -1,4 +1,4 @@
-const badLetters = require('../detector/detection.json').join();
+const badLetters = require('g-detector').blocklist.join();
 const detector = RegExp(`[${badLetters}]`, 'giu');
 const count = require('../detector/counter');
 const log = require('../detector/logger');

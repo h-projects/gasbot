@@ -1,18 +1,9 @@
+const { detect, Level } = require('g-detector');
 const count = require('./counter');
 const log = require('./logger');
-const whitelist = require('./whitelist.json');
 
 module.exports = async (client, message, database, edited) => {
-  const levelNames = ['low', 'medium', 'high'];
-  const detect = require(`./levels/${levelNames[database?.level ?? 1]}.js`);
-
-  for (const word of whitelist) {
-    if (RegExp(`\\b${word}\\b`, 'iu').test(message.content)) {
-      return;
-    }
-  }
-
-  if (!detect(message.content.replaceAll(/[.,]/gu, ''))) {
+  if (!detect(message.content, database?.level ?? Level.Medium)) {
     return;
   }
 
