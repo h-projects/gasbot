@@ -17,7 +17,7 @@
   "license": "GPL-2.0-or-later",
   "dependencies": {
     "@discordjs/builders": "^1.2.0",
-    "@discordjs/rest": "^1.1.0",
+    "@discordjs/rest": "^1.2.0",
     "better-sqlite3": "^7.6.2",
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
