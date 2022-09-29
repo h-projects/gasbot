@@ -23,7 +23,7 @@
     "common-tags": "^1.8.2",
     "discord-api-types": "^0.37.10",
     "discord.js": "^13.11.0",
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.0.3",
     "g-detector": "^0.1.1",
     "snoowrap": "^1.23.0",
     "topgg-autoposter": "^2.0.1",
