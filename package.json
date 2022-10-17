@@ -21,7 +21,7 @@
     "better-sqlite3": "^7.6.2",
     "bufferutil": "^4.0.6",
     "common-tags": "^1.8.2",
-    "discord-api-types": "^0.37.10",
+    "discord-api-types": "^0.37.14",
     "discord.js": "^13.11.0",
     "dotenv": "^16.0.2",
     "g-detector": "^0.1.1",
