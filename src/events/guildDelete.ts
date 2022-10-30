@@ -1,0 +1,27 @@
+import type { Application } from '#classes';
+import { env } from '#env';
+import type { Guild, GuildTextBasedChannel } from 'discord.js';
+
+export async function run(client: Application<true>, guild: Guild) {
+  if (!guild.available) {
+    return;
+  }
+  const channel = client.channels.cache.get(env.GUILD_LOGS) as GuildTextBasedChannel;
+  return channel.send({
+    embeds: [
+      {
+        title: `Left ${guild}`,
+        fields: [
+          { name: 'ID', value: guild.id },
+          { name: 'Owner', value: (await client.users.fetch(guild.ownerId)).tag },
+          { name: 'Member Count', value: `${guild.memberCount}`, inline: true },
+          { name: 'Server Count', value: `${client.guilds.cache.size}`, inline: true }
+        ],
+        thumbnail: {
+          url: guild.iconURL() ?? ''
+        },
+        color: client.color
+      }
+    ]
+  });
+}

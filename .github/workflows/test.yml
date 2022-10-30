@@ -1,5 +1,9 @@
-name: Testing
-on: [push, pull_request]
+name: Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   lint:
     name: ESLint
@@ -19,3 +23,25 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
+
+  typescript:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Register Problem Matcher
+        run: echo "##[add-matcher].github/tsc.json"
+
+      - name: Run TypeScript compiler
+        run: npm run test:ts

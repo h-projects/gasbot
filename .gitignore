@@ -1,6 +1,7 @@
 /node_modules
-eval.js
-database.sqlite3
+/dist
+eval.*
+database.*
 /backup
 .env
 
@@ -30,3 +31,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
