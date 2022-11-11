@@ -1,8 +1,15 @@
 /node_modules
-eval.js
-database.sqlite3
+/dist
+eval.*
+database.*
 /backup
+
+# Env
 .env
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
 
 # General
 .DS_Store
