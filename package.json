@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/common-tags": "^1.8.1",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
+    "@typescript-eslint/parser": "^5.45.1",
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.16.3",
