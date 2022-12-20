@@ -30,7 +30,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^4.7.1",
+    "@prisma/client": "^4.8.0",
     "bufferutil": "^4.0.7",
     "common-tags": "^1.8.2",
     "discord.js": "^14.7.1",
