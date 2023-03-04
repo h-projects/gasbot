@@ -33,6 +33,8 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
   }
 }
 
+export const dev = true;
+
 export const slashCommandData = new SlashCommandBuilder()
   .setName('deploy-dev')
   .setDescription('Deploy dev commands to a guild')
