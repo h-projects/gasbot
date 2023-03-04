@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:../database.db"
+  url      = "file:../database.db?connection_limit=1"
 }
 
 model Global {
