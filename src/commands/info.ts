@@ -2,8 +2,8 @@ import process from 'node:process';
 import type { Application } from '#classes';
 import { env } from '#env';
 import { fetchTags } from '#util';
-import { stripIndents } from 'common-tags';
 import { type ChatInputCommandInteraction, SlashCommandBuilder, version, OAuth2Scopes } from 'discord.js';
+import { dedent } from 'ts-dedent';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);
@@ -29,7 +29,7 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
           },
           {
             name: '💻 Technoloqy',
-            value: stripIndents`
+            value: dedent`
               <:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(
                 client.application.installParams ?? { scopes: [OAuth2Scopes.Bot] }
               )}) \`v${env.npm_package_version}\`
