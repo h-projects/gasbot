@@ -64,6 +64,16 @@ export class Detector {
     });
   }
 
+  async reply(message: Message<true>, edited: boolean) {
+    const clientMember = await message.guild.members.fetchMe();
+    if (edited || !message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages)) {
+      return;
+    }
+
+    const response = await message.channel.send(`${message.author}, don't use the bad letter!`);
+    void setTimeout(4000).then(() => response.delete().catch(() => null));
+  }
+
   async detectMessage(message: Message<true>, edited: boolean) {
     const { level, logs } = await this.fetchDetectorData(message.guildId);
 
@@ -75,14 +85,8 @@ export class Detector {
       await message.delete().catch(() => null);
     }
 
-    const clientMember = await message.guild.members.fetchMe();
-    if (!edited && message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages)) {
-      const response = await message.channel.send(`${message.author}, don't use the bad letter!`);
-
-      void setTimeout(4000).then(() => response.delete().catch(() => null));
-    }
-
     return Promise.all([
+      this.reply(message, edited),
       this.count(message.guildId, message.author.id),
       this.log({
         guildId: message.guildId,
