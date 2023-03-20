@@ -15,7 +15,7 @@
     "noEmitOnError": true,
 
     "paths": {
-      "#*": ["*/index.ts"],
+      "#*": ["*/index.ts"]
     },
 
     "esModuleInterop": true,

@@ -2,7 +2,6 @@
 /dist
 eval.*
 database.*
-/backup
 
 # Env
 .env

@@ -206,7 +206,7 @@ export class Detector {
 
     switch (options.type) {
       case LogType.Message:
-      case LogType.EditedMessage:
+      case LogType.EditedMessage: {
         const { message } = options;
         const content =
           message.content.length > 1024 ? `${message.content.substring(0, 1021).trimEnd()}...` : message.content;
@@ -214,16 +214,19 @@ export class Detector {
         fields.push({ name: 'Channel', value: `${message.channel} (${message.channelId})` });
         fields.push({ name: 'Content', value: content });
         break;
+      }
 
-      case LogType.Nickname:
+      case LogType.Nickname: {
         fields.push({ name: 'Nickname', value: options.member.displayName });
         break;
+      }
 
-      case LogType.Reaction:
+      case LogType.Reaction: {
         const { reaction } = options;
         fields.push({ name: 'Channel', value: `${reaction.message.channel} (${reaction.message.channelId})` });
         fields.push({ name: 'Reaction', value: `${reaction.emoji}` });
         break;
+      }
     }
 
     const clientMember = await channel.guild.members.fetchMe();
