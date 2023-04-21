@@ -1,3 +1,14 @@
+# [4.0.0](https://github.com/h-projects/gasbot/compare/3.1.3...4.0.0) (2023-04-21)
+
+### Refactor
+
+- convert to typescript ([#112](https://github.com/h-projects/gasbot/pull/112))
+
+### Bug Fixes
+
+- correctly mark `deploy-dev` as `dev` ([34acef9](https://github.com/h-projects/gasbot/commit/34acef9961ef326de0ec25febee79e4ff4c521ca))
+- **detector:** log and count without waiting for reply ([3c476bc](https://github.com/h-projects/gasbot/commit/3c476bce6348fb20d72c166d544b9b5117b27852))
+
 ## [3.1.3](https://github.com/h-projects/gasbot/compare/3.1.2...3.1.3) (2022-09-02)
 
 ### Refactor
