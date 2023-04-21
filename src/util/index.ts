@@ -1,6 +1,4 @@
-import changelog from './changelog.json' assert { type: 'json' };
-
-export { changelog };
+export { default as changelog } from './changelog.json' assert { type: 'json' };
 export * from './fetchTags.js';
 export * from './files.js';
 export * from './types.js';

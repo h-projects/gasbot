@@ -43,7 +43,7 @@ export type LogOptions = (MessageLogOptions | NicknameLogOptions | ReactionLogOp
 };
 
 export class Detector {
-  private client: Application;
+  private client: Application<true>;
   constructor(client: Application) {
     this.client = client;
   }
@@ -65,8 +65,8 @@ export class Detector {
   }
 
   async reply(message: Message<true>, edited: boolean) {
-    const clientMember = await message.guild.members.fetchMe();
-    if (edited || !message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages)) {
+    const permissions = message.channel.permissionsFor(this.client.user);
+    if (edited || (permissions && !permissions.has(PermissionFlagsBits.SendMessages))) {
       return;
     }
 
@@ -101,7 +101,7 @@ export class Detector {
 
   static nicknameRegexp = RegExp(`[${blocklist}]`, 'giu');
   async detectNickname(member: GuildMember) {
-    const cleanNickname = member.displayName.replace(/[.\-_ /\\()[\]]/giu, '');
+    const cleanNickname = member.displayName.replaceAll(/[.\-_ /\\()[\]]/giu, '');
     const result = [...cleanNickname.matchAll(Detector.nicknameRegexp)];
 
     const clientMember = await member.guild.members.fetchMe();
@@ -114,7 +114,7 @@ export class Detector {
       return;
     }
 
-    const newNickname = member.displayName.replace(Detector.nicknameRegexp, 'h');
+    const newNickname = member.displayName.replaceAll(Detector.nicknameRegexp, 'h');
     await member.setNickname(newNickname).catch(() => null);
 
     if (member.user.bot) {
@@ -130,17 +130,14 @@ export class Detector {
   }
 
   async detectReaction(reaction: MessageReaction, user: User) {
-    if (!reaction.message.member || !reaction.message.guild || !('permissionsFor' in reaction.message.channel)) {
+    if (!reaction.message.member || !reaction.message.inGuild()) {
       return;
     }
 
     const member = await reaction.message.guild.members.fetch(user);
-    const clientMember = await reaction.message.guild.members.fetchMe();
+    const permissions = reaction.message.channel.permissionsFor(this.client.user);
 
-    if (
-      !reaction.message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.ManageMessages) ||
-      reaction.emoji.name !== '🇬'
-    ) {
+    if ((permissions && !permissions.has(PermissionFlagsBits.ManageMessages)) || reaction.emoji.name !== '🇬') {
       return;
     }
 
@@ -196,7 +193,7 @@ export class Detector {
   }
 
   private async log(options: LogOptions): Promise<unknown> {
-    const channel = this.client.channels.cache.get(options.logs?.toString() ?? '') as GuildTextBasedChannel;
+    const channel = this.client.channels.cache.get(options.logs?.toString() ?? '') as GuildTextBasedChannel | undefined;
 
     const fields: APIEmbedField[] = [
       { name: 'Type', value: LogType[options.type].replace('Edited', 'Edited ').replace('g', 'q'), inline: true },
@@ -229,8 +226,7 @@ export class Detector {
       }
     }
 
-    const clientMember = await channel.guild.members.fetchMe();
-    if (channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages) && channel.viewable) {
+    if (channel?.permissionsFor(this.client.user)?.has(PermissionFlagsBits.SendMessages) && channel.viewable) {
       await channel.send({
         embeds: [
           {

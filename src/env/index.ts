@@ -14,7 +14,7 @@ export const env = createEnv({
 
   DOCS_LINK: { type: 'string' },
 
-  NODE_ENV: { type: 'string', default: 'development', choices: ['development', 'production'] as const },
+  NODE_ENV: { type: 'string', default: 'development', choices: ['development', 'production'] },
 
   // Injected by npm
   npm_package_version: { type: 'string' }

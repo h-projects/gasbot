@@ -2,18 +2,18 @@ import type { Application } from '#classes';
 import { type Message, MessageType, PermissionFlagsBits } from 'discord.js';
 
 export async function run(client: Application<true>, message: Message<true>) {
-  const clientMember = await message.guild.members.fetchMe();
+  const permissions = message.channel.permissionsFor(client.user);
   if (
     message.author.bot ||
     message.author.system ||
     (message.type !== MessageType.Default && message.type !== MessageType.Reply) ||
     !message.content ||
-    !message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages)
+    (permissions && !permissions.has(PermissionFlagsBits.SendMessages))
   ) {
     return;
   }
 
-  if (message.content === `<@${clientMember.user.id}>`) {
+  if (message.content === `<@${client.user.id}>`) {
     return message.channel.send('Hi! Type `/` to see my commands');
   }
 

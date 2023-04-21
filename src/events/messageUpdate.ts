@@ -10,13 +10,13 @@ export async function run(client: Application<true>, oldMessage: Message, messag
     }
   }
 
-  const clientMember = await message.guild.members.fetchMe();
+  const permissions = message.channel.permissionsFor(client.user);
   if (
     message.author.bot ||
     message.author.system ||
     (message.type !== MessageType.Default && message.type !== MessageType.Reply) ||
     !message.content ||
-    !message.channel.permissionsFor(clientMember).has(PermissionFlagsBits.SendMessages)
+    (permissions && !permissions.has(PermissionFlagsBits.SendMessages))
   ) {
     return;
   }
