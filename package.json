@@ -50,7 +50,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.19.0",
-    "eslint": "^8.38.0",
+    "eslint": "^8.39.0",
     "prettier": "^2.8.7",
     "prisma": "^4.13.0",
     "tsx": "^3.12.6",
