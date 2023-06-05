@@ -32,7 +32,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^4.13.0",
+    "@prisma/client": "^4.15.0",
     "@superchupu/topgg-autoposter": "^2.0.2",
     "bufferutil": "^4.0.7",
     "discord.js": "^14.11.0",
