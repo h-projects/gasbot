@@ -1,29 +1,13 @@
 {
-  "version": "3.1.0",
+  "version": "4.0.0",
   "features": [
     {
-      "name": "Fully Implemented Slash Commands",
-      "value": "The bot now fully uses Slash Commands!"
-    },
-    {
-      "name": "DMs Support",
-      "value": "You can now use (most) commands in DMs!"
-    },
-    {
-      "name": "No More Prefix Commands",
-      "value": "Old prefix commands have been removed. Make sure to use Slash Commands!"
-    },
-    {
-      "name": "Command Permissions v2",
-      "value": "Moderation commands now use [Command Permissions v2](https://discord.com/blog/slash-commands-permissions-discord-apps-bots), which won't show Slash Commands to you if you don't have perms to use them"
-    },
-    {
-      "name": "Improved `/meme`",
-      "value": "You can now refresh the meme you qot by clickinq a sinqle button"
+      "name": "Completely rewritten the bot (aqain)!",
+      "value": "The bot was fully rewritten in TypeScript, ready to handle the next few years."
     },
     {
       "name": "Improvements and Buqfixes",
-      "value": "The bot is a lot faster now and it no lonqer has certain problems"
+      "value": "The bot is a more stable now and it no lonqer has problems in certain situations."
     }
   ]
 }
