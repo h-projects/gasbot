@@ -21,22 +21,21 @@ export enum LogType {
 
 export interface MessageLogOptions {
   type: LogType.Message | LogType.EditedMessage;
-  guildId: string;
   message: Message<true>;
 }
 
 export interface NicknameLogOptions {
   type: LogType.Nickname;
-  guildId: string;
+  nickname: string;
 }
 
 export interface ReactionLogOptions {
   type: LogType.Reaction;
-  guildId: string;
   reaction: MessageReaction;
 }
 
 export type LogOptions = (MessageLogOptions | NicknameLogOptions | ReactionLogOptions) & {
+  guildId: string;
   level: Level | null;
   logs: bigint | null;
   member: GuildMember;
@@ -114,7 +113,8 @@ export class Detector {
       return;
     }
 
-    const newNickname = member.displayName.replaceAll(Detector.nicknameRegexp, 'h');
+    const oldNickname = member.displayName;
+    const newNickname = oldNickname.replaceAll(Detector.nicknameRegexp, 'h');
     await member.setNickname(newNickname).catch(() => null);
 
     if (member.user.bot) {
@@ -125,7 +125,7 @@ export class Detector {
 
     return Promise.all([
       this.count(member.guild.id, member.id),
-      this.log({ member, level, logs, type: LogType.Nickname, guildId: member.guild.id })
+      this.log({ member, level, logs, nickname: oldNickname, type: LogType.Nickname, guildId: member.guild.id })
     ]);
   }
 
@@ -214,7 +214,7 @@ export class Detector {
       }
 
       case LogType.Nickname: {
-        fields.push({ name: 'Nickname', value: options.member.displayName });
+        fields.push({ name: 'Nickname', value: options.nickname });
         break;
       }
 
