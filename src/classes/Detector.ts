@@ -1,6 +1,7 @@
 import { setTimeout } from 'node:timers/promises';
 import type { Application } from '#classes';
 import { env } from '#env';
+import { isSendable } from '#util';
 import {
   type APIEmbedField,
   type GuildMember,
@@ -64,8 +65,8 @@ export class Detector {
   }
 
   async reply(message: Message<true>, edited: boolean) {
-    const permissions = message.channel.permissionsFor(this.client.user);
-    if (edited || (permissions && !permissions.has(PermissionFlagsBits.SendMessages))) {
+    const sendable = await isSendable(message.channel);
+    if (edited || !sendable) {
       return;
     }
 
@@ -226,7 +227,7 @@ export class Detector {
       }
     }
 
-    if (channel?.permissionsFor(this.client.user)?.has(PermissionFlagsBits.SendMessages) && channel.viewable) {
+    if (channel && (await isSendable(channel))) {
       await channel.send({
         embeds: [
           {

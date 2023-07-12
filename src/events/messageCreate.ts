@@ -1,26 +1,25 @@
 import type { Application } from '#classes';
-import { type Message, MessageType, PermissionFlagsBits } from 'discord.js';
+import { isSendable } from '#util';
+import { type Message, MessageType } from 'discord.js';
 
 export async function run(client: Application<true>, message: Message<true>) {
-  const permissions = message.channel.permissionsFor(client.user);
   if (
     message.author.bot ||
     message.author.system ||
     (message.type !== MessageType.Default && message.type !== MessageType.Reply) ||
-    !message.content ||
-    (permissions && !permissions.has(PermissionFlagsBits.SendMessages))
+    !message.content
   ) {
     return;
   }
 
-  if (message.content === `<@${client.user.id}>`) {
+  if (message.content === `<@${client.user.id}>` && (await isSendable(message.channel))) {
     return message.channel.send('Hi! Type `/` to see my commands');
   }
 
   const [commandName] = message.content.slice(2).split(' ');
   const command = client.chatInputCommands.get(commandName);
 
-  if (message.content.startsWith('h!') && command && !command.dev) {
+  if (message.content.startsWith('h!') && command && !command.dev && (await isSendable(message.channel))) {
     const commands = client.application.commands.cache.size
       ? client.application.commands.cache
       : await client.application.commands.fetch();

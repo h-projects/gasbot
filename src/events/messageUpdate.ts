@@ -1,5 +1,5 @@
 import type { Application } from '#classes';
-import { type Message, MessageType, PermissionFlagsBits } from 'discord.js';
+import { type Message, MessageType } from 'discord.js';
 
 export async function run(client: Application<true>, oldMessage: Message, message: Message<true>) {
   if (message.partial) {
@@ -10,13 +10,11 @@ export async function run(client: Application<true>, oldMessage: Message, messag
     }
   }
 
-  const permissions = message.channel.permissionsFor(client.user);
   if (
     message.author.bot ||
     message.author.system ||
     (message.type !== MessageType.Default && message.type !== MessageType.Reply) ||
-    !message.content ||
-    (permissions && !permissions.has(PermissionFlagsBits.SendMessages))
+    !message.content
   ) {
     return;
   }
