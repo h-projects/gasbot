@@ -5,20 +5,21 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2022,
+    "ecmaVersion": 2023,
     "sourceType": "module",
-    "project": ["./tsconfig.json"]
+    "project": true
   },
   "plugins": ["@typescript-eslint"],
   "ignorePatterns": ["node_modules", "dist"],
   "rules": {
-    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/no-base-to-string": "off",
     "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": ["error", { "ignorePrimitives": { "boolean": true } }],
     "@typescript-eslint/restrict-template-expressions": "off",
     "curly": "error",
     "default-case-last": "error",

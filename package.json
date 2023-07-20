@@ -32,7 +32,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^4.16.2",
+    "@prisma/client": "^5.0.0",
     "@superchupu/topgg-autoposter": "^2.0.2",
     "bufferutil": "^4.0.7",
     "discord.js": "^14.11.0",
@@ -45,14 +45,14 @@
     "zlib-sync": "^0.1.8"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "conventional-changelog-cli": "^3.0.0",
     "cross-env": "^7.0.3",
-    "dotenv-vault": "^1.23.3",
-    "eslint": "^8.43.0",
-    "prettier": "^2.8.8",
-    "prisma": "^4.16.2",
+    "dotenv-vault": "^1.25.0",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "prisma": "^5.0.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   },
