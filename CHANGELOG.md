@@ -1,3 +1,14 @@
+## [4.0.1](https://github.com/h-projects/gasbot/compare/4.0.0...4.0.1) (2023-08-01)
+
+
+### Bug Fixes
+
+* **detector:** correctly log old nickname ([3debfb9](https://github.com/h-projects/gasbot/commit/3debfb94227358e378ce6d422eb2aab0d315680a))
+* display changelog for 4.0 ([12d4f17](https://github.com/h-projects/gasbot/commit/12d4f179ebfdae18917f115b05ca13e8aaa7e6ad))
+* improve message permission checks ([0e88cd3](https://github.com/h-projects/gasbot/commit/0e88cd35476e341c6c0a8bf5599188e5f1a55c52))
+
+
+
 # [4.0.0](https://github.com/h-projects/gasbot/compare/3.1.3...4.0.0) (2023-04-21)
 
 ### Refactor
