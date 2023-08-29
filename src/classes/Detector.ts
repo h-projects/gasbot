@@ -8,8 +8,8 @@ import {
   type GuildTextBasedChannel,
   type Message,
   type MessageReaction,
-  type User,
-  PermissionFlagsBits
+  PermissionFlagsBits,
+  type User
 } from 'discord.js';
 import { blocklist, detect, Level } from 'g-detector';
 

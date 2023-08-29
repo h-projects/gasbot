@@ -2,7 +2,7 @@ import process from 'node:process';
 import type { Application } from '#classes';
 import { env } from '#env';
 import { fetchTags } from '#util';
-import { type ChatInputCommandInteraction, SlashCommandBuilder, version, OAuth2Scopes } from 'discord.js';
+import { type ChatInputCommandInteraction, OAuth2Scopes, SlashCommandBuilder, version } from 'discord.js';
 import { dedent } from 'ts-dedent';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {

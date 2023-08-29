@@ -2,8 +2,8 @@ import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ButtonBuilder,
-  ButtonStyle,
   type ButtonInteraction,
+  ButtonStyle,
   type ChatInputCommandInteraction,
   SlashCommandBuilder
 } from 'discord.js';

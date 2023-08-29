@@ -24,8 +24,8 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-  prettier:
-    name: Prettier
+  biome:
+    name: Biome
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Prettier
+      - name: Run Biome
         run: npm run check
 
   typescript:

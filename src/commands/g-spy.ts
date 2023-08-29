@@ -5,8 +5,8 @@ import {
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
-  ContextMenuCommandBuilder,
   type CommandInteraction,
+  ContextMenuCommandBuilder,
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';

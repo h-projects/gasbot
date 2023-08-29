@@ -13,8 +13,8 @@
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check": "prettier --check .",
-    "format": "prettier --write .",
+    "check": "biome format .",
+    "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "env": "dotenv-vault pull",
@@ -32,7 +32,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.0.0",
+    "@prisma/client": "^5.2.0",
     "@superchupu/topgg-autoposter": "^2.0.2",
     "bufferutil": "^4.0.7",
     "discord.js": "^14.13.0",
@@ -45,16 +45,16 @@
     "zlib-sync": "^0.1.8"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
-    "conventional-changelog-cli": "^3.0.0",
+    "@biomejs/biome": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "conventional-changelog-cli": "^4.0.0",
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.25.0",
-    "eslint": "^8.46.0",
-    "prettier": "^3.0.0",
-    "prisma": "^5.0.0",
+    "eslint": "^8.48.0",
+    "prisma": "^5.2.0",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0"
