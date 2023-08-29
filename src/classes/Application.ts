@@ -56,7 +56,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
       partials: [Partials.GuildMember, Partials.Message, Partials.Reaction, Partials.User],
       allowedMentions: { parse: ['users'] },
       presence: {
-        activities: [{ name: '/h | Removinq G!', type: ActivityType.Playing }],
+        activities: [{ name: 'Removinq G!', type: ActivityType.Custom }],
         status: PresenceUpdateStatus.DoNotDisturb
       }
     });

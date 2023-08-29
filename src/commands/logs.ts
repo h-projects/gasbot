@@ -101,6 +101,6 @@ export const slashCommandData = new SlashCommandBuilder()
     option
       .setName('channel')
       .setDescription('Set loqs channel')
-      .addChannelTypes(ChannelType.GuildText, ChannelType.GuildNews)
+      .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
       .setRequired(false)
   );
