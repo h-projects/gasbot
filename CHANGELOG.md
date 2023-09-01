@@ -1,3 +1,9 @@
+## [4.0.2](https://github.com/h-projects/gasbot/compare/4.0.1...4.0.2) (2023-09-01)
+
+### Refactor
+
+- switch to custom status ([09a3eea](https://github.com/h-projects/gasbot/commit/09a3eea97f85b036df025ed7ed945df21aef32d9))
+
 ## [4.0.1](https://github.com/h-projects/gasbot/compare/4.0.0...4.0.1) (2023-08-01)
 
 ### Bug Fixes
