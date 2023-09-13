@@ -9,3 +9,11 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    groups:
+      prisma:
+        patterns:
+          - '@prisma/client'
+          - 'prisma'
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
