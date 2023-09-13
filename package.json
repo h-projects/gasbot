@@ -48,7 +48,7 @@
     "@biomejs/biome": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
-    "conventional-changelog-cli": "^4.0.0",
+    "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.25.0",
     "eslint": "^8.49.0",
