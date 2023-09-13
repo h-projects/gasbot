@@ -52,7 +52,7 @@
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.25.0",
     "eslint": "^8.49.0",
-    "prisma": "^5.2.0",
+    "prisma": "^5.3.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
   },
