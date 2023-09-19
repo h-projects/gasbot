@@ -4,11 +4,6 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-
-  - package-ecosystem: 'github-actions'
-    directory: '/'
-    schedule:
-      interval: 'daily'
     groups:
       prisma:
         patterns:
@@ -17,3 +12,8 @@ updates:
       typescript-eslint:
         patterns:
           - '@typescript-eslint/*'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
