@@ -1,7 +1,6 @@
 import type { Application } from '#classes';
 import { fetchTags } from '#util';
-import { SlashCommandBuilder } from '@discordjs/builders';
-import type { ChatInputCommandInteraction } from 'discord.js';
+import { type ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 
 export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);

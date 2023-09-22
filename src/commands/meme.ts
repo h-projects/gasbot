@@ -8,9 +8,6 @@ import {
   SlashCommandBuilder
 } from 'discord.js';
 
-import type { fetch as _fetch } from 'undici';
-declare const fetch: typeof _fetch;
-
 interface RedditResponse {
   data: {
     children: {

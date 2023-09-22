@@ -1,14 +1,13 @@
 import type { Application } from '#classes';
 import { changelog } from '#util';
-import { SlashCommandBuilder } from '@discordjs/builders';
-import type { ChatInputCommandInteraction } from 'discord.js';
+import { type ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 
 export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   return interaction.reply({
     embeds: [
       {
         title: 'Chanqeloq',
-        url: 'https://github.com/h-projects/gasbot/blob/master/CHANGELOG.md',
+        url: 'https://github.com/h-projects/gasbot/blob/main/CHANGELOG.md',
         author: {
           name: changelog.version
         },

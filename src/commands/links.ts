@@ -1,7 +1,6 @@
 import type { Application } from '#classes';
 import { env } from '#env';
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { type ChatInputCommandInteraction, OAuth2Scopes } from 'discord.js';
+import { type ChatInputCommandInteraction, OAuth2Scopes, SlashCommandBuilder } from 'discord.js';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const nog = '<:nog:676105350306594819>';

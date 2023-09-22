@@ -9,7 +9,8 @@
     "start": "cross-env NODE_ENV=production node --enable-source-maps .",
     "deploy": "tsx src/index.ts --deploy",
     "dev": "tsx watch src/index.ts",
-    "test": "npm run lint && npm run typecheck && npm run check",
+    "test": "pnpm run lint && pnpm run typecheck && pnpm run check",
+    "postinstall": "prisma generate",
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -32,12 +33,12 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "^5.3.1",
     "@superchupu/topgg-autoposter": "^2.0.2",
     "bufferutil": "^4.0.7",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
-    "g-detector": "^0.1.4",
+    "g-detector": "^0.1.5",
     "neon-env": "^0.2.0",
     "ts-dedent": "^2.2.0",
     "utf-8-validate": "^6.0.3",
@@ -45,18 +46,19 @@
     "zlib-sync": "^0.1.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
-    "conventional-changelog-cli": "^4.0.0",
+    "@biomejs/biome": "^1.2.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.25.0",
     "eslint": "^8.49.0",
-    "prisma": "^5.2.0",
-    "tsx": "^3.12.8",
+    "prisma": "^5.3.1",
+    "tsx": "^3.12.10",
     "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "pnpm@8.7.5"
 }

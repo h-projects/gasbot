@@ -16,6 +16,6 @@ export const env = createEnv({
 
   NODE_ENV: { type: 'string', default: 'development', choices: ['development', 'production'] },
 
-  // Injected by npm
+  // Injected by pnpm
   npm_package_version: { type: 'string' }
 });
