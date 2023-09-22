@@ -16,13 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/actions/pnpm
 
       - name: Run ESLint
-        run: npm run lint
+        run: pnpm run lint
 
   biome:
     name: Biome
@@ -35,13 +34,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/actions/pnpm
 
       - name: Run Biome
-        run: npm run check
+        run: pnpm run check
 
   typescript:
     name: TypeScript
@@ -54,10 +52,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/actions/pnpm
 
       - name: Run TypeScript compiler
-        run: npm run typecheck
+        run: pnpm run typecheck
