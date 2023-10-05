@@ -33,7 +33,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.3.1",
+    "@prisma/client": "^5.4.1",
     "@superchupu/topgg-autoposter": "^2.0.2",
     "bufferutil": "^4.0.7",
     "discord.js": "^14.13.0",
@@ -53,7 +53,7 @@
     "cross-env": "^7.0.3",
     "dotenv-vault": "^1.25.0",
     "eslint": "^8.50.0",
-    "prisma": "^5.3.1",
+    "prisma": "^5.4.1",
     "tsx": "^3.12.10",
     "typescript": "^5.2.2"
   },
