@@ -6,7 +6,7 @@
   <p>
     <a href="https://discord.gg/z2QsKF7ZJ6"><img src="https://img.shields.io/discord/720009823458033705?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
     <a href="https://github.com/h-projects/gasbot/releases/latest"><img src="https://img.shields.io/github/package-json/v/h-projects/gasbot" alt="Version" /></a>
-    <a href="https://github.com/h-projects/gasbot/actions"><img src="https://github.com/h-projects/gasbot/workflows/Tests/badge.svg" alt="Build status" /></a>
+    <a href="https://github.com/h-projects/gasbot/actions"><img src="https://github.com/h-projects/gasbot/actions/workflows/test.yml/badge.svg" alt="Build status" /></a>
     <a href="https://github.com/h-projects/gasbot/network/dependencies"><img src="https://img.shields.io/librariesio/github/h-projects/gasbot" alt="Dependencies" /></a>
   </p>
 </div>
