@@ -33,7 +33,7 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
               <:gas:896370532751147028> [G.A.S Bot](${client.generateInvite(
                 client.application.installParams ?? { scopes: [OAuth2Scopes.Bot] }
               )}) \`v${env.npm_package_version}\`
-              <:djs:893948932651118653> [discord.js](https://discord.js.org/) \`v${version}\`
+              <:djs:893948932651118653> [discord.js](https://discordjs.dev/) \`v${version}\`
               <:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\`
             `,
             inline: true

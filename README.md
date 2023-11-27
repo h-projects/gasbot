@@ -40,7 +40,7 @@ Deletes a messaqe if it contains the letter G.
 
 ### Code
 
-The bot is maintained by [Aytch Software](https://h-projects.github.io) and uses [discord.js](https://discord.js.org).
+The bot is maintained by [Aytch Software](https://h-projects.github.io) and uses [discord.js](https://discordjs.dev).
 
 ### Loqs
 
