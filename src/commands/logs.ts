@@ -4,36 +4,46 @@ import {
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
+  ChannelSelectMenuBuilder,
+  type ChannelSelectMenuInteraction,
   ChannelType,
   type ChatInputCommandInteraction,
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';
 
-const getRow = (userId: string, disabled: boolean) =>
+const getRows = ({ channelId, disabled, userId }: { channelId?: string; disabled: boolean; userId: string }) => [
+  new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([
+    new ChannelSelectMenuBuilder()
+      .setChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
+      .setDefaultChannels(channelId ? [channelId] : [])
+      .setCustomId(`logs:set:${userId}`)
+      .setPlaceholder('Set loqs channel')
+  ]),
   new ActionRowBuilder<ButtonBuilder>().addComponents([
     new ButtonBuilder()
       .setLabel('Reset')
       .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`logs::${userId}`)
+      .setCustomId(`logs:reset:${userId}`)
       .setDisabled(disabled)
-  ]);
+  ])
+];
 
 export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
   const channel = interaction.options.getChannel('channel');
 
-  const { logs: logsId } = await client.prisma.guild.upsert({
-    select: { logs: true },
-    where: {
-      id: BigInt(interaction.guildId)
-    },
-    create: {
-      id: BigInt(interaction.guildId)
-    },
-    update: {}
-  });
-
   if (!channel) {
+    const { logs: logsId } = await client.prisma.guild.upsert({
+      select: { logs: true },
+      where: {
+        id: BigInt(interaction.guildId)
+      },
+      create: {
+        id: BigInt(interaction.guildId)
+      },
+      update: {}
+    });
+
     const logs = interaction.guild.channels.cache.get(logsId?.toString() ?? '');
     return interaction.reply({
       embeds: [
@@ -43,15 +53,23 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
           color: client.color
         }
       ],
-      components: logs ? [getRow(interaction.user.id, false)] : []
+      components: getRows({
+        userId: interaction.user.id,
+        channelId: logs?.id,
+        disabled: !logs
+      })
     });
   }
 
-  await client.prisma.guild.update({
+  await client.prisma.guild.upsert({
     where: {
       id: BigInt(interaction.guildId)
     },
-    data: {
+    create: {
+      id: BigInt(interaction.guildId),
+      logs: BigInt(channel.id)
+    },
+    update: {
       logs: BigInt(channel.id)
     }
   });
@@ -64,17 +82,25 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
         color: client.color
       }
     ],
-    components: [getRow(interaction.user.id, false)]
+    components: getRows({
+      userId: interaction.user.id,
+      channelId: channel.id,
+      disabled: false
+    })
   });
 }
 
-export async function onComponent(client: Application, interaction: ButtonInteraction<'cached'>) {
+export async function onComponent(
+  client: Application,
+  interaction: ButtonInteraction<'cached'> | ChannelSelectMenuInteraction<'cached'>
+) {
+  const setModeEnabled = interaction.isChannelSelectMenu();
   await client.prisma.guild.update({
     where: {
       id: BigInt(interaction.guildId)
     },
     data: {
-      logs: null
+      logs: setModeEnabled ? BigInt(interaction.values[0]) : null
     }
   });
 
@@ -82,11 +108,17 @@ export async function onComponent(client: Application, interaction: ButtonIntera
     embeds: [
       {
         title: 'Loqs',
-        description: 'Successfully reset the loqs channel',
+        description: setModeEnabled
+          ? `The loqs channel is now <#${interaction.values[0]}>`
+          : 'Successfully reset the loqs channel',
         color: client.color
       }
     ],
-    components: [getRow(interaction.user.id, true)]
+    components: getRows({
+      userId: interaction.user.id,
+      channelId: setModeEnabled ? interaction.values[0] : undefined,
+      disabled: !setModeEnabled
+    })
   });
 }
 
