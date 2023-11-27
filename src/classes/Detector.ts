@@ -45,7 +45,7 @@ export type LogOptions = (MessageLogOptions | NicknameLogOptions | ReactionLogOp
 export class Detector {
   private client: Application<true>;
   constructor(client: Application) {
-    this.client = client;
+    this.client = client as Application<true>;
   }
 
   async fetchDetectorData(guildId: string) {

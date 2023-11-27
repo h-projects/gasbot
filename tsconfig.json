@@ -1,19 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "lib": ["es2022"],
-
+    "lib": ["esnext"],
     "module": "nodenext",
+
     "rootDir": "src",
     "outDir": "dist",
-    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
 
     "paths": {
       "#*": ["./src/*/index.ts"]
     },
 
-    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
