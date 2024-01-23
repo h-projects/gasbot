@@ -51,7 +51,7 @@
     "@typescript-eslint/parser": "^6.19.0",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
-    "dotenv-vault": "^1.25.0",
+    "dotenv-vault": "^1.26.0",
     "eslint": "^8.56.0",
     "prisma": "^5.8.1",
     "tsx": "^4.7.0",

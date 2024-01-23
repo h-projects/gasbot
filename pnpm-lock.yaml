@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^7.0.3
     version: 7.0.3
   dotenv-vault:
-    specifier: ^1.25.0
-    version: 1.25.0(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.26.0
+    version: 1.26.0(@types/node@20.11.5)(typescript@5.3.3)
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
@@ -1526,8 +1526,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv-vault@1.25.0(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-+3isN+iq0E5VE+pfluBcNYb2qFf/Zu5q44Neh3Bazl82vk86xdUbI2z2cYHgJq5bMgRW1kUOaGWsgXjYlGUhng==}
+  /dotenv-vault@1.26.0(@types/node@20.11.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-2PNnlprtOdFEG9+hAAZxXegcjlJVZMSy88arnRR4YjwU/PwkDbdtk1uzw/D88D5EZ0b84n7YVQ6RccRXmW/Qzg==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
