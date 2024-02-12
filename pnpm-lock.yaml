@@ -18,8 +18,8 @@ dependencies:
     specifier: ^14.14.1
     version: 14.14.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
   dotenv:
-    specifier: ^16.3.2
-    version: 16.3.2
+    specifier: ^16.4.3
+    version: 16.4.3
   g-detector:
     specifier: ^0.1.5
     version: 0.1.5
@@ -1538,7 +1538,7 @@ packages:
       '@oclif/plugin-warn-if-update-available': 2.1.1(@types/node@20.11.5)(typescript@5.3.3)
       axios: 0.27.2
       chalk: 4.1.2
-      dotenv: 16.3.2
+      dotenv: 16.4.3
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -1548,8 +1548,8 @@ packages:
       - typescript
     dev: true
 
-  /dotenv@16.3.2:
-    resolution: {integrity: sha512-HTlk5nmhkm8F6JcdXvHIzaorzCoziNQT9mGxLPVXW8wJF1TiGSL60ZGB4gHWabHOaMmWmhvk2/lPHfnBiT78AQ==}
+  /dotenv@16.4.3:
+    resolution: {integrity: sha512-II98GFrje5psQTSve0E7bnwMFybNLqT8Vu8JIFWRjsE3khyNUm/loZupuy5DVzG2IXf/ysxvrixYOQnM6mjD3A==}
     engines: {node: '>=12'}
 
   /ejs@3.1.9:
