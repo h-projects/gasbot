@@ -10,7 +10,6 @@ import {
   loadDirectory
 } from '#util';
 import { PrismaClient } from '@prisma/client';
-import { DJSPoster } from '@superchupu/topgg-autoposter';
 import {
   ActivityType,
   AttachmentBuilder,
@@ -22,6 +21,7 @@ import {
   Partials,
   PresenceUpdateStatus
 } from 'discord.js';
+import { DJSPoster } from 'topgg-autoposter';
 import { bold, magenta } from 'yoctocolors';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {

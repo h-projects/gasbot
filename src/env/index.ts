@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { createEnv } from 'neon-env';
 
 export const env = createEnv({

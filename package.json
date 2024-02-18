@@ -6,9 +6,11 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node --enable-source-maps .",
-    "deploy": "tsx src/index.ts --deploy",
-    "dev": "tsx watch src/index.ts",
+    "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
+    "deploy": "tsx --env-file=.env src/index.ts --deploy",
+    "env:encrypt": "dotenvx encrypt",
+    "env:decrypt": "dotenvx decrypt",
+    "dev": "tsx watch --env-file=.env src/index.ts",
     "test": "pnpm run lint && pnpm run typecheck && pnpm run check",
     "postinstall": "prisma generate",
     "build": "tsc",
@@ -17,11 +19,7 @@
     "check": "biome format .",
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "env": "dotenv-vault pull",
-    "env:push": "dotenv-vault push",
-    "env:production": "dotenv-vault pull production .env",
-    "env:production:push": "dotenv-vault push production .env"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "imports": {
     "#*": "./dist/*/index.js"
@@ -33,32 +31,31 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.8.1",
-    "@superchupu/topgg-autoposter": "^2.0.2",
+    "@prisma/client": "^5.9.1",
     "bufferutil": "^4.0.8",
+    "dedent": "^1.5.1",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.3.2",
     "g-detector": "^0.1.5",
-    "neon-env": "^0.2.0",
-    "ts-dedent": "^2.2.0",
+    "neon-env": "^0.2.1",
+    "topgg-autoposter": "^2.0.2",
     "utf-8-validate": "^6.0.3",
     "yoctocolors": "^1.0.0",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.2",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
+    "@biomejs/biome": "^1.5.3",
+    "@dotenvx/dotenvx": "^0.16.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
-    "dotenv-vault": "^1.25.0",
     "eslint": "^8.56.0",
-    "prisma": "^5.8.1",
-    "tsx": "^4.7.0",
+    "prisma": "^5.9.1",
+    "tsx": "^4.7.1",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.10.0"
   },
-  "packageManager": "pnpm@8.14.1"
+  "packageManager": "pnpm@8.15.3"
 }
