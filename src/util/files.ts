@@ -1,23 +1,8 @@
 import { readdir } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath, type URL } from 'node:url';
-
-/**
- * Call with `import.meta.url` to get the `__filename` equivalent
- */
-export function getFilename(url: URL | string) {
-  return fileURLToPath(url);
-}
-
-/**
- * Call with `import.meta.url` to get the `__dirname` equivalent
- */
-export function getDirname(url: URL | string) {
-  return dirname(getFilename(url));
-}
+import { join } from 'node:path';
 
 export async function loadDirectory<T>(relativePath: string) {
-  const directory = join(getDirname(import.meta.url), relativePath);
+  const directory = join(import.meta.dirname, relativePath);
 
   const files = await readdir(directory);
 

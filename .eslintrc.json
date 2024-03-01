@@ -51,11 +51,11 @@
       },
       {
         "name": "__dirname",
-        "message": "Import getDirname from `#util` instead"
+        "message": "Use `import.meta.dirname` instead"
       },
       {
         "name": "__filename",
-        "message": "Import getFilename from `#util` instead"
+        "message": "Use `import.meta.filename` instead"
       }
     ],
     "no-return-await": "error",

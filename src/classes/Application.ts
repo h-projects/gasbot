@@ -22,7 +22,7 @@ import {
   PresenceUpdateStatus
 } from 'discord.js';
 import { DJSPoster } from 'topgg-autoposter';
-import { bold, magenta } from 'yoctocolors';
+import { blue, bold, magenta } from 'yoctocolors';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
   detector: Detector = new Detector(this);
@@ -77,6 +77,13 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     if (env.NODE_ENV === 'production' && process.platform === 'linux') {
       new DJSPoster(env.TOPGG_TOKEN, this);
     }
+
+    ['SIGINT', 'SIGTERM'].forEach(signal =>
+      process.on(signal, () => {
+        Logger.log(`Received ${blue(signal)}, shutting down...`);
+        void Promise.all([this.destroy(), this.prisma.$disconnect()]);
+      })
+    );
 
     process.on('uncaughtException', error => Logger.error(error));
   }
