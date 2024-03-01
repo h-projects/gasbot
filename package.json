@@ -39,7 +39,7 @@
     "neon-env": "^0.2.1",
     "topgg-autoposter": "^2.0.2",
     "utf-8-validate": "^6.0.3",
-    "yoctocolors": "^1.0.0",
+    "yoctocolors": "^2.0.0",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
