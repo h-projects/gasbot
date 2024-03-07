@@ -11,7 +11,7 @@
     "env:encrypt": "dotenvx encrypt",
     "env:decrypt": "dotenvx decrypt",
     "dev": "tsx watch --env-file=.env src/index.ts",
-    "test": "pnpm run \"/^check$|^lint$|^typecheck$/\"",
+    "test": "pnpm run \"/^(check|lint|typecheck)$/\"",
     "postinstall": "prisma generate",
     "build": "tsc",
     "check": "biome format .",
