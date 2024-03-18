@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.0",
-    "@dotenvx/dotenvx": "^0.24.0",
+    "@dotenvx/dotenvx": "^0.26.0",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "conventional-changelog-cli": "^4.1.0",
