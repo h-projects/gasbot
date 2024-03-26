@@ -31,30 +31,30 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.10.2",
+    "@prisma/client": "^5.11.0",
     "bufferutil": "^4.0.8",
     "dedent": "^1.5.1",
     "discord.js": "^14.14.1",
-    "g-detector": "^0.1.5",
+    "g-detector": "^0.1.6",
     "neon-env": "^0.2.1",
     "topgg-autoposter": "^2.0.2",
     "yoctocolors": "^2.0.0",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.6.0",
-    "@dotenvx/dotenvx": "^0.24.0",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@biomejs/biome": "^1.6.3",
+    "@dotenvx/dotenvx": "^0.27.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
-    "prisma": "^5.10.2",
+    "prisma": "^5.11.0",
     "tsx": "^4.7.1",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "engines": {
     "node": "^20.11.0 || >=21.2.0"
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "pnpm@8.15.5"
 }
