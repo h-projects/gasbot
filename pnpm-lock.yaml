@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^1.6.3
     version: 1.6.3
   '@dotenvx/dotenvx':
-    specifier: ^0.27.2
-    version: 0.27.2
+    specifier: ^0.28.0
+    version: 0.28.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^7.4.0
     version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
@@ -264,8 +264,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dotenvx/dotenvx@0.27.2:
-    resolution: {integrity: sha512-5GnLopFQVB/K3L3mm6qmyHDDeBi5/RJLGNQr8rIgMLl3ZP8UeOLYxkZ2GnI/dzGU9JL9eGs1nfQ1MhGl+Vdlsw==}
+  /@dotenvx/dotenvx@0.28.0:
+    resolution: {integrity: sha512-GoyN0J1xZa5+O2PSnDqAGhe09UrgofSnf30Nppk2mwNM8LvOcd2OnLYVlPanA7booa7Q8HACGeDyklEmmozgLA==}
     hasBin: true
     dependencies:
       '@inquirer/confirm': 2.0.17
