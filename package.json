@@ -31,7 +31,7 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.12.1",
     "bufferutil": "^4.0.8",
     "dedent": "^1.5.1",
     "discord.js": "^14.14.1",
@@ -46,7 +46,7 @@
     "@dotenvx/dotenvx": "^0.27.2",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
-    "prisma": "^5.11.0",
+    "prisma": "^5.12.1",
     "tsx": "^4.7.2",
     "typescript": "^5.4.4"
   },
