@@ -9,9 +9,6 @@ updates:
         patterns:
           - '@prisma/client'
           - 'prisma'
-      typescript-eslint:
-        patterns:
-          - '@typescript-eslint/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'

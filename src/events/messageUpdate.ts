@@ -1,7 +1,7 @@
 import type { Application } from '#classes';
 import { type Message, MessageType } from 'discord.js';
 
-export async function run(client: Application<true>, oldMessage: Message, message: Message<true>) {
+export async function run(client: Application<true>, _oldMessage: Message, message: Message<true>) {
   if (message.partial) {
     try {
       await message.fetch();

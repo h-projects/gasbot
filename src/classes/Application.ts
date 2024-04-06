@@ -78,12 +78,12 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
       new DJSPoster(env.TOPGG_TOKEN, this);
     }
 
-    ['SIGINT', 'SIGTERM'].forEach(signal =>
+    for (const signal of ['SIGINT', 'SIGTERM']) {
       process.on(signal, () => {
         Logger.log(`Received ${blue(signal)}, shutting down...`);
         void Promise.all([this.destroy(), this.prisma.$disconnect()]);
-      })
-    );
+      });
+    }
 
     process.on('uncaughtException', error => Logger.error(error));
   }

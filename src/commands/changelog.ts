@@ -2,7 +2,7 @@ import type { Application } from '#classes';
 import { changelog } from '#util';
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 
-export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
+export function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   return interaction.reply({
     embeds: [
       {

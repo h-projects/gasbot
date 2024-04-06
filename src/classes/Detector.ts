@@ -48,7 +48,7 @@ export class Detector {
     this.client = client as Application<true>;
   }
 
-  async fetchDetectorData(guildId: string) {
+  fetchDetectorData(guildId: string) {
     return this.client.prisma.guild.upsert({
       select: {
         level: true,

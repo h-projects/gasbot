@@ -1,7 +1,7 @@
 import { type Application, Logger } from '#classes';
 import type { Interaction } from 'discord.js';
 
-export async function run(client: Application, interaction: Interaction) {
+export function run(client: Application, interaction: Interaction) {
   if (interaction.inRawGuild() && interaction.isCommand()) {
     return interaction.reply({
       content: "The bot wasn't invited correctly, please invite it with the correct scopes",
