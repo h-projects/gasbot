@@ -41,6 +41,7 @@
         },
         "useBlockStatements": "error",
         "useConsistentArrayType": "error",
+        "useEnumInitializers": "off",
         "useForOf": "error",
         "useShorthandAssign": "error"
       },
