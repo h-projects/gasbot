@@ -12,8 +12,8 @@ dependencies:
     specifier: ^4.0.8
     version: 4.0.8
   dedent:
-    specifier: ^1.5.1
-    version: 1.5.1
+    specifier: ^1.5.3
+    version: 1.5.3
   discord.js:
     specifier: ^14.14.1
     version: 14.14.1(bufferutil@4.0.8)
@@ -1045,8 +1045,8 @@ packages:
       mimic-fn: 3.1.0
     dev: true
 
-  /dedent@1.5.1:
-    resolution: {integrity: sha512-+LxW+KLWxu3HW3M2w2ympwtqPrqYRzU8fqi6Fhd18fBALe15blJPI/I4+UHveMVG6lJqB4JNd4UG0S5cnVHwIg==}
+  /dedent@1.5.3:
+    resolution: {integrity: sha512-NHQtfOOW68WD8lgypbLA5oT+Bt0xXJhiYvoR6SmmNXZfpzOGXwdKWmcwG8N7PwVVWV3eF/68nmD9BaJSsTBhyQ==}
     peerDependencies:
       babel-plugin-macros: ^3.1.0
     peerDependenciesMeta:
