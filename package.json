@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.4",
-    "@dotenvx/dotenvx": "^0.30.0",
+    "@dotenvx/dotenvx": "^0.34.0",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
     "prisma": "^5.12.1",
