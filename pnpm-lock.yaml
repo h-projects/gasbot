@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^1.6.4
     version: 1.6.4
   '@dotenvx/dotenvx':
-    specifier: ^0.30.0
-    version: 0.30.0
+    specifier: ^0.35.1
+    version: 0.35.1
   conventional-changelog-cli:
     specifier: ^4.1.0
     version: 4.1.0
@@ -250,8 +250,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dotenvx/dotenvx@0.30.0:
-    resolution: {integrity: sha512-On5r/njwbsEsHC500L8PQR+gihWbXYosm4sL7a+P9jXDPrP1qNuSrGS+mZ8CRoUOjxVUSiyjZE+h4PKjI/0HvQ==}
+  /@dotenvx/dotenvx@0.35.1:
+    resolution: {integrity: sha512-ipq5DmkEG/4ixF3d7+2vC+D46UpmAlUyz5L/JM2eHx+Yc7FojJez/43yRZ9AX4s0hksF4p5R9BlJaopFNwXtNw==}
     hasBin: true
     dependencies:
       '@inquirer/confirm': 2.0.17
