@@ -42,7 +42,7 @@
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.6.4",
+    "@biomejs/biome": "^1.7.1",
     "@dotenvx/dotenvx": "^0.30.0",
     "conventional-changelog-cli": "^4.1.0",
     "cross-env": "^7.0.3",
