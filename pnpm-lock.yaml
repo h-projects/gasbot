@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^1.6.4
     version: 1.6.4
   '@dotenvx/dotenvx':
-    specifier: ^0.30.0
-    version: 0.30.0
+    specifier: ^0.37.1
+    version: 0.37.1
   conventional-changelog-cli:
     specifier: ^4.1.0
     version: 4.1.0
@@ -250,8 +250,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dotenvx/dotenvx@0.30.0:
-    resolution: {integrity: sha512-On5r/njwbsEsHC500L8PQR+gihWbXYosm4sL7a+P9jXDPrP1qNuSrGS+mZ8CRoUOjxVUSiyjZE+h4PKjI/0HvQ==}
+  /@dotenvx/dotenvx@0.37.1:
+    resolution: {integrity: sha512-CN8A4cxuIQ5eRIaWK6qeRAYXPtt5Mo5XHw6o9kP+VWYlTg8UY3k426tCxcgrMRTI/GKMyu8wryHng+thUFCNYg==}
     hasBin: true
     dependencies:
       '@inquirer/confirm': 2.0.17
@@ -259,6 +259,7 @@ packages:
       chalk: 4.1.2
       commander: 11.1.0
       conf: 10.2.0
+      diff: 5.2.0
       dotenv: 16.4.5
       dotenv-expand: 11.0.6
       execa: 5.1.1
@@ -1069,6 +1070,11 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
     dev: false
+
+  /diff@5.2.0:
+    resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+    engines: {node: '>=0.3.1'}
+    dev: true
 
   /discord-api-types@0.37.61:
     resolution: {integrity: sha512-o/dXNFfhBpYHpQFdT6FWzeO7pKc838QeeZ9d91CfVAtpr5XLK4B/zYxQbYgPdoMiTDvJfzcsLW5naXgmHGDNXw==}
