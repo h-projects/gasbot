@@ -1,4 +1,5 @@
 import process from 'node:process';
+import { styleText } from 'node:util';
 import { Detector } from '#classes';
 import { env } from '#env';
 import {
@@ -22,7 +23,6 @@ import {
   Partials,
   PresenceUpdateStatus
 } from 'discord.js';
-import { blue, bold, magenta } from 'yoctocolors';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
   detector: Detector = new Detector(this);
@@ -64,7 +64,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
   async initialize() {
     if (env.NODE_ENV === 'production') {
-      logger.log(`Booting up ${bold(magenta('production'))} build...`);
+      logger.log(`Booting up ${styleText(['bold', 'magenta'], 'production')} build...`);
       disableValidators();
     } else {
       logger.log('Booting up...');
@@ -76,7 +76,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
     for (const signal of ['SIGINT', 'SIGTERM']) {
       process.on(signal, () => {
-        logger.log(`Received ${blue(signal)}, shutting down...`);
+        logger.log(`Received ${styleText('blue', signal)}, shutting down...`);
         void Promise.all([this.destroy(), this.prisma.$disconnect()]);
       });
     }

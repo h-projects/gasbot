@@ -102,7 +102,7 @@ export class Detector {
   static nicknameRegexp = RegExp(`[${blocklist}]`, 'giu');
   async detectNickname(member: GuildMember) {
     const cleanNickname = member.displayName.replaceAll(/[.\-_ /\\()[\]]/giu, '');
-    const result = [...cleanNickname.matchAll(Detector.nicknameRegexp)];
+    const result = cleanNickname.matchAll(Detector.nicknameRegexp).toArray();
 
     const clientMember = await member.guild.members.fetchMe();
     if (
