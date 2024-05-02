@@ -108,16 +108,18 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
   }
 
   async loadEvents() {
+    const perf = performance.now();
     const events = await loadDirectory<Event>('../events');
     for (const event of events) {
-      this.on(event.name, async (...args: unknown[]) => {
-        await event.data.run(this, ...args);
+      this.on(event.name, (...args: unknown[]) => {
+        return event.data.run(this, ...args);
       });
     }
-    Logger.log('Loaded events');
+    Logger.log(`Loaded events [${(performance.now() - perf).toFixed(2)}ms]`);
   }
 
   async loadCommands() {
+    const perf = performance.now();
     const commands = await loadDirectory<Command>('../commands');
     for (const command of commands) {
       if (this.isChatInputCommand(command.data)) {
@@ -130,7 +132,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
         this.components.set(command.name, command.data);
       }
     }
-    Logger.log('Loaded commands');
+    Logger.log(`Loaded commands [${(performance.now() - perf).toFixed(2)}ms]`);
   }
 
   isChatInputCommand(command: Command): command is ChatInputCommand {
