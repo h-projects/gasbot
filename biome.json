@@ -30,6 +30,7 @@
       "correctness": {
         "noNewSymbol": "error",
         "noUndeclaredVariables": "error",
+        "noUnusedImports": "error",
         "noUnusedPrivateClassMembers": "error",
         "noUnusedVariables": "error"
       },
