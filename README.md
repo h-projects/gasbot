@@ -10,7 +10,7 @@
     <a href="https://github.com/h-projects/gasbot/network/dependencies"><img src="https://img.shields.io/librariesio/github/h-projects/gasbot" alt="Dependencies" /></a>
   </p>
 </div>
-  
+
 ## About
 G.A.S Bot was created to defeat the letter G.
 
