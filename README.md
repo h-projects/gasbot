@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://discord.com/api/oauth2/authorize?client_id=702116355842768927&permissions=470150208&scope=applications.commands%20bot"><img src="https://raw.githubusercontent.com/h-projects/gasbot/main/.github/logo.png" alt="G.A.S Bot" width="128"/></a>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=702116355842768927"><img src="https://raw.githubusercontent.com/h-projects/gasbot/main/.github/logo.png" alt="G.A.S Bot" width="128"/></a>
   </p>
   <p>
     <a href="https://discord.gg/z2QsKF7ZJ6"><img src="https://img.shields.io/discord/720009823458033705?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
