@@ -3,18 +3,18 @@ import { logger } from '#util';
 import type { Interaction } from 'discord.js';
 
 export function run(client: Application, interaction: Interaction) {
-  if (interaction.inRawGuild() && interaction.isCommand()) {
-    return interaction.reply({
-      content: "The bot wasn't invited correctly, please invite it with the correct scopes",
-      ephemeral: true
-    });
-  }
-
   if (interaction.isChatInputCommand()) {
     const command = client.chatInputCommands.get(interaction.commandName);
 
     if (!command) {
       return logger.warn(`Unknown chat input command: ${interaction.commandName}`);
+    }
+
+    if (interaction.inRawGuild() && command.slashCommandData.dm_permission === false) {
+      return interaction.reply({
+        content: "The bot wasn't invited properly, please invite it with the correct scopes",
+        ephemeral: true
+      });
     }
 
     if (!client.developers.includes(interaction.user.id) && command.dev) {
@@ -43,6 +43,13 @@ export function run(client: Application, interaction: Interaction) {
 
     if (!command) {
       return logger.warn(`Unknown context menu command: ${interaction.commandName}`);
+    }
+
+    if (interaction.inRawGuild() && command.contextMenuCommandData.dm_permission === false) {
+      return interaction.reply({
+        content: "The bot wasn't invited properly, please invite it with the correct scopes",
+        ephemeral: true
+      });
     }
 
     if (!client.developers.includes(interaction.user.id) && command.dev) {

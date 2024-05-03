@@ -21,7 +21,8 @@ import {
   disableValidators,
   GatewayIntentBits,
   Partials,
-  PresenceUpdateStatus
+  PresenceUpdateStatus,
+  type RESTPostAPIApplicationCommandsJSONBody
 } from 'discord.js';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
@@ -84,11 +85,24 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     process.on('uncaughtException', error => logger.error(error));
   }
 
+  // TODO: remove this logic once d.js supports user apps
+  toUserApp(body: RESTPostAPIApplicationCommandsJSONBody) {
+    return body.dm_permission === undefined
+      ? {
+          integration_types: [0, 1],
+          contexts: [0, 1, 2],
+          ...body
+        }
+      : body;
+  }
+
   async deployCommands() {
-    await this.application?.commands.set([
-      ...this.chatInputCommands.filter(c => !c.dev).map(c => c.slashCommandData.toJSON()),
-      ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData.toJSON())
-    ]);
+    await this.rest.put(`/applications/${this.user?.id}/commands`, {
+      body: [
+        ...this.chatInputCommands.filter(c => !c.dev).map(c => this.toUserApp(c.slashCommandData.toJSON())),
+        ...this.contextMenuCommands.filter(c => !c.dev).map(c => this.toUserApp(c.contextMenuCommandData.toJSON()))
+      ]
+    });
 
     const testGuild = this.guilds.cache.get(env.TEST_GUILD);
     await testGuild?.commands.set([
