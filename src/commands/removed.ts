@@ -10,7 +10,7 @@ import {
 
 export async function onCommand(
   client: Application,
-  interaction: ChatInputCommandInteraction<'cached'> | UserContextMenuCommandInteraction<'cached'>
+  interaction: ChatInputCommandInteraction | UserContextMenuCommandInteraction
 ) {
   const user = interaction.options.getUser('user') ?? interaction.user;
   if (user.bot) {
