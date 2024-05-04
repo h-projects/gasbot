@@ -1,12 +1,16 @@
 import type { Application } from '#classes';
 import {
   ApplicationCommandType,
-  type CommandInteraction,
+  type ChatInputCommandInteraction,
   ContextMenuCommandBuilder,
-  SlashCommandBuilder
+  SlashCommandBuilder,
+  type UserContextMenuCommandInteraction
 } from 'discord.js';
 
-export async function onCommand(client: Application, interaction: CommandInteraction<'cached'>) {
+export async function onCommand(
+  client: Application,
+  interaction: ChatInputCommandInteraction<'cached'> | UserContextMenuCommandInteraction<'cached'>
+) {
   const member = interaction.options.getMember('user') ?? interaction.member;
   const user = interaction.options.getUser('user');
 

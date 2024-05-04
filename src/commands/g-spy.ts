@@ -5,15 +5,19 @@ import {
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
-  type CommandInteraction,
+  type ChatInputCommandInteraction,
   ContextMenuCommandBuilder,
   PermissionFlagsBits,
-  SlashCommandBuilder
+  SlashCommandBuilder,
+  type UserContextMenuCommandInteraction
 } from 'discord.js';
 
 export const appPermissions = [PermissionFlagsBits.ManageRoles];
 
-export async function onCommand(client: Application, interaction: CommandInteraction<'cached'>) {
+export async function onCommand(
+  client: Application,
+  interaction: ChatInputCommandInteraction<'cached'> | UserContextMenuCommandInteraction<'cached'>
+) {
   const member = interaction.options.getMember('user');
 
   if (!member || member.id === interaction.user.id || member.user.bot) {
