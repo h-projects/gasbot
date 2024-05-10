@@ -1,5 +1,5 @@
 import process from 'node:process';
-import { Detector, Logger } from '#classes';
+import { Detector } from '#classes';
 import { env } from '#env';
 import {
   type ChatInputCommand,
@@ -7,7 +7,8 @@ import {
   type Component,
   type ContextMenuCommand,
   type Event,
-  loadDirectory
+  loadDirectory,
+  logger
 } from '#util';
 import { PrismaClient } from '@prisma/client';
 import {
@@ -64,10 +65,10 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
   async initialize() {
     if (env.NODE_ENV === 'production') {
-      Logger.log(`Booting up ${bold(magenta('production'))} build...`);
+      logger.log(`Booting up ${bold(magenta('production'))} build...`);
       disableValidators();
     } else {
-      Logger.log('Booting up...');
+      logger.log('Booting up...');
     }
 
     await Promise.all([this.loadEvents(), this.loadCommands(), this.prisma.$connect()]);
@@ -80,12 +81,12 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
     for (const signal of ['SIGINT', 'SIGTERM']) {
       process.on(signal, () => {
-        Logger.log(`Received ${blue(signal)}, shutting down...`);
+        logger.log(`Received ${blue(signal)}, shutting down...`);
         void Promise.all([this.destroy(), this.prisma.$disconnect()]);
       });
     }
 
-    process.on('uncaughtException', error => Logger.error(error));
+    process.on('uncaughtException', error => logger.error(error));
   }
 
   async deployCommands() {
@@ -100,7 +101,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
       ...this.contextMenuCommands.filter(c => c.dev).map(c => c.contextMenuCommandData.toJSON())
     ]);
 
-    Logger.log('Deployed all commands');
+    logger.log('Deployed all commands');
   }
 
   makeDatabaseBackup() {
@@ -115,7 +116,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
         return event.data.run(this, ...args);
       });
     }
-    Logger.log(`Loaded events [${(performance.now() - perf).toFixed(2)}ms]`);
+    logger.log(`Loaded events [${(performance.now() - perf).toFixed(2)}ms]`);
   }
 
   async loadCommands() {
@@ -132,7 +133,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
         this.components.set(command.name, command.data);
       }
     }
-    Logger.log(`Loaded commands [${(performance.now() - perf).toFixed(2)}ms]`);
+    logger.log(`Loaded commands [${(performance.now() - perf).toFixed(2)}ms]`);
   }
 
   isChatInputCommand(command: Command): command is ChatInputCommand {

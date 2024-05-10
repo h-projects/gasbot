@@ -1,4 +1,5 @@
-import { type Application, Logger } from '#classes';
+import type { Application } from '#classes';
+import { logger } from '#util';
 import type { Interaction } from 'discord.js';
 
 export function run(client: Application, interaction: Interaction) {
@@ -13,7 +14,7 @@ export function run(client: Application, interaction: Interaction) {
     const command = client.chatInputCommands.get(interaction.commandName);
 
     if (!command) {
-      return Logger.warn(`Unknown chat input command: ${interaction.commandName}`);
+      return logger.warn(`Unknown chat input command: ${interaction.commandName}`);
     }
 
     if (!client.developers.includes(interaction.user.id) && command.dev) {
@@ -41,7 +42,7 @@ export function run(client: Application, interaction: Interaction) {
     const command = client.contextMenuCommands.get(interaction.commandName);
 
     if (!command) {
-      return Logger.warn(`Unknown context menu command: ${interaction.commandName}`);
+      return logger.warn(`Unknown context menu command: ${interaction.commandName}`);
     }
 
     if (!client.developers.includes(interaction.user.id) && command.dev) {
@@ -70,7 +71,7 @@ export function run(client: Application, interaction: Interaction) {
     const component = client.components.get(name);
 
     if (!component) {
-      return Logger.warn(`Unknown component: ${name}`);
+      return logger.warn(`Unknown component: ${name}`);
     }
 
     if (author !== interaction.user.id) {

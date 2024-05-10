@@ -23,10 +23,6 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "complexity": {
-        "noStaticOnlyClass": "off",
-        "noThisInStatic": "off"
-      },
       "correctness": {
         "noNewSymbol": "error",
         "noUndeclaredVariables": "error",
