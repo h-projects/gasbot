@@ -40,8 +40,8 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       '@dotenvx/dotenvx':
-        specifier: ^0.37.1
-        version: 0.37.1
+        specifier: ^0.42.0
+        version: 0.42.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -172,8 +172,8 @@ packages:
     resolution: {integrity: sha512-O97DIeSvfNTn5wz5vaER6ciyUsr7nOqSEtsLoMhhIgeFkhnxLRqSr00/Fpq2/ppLgjDGLbQCDzIK7ilGoB/M7A==}
     engines: {node: '>=16.11.0'}
 
-  '@dotenvx/dotenvx@0.37.1':
-    resolution: {integrity: sha512-CN8A4cxuIQ5eRIaWK6qeRAYXPtt5Mo5XHw6o9kP+VWYlTg8UY3k426tCxcgrMRTI/GKMyu8wryHng+thUFCNYg==}
+  '@dotenvx/dotenvx@0.42.0':
+    resolution: {integrity: sha512-7suOLpj9QBH562JeosEkz+dDLZJjQUhCT7CLQ29hLfoZGaPDg4OowC96vDPskdbBP7Ml40DunqvXeZPU47IfKA==}
     hasBin: true
 
   '@esbuild/aix-ppc64@0.20.2':
@@ -340,6 +340,16 @@ packages:
 
   '@jpbberry/typed-emitter@1.2.1':
     resolution: {integrity: sha512-XTYlVkcj329NNQfo+Fcix/ZcTQHn0F+5gt2lJvI5rBeulT+tq0uzeIIk3oAlwJg7GT9u4mqG0bNLq/kqKXxf4Q==}
+
+  '@noble/ciphers@0.4.1':
+    resolution: {integrity: sha512-QCOA9cgf3Rc33owG0AYBB9wszz+Ul2kramWN8tXG44Gyciud/tbkEqvxRF/IpqQaBpRBNi9f4jdNxqB2CQCIXg==}
+
+  '@noble/curves@1.4.0':
+    resolution: {integrity: sha512-p+4cb332SFCrReJkCYe8Xzm0OWi4Jji5jVdIZRL/PmacmDkFNw6MrrV+gGpiPxLHbV+zKFRywUWbaseT+tZRXg==}
+
+  '@noble/hashes@1.4.0':
+    resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
+    engines: {node: '>= 16'}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -626,6 +636,10 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  eciesjs@0.4.6:
+    resolution: {integrity: sha512-t0qLzGVKeATAA6X19hIeToxBVG8yvn/be/4XyJvTCBD53m2CK22cgzk+WW+pNYjEw5FGWZLNFoJte8lyZS/A/w==}
+    engines: {node: '>=16.0.0'}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1336,7 +1350,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@dotenvx/dotenvx@0.37.1':
+  '@dotenvx/dotenvx@0.42.0':
     dependencies:
       '@inquirer/confirm': 2.0.17
       arch: 2.2.0
@@ -1346,6 +1360,7 @@ snapshots:
       diff: 5.2.0
       dotenv: 16.4.5
       dotenv-expand: 11.0.6
+      eciesjs: 0.4.6
       execa: 5.1.1
       glob: 10.3.12
       ignore: 5.3.1
@@ -1467,6 +1482,14 @@ snapshots:
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
   '@jpbberry/typed-emitter@1.2.1': {}
+
+  '@noble/ciphers@0.4.1': {}
+
+  '@noble/curves@1.4.0':
+    dependencies:
+      '@noble/hashes': 1.4.0
+
+  '@noble/hashes@1.4.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1760,6 +1783,12 @@ snapshots:
   dotenv@16.4.5: {}
 
   eastasianwidth@0.2.0: {}
+
+  eciesjs@0.4.6:
+    dependencies:
+      '@noble/ciphers': 0.4.1
+      '@noble/curves': 1.4.0
+      '@noble/hashes': 1.4.0
 
   emoji-regex@8.0.0: {}
 
