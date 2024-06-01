@@ -1,8 +1,4 @@
 // TODO: remove this file when @types/node gets updated to v22 and typescript 5.5 releases
-declare module 'node:util' {
-  export function styleText(styles: string | string[], text: string): string;
-}
-
 declare module 'node:fs/promises' {
   export function glob(pattern: string): AsyncGenerator<string>;
 }
