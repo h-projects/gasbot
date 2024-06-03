@@ -18,8 +18,8 @@ importers:
         specifier: ^1.5.3
         version: 1.5.3
       discord.js:
-        specifier: ^14.15.1
-        version: 14.15.1(bufferutil@4.0.8)
+        specifier: ^14.15.3
+        version: 14.15.3(bufferutil@4.0.8)
       g-detector:
         specifier: ^0.1.6
         version: 0.1.6
@@ -144,8 +144,8 @@ packages:
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
 
-  '@discordjs/builders@1.8.0':
-    resolution: {integrity: sha512-NHj5LucA0Td8g0RMbMP6wfvra4QRyvKp7bE/PEMACGcfsaZkqCi4zPZ83vvkaiqRKVhyoFgRWx9f6ZWtaeM/ww==}
+  '@discordjs/builders@1.8.2':
+    resolution: {integrity: sha512-6wvG3QaCjtMu0xnle4SoOIeFB4y6fKMN6WZfy3BMKJdQQtPLik8KGzDwBVL/+wTtcE/ZlFjgEk74GublyEVZ7g==}
     engines: {node: '>=16.11.0'}
 
   '@discordjs/collection@1.5.3':
@@ -168,8 +168,8 @@ packages:
     resolution: {integrity: sha512-IndcI5hzlNZ7GS96RV3Xw1R2kaDuXEp7tRIy/KlhidpN/BQ1qh1NZt3377dMLTa44xDUNKT7hnXkA/oUAzD/lg==}
     engines: {node: '>=16.11.0'}
 
-  '@discordjs/ws@1.1.0':
-    resolution: {integrity: sha512-O97DIeSvfNTn5wz5vaER6ciyUsr7nOqSEtsLoMhhIgeFkhnxLRqSr00/Fpq2/ppLgjDGLbQCDzIK7ilGoB/M7A==}
+  '@discordjs/ws@1.1.1':
+    resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
 
   '@dotenvx/dotenvx@0.37.1':
@@ -604,8 +604,8 @@ packages:
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
 
-  discord.js@14.15.1:
-    resolution: {integrity: sha512-Md87FiS2y5cMoikV6csH+5SF72Vt2sSVmgV6hfQKiWyT4cxrGWhOk64r99dwzMjB1VFATM98ExGe0WY4H981UA==}
+  discord.js@14.15.3:
+    resolution: {integrity: sha512-/UJDQO10VuU6wQPglA4kz2bw2ngeeSbogiIPx/TsnctfzV/tNf+q+i1HlgtX1OGpeOBpJH9erZQNO5oRM2uAtQ==}
     engines: {node: '>=16.11.0'}
 
   dot-prop@5.3.0:
@@ -1289,7 +1289,7 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@discordjs/builders@1.8.0':
+  '@discordjs/builders@1.8.2':
     dependencies:
       '@discordjs/formatters': 0.4.0
       '@discordjs/util': 1.1.0
@@ -1321,7 +1321,7 @@ snapshots:
 
   '@discordjs/util@1.1.0': {}
 
-  '@discordjs/ws@1.1.0(bufferutil@4.0.8)':
+  '@discordjs/ws@1.1.1(bufferutil@4.0.8)':
     dependencies:
       '@discordjs/collection': 2.1.0
       '@discordjs/rest': 2.3.0
@@ -1727,14 +1727,14 @@ snapshots:
 
   discord-api-types@0.37.83: {}
 
-  discord.js@14.15.1(bufferutil@4.0.8):
+  discord.js@14.15.3(bufferutil@4.0.8):
     dependencies:
-      '@discordjs/builders': 1.8.0
+      '@discordjs/builders': 1.8.2
       '@discordjs/collection': 1.5.3
       '@discordjs/formatters': 0.4.0
       '@discordjs/rest': 2.3.0
       '@discordjs/util': 1.1.0
-      '@discordjs/ws': 1.1.0(bufferutil@4.0.8)
+      '@discordjs/ws': 1.1.1(bufferutil@4.0.8)
       '@sapphire/snowflake': 3.5.3
       discord-api-types: 0.37.83
       fast-deep-equal: 3.1.3
