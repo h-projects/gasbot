@@ -8,16 +8,16 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
     "deploy": "tsx --env-file=.env src/index.ts --deploy",
-    "env:encrypt": "dotenvx encrypt",
-    "env:decrypt": "dotenvx decrypt",
+    "env:encrypt": "dotenvx vault encrypt",
+    "env:decrypt": "dotenvx vault decrypt",
     "dev": "tsx watch --env-file=.env src/index.ts",
     "test": "pnpm run \"/^(check|typecheck)$/\"",
     "postinstall": "prisma generate",
     "build": "tsc",
-    "check": "biome check .",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "lint:fix": "biome lint . --apply-unsafe",
+    "check": "biome check",
+    "format": "biome format --write",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --fix --unsafe",
     "typecheck": "tsc --noEmit",
     "changelog": "standard-changelog"
   },
@@ -31,27 +31,27 @@
   "author": "Aytch Software",
   "license": "GPL-2.0-or-later",
   "dependencies": {
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.15.0",
     "bufferutil": "^4.0.8",
     "dedent": "^1.5.3",
-    "discord.js": "^14.15.1",
+    "discord.js": "^14.15.3",
     "g-detector": "^0.1.6",
     "neon-env": "^0.2.1",
     "topgg-autoposter": "^2.0.2",
-    "yoctocolors": "^2.0.0",
+    "yoctocolors": "^2.0.2",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.2",
-    "@dotenvx/dotenvx": "^0.37.1",
+    "@biomejs/biome": "^1.8.0",
+    "@dotenvx/dotenvx": "^0.44.1",
     "cross-env": "^7.0.3",
-    "prisma": "^5.13.0",
+    "prisma": "^5.15.0",
     "standard-changelog": "^6.0.0",
-    "tsx": "^4.9.1",
+    "tsx": "^4.15.1",
     "typescript": "^5.4.5"
   },
   "engines": {
     "node": "^20.11.0 || >=21.2.0"
   },
-  "packageManager": "pnpm@9.0.6"
+  "packageManager": "pnpm@9.2.0"
 }
