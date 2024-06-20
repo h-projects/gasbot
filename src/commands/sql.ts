@@ -16,13 +16,7 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
   if (method === 'backup') {
     const backup = client.makeDatabaseBackup();
     return interaction.editReply({
-      embeds: [
-        {
-          title: 'SQL',
-          description: 'Backup complete',
-          color: client.color
-        }
-      ],
+      content: 'Backup complete',
       files: [backup]
     });
   }
