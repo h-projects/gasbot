@@ -52,8 +52,8 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0(conventional-commits-filter@5.0.0)
       tsx:
-        specifier: ^4.15.1
-        version: 4.15.1
+        specifier: ^4.15.6
+        version: 4.15.6
       typescript:
         specifier: ^5.5.2
         version: 5.5.2
@@ -1120,8 +1120,8 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  tsx@4.15.1:
-    resolution: {integrity: sha512-k/6h17jA1KfUR7SpcteOa880zGmF56s8gMIcSqUR5avyNFi9nlCEKpMiHLrzrqyARGr52A/JablmGey1DEWbCA==}
+  tsx@4.15.6:
+    resolution: {integrity: sha512-is0VQQlfNZRHEuSSTKA6m4xw74IU4AizmuB6lAYLRt9XtuyeQnyJYexhNZOPCB59SqC4JzmSzPnHGBXxf3k0hA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2243,7 +2243,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsx@4.15.1:
+  tsx@4.15.6:
     dependencies:
       esbuild: 0.21.4
       get-tsconfig: 4.7.5
