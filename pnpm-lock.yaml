@@ -40,8 +40,8 @@ importers:
         specifier: ^1.8.2
         version: 1.8.2
       '@dotenvx/dotenvx':
-        specifier: ^0.45.0
-        version: 0.45.0
+        specifier: ^1.0.0
+        version: 1.0.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -172,8 +172,8 @@ packages:
     resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
 
-  '@dotenvx/dotenvx@0.45.0':
-    resolution: {integrity: sha512-qjW6PDX3mONGQHSrI6LPzOCHn/RZPZuHThPrRZOvyo90pTMGQaCqRbcastl1Y3ZQlw0igdcKnk9pJSh5uYNLbg==}
+  '@dotenvx/dotenvx@1.0.0':
+    resolution: {integrity: sha512-z6xELzLG70tV4Mt+x9NL/HZDZ4WakBX4tN+36tMVl8bqDRAJLj+FXLILkS1OWvFREJSb8k53YGhK1w35m9834A==}
     hasBin: true
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -1347,7 +1347,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@dotenvx/dotenvx@0.45.0':
+  '@dotenvx/dotenvx@1.0.0':
     dependencies:
       '@inquirer/confirm': 2.0.17
       arch: 2.2.0
