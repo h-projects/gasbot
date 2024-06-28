@@ -2,8 +2,10 @@ import type { Application } from '#classes';
 import {
   type APIEmbedField,
   ApplicationCommandType,
+  ApplicationIntegrationType,
   type ChatInputCommandInteraction,
   ContextMenuCommandBuilder,
+  InteractionContextType,
   SlashCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
@@ -77,8 +79,12 @@ export async function onCommand(
 export const slashCommandData = new SlashCommandBuilder()
   .setName('removed')
   .setDescription('Check how many bad letters were removed')
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
   .addUserOption(option => option.setName('user').setDescription('User to check').setRequired(false));
 
 export const contextMenuCommandData = new ContextMenuCommandBuilder()
   .setName('Removed Count')
-  .setType(ApplicationCommandType.User);
+  .setType(ApplicationCommandType.User)
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);

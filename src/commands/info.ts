@@ -2,7 +2,14 @@ import process from 'node:process';
 import type { Application } from '#classes';
 import { fetchTags } from '#util';
 import dedent from 'dedent';
-import { type ChatInputCommandInteraction, OAuth2Scopes, SlashCommandBuilder, version } from 'discord.js';
+import {
+  ApplicationIntegrationType,
+  type ChatInputCommandInteraction,
+  InteractionContextType,
+  OAuth2Scopes,
+  SlashCommandBuilder,
+  version
+} from 'discord.js';
 import metadata from '../../package.json' with { type: 'json' };
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
@@ -51,4 +58,6 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
 
 export const slashCommandData = new SlashCommandBuilder()
   .setName('info')
-  .setDescription('Display information about the bot');
+  .setDescription('Display information about the bot')
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);

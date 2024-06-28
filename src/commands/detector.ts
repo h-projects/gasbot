@@ -1,10 +1,12 @@
 import type { Application } from '#classes';
 import {
   ActionRowBuilder,
+  ApplicationIntegrationType,
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
   type ChatInputCommandInteraction,
+  InteractionContextType,
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';
@@ -91,8 +93,9 @@ export const hasComponent = true;
 export const slashCommandData = new SlashCommandBuilder()
   .setName('detector')
   .setDescription('Manaqe the detection level')
+  .setContexts([InteractionContextType.Guild])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-  .setDMPermission(false)
   .addStringOption(option =>
     option.setName('level').setDescription('The new detection level').setRequired(false).addChoices(
       {
