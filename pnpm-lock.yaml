@@ -40,8 +40,8 @@ importers:
         specifier: ^1.8.3
         version: 1.8.3
       '@dotenvx/dotenvx':
-        specifier: ^0.45.0
-        version: 0.45.0
+        specifier: ^1.0.1
+        version: 1.0.1
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -172,8 +172,8 @@ packages:
     resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
 
-  '@dotenvx/dotenvx@0.45.0':
-    resolution: {integrity: sha512-qjW6PDX3mONGQHSrI6LPzOCHn/RZPZuHThPrRZOvyo90pTMGQaCqRbcastl1Y3ZQlw0igdcKnk9pJSh5uYNLbg==}
+  '@dotenvx/dotenvx@1.0.1':
+    resolution: {integrity: sha512-02NF2Z5FH1rA5ieQ9x9330aRRnOXsmajqL7j3vnAK3GYaMmeCTOq/jDc4Skfrc6OeA1tBeNlx2IWBtj/aQj3Pg==}
     hasBin: true
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -625,10 +625,6 @@ packages:
   dot-prop@6.0.1:
     resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
     engines: {node: '>=10'}
-
-  dotenv-expand@11.0.6:
-    resolution: {integrity: sha512-8NHi73otpWsZGBSZwwknTXS5pqMOrk9+Ssrna8xCaxkzEpU9OTf9R5ArQGVw03//Zmk9MOwLPng9WwndvpAJ5g==}
-    engines: {node: '>=12'}
 
   dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
@@ -1336,7 +1332,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@dotenvx/dotenvx@0.45.0':
+  '@dotenvx/dotenvx@1.0.1':
     dependencies:
       '@inquirer/confirm': 2.0.17
       arch: 2.2.0
@@ -1345,7 +1341,6 @@ snapshots:
       conf: 10.2.0
       diff: 5.2.0
       dotenv: 16.4.5
-      dotenv-expand: 11.0.6
       eciesjs: 0.4.7
       execa: 5.1.1
       glob: 10.4.2
@@ -1761,10 +1756,6 @@ snapshots:
   dot-prop@6.0.1:
     dependencies:
       is-obj: 2.0.0
-
-  dotenv-expand@11.0.6:
-    dependencies:
-      dotenv: 16.4.5
 
   dotenv@16.4.5: {}
 
