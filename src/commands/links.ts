@@ -1,6 +1,12 @@
 import type { Application } from '#classes';
 import { env } from '#env';
-import { type ChatInputCommandInteraction, OAuth2Scopes, SlashCommandBuilder } from 'discord.js';
+import {
+  ApplicationIntegrationType,
+  type ChatInputCommandInteraction,
+  InteractionContextType,
+  OAuth2Scopes,
+  SlashCommandBuilder
+} from 'discord.js';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const nog = '<:nog:676105350306594819>';
@@ -39,4 +45,8 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder().setName('links').setDescription('Useful bot links');
+export const slashCommandData = new SlashCommandBuilder()
+  .setName('links')
+  .setDescription('Useful bot links')
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);

@@ -1,6 +1,6 @@
 import type { Application } from '#classes';
 import { logger } from '#util';
-import type { Interaction } from 'discord.js';
+import { ApplicationIntegrationType, type Interaction } from 'discord.js';
 
 export function run(client: Application, interaction: Interaction) {
   if (interaction.isChatInputCommand()) {
@@ -10,18 +10,17 @@ export function run(client: Application, interaction: Interaction) {
       return logger.warn(`Unknown chat input command: ${interaction.commandName}`);
     }
 
-    if (interaction.inRawGuild() && command.slashCommandData.dm_permission === false) {
+    if (
+      interaction.inRawGuild() &&
+      command.slashCommandData.integration_types?.includes(ApplicationIntegrationType.UserInstall) === false
+    ) {
       return interaction.reply({
         content: "The bot wasn't invited properly, please invite it with the correct scopes",
         ephemeral: true
       });
     }
 
-    if (!client.developers.includes(interaction.user.id) && command.dev) {
-      return;
-    }
-
-    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions ?? 0n)) {
+    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions)) {
       return interaction.reply({
         embeds: [
           {
@@ -45,7 +44,10 @@ export function run(client: Application, interaction: Interaction) {
       return logger.warn(`Unknown context menu command: ${interaction.commandName}`);
     }
 
-    if (interaction.inRawGuild() && command.contextMenuCommandData.dm_permission === false) {
+    if (
+      interaction.inRawGuild() &&
+      command.contextMenuCommandData.integration_types?.includes(ApplicationIntegrationType.UserInstall) === false
+    ) {
       return interaction.reply({
         content: "The bot wasn't invited properly, please invite it with the correct scopes",
         ephemeral: true
@@ -56,7 +58,7 @@ export function run(client: Application, interaction: Interaction) {
       return;
     }
 
-    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions ?? 0n)) {
+    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions)) {
       return interaction.reply({
         embeds: [
           {
@@ -85,7 +87,7 @@ export function run(client: Application, interaction: Interaction) {
       return interaction.reply({ content: 'Only the user who created this component can use it', ephemeral: true });
     }
 
-    if (component.appPermissions && !interaction.appPermissions?.has(component.appPermissions ?? 0n)) {
+    if (component.appPermissions && !interaction.appPermissions?.has(component.appPermissions)) {
       return interaction.reply({
         embeds: [
           {

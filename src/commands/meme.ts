@@ -1,10 +1,12 @@
 import type { Application } from '#classes';
 import {
   ActionRowBuilder,
+  ApplicationIntegrationType,
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
   type ChatInputCommandInteraction,
+  InteractionContextType,
   SlashCommandBuilder
 } from 'discord.js';
 
@@ -70,4 +72,6 @@ export const hasComponent = true;
 
 export const slashCommandData = new SlashCommandBuilder()
   .setName('meme')
-  .setDescription('Displays a extremely funny hilarious meme from Reddit');
+  .setDescription('Displays a extremely funny hilarious meme from Reddit')
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
