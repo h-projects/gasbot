@@ -24,12 +24,6 @@
   "imports": {
     "#*": "./dist/*/index.js"
   },
-  "repository": {
-    "url": "https://github.com/h-projects/gasbot"
-  },
-  "keywords": [],
-  "author": "Aytch Software",
-  "license": "GPL-2.0-or-later",
   "dependencies": {
     "@prisma/client": "^5.16.1",
     "bufferutil": "^4.0.8",
@@ -37,7 +31,6 @@
     "discord.js": "^14.15.3",
     "g-detector": "^0.1.6",
     "neon-env": "^0.2.1",
-    "topgg-autoposter": "^2.0.2",
     "yoctocolors": "^2.0.2",
     "zlib-sync": "^0.1.9"
   },

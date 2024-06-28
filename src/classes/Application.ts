@@ -22,7 +22,6 @@ import {
   Partials,
   PresenceUpdateStatus
 } from 'discord.js';
-import { DJSPoster } from 'topgg-autoposter';
 import { blue, bold, magenta } from 'yoctocolors';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
@@ -74,10 +73,6 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     await Promise.all([this.loadEvents(), this.loadCommands(), this.prisma.$connect()]);
 
     await this.login();
-
-    if (env.NODE_ENV === 'production' && process.platform === 'linux') {
-      new DJSPoster(env.TOPGG_TOKEN, this);
-    }
 
     for (const signal of ['SIGINT', 'SIGTERM']) {
       process.on(signal, () => {
