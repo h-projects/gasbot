@@ -8,8 +8,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
     "deploy": "tsx --env-file=.env src/index.ts --deploy",
-    "env:encrypt": "dotenvx vault encrypt",
-    "env:decrypt": "dotenvx vault decrypt",
+    "env:encrypt": "dotenvx ext vault encrypt",
+    "env:decrypt": "dotenvx ext vault decrypt",
     "dev": "tsx watch --env-file=.env src/index.ts",
     "test": "pnpm run \"/^(check|typecheck)$/\"",
     "postinstall": "prisma generate",
