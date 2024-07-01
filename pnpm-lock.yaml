@@ -27,8 +27,8 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       yoctocolors:
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^2.1.0
+        version: 2.1.0
       zlib-sync:
         specifier: ^0.1.9
         version: 0.1.9
@@ -1165,8 +1165,8 @@ packages:
   xxhashjs@0.2.2:
     resolution: {integrity: sha512-AkTuIuVTET12tpsVIQo+ZU6f/qDmKuRUcjaqR+OIvm+aCBsZ95i7UVY5WJ9TMsSaZ0DA2WxoZ4acu0sPH+OKAw==}
 
-  yoctocolors@2.0.2:
-    resolution: {integrity: sha512-Ct97huExsu7cWeEjmrXlofevF8CvzUglJ4iGUet5B8xn1oumtAZBpHU4GzYuoE6PVqcZ5hghtBrSlhwHuR1Jmw==}
+  yoctocolors@2.1.0:
+    resolution: {integrity: sha512-FsQpXXeOEe05tcJN4Z2eicuC6+6KiJdBbPOAChanSkwwjZ277XGsh8wh/HaPuGeifTiw/7dgAzabitu2bnDvRg==}
     engines: {node: '>=18'}
 
   zlib-sync@0.1.9:
@@ -2232,7 +2232,7 @@ snapshots:
     dependencies:
       cuint: 0.2.2
 
-  yoctocolors@2.0.2: {}
+  yoctocolors@2.1.0: {}
 
   zlib-sync@0.1.9:
     dependencies:
