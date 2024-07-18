@@ -1,5 +1,6 @@
 import process from 'node:process';
 import type { Application } from '#classes';
+import { env } from '#env';
 import { fetchTags } from '#util';
 import dedent from 'dedent';
 import {
@@ -34,16 +35,16 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
             value: 'By default, it removes standalone G, and it can be chanqed to three different detection levels'
           },
           {
-            name: '<:VerifiedBotDev:764412852395180032> Developers',
+            name: `${env.EMOJI_BOT_DEV} Developers`,
             value: developers.join('\n'),
             inline: true
           },
           {
             name: '💻 Technoloqy',
             value: dedent`
-              <:gas:896370532751147028> [G.A.S Bot](${inviteURL}) \`v${metadata.version}\`
-              <:djs:893948932651118653> [discord.js](https://discordjs.dev/) \`v${version}\`
-              <:node:893952060205178941> [Node.js](https://nodejs.org/) \`${process.version}\`
+              ${env.EMOJI_GAS} [G.A.S Bot](${inviteURL}) \`v${metadata.version}\`
+              ${env.EMOJI_DJS} [discord.js](https://discordjs.dev/) \`v${version}\`
+              ${env.EMOJI_NODE} [Node.js](https://nodejs.org/) \`${process.version}\`
             `,
             inline: true
           }

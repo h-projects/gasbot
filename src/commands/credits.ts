@@ -1,4 +1,5 @@
 import type { Application } from '#classes';
+import { env } from '#env';
 import { fetchTags } from '#util';
 import {
   ApplicationIntegrationType,
@@ -16,7 +17,7 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
       {
         title: 'Credits',
         fields: [
-          { name: '<:VerifiedBotDev:764412852395180032> Developers', value: developers.join('\n'), inline: true },
+          { name: `${env.EMOJI_BOT_DEV} Developers`, value: developers.join('\n'), inline: true },
           { name: '⭐ Special Thanks', value: specialThanksUsers.join('\n'), inline: true }
         ],
         color: client.color
