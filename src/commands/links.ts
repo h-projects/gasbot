@@ -9,10 +9,6 @@ import {
 } from 'discord.js';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
-  const nog = '<:nog:676105350306594819>';
-  const gas = '<:gas:896370532751147028>';
-  const aytchSoftware = '<:AytchSoftware:720949593696894996>';
-
   client.application.installParams ?? (await client.application.fetch());
 
   return interaction.reply({
@@ -21,8 +17,8 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
         title: 'Links',
         fields: [
           {
-            name: `Want to remove ${nog} in your server?`,
-            value: `${gas} Invite the bot [here](${client.generateInvite(
+            name: `Want to remove ${env.EMOJI_NOG} in your server?`,
+            value: `${env.EMOJI_GAS} Invite the bot [here](${client.generateInvite(
               client.application.installParams ?? { scopes: [OAuth2Scopes.Bot] }
             )})`
           },
@@ -32,11 +28,11 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
           },
           {
             name: 'Need help?',
-            value: `${aytchSoftware} Join the Support Server [here](${env.SUPPORT_INVITE})`
+            value: `${env.EMOJI_AYTCH_SOFTWARE} Join the Support Server [here](${env.SUPPORT_INVITE})`
           },
           {
-            name: `Do you hate ${nog}?`,
-            value: `${nog} Join the G Annihilation Squad [here](${env.GAS_INVITE})`
+            name: `Do you hate ${env.EMOJI_NOG}?`,
+            value: `${env.EMOJI_NOG} Join the G Annihilation Squad [here](${env.GAS_INVITE})`
           }
         ],
         color: client.color
