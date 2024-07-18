@@ -1,9 +1,8 @@
-import process from 'node:process';
 import { createEnv } from 'neon-env';
 
 export const env = createEnv({
   DISCORD_TOKEN: { type: 'string' },
-  TOPGG_TOKEN: { type: 'string', optional: process.env.NODE_ENV === 'production' },
+  TOPGG_TOKEN: { type: 'string', optional: true },
 
   GUILD_LOGS: { type: 'string' },
   GLOBAL_DETECTOR_LOGS: { type: 'string' },
