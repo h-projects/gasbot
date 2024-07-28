@@ -2,11 +2,13 @@ import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ApplicationCommandType,
+  ApplicationIntegrationType,
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
   type ChatInputCommandInteraction,
   ContextMenuCommandBuilder,
+  InteractionContextType,
   PermissionFlagsBits,
   SlashCommandBuilder,
   type UserContextMenuCommandInteraction
@@ -112,12 +114,14 @@ export const hasComponent = true;
 export const slashCommandData = new SlashCommandBuilder()
   .setName('g-spy')
   .setDescription('Mark a user as a g-spy')
+  .setContexts([InteractionContextType.Guild])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
-  .setDMPermission(false)
   .addUserOption(option => option.setName('user').setDescription('User to mark as g-spy').setRequired(true));
 
 export const contextMenuCommandData = new ContextMenuCommandBuilder()
   .setName('Mark as G Spy')
+  .setContexts([InteractionContextType.Guild])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
-  .setDMPermission(false)
   .setType(ApplicationCommandType.User);

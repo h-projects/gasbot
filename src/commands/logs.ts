@@ -1,6 +1,7 @@
 import type { Application } from '#classes';
 import {
   ActionRowBuilder,
+  ApplicationIntegrationType,
   ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
@@ -8,6 +9,7 @@ import {
   type ChannelSelectMenuInteraction,
   ChannelType,
   type ChatInputCommandInteraction,
+  InteractionContextType,
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';
@@ -127,8 +129,9 @@ export const hasComponent = true;
 export const slashCommandData = new SlashCommandBuilder()
   .setName('loqs')
   .setDescription('Manaqe the loqs channel')
+  .setContexts([InteractionContextType.Guild])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
-  .setDMPermission(false)
   .addChannelOption(option =>
     option
       .setName('channel')
