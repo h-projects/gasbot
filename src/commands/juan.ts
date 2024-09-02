@@ -1,5 +1,10 @@
 import type { Application } from '#classes';
-import { type ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import {
+  ApplicationIntegrationType,
+  type ChatInputCommandInteraction,
+  InteractionContextType,
+  SlashCommandBuilder
+} from 'discord.js';
 
 export function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   return interaction.reply({
@@ -15,4 +20,8 @@ export function onSlashCommand(client: Application, interaction: ChatInputComman
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder().setName('juan').setDescription('🐴');
+export const slashCommandData = new SlashCommandBuilder()
+  .setName('juan')
+  .setDescription('🐴')
+  .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
