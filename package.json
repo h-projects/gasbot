@@ -8,8 +8,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
     "deploy": "tsx --env-file=.env src/index.ts --deploy",
-    "env:encrypt": "dotenvx ext vault encrypt",
-    "env:decrypt": "dotenvx ext vault decrypt",
+    "env:encrypt": "dotenvx-ext-vault encrypt",
+    "env:decrypt": "dotenvx-ext-vault decrypt",
     "dev": "tsx watch --env-file=.env src/index.ts",
     "test": "node --run check && node --run typecheck",
     "postinstall": "prisma generate",
@@ -25,21 +25,21 @@
     "#*": "./dist/*/index.js"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.1",
+    "@prisma/client": "^5.19.1",
     "bufferutil": "^4.0.8",
     "dedent": "^1.5.3",
-    "discord.js": "^14.16.0",
+    "discord.js": "^14.16.1",
     "g-detector": "^0.1.6",
     "neon-env": "^0.2.2",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@dotenvx/dotenvx": "^1.9.1",
+    "@dotenvx/dotenvx-ext-vault": "^0.2.0",
     "cross-env": "^7.0.3",
-    "prisma": "^5.16.1",
+    "prisma": "^5.19.1",
     "standard-changelog": "^6.0.0",
-    "tsx": "^4.17.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.5.4"
   },
   "engines": {
