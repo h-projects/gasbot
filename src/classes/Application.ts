@@ -85,13 +85,10 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
   }
 
   async deployCommands() {
-    // TODO: change this back to commands.set once d.js supports user apps
-    await this.rest.put(`/applications/${this.user?.id}/commands`, {
-      body: [
-        ...this.chatInputCommands.filter(c => !c.dev).map(c => c.slashCommandData.toJSON()),
-        ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData.toJSON())
-      ]
-    });
+    await this.application?.commands.set([
+      ...this.chatInputCommands.filter(c => !c.dev).map(c => c.slashCommandData.toJSON()),
+      ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData.toJSON())
+    ]);
 
     const testGuild = this.guilds.cache.get(env.TEST_GUILD);
     await testGuild?.commands.set([
