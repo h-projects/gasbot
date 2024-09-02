@@ -20,7 +20,7 @@ export function run(client: Application, interaction: Interaction) {
       });
     }
 
-    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions)) {
+    if (command.appPermissions && !interaction.appPermissions.has(command.appPermissions)) {
       return interaction.reply({
         embeds: [
           {
@@ -58,7 +58,7 @@ export function run(client: Application, interaction: Interaction) {
       return;
     }
 
-    if (command.appPermissions && !interaction.appPermissions?.has(command.appPermissions)) {
+    if (command.appPermissions && !interaction.appPermissions.has(command.appPermissions)) {
       return interaction.reply({
         embeds: [
           {
@@ -87,7 +87,7 @@ export function run(client: Application, interaction: Interaction) {
       return interaction.reply({ content: 'Only the user who created this component can use it', ephemeral: true });
     }
 
-    if (component.appPermissions && !interaction.appPermissions?.has(component.appPermissions)) {
+    if (component.appPermissions && !interaction.appPermissions.has(component.appPermissions)) {
       return interaction.reply({
         embeds: [
           {

@@ -85,7 +85,11 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
   }
 
   async deployCommands() {
-    await this.application?.commands.set([
+    if (!this.isReady()) {
+      throw new Error("Client is not ready, can't deploy commands");
+    }
+
+    await this.application.commands.set([
       ...this.chatInputCommands.filter(c => !c.dev).map(c => c.slashCommandData.toJSON()),
       ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData.toJSON())
     ]);
