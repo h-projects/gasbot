@@ -139,10 +139,6 @@ packages:
     resolution: {integrity: sha512-SVb428OMd3WO1paV3rm6tSjM4wC+Kecaa1EUGX7vc6/fddvw/6lg90z4QtCqm21zvVe92vMMDt9+DkIvjXImQQ==}
     engines: {node: '>=16.11.0'}
 
-  '@discordjs/collection@2.1.0':
-    resolution: {integrity: sha512-mLcTACtXUuVgutoznkh6hS3UFqYirDYAg5Dc1m8xn6OvPjetnUlf/xjtqnnc47OwWdaoCQnHmHh9KofhD6uRqw==}
-    engines: {node: '>=18'}
-
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
     engines: {node: '>=18'}
@@ -349,10 +345,6 @@ packages:
   '@prisma/get-platform@5.16.1':
     resolution: {integrity: sha512-R4IKnWnMkR2nUAbU5gjrPehdQYUUd7RENFD2/D+xXTNhcqczp0N+WEGQ3ViyI3+6mtVcjjNIMdnUTNyu3GxIgA==}
 
-  '@sapphire/async-queue@1.5.2':
-    resolution: {integrity: sha512-7X7FFAA4DngXUl95+hYbUF19bp1LGiffjJtu7ygrZrbdCSsdDDBaSjB7Akw0ZbOu6k0xpXyljnJ6/RZUvLfRdg==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
-
   '@sapphire/async-queue@1.5.3':
     resolution: {integrity: sha512-x7zadcfJGxFka1Q3f8gCts1F0xMwCKbZweM85xECGI0hBTeIZJGGCrHgLggihBoprlQ/hBmDR5LKfIPqnmHM3w==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
@@ -376,10 +368,6 @@ packages:
 
   '@types/ws@8.5.10':
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
-
-  '@vladfrangu/async_event_emitter@2.4.0':
-    resolution: {integrity: sha512-eNb/9DMwNvhhgn1UuQ8Rl90jhj9PBkYH4oQ522TkiWUVWRfbh3PjdOTFkVGNKs5+xUXalkgFrUSwtY8u0g0S4g==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@vladfrangu/async_event_emitter@2.4.6':
     resolution: {integrity: sha512-RaI5qZo6D2CVS6sTHFKg1v5Ohq/+Bo2LZ5gzUEwZ/WkHhwtGTCB/sVLw8ijOkAUxasZ+WshN/Rzj4ywsABJ5ZA==}
@@ -820,8 +808,6 @@ snapshots:
 
   '@discordjs/collection@1.5.3': {}
 
-  '@discordjs/collection@2.1.0': {}
-
   '@discordjs/collection@2.1.1': {}
 
   '@discordjs/formatters@0.5.0':
@@ -844,12 +830,12 @@ snapshots:
 
   '@discordjs/ws@1.1.1(bufferutil@4.0.8)':
     dependencies:
-      '@discordjs/collection': 2.1.0
+      '@discordjs/collection': 2.1.1
       '@discordjs/rest': 2.4.0
       '@discordjs/util': 1.1.1
-      '@sapphire/async-queue': 1.5.2
+      '@sapphire/async-queue': 1.5.3
       '@types/ws': 8.5.10
-      '@vladfrangu/async_event_emitter': 2.4.0
+      '@vladfrangu/async_event_emitter': 2.4.6
       discord-api-types: 0.37.83
       tslib: 2.7.0
       ws: 8.17.1(bufferutil@4.0.8)
@@ -978,8 +964,6 @@ snapshots:
     dependencies:
       '@prisma/debug': 5.16.1
 
-  '@sapphire/async-queue@1.5.2': {}
-
   '@sapphire/async-queue@1.5.3': {}
 
   '@sapphire/shapeshift@4.0.0':
@@ -1000,8 +984,6 @@ snapshots:
   '@types/ws@8.5.10':
     dependencies:
       '@types/node': 22.0.0
-
-  '@vladfrangu/async_event_emitter@2.4.0': {}
 
   '@vladfrangu/async_event_emitter@2.4.6': {}
 
