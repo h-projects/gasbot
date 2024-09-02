@@ -13,15 +13,20 @@ export async function run(client: Application<true>) {
 
   if (env.NODE_ENV === 'production' && env.TOPGG_TOKEN) {
     setInterval(
-      () =>
-        fetch(`https://top.gg/api/bots/${client.user.id}/stats`, {
+      async () => {
+        const response = await fetch(`https://top.gg/api/bots/${client.user.id}/stats`, {
           method: 'POST',
           headers: {
             Authorization: env.TOPGG_TOKEN ?? '',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ server_count: client.guilds.cache.size })
-        }),
+        });
+
+        if (!response.ok) {
+          logger.warn(`Failed to update top.gg stats, status code ${response.status}`);
+        }
+      },
       30 * 60 * 1000
     );
   }
