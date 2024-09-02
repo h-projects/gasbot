@@ -3,13 +3,14 @@ import { env } from '#env';
 import {
   ApplicationIntegrationType,
   type ChatInputCommandInteraction,
+  DefaultRestOptions,
   InteractionContextType,
-  OAuth2Scopes,
+  Routes,
   SlashCommandBuilder
 } from 'discord.js';
 
-export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
-  client.application.installParams ?? (await client.application.fetch());
+export function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
+  const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
 
   return interaction.reply({
     embeds: [
@@ -18,9 +19,7 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
         fields: [
           {
             name: `Want to remove ${env.EMOJI_NOG} in your server?`,
-            value: `${env.EMOJI_GAS} Invite the bot [here](${client.generateInvite(
-              client.application.installParams ?? { scopes: [OAuth2Scopes.Bot] }
-            )})`
+            value: `${env.EMOJI_GAS} Invite the bot [here](${inviteURL})`
           },
           {
             name: 'Want to support the bot?',

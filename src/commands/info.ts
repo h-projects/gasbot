@@ -6,8 +6,9 @@ import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
   type ChatInputCommandInteraction,
+  DefaultRestOptions,
   InteractionContextType,
-  OAuth2Scopes,
+  Routes,
   SlashCommandBuilder,
   version
 } from 'discord.js';
@@ -16,9 +17,7 @@ import metadata from '../../package.json' with { type: 'json' };
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);
 
-  const installParams =
-    client.application?.installParams ?? (await client.application.fetch().then(a => a.installParams));
-  const inviteURL = client.generateInvite(installParams ?? { scopes: [OAuth2Scopes.Bot] });
+  const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
 
   return interaction.reply({
     embeds: [
