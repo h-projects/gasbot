@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.3
         version: 1.8.3
       '@dotenvx/dotenvx-ext-vault':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.3.1
+        version: 0.3.1
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -159,8 +159,8 @@ packages:
     resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
 
-  '@dotenvx/dotenvx-ext-vault@0.2.1':
-    resolution: {integrity: sha512-oTxnkvT9kTnKK4Tgcb7ow6tNM2kh1La3h6FORlRgNl3YYlhQbXklqFsJAGq1/0Epa9ym2jYTDynMH6IKSiPe0Q==}
+  '@dotenvx/dotenvx-ext-vault@0.3.1':
+    resolution: {integrity: sha512-o9HpnGT/V3QiwR3isDiXfkgRbxcaCsNroS6307k+N/uiYy9TTek/9VPjZHOObDgQZpsixtFENQIbqelKaCSqug==}
     hasBin: true
 
   '@esbuild/aix-ppc64@0.23.1':
@@ -808,7 +808,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@dotenvx/dotenvx-ext-vault@0.2.1':
+  '@dotenvx/dotenvx-ext-vault@0.3.1':
     dependencies:
       commander: 11.1.0
       diff: 5.2.0
