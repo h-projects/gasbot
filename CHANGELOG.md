@@ -1,3 +1,18 @@
+# [4.1.0](https://github.com/h-projects/gasbot/compare/4.0.2...4.1.0) (2024-10-26)
+
+
+### Bug Fixes
+
+* `TOPGG_TOKEN` is always optional ([89b1581](https://github.com/h-projects/gasbot/commit/89b1581afb5e5473307174c4a361ab42baedb0f9))
+
+
+### Features
+
+* **logs:** add channel select menu ([b0725bb](https://github.com/h-projects/gasbot/commit/b0725bb655a71db53ef7768408a258a0be44278c))
+* support user installations ([#407](https://github.com/h-projects/gasbot/issues/407)) ([aff1af1](https://github.com/h-projects/gasbot/commit/aff1af12f2ac3fb500b03b122a5472770ddc4611))
+
+
+
 ## [4.0.2](https://github.com/h-projects/gasbot/compare/4.0.1...4.0.2) (2023-09-01)
 
 ### Refactor

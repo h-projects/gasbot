@@ -1,6 +1,6 @@
 {
   "name": "gasbot",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "description": "A bot to remove and protect you from the letter G.",
   "private": true,
   "type": "module",

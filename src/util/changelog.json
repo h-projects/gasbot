@@ -1,13 +1,13 @@
 {
-  "version": "4.0.0",
+  "version": "4.1.0",
   "features": [
     {
-      "name": "Completely rewritten the bot (aqain)!",
-      "value": "The bot was fully rewritten in TypeScript, ready to handle the next few years."
+      "name": "Support for User Installations",
+      "value": "You can now add the bot to your account and use most commands outside servers"
     },
     {
-      "name": "Improvements and Buqfixes",
-      "value": "The bot is a more stable now and it no lonqer has problems in certain situations."
+      "name": "Full Infrastructure Upqrade",
+      "value": "Most internal systems have been revamped and should be more reliable"
     }
   ]
 }
