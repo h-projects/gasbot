@@ -40,7 +40,7 @@
     "prisma": "^5.21.1",
     "standard-changelog": "^6.0.0",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "resolutions": {
     "discord-api-types": "^0.37.103"
