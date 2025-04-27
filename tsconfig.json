@@ -11,6 +11,7 @@
       "#*": ["./src/*/index.ts"]
     },
 
+    "erasableSyntaxOnly": true,
     "resolveJsonModule": true,
     "noEmitOnError": true,
     "skipLibCheck": true,

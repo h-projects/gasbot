@@ -1,6 +1,6 @@
 export { default as changelog } from './changelog.json' with { type: 'json' };
-export * from './fetchTags.js';
-export * from './files.js';
-export * as logger from './logger.js';
-export * from './sendable.js';
-export * from './types.js';
+export * from '##util/fetchTags';
+export * from '##util/files';
+export * as logger from '##util/logger';
+export * from '##util/sendable';
+export * from '##util/types';

@@ -13,25 +13,27 @@ import {
 } from 'discord.js';
 import { blocklist, detect, Level } from 'g-detector';
 
-export enum LogType {
-  Message,
-  EditedMessage,
-  Nickname,
-  Reaction
-}
+export const LogType = {
+  Message: 0,
+  EditedMessage: 1,
+  Nickname: 2,
+  Reaction: 3
+} as const;
+
+const logTypeNames = ['Messaqe', 'Edited Messaqe', 'Nickname', 'Reaction'] as const;
 
 export interface MessageLogOptions {
-  type: LogType.Message | LogType.EditedMessage;
+  type: typeof LogType.Message | typeof LogType.EditedMessage;
   message: Message<true>;
 }
 
 export interface NicknameLogOptions {
-  type: LogType.Nickname;
+  type: typeof LogType.Nickname;
   nickname: string;
 }
 
 export interface ReactionLogOptions {
-  type: LogType.Reaction;
+  type: typeof LogType.Reaction;
   reaction: MessageReaction;
 }
 
@@ -197,7 +199,11 @@ export class Detector {
     const channel = this.client.channels.cache.get(options.logs?.toString() ?? '') as GuildTextBasedChannel | undefined;
 
     const fields: APIEmbedField[] = [
-      { name: 'Type', value: LogType[options.type].replace('Edited', 'Edited ').replace('g', 'q'), inline: true },
+      {
+        name: 'Type',
+        value: logTypeNames[options.type],
+        inline: true
+      },
       { name: 'Level', value: Level[options.level ?? Level.Medium].replace('g', 'q'), inline: true },
       { name: 'User', value: `${options.member} (${options.member.id})` }
     ];
