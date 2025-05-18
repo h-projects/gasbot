@@ -1,34 +1,67 @@
 import type { Application } from '#classes';
 import {
-  ActionRowBuilder,
   ApplicationIntegrationType,
-  ButtonBuilder,
   type ButtonInteraction,
   ButtonStyle,
-  ChannelSelectMenuBuilder,
+  type ChannelSelectMenuComponentData,
   type ChannelSelectMenuInteraction,
   ChannelType,
   type ChatInputCommandInteraction,
+  ComponentType,
+  type ContainerComponentData,
   InteractionContextType,
+  MessageFlags,
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';
 
-const getRows = ({ channelId, disabled, userId }: { channelId?: string; disabled: boolean; userId: string }) => [
-  new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([
-    new ChannelSelectMenuBuilder()
-      .setChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
-      .setDefaultChannels(channelId ? [channelId] : [])
-      .setCustomId(`logs:set:${userId}`)
-      .setPlaceholder('Set loqs channel')
-  ]),
-  new ActionRowBuilder<ButtonBuilder>().addComponents([
-    new ButtonBuilder()
-      .setLabel('Reset')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`logs:reset:${userId}`)
-      .setDisabled(disabled)
-  ])
+const getComponents = ({
+  channelId,
+  color,
+  content,
+  disabled,
+  userId
+}: {
+  channelId?: string;
+  color: number;
+  content: string;
+  disabled: boolean;
+  userId: string;
+}): ContainerComponentData[] => [
+  {
+    type: ComponentType.Container,
+    accentColor: color,
+    components: [
+      {
+        type: ComponentType.TextDisplay,
+        content: `# Loqs\n${content}`
+      },
+      {
+        type: ComponentType.ActionRow,
+        components: [
+          {
+            type: ComponentType.ChannelSelect,
+            channelTypes: [ChannelType.GuildText, ChannelType.GuildAnnouncement],
+            defaultChannels: channelId ? [channelId] : [],
+            customId: `logs:set:${userId}`,
+            placeholder: 'Set loqs channel'
+          } as ChannelSelectMenuComponentData
+        ]
+      },
+      {
+        type: ComponentType.ActionRow,
+        components: [
+          {
+            type: ComponentType.Button,
+            style: ButtonStyle.Secondary,
+            customId: `logs:reset:${userId}`,
+            label: 'Reset',
+            disabled
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
@@ -48,17 +81,13 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
 
     const logs = interaction.guild.channels.cache.get(logsId?.toString() ?? '');
     return interaction.reply({
-      embeds: [
-        {
-          title: 'Loqs',
-          description: logs ? `The current loqs channel is ${logs}` : "You don't have a loqs channel set up!",
-          color: client.color
-        }
-      ],
-      components: getRows({
+      flags: MessageFlags.IsComponentsV2,
+      components: getComponents({
+        content: logs ? `The current loqs channel is ${logs}` : "You don't have a loqs channel set up!",
         userId: interaction.user.id,
         channelId: logs?.id,
-        disabled: !logs
+        disabled: !logs,
+        color: client.color
       })
     });
   }
@@ -77,17 +106,13 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
   });
 
   return interaction.reply({
-    embeds: [
-      {
-        title: 'Loqs',
-        description: `The loqs channel is now ${channel}`,
-        color: client.color
-      }
-    ],
-    components: getRows({
+    flags: MessageFlags.IsComponentsV2,
+    components: getComponents({
+      content: `The loqs channel is now ${channel}`,
       userId: interaction.user.id,
       channelId: channel.id,
-      disabled: false
+      disabled: false,
+      color: client.color
     })
   });
 }
@@ -107,19 +132,15 @@ export async function onComponent(
   });
 
   return interaction.update({
-    embeds: [
-      {
-        title: 'Loqs',
-        description: setModeEnabled
-          ? `The loqs channel is now <#${interaction.values[0]}>`
-          : 'Successfully reset the loqs channel',
-        color: client.color
-      }
-    ],
-    components: getRows({
+    flags: MessageFlags.IsComponentsV2,
+    components: getComponents({
+      content: setModeEnabled
+        ? `The loqs channel is now <#${interaction.values[0]}>`
+        : 'Successfully reset the loqs channel',
       userId: interaction.user.id,
       channelId: setModeEnabled ? interaction.values[0] : undefined,
-      disabled: !setModeEnabled
+      disabled: !setModeEnabled,
+      color: client.color
     })
   });
 }
