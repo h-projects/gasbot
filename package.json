@@ -37,7 +37,7 @@
     "dedent": "^1.6.0",
     "discord.js": "^14.19.3",
     "g-detector": "^0.1.6",
-    "neon-env": "^0.2.2",
+    "neon-env": "^0.2.3",
     "zlib-sync": "^0.1.10"
   },
   "devDependencies": {

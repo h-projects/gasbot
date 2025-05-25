@@ -24,8 +24,8 @@ importers:
         specifier: ^0.1.6
         version: 0.1.6
       neon-env:
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.2.3
+        version: 0.2.3
       zlib-sync:
         specifier: ^0.1.10
         version: 0.1.10
@@ -377,9 +377,10 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  neon-env@0.2.2:
-    resolution: {integrity: sha512-Pl7qmcZE6klOwpjrOcTZn6ONYFg9S186PWGjPy3apsqLRVBIXloDrAzVKildM3oR4g7ZXaiEtqa/g3JSvWjkJw==}
+  neon-env@0.2.3:
+    resolution: {integrity: sha512-DK6uw563Hxkr8PlO3AKF3QaQWx051VjrvRyeQd2u7FaXEqRpv/YibFdooqBkAq/9gkTwgsA0RSJkpYnqYSXfWQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    deprecated: Merged with typed-env, use that instead
 
   node-gyp-build@4.8.4:
     resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
@@ -835,7 +836,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  neon-env@0.2.2: {}
+  neon-env@0.2.3: {}
 
   node-gyp-build@4.8.4: {}
 
