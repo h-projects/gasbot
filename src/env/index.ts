@@ -1,4 +1,4 @@
-import { createEnv } from 'neon-env';
+import { createEnv } from 'typed-env';
 
 export const env = createEnv({
   DISCORD_TOKEN: { type: 'string' },

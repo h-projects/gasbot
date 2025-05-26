@@ -23,9 +23,9 @@ importers:
       g-detector:
         specifier: ^0.1.6
         version: 0.1.6
-      neon-env:
-        specifier: ^0.2.2
-        version: 0.2.2
+      typed-env:
+        specifier: ^2.0.0
+        version: 2.0.0
       zlib-sync:
         specifier: ^0.1.10
         version: 0.1.10
@@ -377,10 +377,6 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  neon-env@0.2.2:
-    resolution: {integrity: sha512-Pl7qmcZE6klOwpjrOcTZn6ONYFg9S186PWGjPy3apsqLRVBIXloDrAzVKildM3oR4g7ZXaiEtqa/g3JSvWjkJw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-
   node-gyp-build@4.8.4:
     resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
@@ -465,6 +461,10 @@ packages:
   type-fest@4.41.0:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
+
+  typed-env@2.0.0:
+    resolution: {integrity: sha512-9nP+7+pctDlpFNKS4nkXPVkCOdAj7Ax8QeHhQkQ0hEGzsJ5ClgfhjwGN89q6s/EukHqyq9rDRzZ2yctCIEJGxA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
 
   typescript@5.8.3:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
@@ -835,8 +835,6 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  neon-env@0.2.2: {}
-
   node-gyp-build@4.8.4: {}
 
   normalize-package-data@6.0.2:
@@ -916,6 +914,8 @@ snapshots:
   tslib@2.8.1: {}
 
   type-fest@4.41.0: {}
+
+  typed-env@2.0.0: {}
 
   typescript@5.8.3: {}
 
