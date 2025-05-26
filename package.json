@@ -45,7 +45,7 @@
     "@dotenvx/dotenvx-ext-vault": "^0.3.2",
     "cross-env": "^7.0.3",
     "prisma": "^6.8.2",
-    "standard-changelog": "^6.0.0",
+    "standard-changelog": "^7.0.1",
     "typescript": "^5.8.3"
   },
   "engines": {
