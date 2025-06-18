@@ -1,5 +1,5 @@
-import type { Application } from '#classes';
 import { type Message, MessageType } from 'discord.js';
+import type { Application } from '#classes';
 
 export async function run(client: Application<true>, _oldMessage: Message, message: Message<true>) {
   if (message.partial) {

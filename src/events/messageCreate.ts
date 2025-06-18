@@ -1,6 +1,6 @@
+import { type Message, MessageType } from 'discord.js';
 import type { Application } from '#classes';
 import { isSendable } from '#util';
-import { type Message, MessageType } from 'discord.js';
 
 export async function run(client: Application<true>, message: Message<true>) {
   if (

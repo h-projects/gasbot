@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import type {
   ChatInputCommandInteraction,
   CommandInteraction,
@@ -9,6 +8,7 @@ import type {
   PermissionResolvable,
   SlashCommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
 
 export interface Event {
   run(client: Application, ...args: unknown[]): Promise<void>;

@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ApplicationCommandType,
@@ -13,6 +12,7 @@ import {
   SlashCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
+import type { Application } from '#classes';
 
 export const appPermissions = [PermissionFlagsBits.ManageRoles];
 

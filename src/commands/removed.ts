@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import {
   type APIEmbedField,
   ApplicationCommandType,
@@ -9,6 +8,7 @@ import {
   SlashCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
+import type { Application } from '#classes';
 
 export async function onCommand(
   client: Application,

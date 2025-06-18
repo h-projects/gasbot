@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
@@ -13,6 +12,7 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
 
 const getRows = ({ channelId, disabled, userId }: { channelId?: string; disabled: boolean; userId: string }) => [
   new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([

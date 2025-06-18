@@ -1,6 +1,6 @@
+import { ApplicationIntegrationType, type Interaction } from 'discord.js';
 import type { Application } from '#classes';
 import { logger } from '#util';
-import { ApplicationIntegrationType, type Interaction } from 'discord.js';
 
 export function run(client: Application, interaction: Interaction) {
   if (interaction.isChatInputCommand()) {

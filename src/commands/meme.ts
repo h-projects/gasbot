@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
@@ -9,6 +8,7 @@ import {
   InteractionContextType,
   SlashCommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
 
 interface RedditResponse {
   data: {

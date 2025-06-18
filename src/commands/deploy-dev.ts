@@ -1,5 +1,5 @@
-import type { Application } from '#classes';
 import { type ChatInputCommandInteraction, Routes, SlashCommandBuilder } from 'discord.js';
+import type { Application } from '#classes';
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const guildId = interaction.options.getString('guild', true);

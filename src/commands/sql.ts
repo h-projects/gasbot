@@ -1,5 +1,4 @@
 import { inspect } from 'node:util';
-import type { Application } from '#classes';
 import {
   type ChatInputCommandInteraction,
   codeBlock,
@@ -7,6 +6,7 @@ import {
   SlashCommandBuilder,
   SlashCommandSubcommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
 
 export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   const method = interaction.options.getSubcommand(true);

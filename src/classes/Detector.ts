@@ -1,7 +1,4 @@
 import { setTimeout } from 'node:timers/promises';
-import type { Application } from '#classes';
-import { env } from '#env';
-import { isSendable } from '#util';
 import {
   type APIEmbedField,
   type GuildMember,
@@ -12,6 +9,9 @@ import {
   type User
 } from 'discord.js';
 import { blocklist, detect, Level } from 'g-detector';
+import type { Application } from '#classes';
+import { env } from '#env';
+import { isSendable } from '#util';
 
 export const LogType = {
   Message: 0,

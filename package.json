@@ -41,7 +41,7 @@
     "zlib-sync": "^0.1.10"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.0.0",
     "@dotenvx/dotenvx-ext-vault": "^0.3.2",
     "cross-env": "^7.0.3",
     "prisma": "^6.9.0",

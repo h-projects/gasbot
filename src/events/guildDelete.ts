@@ -1,6 +1,6 @@
+import type { Guild, GuildTextBasedChannel } from 'discord.js';
 import type { Application } from '#classes';
 import { env } from '#env';
-import type { Guild, GuildTextBasedChannel } from 'discord.js';
 
 export async function run(client: Application<true>, guild: Guild) {
   if (!guild.available) {

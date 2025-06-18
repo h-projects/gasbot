@@ -1,7 +1,4 @@
 import process from 'node:process';
-import type { Application } from '#classes';
-import { env } from '#env';
-import { fetchTags } from '#util';
 import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
@@ -12,6 +9,9 @@ import {
   SlashCommandBuilder,
   version
 } from 'discord.js';
+import type { Application } from '#classes';
+import { env } from '#env';
+import { fetchTags } from '#util';
 import metadata from '../../package.json' with { type: 'json' };
 
 export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {

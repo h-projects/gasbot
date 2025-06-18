@@ -1,11 +1,11 @@
-import type { Application } from '#classes';
-import { changelog } from '#util';
 import {
   ApplicationIntegrationType,
   type ChatInputCommandInteraction,
   InteractionContextType,
   SlashCommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
+import { changelog } from '#util';
 
 export function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
   return interaction.reply({

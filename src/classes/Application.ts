@@ -1,16 +1,5 @@
 import process from 'node:process';
 import { styleText } from 'node:util';
-import { Detector } from '#classes';
-import { env } from '#env';
-import {
-  type ChatInputCommand,
-  type Command,
-  type Component,
-  type ContextMenuCommand,
-  type Event,
-  loadDirectory,
-  logger
-} from '#util';
 import { PrismaClient } from '@prisma/client';
 import {
   ActivityType,
@@ -23,6 +12,17 @@ import {
   Partials,
   PresenceUpdateStatus
 } from 'discord.js';
+import { Detector } from '#classes';
+import { env } from '#env';
+import {
+  type ChatInputCommand,
+  type Command,
+  type Component,
+  type ContextMenuCommand,
+  type Event,
+  loadDirectory,
+  logger
+} from '#util';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
   detector: Detector = new Detector(this);

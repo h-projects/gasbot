@@ -1,4 +1,3 @@
-import type { Application } from '#classes';
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
@@ -11,6 +10,7 @@ import {
   SlashCommandBuilder
 } from 'discord.js';
 import { Level } from 'g-detector';
+import type { Application } from '#classes';
 
 export async function onInteraction(
   client: Application,

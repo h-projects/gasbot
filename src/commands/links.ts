@@ -1,5 +1,3 @@
-import type { Application } from '#classes';
-import { env } from '#env';
 import {
   ApplicationIntegrationType,
   type ChatInputCommandInteraction,
@@ -8,6 +6,8 @@ import {
   Routes,
   SlashCommandBuilder
 } from 'discord.js';
+import type { Application } from '#classes';
+import { env } from '#env';
 
 export function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
