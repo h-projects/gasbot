@@ -7,10 +7,10 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
-    "deploy": "node --conditions=dev --env-file=.env src/index.ts --deploy",
+    "deploy": "node -C dev --env-file=.env src/index.ts --deploy",
     "env:encrypt": "dotenvx-ext-vault encrypt",
     "env:decrypt": "dotenvx-ext-vault decrypt",
-    "dev": "node --conditions=dev --watch --env-file=.env src/index.ts",
+    "dev": "node -C dev --watch --env-file=.env src/index.ts",
     "test": "node --run check && node --run typecheck",
     "postinstall": "prisma generate",
     "build": "tsc",
@@ -25,10 +25,6 @@
     "#*": {
       "dev": "./src/*/index.ts",
       "default": "./dist/*/index.js"
-    },
-    "##*": {
-      "dev": "./src/*.ts",
-      "default": "./dist/*.js"
     }
   },
   "dependencies": {

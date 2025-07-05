@@ -1,2 +1,2 @@
-export * from '##classes/Application';
-export * from '##classes/Detector';
+export * from './Application.ts';
+export * from './Detector.ts';
