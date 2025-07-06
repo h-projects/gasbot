@@ -101,10 +101,11 @@ export class Detector {
     ]);
   }
 
-  static nicknameRegexp = RegExp(`[${blocklist}]`, 'giu');
+  static nicknameRegExp = RegExp(`[${blocklist.join('')}]`, 'giu');
+  static separatorRegExp = /[.\-_ /\\()[\]]/giu;
   async detectNickname(member: GuildMember) {
-    const cleanNickname = member.displayName.replaceAll(/[.\-_ /\\()[\]]/giu, '');
-    const result = Detector.nicknameRegexp.exec(cleanNickname) ?? [];
+    const cleanNickname = member.displayName.replaceAll(Detector.separatorRegExp, '');
+    const result = Detector.nicknameRegExp.exec(cleanNickname) ?? [];
 
     const clientMember = await member.guild.members.fetchMe();
     if (
@@ -117,7 +118,7 @@ export class Detector {
     }
 
     const oldNickname = member.displayName;
-    const newNickname = oldNickname.replaceAll(Detector.nicknameRegexp, 'h');
+    const newNickname = oldNickname.replaceAll(Detector.nicknameRegExp, 'h');
     await member.setNickname(newNickname).catch(() => null);
 
     if (member.user.bot) {
