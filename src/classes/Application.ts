@@ -109,8 +109,8 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
   async loadEvents() {
     const perf = performance.now();
-    const events = await loadDirectory<Event>('../events');
-    for (const event of events) {
+    const events = loadDirectory<Event>('../events');
+    for await (const event of events) {
       this.on(event.name, (...args: unknown[]) => {
         return event.data.run(this, ...args);
       });
@@ -120,8 +120,8 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
 
   async loadCommands() {
     const perf = performance.now();
-    const commands = await loadDirectory<Command>('../commands');
-    for (const command of commands) {
+    const commands = loadDirectory<Command>('../commands');
+    for await (const command of commands) {
       if (this.isChatInputCommand(command.data)) {
         this.chatInputCommands.set(command.data.slashCommandData.name, command.data);
       }

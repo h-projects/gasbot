@@ -4,11 +4,13 @@ import { env } from '#env';
 
 const extension = env.NODE_ENV === 'production' ? '.js' : '.ts';
 
-export function loadDirectory<T>(relativePath: string) {
+export async function* loadDirectory<T>(relativePath: string) {
   const files = glob(join(import.meta.dirname, relativePath, `*${extension}`));
 
-  return Array.fromAsync(files, async file => ({
-    name: basename(file, extension),
-    data: (await import(`file://${file}`)) as T
-  }));
+  for await (const file of files) {
+    yield {
+      name: basename(file, extension),
+      data: (await import(`file://${file}`)) as T
+    };
+  }
 }
