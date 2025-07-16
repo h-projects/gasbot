@@ -1,6 +1,5 @@
 import process from 'node:process';
 import { styleText } from 'node:util';
-import { PrismaClient } from '@prisma/client';
 import {
   ActivityType,
   AttachmentBuilder,
@@ -23,6 +22,7 @@ import {
   loadDirectory,
   logger
 } from '#util';
+import { PrismaClient } from '../.prisma/client.ts';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
   detector: Detector = new Detector(this);

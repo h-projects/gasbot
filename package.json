@@ -6,20 +6,19 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
-    "deploy": "node -C dev --env-file=.env src/index.ts --deploy",
-    "env:encrypt": "dotenvx-ext-vault encrypt",
-    "env:decrypt": "dotenvx-ext-vault decrypt",
-    "dev": "node -C dev --watch --env-file=.env src/index.ts",
-    "test": "node --run check && node --run typecheck",
-    "postinstall": "prisma generate",
     "build": "tsc",
+    "changelog": "standard-changelog",
     "check": "biome check",
+    "deploy": "node -C dev --env-file=.env src/index.ts --deploy",
+    "dev": "node -C dev --watch --env-file=.env src/index.ts",
     "format": "biome format --write",
+    "env:decrypt": "dotenvx-ext-vault decrypt",
+    "env:encrypt": "dotenvx-ext-vault encrypt",
     "lint": "biome lint",
     "lint:fix": "biome lint --fix --unsafe",
-    "typecheck": "tsc --noEmit",
-    "changelog": "standard-changelog"
+    "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps .",
+    "test": "node --run check && node --run typecheck",
+    "typecheck": "tsc --noEmit"
   },
   "imports": {
     "#*": {
