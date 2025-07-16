@@ -28,24 +28,24 @@
     }
   },
   "dependencies": {
-    "@prisma/client": "^6.9.0",
+    "@prisma/client": "^6.12.0",
     "bufferutil": "^4.0.9",
     "dedent": "^1.6.0",
-    "discord.js": "^14.20.0",
+    "discord.js": "^14.21.0",
     "g-detector": "^0.1.6",
     "typed-env": "^2.0.0",
     "zlib-sync": "^0.1.10"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
+    "@biomejs/biome": "^2.1.1",
     "@dotenvx/dotenvx-ext-vault": "^0.3.2",
     "cross-env": "^7.0.3",
-    "prisma": "^6.9.0",
+    "prisma": "^6.12.0",
     "standard-changelog": "^7.0.1",
     "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=23.6.0"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.13.1"
 }
