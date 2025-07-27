@@ -37,8 +37,8 @@ importers:
         specifier: ^0.3.2
         version: 0.3.2
       cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
+        specifier: ^10.0.0
+        version: 10.0.0
       prisma:
         specifier: ^6.12.0
         version: 6.12.0(typescript@5.8.3)
@@ -148,6 +148,9 @@ packages:
     resolution: {integrity: sha512-lCH9Nu7ao9dwDzzzJAlienHksWc7Qqqd8Hx0+f/VB8vFDftePg5e9+ivClna5GpEAXZNrBH1HrZtqGOwHq2SLg==}
     hasBin: true
 
+  '@epic-web/invariant@1.0.0':
+    resolution: {integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==}
+
   '@prisma/client@6.12.0':
     resolution: {integrity: sha512-wn98bJ3Cj6edlF4jjpgXwbnQIo/fQLqqQHPk2POrZPxTlhY3+n90SSIF3LMRVa8VzRFC/Gec3YKJRxRu+AIGVA==}
     engines: {node: '>=18.18'}
@@ -244,9 +247,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  cross-env@7.0.3:
-    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
-    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+  cross-env@10.0.0:
+    resolution: {integrity: sha512-aU8qlEK/nHYtVuN4p7UQgAwVljzMg8hB4YK5ThRqD2l/ziSnryncPNn7bMLt5cFYsKVKBh8HqLqyCoTupEUu7Q==}
+    engines: {node: '>=20'}
     hasBin: true
 
   cross-spawn@7.0.6:
@@ -565,6 +568,8 @@ snapshots:
       picomatch: 4.0.2
       xxhashjs: 0.2.2
 
+  '@epic-web/invariant@1.0.0': {}
+
   '@prisma/client@6.12.0(prisma@6.12.0(typescript@5.8.3))(typescript@5.8.3)':
     optionalDependencies:
       prisma: 6.12.0(typescript@5.8.3)
@@ -661,8 +666,9 @@ snapshots:
     dependencies:
       meow: 13.2.0
 
-  cross-env@7.0.3:
+  cross-env@10.0.0:
     dependencies:
+      '@epic-web/invariant': 1.0.0
       cross-spawn: 7.0.6
 
   cross-spawn@7.0.6:
