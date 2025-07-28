@@ -4,3 +4,5 @@ onlyBuiltDependencies:
   - bufferutil
   - prisma
   - zlib-sync
+
+shellEmulator: true
