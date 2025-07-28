@@ -1,11 +1,11 @@
 import {
   type APIEmbedField,
-  ApplicationCommandType,
   ApplicationIntegrationType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  ContextMenuCommandBuilder,
   InteractionContextType,
-  SlashCommandBuilder,
+  MessageFlags,
+  UserContextCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
 import type { Application } from '#classes';
@@ -24,7 +24,7 @@ export async function onCommand(
           color: client.color
         }
       ],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   }
 
@@ -76,15 +76,16 @@ export async function onCommand(
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('removed')
   .setDescription('Check how many bad letters were removed')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
-  .addUserOption(option => option.setName('user').setDescription('User to check').setRequired(false));
+  .addUserOptions(option => option.setName('user').setDescription('User to check').setRequired(false))
+  .toJSON();
 
-export const contextMenuCommandData = new ContextMenuCommandBuilder()
+export const contextMenuCommandData = new UserContextCommandBuilder()
   .setName('Removed Count')
-  .setType(ApplicationCommandType.User)
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

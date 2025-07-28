@@ -1,15 +1,13 @@
 import {
   ActionRowBuilder,
-  ApplicationCommandType,
   ApplicationIntegrationType,
-  ButtonBuilder,
   type ButtonInteraction,
-  ButtonStyle,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  ContextMenuCommandBuilder,
   InteractionContextType,
+  MessageFlags,
   PermissionFlagsBits,
-  SlashCommandBuilder,
+  UserContextCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
 import type { Application } from '#classes';
@@ -31,7 +29,7 @@ export async function onCommand(
           color: client.color
         }
       ],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   }
 
@@ -51,17 +49,14 @@ export async function onCommand(
           color: client.color
         }
       ],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   }
 
   await member.roles.add(role);
 
-  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-    new ButtonBuilder()
-      .setLabel('Revert')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`g-spy:${member.id}:${interaction.user.id}`)
+  const row = new ActionRowBuilder().addSecondaryButtonComponents(button =>
+    button.setLabel('Revert').setCustomId(`g-spy:${member.id}:${interaction.user.id}`)
   );
 
   return interaction.reply({
@@ -90,18 +85,14 @@ export async function onComponent(client: Application, interaction: ButtonIntera
           color: client.color
         }
       ],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   }
 
   await member?.roles.remove(role ?? '');
 
-  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-    new ButtonBuilder()
-      .setLabel(label)
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(interaction.customId)
-      .setDisabled(true)
+  const row = new ActionRowBuilder().addSecondaryButtonComponents(button =>
+    button.setLabel(label).setCustomId(interaction.customId).setDisabled(true)
   );
 
   return interaction.update({
@@ -111,17 +102,18 @@ export async function onComponent(client: Application, interaction: ButtonIntera
 
 export const hasComponent = true;
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('g-spy')
   .setDescription('Mark a user as a g-spy')
   .setContexts([InteractionContextType.Guild])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
-  .addUserOption(option => option.setName('user').setDescription('User to mark as g-spy').setRequired(true));
+  .addUserOptions(option => option.setName('user').setDescription('User to mark as g-spy').setRequired(true))
+  .toJSON();
 
-export const contextMenuCommandData = new ContextMenuCommandBuilder()
+export const contextMenuCommandData = new UserContextCommandBuilder()
   .setName('Mark as G Spy')
   .setContexts([InteractionContextType.Guild])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
-  .setType(ApplicationCommandType.User);
+  .toJSON();

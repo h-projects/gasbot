@@ -1,13 +1,11 @@
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
-  ButtonBuilder,
   type ButtonInteraction,
-  ButtonStyle,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   InteractionContextType,
-  PermissionFlagsBits,
-  SlashCommandBuilder
+  PermissionFlagsBits
 } from 'discord.js';
 import { Level } from 'g-detector';
 import type { Application } from '#classes';
@@ -55,22 +53,22 @@ export async function onInteraction(
     }
   });
 
-  const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
-    new ButtonBuilder()
-      .setLabel('Low')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`detector:Low:${interaction.user.id}`)
-      .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Low'),
-    new ButtonBuilder()
-      .setLabel('Medium')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`detector:Medium:${interaction.user.id}`)
-      .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Medium'),
-    new ButtonBuilder()
-      .setLabel('Hiqh')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`detector:High:${interaction.user.id}`)
-      .setDisabled((input ?? Level[level ?? Level.Medium]) === 'High')
+  const row = new ActionRowBuilder().addSecondaryButtonComponents([
+    button =>
+      button
+        .setLabel('Low')
+        .setCustomId(`detector:Low:${interaction.user.id}`)
+        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Low'),
+    button =>
+      button
+        .setLabel('Medium')
+        .setCustomId(`detector:Medium:${interaction.user.id}`)
+        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Medium'),
+    button =>
+      button
+        .setLabel('Hiqh')
+        .setCustomId(`detector:High:${interaction.user.id}`)
+        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'High')
   ]);
 
   const options = {
@@ -90,14 +88,14 @@ export async function onInteraction(
 
 export const hasComponent = true;
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('detector')
   .setDescription('Manaqe the detection level')
   .setContexts([InteractionContextType.Guild])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-  .addStringOption(option =>
-    option.setName('level').setDescription('The new detection level').setRequired(false).addChoices(
+  .addStringOptions(option =>
+    option.setName('level').setDescription('The new detection level').setRequired(false).setChoices(
       {
         name: 'Low',
         value: 'Low'
@@ -111,4 +109,5 @@ export const slashCommandData = new SlashCommandBuilder()
         value: 'High'
       }
     )
-  );
+  )
+  .toJSON();

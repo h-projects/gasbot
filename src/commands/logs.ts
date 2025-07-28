@@ -1,37 +1,30 @@
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
-  ButtonBuilder,
   type ButtonInteraction,
-  ButtonStyle,
-  ChannelSelectMenuBuilder,
   type ChannelSelectMenuInteraction,
   ChannelType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   InteractionContextType,
-  PermissionFlagsBits,
-  SlashCommandBuilder
+  PermissionFlagsBits
 } from 'discord.js';
 import type { Application } from '#classes';
 
 const getRows = ({ channelId, disabled, userId }: { channelId?: string; disabled: boolean; userId: string }) => [
-  new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents([
-    new ChannelSelectMenuBuilder()
-      .setChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
+  new ActionRowBuilder().addChannelSelectMenuComponent(select =>
+    select
+      .setChannelTypes([ChannelType.GuildText, ChannelType.GuildAnnouncement])
       .setDefaultChannels(channelId ? [channelId] : [])
       .setCustomId(`logs:set:${userId}`)
       .setPlaceholder('Set loqs channel')
-  ]),
-  new ActionRowBuilder<ButtonBuilder>().addComponents([
-    new ButtonBuilder()
-      .setLabel('Reset')
-      .setStyle(ButtonStyle.Secondary)
-      .setCustomId(`logs:reset:${userId}`)
-      .setDisabled(disabled)
-  ])
+  ),
+  new ActionRowBuilder().addSecondaryButtonComponents(button =>
+    button.setLabel('Reset').setCustomId(`logs:reset:${userId}`).setDisabled(disabled)
+  )
 ];
 
-export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
+export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
   const channel = interaction.options.getChannel('channel');
 
   if (!channel) {
@@ -126,16 +119,17 @@ export async function onComponent(
 
 export const hasComponent = true;
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('loqs')
   .setDescription('Manaqe the loqs channel')
   .setContexts([InteractionContextType.Guild])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
-  .addChannelOption(option =>
+  .addChannelOptions(option =>
     option
       .setName('channel')
       .setDescription('Set loqs channel')
-      .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
+      .setChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
       .setRequired(false)
-  );
+  )
+  .toJSON();

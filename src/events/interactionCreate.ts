@@ -1,4 +1,4 @@
-import { ApplicationIntegrationType, type Interaction } from 'discord.js';
+import { ApplicationIntegrationType, type Interaction, MessageFlags } from 'discord.js';
 import type { Application } from '#classes';
 import { logger } from '#util';
 
@@ -12,11 +12,11 @@ export function run(client: Application, interaction: Interaction) {
 
     if (
       interaction.inRawGuild() &&
-      command.slashCommandData.integration_types?.includes(ApplicationIntegrationType.UserInstall) === false
+      command.chatInputCommandData.integration_types?.includes(ApplicationIntegrationType.UserInstall) === false
     ) {
       return interaction.reply({
         content: "The bot wasn't invited properly, please invite it with the correct scopes",
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
 
@@ -29,11 +29,11 @@ export function run(client: Application, interaction: Interaction) {
             color: client.color
           }
         ],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
 
-    const run = command.onSlashCommand ?? command.onCommand ?? command.onInteraction;
+    const run = command.onChatInputCommand ?? command.onCommand ?? command.onInteraction;
     return run?.(client, interaction);
   }
 
@@ -50,7 +50,7 @@ export function run(client: Application, interaction: Interaction) {
     ) {
       return interaction.reply({
         content: "The bot wasn't invited properly, please invite it with the correct scopes",
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
 
@@ -67,7 +67,7 @@ export function run(client: Application, interaction: Interaction) {
             color: client.color
           }
         ],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
 
@@ -84,7 +84,10 @@ export function run(client: Application, interaction: Interaction) {
     }
 
     if (author !== interaction.user.id) {
-      return interaction.reply({ content: 'Only the user who created this component can use it', ephemeral: true });
+      return interaction.reply({
+        content: 'Only the user who created this component can use it',
+        flags: MessageFlags.Ephemeral
+      });
     }
 
     if (component.appPermissions && !interaction.appPermissions.has(component.appPermissions)) {
@@ -96,7 +99,7 @@ export function run(client: Application, interaction: Interaction) {
             color: client.color
           }
         ],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
 

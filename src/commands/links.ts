@@ -1,15 +1,15 @@
 import {
   ApplicationIntegrationType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   DefaultRestOptions,
   InteractionContextType,
-  Routes,
-  SlashCommandBuilder
+  Routes
 } from 'discord.js';
 import type { Application } from '#classes';
 import { env } from '#env';
 
-export function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
+export function onChatInputCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
 
   return interaction.reply({
@@ -40,8 +40,9 @@ export function onSlashCommand(client: Application<true>, interaction: ChatInput
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('links')
   .setDescription('Useful bot links')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

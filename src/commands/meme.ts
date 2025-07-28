@@ -1,12 +1,10 @@
 import {
   ActionRowBuilder,
   ApplicationIntegrationType,
-  ButtonBuilder,
   type ButtonInteraction,
-  ButtonStyle,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  InteractionContextType,
-  SlashCommandBuilder
+  InteractionContextType
 } from 'discord.js';
 import type { Application } from '#classes';
 
@@ -34,14 +32,15 @@ export async function onInteraction(client: Application, interaction: ChatInputC
   const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 
   const json = (await fetch(`https://www.reddit.com/r/${subreddit}/hot.json`).then(r => r.json())) as RedditResponse;
-  const listing = json.data.children
+  const listing = Iterator.from(json.data.children)
+    .filter(p => !p.data.over_18 && p.data.is_reddit_media_domain && !p.data.is_video)
     .map(c => c.data)
-    .filter(p => !p.over_18 && p.is_reddit_media_domain && !p.is_video);
+    .toArray();
 
   const post = listing[Math.floor(Math.random() * listing.length)];
 
-  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-    new ButtonBuilder().setLabel('Refresh').setStyle(ButtonStyle.Secondary).setCustomId(`meme::${interaction.user.id}`)
+  const row = new ActionRowBuilder().addSecondaryButtonComponents(button =>
+    button.setLabel('Refresh').setCustomId(`meme::${interaction.user.id}`)
   );
 
   const options = {
@@ -70,8 +69,9 @@ export async function onInteraction(client: Application, interaction: ChatInputC
 
 export const hasComponent = true;
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('meme')
   .setDescription('Displays a extremely funny hilarious meme from Reddit')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

@@ -9,8 +9,8 @@
     "build": "tsc",
     "changelog": "standard-changelog",
     "check": "biome check",
-    "deploy": "node -C dev --env-file=.env src/index.ts --deploy",
-    "dev": "node -C dev --watch --env-file=.env src/index.ts",
+    "deploy": "node -C development --env-file=.env src/index.ts --deploy",
+    "dev": "node -C development --watch --env-file=.env src/index.ts",
     "format": "biome format --write",
     "env:decrypt": "dotenvx-ext-vault decrypt",
     "env:encrypt": "dotenvx-ext-vault encrypt",
@@ -22,7 +22,7 @@
   },
   "imports": {
     "#*": {
-      "dev": "./src/*/index.ts",
+      "development": "./src/*/index.ts",
       "default": "./dist/*/index.js"
     }
   },
@@ -30,15 +30,15 @@
     "@prisma/client": "^6.12.0",
     "bufferutil": "^4.0.9",
     "dedent": "^1.6.0",
-    "discord.js": "^14.21.0",
+    "discord.js": "15.0.0-dev.1753660951-593369dbb",
     "g-detector": "^0.1.6",
     "typed-env": "^2.0.0",
     "zlib-sync": "^0.1.10"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.1",
+    "@biomejs/biome": "^2.1.2",
     "@dotenvx/dotenvx-ext-vault": "^0.3.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.0.0",
     "prisma": "^6.12.0",
     "standard-changelog": "^7.0.1",
     "typescript": "^5.8.3"

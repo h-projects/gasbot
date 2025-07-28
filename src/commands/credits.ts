@@ -1,14 +1,14 @@
 import {
   ApplicationIntegrationType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  InteractionContextType,
-  SlashCommandBuilder
+  InteractionContextType
 } from 'discord.js';
 import type { Application } from '#classes';
 import { env } from '#env';
 import { fetchTags } from '#util';
 
-export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
+export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);
   const specialThanksUsers = await fetchTags(client, client.specialThanksUsers);
 
@@ -26,8 +26,9 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('credits')
   .setDescription('People who helped in the development')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

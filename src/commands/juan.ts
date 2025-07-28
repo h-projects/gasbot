@@ -1,12 +1,12 @@
 import {
   ApplicationIntegrationType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  InteractionContextType,
-  SlashCommandBuilder
+  InteractionContextType
 } from 'discord.js';
 import type { Application } from '#classes';
 
-export function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
+export function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {
   return interaction.reply({
     embeds: [
       {
@@ -20,8 +20,9 @@ export function onSlashCommand(client: Application, interaction: ChatInputComman
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('juan')
   .setDescription('🐴')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

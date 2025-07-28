@@ -90,14 +90,14 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     }
 
     await this.application.commands.set([
-      ...this.chatInputCommands.filter(c => !c.dev).map(c => c.slashCommandData.toJSON()),
-      ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData.toJSON())
+      ...this.chatInputCommands.filter(c => !c.dev).map(c => c.chatInputCommandData),
+      ...this.contextMenuCommands.filter(c => !c.dev).map(c => c.contextMenuCommandData)
     ]);
 
     const testGuild = this.guilds.cache.get(env.TEST_GUILD);
     await testGuild?.commands.set([
-      ...this.chatInputCommands.filter(c => c.dev).map(c => c.slashCommandData.toJSON()),
-      ...this.contextMenuCommands.filter(c => c.dev).map(c => c.contextMenuCommandData.toJSON())
+      ...this.chatInputCommands.filter(c => c.dev).map(c => c.chatInputCommandData),
+      ...this.contextMenuCommands.filter(c => c.dev).map(c => c.contextMenuCommandData)
     ]);
 
     logger.log('Deployed all commands');
@@ -123,7 +123,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     const commands = loadDirectory<Command>('../commands');
     for await (const command of commands) {
       if (this.isChatInputCommand(command.data)) {
-        this.chatInputCommands.set(command.data.slashCommandData.name, command.data);
+        this.chatInputCommands.set(command.data.chatInputCommandData.name, command.data);
       }
       if (this.isContextMenuCommand(command.data)) {
         this.contextMenuCommands.set(command.data.contextMenuCommandData.name, command.data);
@@ -136,7 +136,7 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
   }
 
   isChatInputCommand(command: Command): command is ChatInputCommand {
-    return 'slashCommandData' in command;
+    return 'chatInputCommandData' in command;
   }
 
   isContextMenuCommand(command: Command): command is ContextMenuCommand {

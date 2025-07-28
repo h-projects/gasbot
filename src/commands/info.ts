@@ -2,11 +2,11 @@ import process from 'node:process';
 import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   DefaultRestOptions,
   InteractionContextType,
   Routes,
-  SlashCommandBuilder,
   version
 } from 'discord.js';
 import type { Application } from '#classes';
@@ -14,7 +14,7 @@ import { env } from '#env';
 import { fetchTags } from '#util';
 import metadata from '../../package.json' with { type: 'json' };
 
-export async function onSlashCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
+export async function onChatInputCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);
 
   const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
@@ -56,8 +56,9 @@ export async function onSlashCommand(client: Application<true>, interaction: Cha
   });
 }
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('info')
   .setDescription('Display information about the bot')
   .setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
-  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]);
+  .setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall])
+  .toJSON();

@@ -1,17 +1,17 @@
 import { inspect } from 'node:util';
 import {
+  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   codeBlock,
   EmbedBuilder,
-  SlashCommandBuilder,
-  SlashCommandSubcommandBuilder
+  MessageFlags
 } from 'discord.js';
 import type { Application } from '#classes';
 
-export async function onSlashCommand(client: Application, interaction: ChatInputCommandInteraction) {
+export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {
   const method = interaction.options.getSubcommand(true);
 
-  await interaction.deferReply({ ephemeral: method === 'backup' });
+  await interaction.deferReply({ flags: method === 'backup' ? MessageFlags.Ephemeral : undefined });
 
   if (method === 'backup') {
     const backup = client.makeDatabaseBackup();
@@ -40,15 +40,15 @@ export async function onSlashCommand(client: Application, interaction: ChatInput
 
 export const dev = true;
 
-export const slashCommandData = new SlashCommandBuilder()
+export const chatInputCommandData = new ChatInputCommandBuilder()
   .setName('sql')
   .setDescription('Execute SQL statements')
-  .addSubcommand(
-    new SlashCommandSubcommandBuilder().setName('backup').setDescription('Make a local copy of the database')
-  )
-  .addSubcommand(
-    new SlashCommandSubcommandBuilder()
-      .setName('query')
-      .setDescription('Execute a query')
-      .addStringOption(option => option.setName('query').setDescription('Query to execute').setRequired(true))
-  );
+  .addSubcommands([
+    command => command.setName('backup').setDescription('Make a local copy of the database'),
+    command =>
+      command
+        .setName('query')
+        .setDescription('Execute a query')
+        .addStringOptions(option => option.setName('query').setDescription('Query to execute').setRequired(true))
+  ])
+  .toJSON();

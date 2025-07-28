@@ -1,12 +1,12 @@
 import type {
   ChatInputCommandInteraction,
   CommandInteraction,
-  ContextMenuCommandBuilder,
   ContextMenuCommandInteraction,
   Interaction,
   MessageComponentInteraction,
   PermissionResolvable,
-  SlashCommandBuilder
+  RESTPostAPIChatInputApplicationCommandsJSONBody,
+  RESTPostAPIContextMenuApplicationCommandsJSONBody
 } from 'discord.js';
 import type { Application } from '#classes';
 
@@ -20,16 +20,16 @@ interface BaseCommand {
   dev?: boolean;
   onInteraction(client: Application, interaction: Interaction, value?: string): Promise<void>;
   onCommand(client: Application, interaction: CommandInteraction): Promise<void>;
-  onSlashCommand(client: Application, interaction: ChatInputCommandInteraction): Promise<void>;
+  onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction): Promise<void>;
   onContextMenuCommand(client: Application, interaction: ContextMenuCommandInteraction): Promise<void>;
   onComponent(client: Application, interaction: MessageComponentInteraction, value?: string): Promise<void>;
-  slashCommandData: SlashCommandBuilder;
-  contextMenuCommandData: ContextMenuCommandBuilder;
+  chatInputCommandData: RESTPostAPIChatInputApplicationCommandsJSONBody;
+  contextMenuCommandData: RESTPostAPIContextMenuApplicationCommandsJSONBody;
 }
 
 export type Command = Partial<BaseCommand>;
 
-export type ChatInputCommand = Pick<BaseCommand, 'slashCommandData'> & Command;
+export type ChatInputCommand = Pick<BaseCommand, 'chatInputCommandData'> & Command;
 export type ContextMenuCommand = Pick<BaseCommand, 'contextMenuCommandData'> & Command;
 
 export type Component = Pick<BaseCommand, 'hasComponent'> & Command;
