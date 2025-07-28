@@ -2,7 +2,9 @@ import {
   ApplicationIntegrationType,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  InteractionContextType
+  ComponentType,
+  InteractionContextType,
+  MessageFlags
 } from 'discord.js';
 import type { Application } from '#classes';
 import { env } from '#env';
@@ -13,14 +15,31 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
   const specialThanksUsers = await fetchTags(client, client.specialThanksUsers);
 
   return interaction.reply({
-    embeds: [
+    flags: MessageFlags.IsComponentsV2,
+    components: [
       {
-        title: 'Credits',
-        fields: [
-          { name: `${env.EMOJI_BOT_DEV} Developers`, value: developers.join('\n'), inline: true },
-          { name: '⭐ Special Thanks', value: specialThanksUsers.join('\n'), inline: true }
-        ],
-        color: client.color
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
+          {
+            type: ComponentType.TextDisplay,
+            content: '# Credits'
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.TextDisplay,
+            content: `### ${env.EMOJI_BOT_DEV} Developers\n${developers.join(', ')}`
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.TextDisplay,
+            content: `### ⭐ Special Thanks\n${specialThanksUsers.join(', ')}`
+          }
+        ]
       }
     ]
   });
