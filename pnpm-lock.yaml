@@ -21,8 +21,8 @@ importers:
         specifier: 15.0.0-dev.1754006526-8f5ac55d8
         version: 15.0.0-dev.1754006526-8f5ac55d8(bufferutil@4.0.9)
       g-detector:
-        specifier: ^0.1.6
-        version: 0.1.6
+        specifier: ^1.0.0
+        version: 1.0.0
       typed-env:
         specifier: ^2.0.0
         version: 2.0.0
@@ -288,9 +288,9 @@ packages:
       picomatch:
         optional: true
 
-  g-detector@0.1.6:
-    resolution: {integrity: sha512-WUohW6zlgG+Y7eGVNhpxP+wf7W2IJEuy+F5r65nw8+/OR+aOaISarPWvvzs45wnOKlMCoZHQnI9nywoiI8njEQ==}
-    engines: {node: '>=15.0.0'}
+  g-detector@1.0.0:
+    resolution: {integrity: sha512-AIeB2DFPMcKI+TWQg1LYSmI3ZvXE8Fi3zrRfMq9YeD70vmsPUrLErjx05MgL+cF1hyB2vL8Vz31F7vs4BhAXIg==}
+    engines: {node: '>=20.0.0'}
 
   handlebars@4.7.8:
     resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
@@ -690,7 +690,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.3
 
-  g-detector@0.1.6: {}
+  g-detector@1.0.0: {}
 
   handlebars@4.7.8:
     dependencies:
