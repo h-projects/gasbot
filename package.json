@@ -31,7 +31,7 @@
     "bufferutil": "^4.0.9",
     "dedent": "^1.6.0",
     "discord.js": "15.0.0-dev.1754006526-8f5ac55d8",
-    "g-detector": "^0.1.6",
+    "g-detector": "^1.0.0",
     "typed-env": "^2.0.0",
     "zlib-sync": "^0.1.10"
   },
