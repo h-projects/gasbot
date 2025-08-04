@@ -1,4 +1,10 @@
-import { ChatInputCommandBuilder, type ChatInputCommandInteraction, MessageFlags, Routes } from 'discord.js';
+import {
+  ChatInputCommandBuilder,
+  type ChatInputCommandInteraction,
+  ComponentType,
+  MessageFlags,
+  Routes
+} from 'discord.js';
 import type { Application } from '#classes';
 
 export async function onChatInputCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
@@ -19,16 +25,21 @@ export async function onChatInputCommand(client: Application<true>, interaction:
       content: `${create ? 'Deployed' : 'Deleted'} dev commands in \`${guildId}\``,
       flags: MessageFlags.Ephemeral
     });
-  } catch (error: unknown) {
+  } catch (error) {
     return interaction.reply({
-      embeds: [
+      flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2,
+      components: [
         {
-          title: 'lol you messed up',
-          description: `\`\`\`js\n${error}\`\`\``,
-          color: client.color
+          type: ComponentType.Container,
+          accentColor: client.color,
+          components: [
+            {
+              type: ComponentType.TextDisplay,
+              content: `## Error Deploying\n\`\`\`js\n${error}\`\`\``
+            }
+          ]
         }
-      ],
-      flags: MessageFlags.Ephemeral
+      ]
     });
   }
 }
