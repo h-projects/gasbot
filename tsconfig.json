@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
     "module": "nodenext",
+    "lib": ["esnext"],
 
     "rootDir": "src",
     "outDir": "dist",
-    "verbatimModuleSyntax": true,
 
     "erasableSyntaxOnly": true,
     "rewriteRelativeImportExtensions": true,
-    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+
     "noEmitOnError": true,
     "skipLibCheck": true,
     "sourceMap": true,
