@@ -44,14 +44,16 @@ export async function onInteraction(
         { name: 'Hiqh', value: 'Detects a messaqe if it contains G' }
       ];
 
-  await client.prisma.guild.update({
-    where: {
-      id: BigInt(interaction.guildId)
-    },
-    data: {
-      level: Level[input ?? 'Medium']
-    }
-  });
+  if (input && input !== Level[level ?? Level.Medium]) {
+    await client.prisma.guild.update({
+      where: {
+        id: BigInt(interaction.guildId)
+      },
+      data: {
+        level: Level[input]
+      }
+    });
+  }
 
   const row = new ActionRowBuilder().addSecondaryButtonComponents([
     button =>
