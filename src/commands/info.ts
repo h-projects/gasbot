@@ -4,7 +4,6 @@ import {
   ApplicationIntegrationType,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  DefaultRestOptions,
   InteractionContextType,
   Routes,
   version
@@ -17,7 +16,7 @@ import metadata from '../../package.json' with { type: 'json' };
 export async function onChatInputCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {
   const developers = await fetchTags(client, client.developers);
 
-  const inviteURL = `${DefaultRestOptions.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
+  const inviteURL = `${client.rest.options.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
 
   return interaction.reply({
     embeds: [
