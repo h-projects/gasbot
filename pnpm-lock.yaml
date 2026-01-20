@@ -116,26 +116,32 @@ packages:
   '@discordjs/builders@2.0.0-dev.1754006523-8f5ac55d8':
     resolution: {integrity: sha512-LQX94c/M65NTULoB5cKkNpzHO7BC+tVb9iP0clRzlU11bxCFTGnb/wA8yqxOjUbtkRl5i3S1Q5+8skT1KCcJwQ==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/collection@3.0.0-dev.1754006524-8f5ac55d8':
     resolution: {integrity: sha512-BLoRYE6C/f9J2AIgBfG1eCbH5zgovl0PJlMbN3CWmoR6n3XgZf750obVSPJfb0eHUbsHHNFA8AIzPEf0Z0geSA==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/formatters@1.0.0-dev.1754006528-8f5ac55d8':
     resolution: {integrity: sha512-76tdC4YY9gQpzKMUv+6tje112ncoXVsME/ayYE7O/OqzC2Lrh3lNcnOLByo5efEpUmkm67fjED/sqtRA7plDXw==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/rest@3.0.0-dev.1754006531-8f5ac55d8':
     resolution: {integrity: sha512-a4rRy/hTuDUujXiy23vwqsByzHPBcGFkcFbbfV+VrD6J45pFK82cXeFFJJBm9LVEdK9QINNLLDsDqfCQGl7z6A==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/util@2.0.0-dev.1754006532-8f5ac55d8':
     resolution: {integrity: sha512-qeTaCfdRmR5PcwNXKOOrfIPjmM1H5Lcno17SFEol4LVum5M5pwhzGtPzg2r9yRsYH9UoJue3wTJVN2vxaoWOpA==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/ws@3.0.0-dev.1754006534-8f5ac55d8':
     resolution: {integrity: sha512-GNxkT5XjXW0Az+p4+8m3JLgf+cX8e5eMqM5mT3+eeO0ti6oozTvpm0Nv7PBYl3BKtP9k44YCsSolshq4vYmiDw==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@dotenvx/dotenvx-ext-vault@0.3.2':
     resolution: {integrity: sha512-lCH9Nu7ao9dwDzzzJAlienHksWc7Qqqd8Hx0+f/VB8vFDftePg5e9+ivClna5GpEAXZNrBH1HrZtqGOwHq2SLg==}
@@ -255,8 +261,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  diff@5.2.0:
-    resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+  diff@5.2.2:
+    resolution: {integrity: sha512-vtcDfH3TOjP8UekytvnHH1o1P4FcUdt4eQ1Y+Abap1tk/OB2MWQvcwS2ClCd1zuIhc3JKOx6p3kod8Vfys3E+A==}
     engines: {node: '>=0.3.1'}
 
   discord-api-types@0.38.17:
@@ -265,6 +271,7 @@ packages:
   discord.js@15.0.0-dev.1754006526-8f5ac55d8:
     resolution: {integrity: sha512-Wu7TBj1V2uubLe4QatIgzlb/+QeIOps17YQV9r1EfybcpEvMkvQXDqSw80tl51GdPu0cHWV67S1YabHnJIspGg==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   dot-prop@5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
@@ -536,7 +543,7 @@ snapshots:
   '@dotenvx/dotenvx-ext-vault@0.3.2':
     dependencies:
       commander: 11.1.0
-      diff: 5.2.0
+      diff: 5.2.2
       dotenv: 16.6.1
       fdir: 6.4.6(picomatch@4.0.3)
       picomatch: 4.0.3
@@ -650,7 +657,7 @@ snapshots:
 
   dedent@1.6.0: {}
 
-  diff@5.2.0: {}
+  diff@5.2.2: {}
 
   discord-api-types@0.38.17: {}
 
