@@ -1,10 +1,14 @@
+import dedent from 'dedent';
 import {
-  ActionRowBuilder,
   ApplicationIntegrationType,
   type ButtonInteraction,
+  ButtonStyle,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
+  ComponentType,
   InteractionContextType,
+  type InteractionReplyOptions,
+  MessageFlags,
   PermissionFlagsBits
 } from 'discord.js';
 import { Level } from 'g-detector';
@@ -27,63 +31,88 @@ export async function onInteraction(
       id: BigInt(interaction.guildId)
     },
     create: {
-      id: BigInt(interaction.guildId)
+      id: BigInt(interaction.guildId),
+      level: input ? Level[input] : undefined
     },
-    update: {}
+    update: {
+      level: input ? Level[input] : undefined
+    }
   });
 
-  const description = input
-    ? `Successfully set detection level to **${input.replace('g', 'q')}**!`
-    : `Your current protection level: **${Level[level ?? Level.Medium].replace('g', 'q')}**`;
-
-  const fields = input
-    ? undefined
-    : [
-        { name: 'Low', value: 'Detects messaqes that only consist of G' },
-        { name: 'Medium', value: 'Detects G outside words' },
-        { name: 'Hiqh', value: 'Detects a messaqe if it contains G' }
-      ];
-
-  if (input && input !== Level[level ?? Level.Medium]) {
-    await client.prisma.guild.update({
-      where: {
-        id: BigInt(interaction.guildId)
-      },
-      data: {
-        level: Level[input]
-      }
-    });
-  }
-
-  const row = new ActionRowBuilder().addSecondaryButtonComponents([
-    button =>
-      button
-        .setLabel('Low')
-        .setCustomId(`detector:Low:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Low'),
-    button =>
-      button
-        .setLabel('Medium')
-        .setCustomId(`detector:Medium:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Medium'),
-    button =>
-      button
-        .setLabel('Hiqh')
-        .setCustomId(`detector:High:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'High')
-  ]);
-
   const options = {
-    embeds: [
+    flags: MessageFlags.IsComponentsV2,
+    components: [
       {
-        title: 'G Detector Levels',
-        description,
-        color: client.color,
-        fields
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
+          {
+            type: ComponentType.TextDisplay,
+            content: '# G Detector Levels'
+          },
+          {
+            type: ComponentType.Separator
+          },
+          ...(input
+            ? [
+                {
+                  type: ComponentType.TextDisplay,
+                  content: `Successfully set detection level to **${input.replace('g', 'q')}**!`
+                },
+                {
+                  type: ComponentType.Separator
+                }
+              ]
+            : [
+                {
+                  type: ComponentType.TextDisplay,
+                  content: `Your current protection level: **${Level[level ?? Level.Medium].replace('g', 'q')}**`
+                },
+                {
+                  type: ComponentType.Separator
+                },
+                {
+                  type: ComponentType.TextDisplay,
+                  content: dedent`
+                    ### Low
+                    -# Detects messaqes that only consist of G
+                    ### Medium
+                    -# Detects G outside words
+                    ### Hiqh
+                    -# Detects a messaqe if it contains G
+                  `
+                }
+              ]),
+          {
+            type: ComponentType.ActionRow,
+            components: [
+              {
+                type: ComponentType.Button,
+                style: ButtonStyle.Secondary,
+                customId: `detector:Low:${interaction.user.id}`,
+                label: 'Low',
+                disabled: (input ?? Level[level ?? Level.Medium]) === 'Low'
+              },
+              {
+                type: ComponentType.Button,
+                style: ButtonStyle.Secondary,
+                customId: `detector:Medium:${interaction.user.id}`,
+                label: 'Medium',
+                disabled: (input ?? Level[level ?? Level.Medium]) === 'Medium'
+              },
+              {
+                type: ComponentType.Button,
+                style: ButtonStyle.Secondary,
+                customId: `detector:High:${interaction.user.id}`,
+                label: 'Hiqh',
+                disabled: (input ?? Level[level ?? Level.Medium]) === 'High'
+              }
+            ]
+          }
+        ]
       }
-    ],
-    components: [row]
-  };
+    ]
+  } satisfies InteractionReplyOptions;
 
   return interaction.isChatInputCommand() ? interaction.reply(options) : interaction.update(options);
 }
