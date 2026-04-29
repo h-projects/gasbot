@@ -39,6 +39,8 @@ export async function onInteraction(
     }
   });
 
+  const current = input ?? Level[level ?? Level.Medium];
+
   const options = {
     flags: MessageFlags.IsComponentsV2,
     components: [
@@ -53,61 +55,68 @@ export async function onInteraction(
           {
             type: ComponentType.Separator
           },
-          ...(input
-            ? [
-                {
-                  type: ComponentType.TextDisplay,
-                  content: `Successfully set detection level to **${input.replace('g', 'q')}**!`
-                },
-                {
-                  type: ComponentType.Separator
-                }
-              ]
-            : [
-                {
-                  type: ComponentType.TextDisplay,
-                  content: `Your current protection level: **${Level[level ?? Level.Medium].replace('g', 'q')}**`
-                },
-                {
-                  type: ComponentType.Separator
-                },
-                {
-                  type: ComponentType.TextDisplay,
-                  content: dedent`
-                    ### Low
-                    -# Detects messaqes that only consist of G
-                    ### Medium
-                    -# Detects G outside words
-                    ### Hiqh
-                    -# Detects a messaqe if it contains G
-                  `
-                }
-              ]),
           {
-            type: ComponentType.ActionRow,
+            type: ComponentType.Section,
             components: [
               {
-                type: ComponentType.Button,
-                style: ButtonStyle.Secondary,
-                customId: `detector:Low:${interaction.user.id}`,
-                label: 'Low',
-                disabled: (input ?? Level[level ?? Level.Medium]) === 'Low'
-              },
-              {
-                type: ComponentType.Button,
-                style: ButtonStyle.Secondary,
-                customId: `detector:Medium:${interaction.user.id}`,
-                label: 'Medium',
-                disabled: (input ?? Level[level ?? Level.Medium]) === 'Medium'
-              },
-              {
-                type: ComponentType.Button,
-                style: ButtonStyle.Secondary,
-                customId: `detector:High:${interaction.user.id}`,
-                label: 'Hiqh',
-                disabled: (input ?? Level[level ?? Level.Medium]) === 'High'
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Low
+                  -# Detects messaqes that only consist of G
+                `
               }
-            ]
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:Low:${interaction.user.id}`,
+              label: current === 'Low' ? 'Current' : 'Select',
+              disabled: current === 'Low'
+            }
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Medium
+                  -# Detects G outside words
+                `
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:Medium:${interaction.user.id}`,
+              label: current === 'Medium' ? 'Current' : 'Select',
+              disabled: current === 'Medium'
+            }
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Hiqh
+                  -# Detects a messaqe if it contains G
+                `
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:High:${interaction.user.id}`,
+              label: current === 'High' ? 'Current' : 'Select',
+              disabled: current === 'High'
+            }
           }
         ]
       }
