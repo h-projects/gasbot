@@ -16,7 +16,6 @@ interface RedditResponse {
     children: {
       data: {
         author: string;
-        created: number;
         is_reddit_media_domain: boolean;
         is_video: boolean;
         over_18: boolean;
