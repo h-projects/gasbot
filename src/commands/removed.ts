@@ -1,8 +1,10 @@
+import dedent from 'dedent';
 import {
-  type APIEmbedField,
   ApplicationIntegrationType,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
+  type ComponentInContainerData,
+  ComponentType,
   InteractionContextType,
   MessageFlags,
   UserContextCommandBuilder,
@@ -17,13 +19,7 @@ export async function onCommand(
   const user = interaction.options.getUser('user') ?? interaction.user;
   if (user.bot) {
     return interaction.reply({
-      embeds: [
-        {
-          title: 'Invalid User',
-          description: "You can't mention a bot 😦",
-          color: client.color
-        }
-      ],
+      content: "You can't mention a bot 😦",
       flags: MessageFlags.Ephemeral
     });
   }
@@ -43,36 +39,52 @@ export async function onCommand(
     update: {}
   });
 
-  const { count: guildCount } = interaction.inGuild()
-    ? await client.prisma.guild.upsert({
-        select: { count: true },
-        where: {
-          id: BigInt(interaction.guildId)
-        },
-        create: {
-          id: BigInt(interaction.guildId)
-        },
-        update: {}
-      })
-    : {
-        count: null
-      };
+  const components: ComponentInContainerData[] = [
+    {
+      type: ComponentType.TextDisplay,
+      content: dedent`
+        # Bad Letters Removed
+        Removed ${globalCount} bad letters in total
+      `
+    },
+    { type: ComponentType.Separator },
+    {
+      type: ComponentType.TextDisplay,
+      content: dedent`
+        ### User Stats
+        Removed ${userCount ?? 0} bad letters from ${user.toString()}
+      `
+    }
+  ];
 
-  const fields: APIEmbedField[] = [{ name: 'User Stats', value: `Removed ${userCount ?? 0} bad letters from ${user}` }];
+  if (interaction.inGuild()) {
+    const { count: guildCount } = await client.prisma.guild.upsert({
+      select: { count: true },
+      where: {
+        id: BigInt(interaction.guildId)
+      },
+      create: {
+        id: BigInt(interaction.guildId)
+      },
+      update: {}
+    });
 
-  if (guildCount !== null) {
-    fields.push({ name: 'Server Stats', value: `Removed ${guildCount ?? 0} bad letters in this server` });
+    components.push(
+      { type: ComponentType.Separator },
+      {
+        type: ComponentType.TextDisplay,
+        content: dedent`
+          ### Server Stats
+          Removed ${guildCount ?? 0} bad letters in this server
+        `
+      }
+    );
   }
 
   return interaction.reply({
-    embeds: [
-      {
-        title: 'Bad Letters Removed',
-        color: client.color,
-        description: `Removed ${globalCount} bad letters in total`,
-        fields
-      }
-    ]
+    flags: MessageFlags.IsComponentsV2,
+    components: [{ type: ComponentType.Container, accentColor: client.color, components }],
+    allowedMentions: { parse: [] }
   });
 }
 
