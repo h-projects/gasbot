@@ -2,8 +2,8 @@ import { inspect } from 'node:util';
 import {
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
+  ComponentType,
   codeBlock,
-  EmbedBuilder,
   MessageFlags
 } from 'discord.js';
 import type { Application } from '#classes';
@@ -15,27 +15,44 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
 
   if (method === 'backup') {
     const backup = client.makeDatabaseBackup();
-    return interaction.editReply({
+    return interaction.followUp({
       content: 'Backup complete',
       files: [backup]
     });
   }
 
   const query = interaction.options.getString('query', true);
-  const embed = new EmbedBuilder().setColor(client.color);
+
+  let title: string;
+  let output: string;
 
   try {
     const result = await client.prisma.$queryRawUnsafe(query);
     const clean = inspect(result, { depth: 1 });
 
-    embed.setTitle('Done').setDescription(codeBlock('js', clean));
+    title = 'Done';
+    output = codeBlock('js', clean);
   } catch (error) {
     const clean = inspect(error, { depth: 1 });
 
-    embed.setTitle('Failed').setDescription(codeBlock('js', clean));
+    title = 'Failed';
+    output = codeBlock('js', clean);
   }
 
-  return interaction.editReply({ embeds: [embed] });
+  return interaction.editReply({
+    flags: MessageFlags.IsComponentsV2,
+    components: [
+      {
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
+          { type: ComponentType.TextDisplay, content: `# ${title}` },
+          { type: ComponentType.Separator },
+          { type: ComponentType.TextDisplay, content: output }
+        ]
+      }
+    ]
+  });
 }
 
 export const dev = true;
