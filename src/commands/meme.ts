@@ -1,10 +1,13 @@
 import {
-  ActionRowBuilder,
   ApplicationIntegrationType,
   type ButtonInteraction,
+  ButtonStyle,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
-  InteractionContextType
+  ComponentType,
+  InteractionContextType,
+  type InteractionReplyOptions,
+  MessageFlags
 } from 'discord.js';
 import type { Application } from '#classes';
 
@@ -26,7 +29,7 @@ interface RedditResponse {
   };
 }
 
-const subreddits = ['memes', 'dankmemes', 'comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'me_irl'];
+const subreddits = ['comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'rustjerk', 'thomastheplankengine'];
 
 export async function onInteraction(client: Application, interaction: ChatInputCommandInteraction | ButtonInteraction) {
   const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
@@ -39,30 +42,40 @@ export async function onInteraction(client: Application, interaction: ChatInputC
 
   const post = listing[Math.floor(Math.random() * listing.length)];
 
-  const row = new ActionRowBuilder().addSecondaryButtonComponents(button =>
-    button.setLabel('Refresh').setCustomId(`meme::${interaction.user.id}`)
-  );
-
   const options = {
-    embeds: [
+    flags: MessageFlags.IsComponentsV2,
+    components: [
       {
-        title: post.title.replaceAll('g', 'q').replaceAll('G', 'Q'),
-        url: `https://reddit.com${post.permalink}`,
-        image: {
-          url: post.url
-        },
-        author: {
-          name: post.subreddit_name_prefixed
-        },
-        footer: {
-          text: `u/${post.author}`
-        },
-        timestamp: new Date(post.created * 1000).toISOString(),
-        color: client.color
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
+          {
+            type: ComponentType.TextDisplay,
+            content: `## [${post.title.replaceAll('g', 'q').replaceAll('G', 'Q')}](https://reddit.com${post.permalink})`
+          },
+          {
+            type: ComponentType.MediaGallery,
+            items: [{ media: { url: post.url } }]
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: `-# ${post.subreddit_name_prefixed} • u/${post.author}`
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `meme::${interaction.user.id}`,
+              label: 'Refresh'
+            }
+          }
+        ]
       }
-    ],
-    components: [row]
-  };
+    ]
+  } satisfies InteractionReplyOptions;
 
   return interaction.isChatInputCommand() ? interaction.reply(options) : interaction.update(options);
 }
