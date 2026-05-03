@@ -88,26 +88,8 @@ export async function onCommand(
 
   if (!member || member.id === interaction.user.id || member.user.bot) {
     return interaction.reply({
-      components: [
-        {
-          type: ComponentType.Container,
-          accentColor: client.color,
-          components: [
-            {
-              type: ComponentType.TextDisplay,
-              content: '# Invalid User'
-            },
-            {
-              type: ComponentType.Separator
-            },
-            {
-              type: ComponentType.TextDisplay,
-              content: "That's not a valid user ☹️"
-            }
-          ]
-        }
-      ],
-      flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2
+      content: "That's not a valid user ☹️",
+      flags: MessageFlags.Ephemeral
     });
   }
 
