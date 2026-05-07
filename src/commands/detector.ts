@@ -1,10 +1,14 @@
+import dedent from 'dedent';
 import {
-  ActionRowBuilder,
   ApplicationIntegrationType,
   type ButtonInteraction,
+  ButtonStyle,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
+  ComponentType,
   InteractionContextType,
+  type InteractionReplyOptions,
+  MessageFlags,
   PermissionFlagsBits
 } from 'discord.js';
 import { Level } from 'g-detector';
@@ -27,63 +31,97 @@ export async function onInteraction(
       id: BigInt(interaction.guildId)
     },
     create: {
-      id: BigInt(interaction.guildId)
+      id: BigInt(interaction.guildId),
+      level: input ? Level[input] : undefined
     },
-    update: {}
+    update: {
+      level: input ? Level[input] : undefined
+    }
   });
 
-  const description = input
-    ? `Successfully set detection level to **${input.replace('g', 'q')}**!`
-    : `Your current protection level: **${Level[level ?? Level.Medium].replace('g', 'q')}**`;
-
-  const fields = input
-    ? undefined
-    : [
-        { name: 'Low', value: 'Detects messaqes that only consist of G' },
-        { name: 'Medium', value: 'Detects G outside words' },
-        { name: 'Hiqh', value: 'Detects a messaqe if it contains G' }
-      ];
-
-  if (input && input !== Level[level ?? Level.Medium]) {
-    await client.prisma.guild.update({
-      where: {
-        id: BigInt(interaction.guildId)
-      },
-      data: {
-        level: Level[input]
-      }
-    });
-  }
-
-  const row = new ActionRowBuilder().addSecondaryButtonComponents([
-    button =>
-      button
-        .setLabel('Low')
-        .setCustomId(`detector:Low:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Low'),
-    button =>
-      button
-        .setLabel('Medium')
-        .setCustomId(`detector:Medium:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'Medium'),
-    button =>
-      button
-        .setLabel('Hiqh')
-        .setCustomId(`detector:High:${interaction.user.id}`)
-        .setDisabled((input ?? Level[level ?? Level.Medium]) === 'High')
-  ]);
+  const current = input ?? Level[level ?? Level.Medium];
 
   const options = {
-    embeds: [
+    flags: MessageFlags.IsComponentsV2,
+    components: [
       {
-        title: 'G Detector Levels',
-        description,
-        color: client.color,
-        fields
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
+          {
+            type: ComponentType.TextDisplay,
+            content: '# G Detector Levels'
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Low
+                  -# Detects messaqes that only consist of G
+                `
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:Low:${interaction.user.id}`,
+              label: current === 'Low' ? 'Current' : 'Select',
+              disabled: current === 'Low'
+            }
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Medium
+                  -# Detects G outside words
+                `
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:Medium:${interaction.user.id}`,
+              label: current === 'Medium' ? 'Current' : 'Select',
+              disabled: current === 'Medium'
+            }
+          },
+          {
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.Section,
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  ### Hiqh
+                  -# Detects a messaqe if it contains G
+                `
+              }
+            ],
+            accessory: {
+              type: ComponentType.Button,
+              style: ButtonStyle.Secondary,
+              customId: `detector:High:${interaction.user.id}`,
+              label: current === 'High' ? 'Current' : 'Select',
+              disabled: current === 'High'
+            }
+          }
+        ]
       }
-    ],
-    components: [row]
-  };
+    ]
+  } satisfies InteractionReplyOptions;
 
   return interaction.isChatInputCommand() ? interaction.reply(options) : interaction.update(options);
 }

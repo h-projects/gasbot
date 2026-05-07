@@ -22,13 +22,7 @@ export function run(client: Application, interaction: Interaction) {
 
     if (command.appPermissions && !interaction.appPermissions.has(command.appPermissions)) {
       return interaction.reply({
-        embeds: [
-          {
-            title: 'Missinq Permissions',
-            description: `I need the \`${command.appPermissions}\` permission to use this command`,
-            color: client.color
-          }
-        ],
+        content: `I need the \`${command.appPermissions}\` permission to use this command`,
         flags: MessageFlags.Ephemeral
       });
     }
@@ -60,13 +54,7 @@ export function run(client: Application, interaction: Interaction) {
 
     if (command.appPermissions && !interaction.appPermissions.has(command.appPermissions)) {
       return interaction.reply({
-        embeds: [
-          {
-            title: 'Missinq Permissions',
-            description: `I need the \`${command.appPermissions}\` permission to use this command`,
-            color: client.color
-          }
-        ],
+        content: `I need the \`${command.appPermissions}\` permission to use this command`,
         flags: MessageFlags.Ephemeral
       });
     }
@@ -92,13 +80,7 @@ export function run(client: Application, interaction: Interaction) {
 
     if (component.appPermissions && !interaction.appPermissions.has(component.appPermissions)) {
       return interaction.reply({
-        embeds: [
-          {
-            title: 'Missinq Permissions',
-            description: `I need the \`${component.appPermissions}\` permission to use this component`,
-            color: client.color
-          }
-        ],
+        content: `I need the \`${component.appPermissions}\` permission to use this command`,
         flags: MessageFlags.Ephemeral
       });
     }

@@ -4,7 +4,9 @@ import {
   ApplicationIntegrationType,
   ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
+  ComponentType,
   InteractionContextType,
+  MessageFlags,
   Routes,
   version
 } from 'discord.js';
@@ -19,37 +21,55 @@ export async function onChatInputCommand(client: Application<true>, interaction:
   const inviteURL = `${client.rest.options.api}${Routes.oauth2Authorization()}?client_id=${client.user.id}`;
 
   return interaction.reply({
-    embeds: [
+    flags: MessageFlags.IsComponentsV2,
+    components: [
       {
-        title: 'Info',
-        color: client.color,
-        fields: [
+        type: ComponentType.Container,
+        accentColor: client.color,
+        components: [
           {
-            name: 'G.A.S Bot',
-            value: 'G.A.S Bot was created to defeat the letter G.'
+            type: ComponentType.Section,
+            accessory: {
+              type: ComponentType.Thumbnail,
+              media: {
+                url: client.user.displayAvatarURL({ size: 1024 })
+              }
+            },
+            components: [
+              {
+                type: ComponentType.TextDisplay,
+                content: dedent`
+                  # G.A.S Bot
+                  G.A.S Bot was created to defeat the letter G.
+                  It provides a powerful detector to remove and protect you from that letter.
+                  It's maintained by Aytch Software, with its source available [here](https://github.com/h-projects/gasbot/).
+                `
+              }
+            ]
           },
           {
-            name: 'G Removal',
-            value: 'By default, it removes standalone G, and it can be chanqed to three different detection levels'
+            type: ComponentType.Separator
           },
           {
-            name: `${env.EMOJI_BOT_DEV} Developers`,
-            value: developers.join('\n'),
-            inline: true
+            type: ComponentType.TextDisplay,
+            content: dedent`
+              ### ${env.EMOJI_BOT_DEV} Developers
+              ${developers.join(', ')}
+            `
           },
           {
-            name: '💻 Technoloqy',
-            value: dedent`
+            type: ComponentType.Separator
+          },
+          {
+            type: ComponentType.TextDisplay,
+            content: dedent`
+              ### 💻 Technoloqy
               ${env.EMOJI_GAS} [G.A.S Bot](${inviteURL}) \`v${metadata.version}\`
               ${env.EMOJI_DJS} [discord.js](https://discordjs.dev/) \`v${version}\`
               ${env.EMOJI_NODE} [Node.js](https://nodejs.org/) \`${process.version}\`
-            `,
-            inline: true
+            `
           }
-        ],
-        thumbnail: {
-          url: client.user.displayAvatarURL()
-        }
+        ]
       }
     ]
   });
