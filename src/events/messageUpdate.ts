@@ -1,20 +1,17 @@
-import { type Message, MessageType } from 'discord.js';
+import { type Message, MessageType, type PartialMessage } from 'discord.js';
 import type { Application } from '#classes';
 
-export async function run(client: Application<true>, _oldMessage: Message, message: Message<true>) {
-  if (message.partial) {
-    try {
-      await message.fetch();
-    } catch {
-      return;
-    }
-  }
-
+export function run(
+  client: Application<true>,
+  oldMessage: PartialMessage<true> | Message<true>,
+  message: Message<true>
+) {
   if (
     message.author.bot ||
     message.author.system ||
     (message.type !== MessageType.Default && message.type !== MessageType.Reply) ||
-    !message.content
+    !message.content ||
+    oldMessage.content === message.content
   ) {
     return;
   }
