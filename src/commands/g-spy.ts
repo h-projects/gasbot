@@ -1,8 +1,8 @@
+import { ChatInputCommandBuilder, UserContextCommandBuilder } from '@discordjs/builders';
 import {
   ApplicationIntegrationType,
   type ButtonInteraction,
   ButtonStyle,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   ComponentType,
   type GuildMember,
@@ -10,7 +10,6 @@ import {
   MessageFlags,
   PermissionFlagsBits,
   type Role,
-  UserContextCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
 import type { Application } from '#classes';

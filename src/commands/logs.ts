@@ -1,3 +1,4 @@
+import { ChatInputCommandBuilder } from '@discordjs/builders';
 import {
   ApplicationIntegrationType,
   type ButtonInteraction,
@@ -5,7 +6,6 @@ import {
   type ChannelSelectMenuComponentData,
   type ChannelSelectMenuInteraction,
   ChannelType,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   ComponentType,
   type ContainerComponentData,

@@ -1,8 +1,8 @@
 import process from 'node:process';
+import { ChatInputCommandBuilder } from '@discordjs/builders';
 import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   ComponentType,
   InteractionContextType,

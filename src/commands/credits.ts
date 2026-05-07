@@ -1,6 +1,6 @@
+import { ChatInputCommandBuilder } from '@discordjs/builders';
 import {
   ApplicationIntegrationType,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   ComponentType,
   InteractionContextType,

@@ -1,10 +1,5 @@
-import {
-  ChatInputCommandBuilder,
-  type ChatInputCommandInteraction,
-  ComponentType,
-  MessageFlags,
-  Routes
-} from 'discord.js';
+import { ChatInputCommandBuilder } from '@discordjs/builders';
+import { type ChatInputCommandInteraction, ComponentType, MessageFlags, Routes } from 'discord.js';
 import type { Application } from '#classes';
 
 export async function onChatInputCommand(client: Application<true>, interaction: ChatInputCommandInteraction) {

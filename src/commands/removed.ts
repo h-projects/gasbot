@@ -1,13 +1,12 @@
+import { ChatInputCommandBuilder, UserContextCommandBuilder } from '@discordjs/builders';
 import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   type ComponentInContainerData,
   ComponentType,
   InteractionContextType,
   MessageFlags,
-  UserContextCommandBuilder,
   type UserContextMenuCommandInteraction
 } from 'discord.js';
 import type { Application } from '#classes';

@@ -1,9 +1,9 @@
+import { ChatInputCommandBuilder } from '@discordjs/builders';
 import dedent from 'dedent';
 import {
   ApplicationIntegrationType,
   type ButtonInteraction,
   ButtonStyle,
-  ChatInputCommandBuilder,
   type ChatInputCommandInteraction,
   ComponentType,
   InteractionContextType,

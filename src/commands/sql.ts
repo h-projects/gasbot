@@ -1,11 +1,6 @@
 import { inspect } from 'node:util';
-import {
-  ChatInputCommandBuilder,
-  type ChatInputCommandInteraction,
-  ComponentType,
-  codeBlock,
-  MessageFlags
-} from 'discord.js';
+import { ChatInputCommandBuilder } from '@discordjs/builders';
+import { type ChatInputCommandInteraction, ComponentType, MessageFlags } from 'discord.js';
 import type { Application } from '#classes';
 
 export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {
@@ -14,10 +9,9 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
   await interaction.deferReply({ flags: method === 'backup' ? MessageFlags.Ephemeral : undefined });
 
   if (method === 'backup') {
-    const backup = client.makeDatabaseBackup();
     return interaction.followUp({
       content: 'Backup complete',
-      files: [backup]
+      files: ['./database.db']
     });
   }
 
@@ -31,12 +25,12 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
     const clean = inspect(result, { depth: 1 });
 
     title = 'Done';
-    output = codeBlock('js', clean);
+    output = `\`\`\`js\n${clean}\`\`\``;
   } catch (error) {
     const clean = inspect(error, { depth: 1 });
 
     title = 'Failed';
-    output = codeBlock('js', clean);
+    output = `\`\`\`js\n${clean}\`\`\``;
   }
 
   return interaction.editReply({

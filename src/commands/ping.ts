@@ -1,9 +1,5 @@
-import {
-  ApplicationIntegrationType,
-  ChatInputCommandBuilder,
-  type ChatInputCommandInteraction,
-  InteractionContextType
-} from 'discord.js';
+import { ChatInputCommandBuilder } from '@discordjs/builders';
+import { ApplicationIntegrationType, type ChatInputCommandInteraction, InteractionContextType } from 'discord.js';
 import type { Application } from '#classes';
 
 export function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {

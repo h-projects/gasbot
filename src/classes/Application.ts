@@ -1,12 +1,12 @@
 import process from 'node:process';
 import { styleText } from 'node:util';
+import { disableValidators } from '@discordjs/builders';
 import {
   ActivityType,
-  AttachmentBuilder,
   Client,
   Collection,
   Colors,
-  disableValidators,
+  CompressionMethod,
   GatewayIntentBits,
   Partials,
   PresenceUpdateStatus
@@ -58,6 +58,9 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
       presence: {
         activities: [{ name: 'Removinq G!', type: ActivityType.Custom }],
         status: PresenceUpdateStatus.DoNotDisturb
+      },
+      ws: {
+        compression: CompressionMethod.ZstdNative
       }
     });
   }
@@ -101,10 +104,6 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
     ]);
 
     logger.log('Deployed all commands');
-  }
-
-  makeDatabaseBackup() {
-    return new AttachmentBuilder('./database.db').setName(`GASBOT-${new Date().toISOString()}.db`);
   }
 
   async loadEvents() {
