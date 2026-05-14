@@ -12,8 +12,6 @@
     "deploy": "node -C development --env-file=.env src/index.ts --deploy",
     "dev": "node -C development --watch --env-file=.env src/index.ts",
     "format": "biome format --write",
-    "env:decrypt": "dotenvx-ext-vault decrypt",
-    "env:encrypt": "dotenvx-ext-vault encrypt",
     "lint": "biome lint",
     "lint:fix": "biome lint --fix --unsafe",
     "start": "NODE_ENV=production node --env-file=.env --enable-source-maps .",
@@ -36,7 +34,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
-    "@dotenvx/dotenvx-ext-vault": "^0.3.2",
     "@types/node": "^25.7.0",
     "standard-changelog": "^7.0.1",
     "typescript": "^6.0.3"
