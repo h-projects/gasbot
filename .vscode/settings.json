@@ -8,8 +8,5 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "npm.packageManager": "pnpm",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
-  }
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

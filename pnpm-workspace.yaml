@@ -1,8 +1,2 @@
-onlyBuiltDependencies:
-  - '@prisma/client'
-  - '@prisma/engines'
-  - bufferutil
-  - prisma
-  - zlib-sync
-
-shellEmulator: true
+allowBuilds:
+  bufferutil: true

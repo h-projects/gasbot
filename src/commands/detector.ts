@@ -13,33 +13,34 @@ import {
 } from 'discord.js';
 import { Level } from 'g-detector';
 import type { Application } from '#classes';
+import { database } from '#database';
 
-export async function onInteraction(
+const getLevelStatement = database.prepare('SELECT level FROM guilds WHERE id = ?');
+const setLevelStatement = database.prepare(`
+  INSERT INTO guilds (id, level) VALUES (@id, @level) ON CONFLICT (id) DO
+    UPDATE SET level = excluded.level
+`);
+
+function getLevel(guildId: string) {
+  const result = getLevelStatement.get(BigInt(guildId));
+  return result ? Number(result.level) : null;
+}
+
+export function onInteraction(
   client: Application,
   interaction: ChatInputCommandInteraction<'cached'> | ButtonInteraction<'cached'>,
   value?: string
 ) {
-  const input = (interaction.isChatInputCommand() ? interaction.options.getString('level') : value) as
-    | 'Low'
-    | 'Medium'
-    | 'High'
-    | null;
+  const input = interaction.isChatInputCommand() ? interaction.options.getInteger('level') : Number(value);
 
-  const { level } = await client.prisma.guild.upsert({
-    select: { level: true },
-    where: {
-      id: BigInt(interaction.guildId)
-    },
-    create: {
+  if (input !== null) {
+    setLevelStatement.run({
       id: BigInt(interaction.guildId),
-      level: input ? Level[input] : undefined
-    },
-    update: {
-      level: input ? Level[input] : undefined
-    }
-  });
+      level: input
+    });
+  }
 
-  const current = input ?? Level[level ?? Level.Medium];
+  const level = input ?? getLevel(interaction.guildId) ?? Level.Medium;
 
   const options = {
     flags: MessageFlags.IsComponentsV2,
@@ -69,9 +70,9 @@ export async function onInteraction(
             accessory: {
               type: ComponentType.Button,
               style: ButtonStyle.Secondary,
-              customId: `detector:Low:${interaction.user.id}`,
-              label: current === 'Low' ? 'Current' : 'Select',
-              disabled: current === 'Low'
+              customId: `detector:${Level.Low}:${interaction.user.id}`,
+              label: level === Level.Low ? 'Current' : 'Select',
+              disabled: level === Level.Low
             }
           },
           {
@@ -91,9 +92,9 @@ export async function onInteraction(
             accessory: {
               type: ComponentType.Button,
               style: ButtonStyle.Secondary,
-              customId: `detector:Medium:${interaction.user.id}`,
-              label: current === 'Medium' ? 'Current' : 'Select',
-              disabled: current === 'Medium'
+              customId: `detector:${Level.Medium}:${interaction.user.id}`,
+              label: level === Level.Medium ? 'Current' : 'Select',
+              disabled: level === Level.Medium
             }
           },
           {
@@ -113,9 +114,9 @@ export async function onInteraction(
             accessory: {
               type: ComponentType.Button,
               style: ButtonStyle.Secondary,
-              customId: `detector:High:${interaction.user.id}`,
-              label: current === 'High' ? 'Current' : 'Select',
-              disabled: current === 'High'
+              customId: `detector:${Level.High}:${interaction.user.id}`,
+              label: level === Level.High ? 'Current' : 'Select',
+              disabled: level === Level.High
             }
           }
         ]
@@ -134,19 +135,19 @@ export const chatInputCommandData = new ChatInputCommandBuilder()
   .setContexts([InteractionContextType.Guild])
   .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-  .addStringOptions(option =>
+  .addIntegerOptions(option =>
     option.setName('level').setDescription('The new detection level').setRequired(false).setChoices(
       {
         name: 'Low',
-        value: 'Low'
+        value: 0
       },
       {
         name: 'Medium',
-        value: 'Medium'
+        value: 1
       },
       {
         name: 'Hiqh',
-        value: 'High'
+        value: 2
       }
     )
   )

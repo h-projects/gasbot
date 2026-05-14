@@ -11,9 +11,11 @@ import {
   type ContainerComponentData,
   InteractionContextType,
   MessageFlags,
-  PermissionFlagsBits
+  PermissionFlagsBits,
+  SelectMenuDefaultValueType
 } from 'discord.js';
 import type { Application } from '#classes';
+import { database } from '#database';
 
 const getComponents = ({
   channelId,
@@ -49,7 +51,7 @@ const getComponents = ({
           {
             type: ComponentType.ChannelSelect,
             channelTypes: [ChannelType.GuildText, ChannelType.GuildAnnouncement],
-            defaultChannels: channelId ? [channelId] : [],
+            defaultValues: channelId ? [{ type: SelectMenuDefaultValueType.Channel, id: channelId }] : [],
             customId: `logs:set:${userId}`,
             placeholder: 'Set loqs channel'
           } as ChannelSelectMenuComponentData
@@ -71,22 +73,19 @@ const getComponents = ({
   }
 ];
 
-export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
+const getLogsStatement = database.prepare('SELECT logs FROM guilds WHERE id = ?');
+const setLogsStatement = database.prepare(`
+  INSERT INTO guilds (id, logs) VALUES (@id, @logs) ON CONFLICT (id) DO
+    UPDATE SET logs = excluded.logs
+`);
+
+export function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction<'cached'>) {
   const channel = interaction.options.getChannel('channel');
 
   if (!channel) {
-    const { logs: logsId } = await client.prisma.guild.upsert({
-      select: { logs: true },
-      where: {
-        id: BigInt(interaction.guildId)
-      },
-      create: {
-        id: BigInt(interaction.guildId)
-      },
-      update: {}
-    });
-
+    const logsId = getLogsStatement.get(BigInt(interaction.guildId))?.logs as bigint | null;
     const logs = interaction.guild.channels.cache.get(logsId?.toString() ?? '');
+
     return interaction.reply({
       flags: MessageFlags.IsComponentsV2,
       components: getComponents({
@@ -99,18 +98,7 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
     });
   }
 
-  await client.prisma.guild.upsert({
-    where: {
-      id: BigInt(interaction.guildId)
-    },
-    create: {
-      id: BigInt(interaction.guildId),
-      logs: BigInt(channel.id)
-    },
-    update: {
-      logs: BigInt(channel.id)
-    }
-  });
+  setLogsStatement.run({ id: BigInt(interaction.guildId), logs: BigInt(channel.id) });
 
   return interaction.reply({
     flags: MessageFlags.IsComponentsV2,
@@ -124,18 +112,14 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
   });
 }
 
-export async function onComponent(
+export function onComponent(
   client: Application,
   interaction: ButtonInteraction<'cached'> | ChannelSelectMenuInteraction<'cached'>
 ) {
   const setModeEnabled = interaction.isChannelSelectMenu();
-  await client.prisma.guild.update({
-    where: {
-      id: BigInt(interaction.guildId)
-    },
-    data: {
-      logs: setModeEnabled ? BigInt(interaction.values[0]) : null
-    }
+  setLogsStatement.run({
+    id: BigInt(interaction.guildId),
+    logs: setModeEnabled ? BigInt(interaction.values[0]) : null
   });
 
   return interaction.update({

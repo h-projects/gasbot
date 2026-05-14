@@ -5,7 +5,6 @@
     "christian-kohler.path-intellisense",
     "codezombiech.gitignore",
     "eamodio.gitlens",
-    "github.vscode-pull-request-github",
-    "Prisma.prisma"
+    "github.vscode-pull-request-github"
   ]
 }

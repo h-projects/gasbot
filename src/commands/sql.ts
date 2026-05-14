@@ -2,6 +2,7 @@ import { inspect } from 'node:util';
 import { ChatInputCommandBuilder } from '@discordjs/builders';
 import { type ChatInputCommandInteraction, ComponentType, MessageFlags } from 'discord.js';
 import type { Application } from '#classes';
+import { database } from '#database';
 
 export async function onChatInputCommand(client: Application, interaction: ChatInputCommandInteraction) {
   const method = interaction.options.getSubcommand(true);
@@ -21,7 +22,7 @@ export async function onChatInputCommand(client: Application, interaction: ChatI
   let output: string;
 
   try {
-    const result = await client.prisma.$queryRawUnsafe(query);
+    const result = database.prepare(query).get();
     const clean = inspect(result, { depth: 1 });
 
     title = 'Done';

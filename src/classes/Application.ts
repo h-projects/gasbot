@@ -22,16 +22,13 @@ import {
   loadDirectory,
   logger
 } from '#util';
-import { PrismaClient } from '../.prisma/client.ts';
 
 export class Application<Ready extends boolean = boolean> extends Client<Ready> {
-  detector: Detector = new Detector(this);
+  detector = new Detector(this);
 
   chatInputCommands = new Collection<string, ChatInputCommand>();
   contextMenuCommands = new Collection<string, ContextMenuCommand>();
   components = new Collection<string, Component>();
-
-  prisma = new PrismaClient();
 
   color = Colors.Red;
   developers = ['478823932913516544', '682617926909427743', '348591272476540928'];
@@ -73,16 +70,8 @@ export class Application<Ready extends boolean = boolean> extends Client<Ready> 
       logger.log('Booting up...');
     }
 
-    await Promise.all([this.loadEvents(), this.loadCommands(), this.prisma.$connect()]);
-
+    await Promise.all([this.loadEvents(), this.loadCommands()]);
     await this.login();
-
-    for (const signal of ['SIGINT', 'SIGTERM']) {
-      process.on(signal, () => {
-        logger.log(`Received ${styleText('blue', signal)}, shutting down...`);
-        void Promise.all([this.destroy(), this.prisma.$disconnect()]);
-      });
-    }
 
     process.on('uncaughtException', error => logger.error(error));
   }

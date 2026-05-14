@@ -10,6 +10,7 @@ import {
 } from 'discord.js';
 import { blocklist, detect, Level } from 'g-detector';
 import type { Application } from '#classes';
+import { database } from '#database';
 import { env } from '#env';
 import { isSendable } from '#util';
 
@@ -39,31 +40,26 @@ export interface ReactionLogOptions {
 
 export type LogOptions = (MessageLogOptions | NicknameLogOptions | ReactionLogOptions) & {
   guildId: string;
-  level: Level | null;
+  level: Level;
   logs: bigint | null;
   member: GuildMember;
 };
 
 export class Detector {
-  private client: Application<true>;
+  #client: Application<true>;
   constructor(client: Application) {
-    this.client = client as Application<true>;
+    this.#client = client as Application<true>;
   }
 
+  static #getDetectorDataStatement = database.prepare('SELECT level, logs FROM guilds WHERE id = ?');
   fetchDetectorData(guildId: string) {
-    return this.client.prisma.guild.upsert({
-      select: {
-        level: true,
-        logs: true
-      },
-      where: {
-        id: BigInt(guildId)
-      },
-      update: {},
-      create: {
-        id: BigInt(guildId)
-      }
-    });
+    const result = Detector.#getDetectorDataStatement.get(BigInt(guildId)) as
+      | { level: bigint; logs: bigint | null }
+      | undefined;
+    return {
+      level: result ? Number(result.level) : Level.Medium,
+      logs: result?.logs ?? null
+    };
   }
 
   async reply(message: Message<true>, edited: boolean) {
@@ -77,9 +73,9 @@ export class Detector {
   }
 
   async detectMessage(message: Message<true>, edited: boolean) {
-    const { level, logs } = await this.fetchDetectorData(message.guildId);
+    const { level, logs } = this.fetchDetectorData(message.guildId);
 
-    if (!detect(message.content, level ?? Level.Medium) || !message.member) {
+    if (!detect(message.content, level) || !message.member) {
       return;
     }
 
@@ -87,10 +83,10 @@ export class Detector {
       await message.delete().catch(() => null);
     }
 
+    this.#count(message.guildId, message.author.id);
     return Promise.all([
       this.reply(message, edited),
-      this.count(message.guildId, message.author.id),
-      this.log({
+      this.#log({
         guildId: message.guildId,
         level,
         logs,
@@ -125,12 +121,10 @@ export class Detector {
       return;
     }
 
-    const { level, logs } = await this.fetchDetectorData(member.guild.id);
+    const { level, logs } = this.fetchDetectorData(member.guild.id);
 
-    return Promise.all([
-      this.count(member.guild.id, member.id),
-      this.log({ member, level, logs, nickname: oldNickname, type: LogType.Nickname, guildId: member.guild.id })
-    ]);
+    this.#count(member.guild.id, member.id);
+    return this.#log({ member, level, logs, nickname: oldNickname, type: LogType.Nickname, guildId: member.guild.id });
   }
 
   async detectReaction(reaction: MessageReaction, user: User) {
@@ -139,7 +133,7 @@ export class Detector {
     }
 
     const member = await reaction.message.guild.members.fetch(user);
-    const permissions = reaction.message.channel.permissionsFor(this.client.user);
+    const permissions = reaction.message.channel.permissionsFor(this.#client.user);
 
     if ((permissions && !permissions.has(PermissionFlagsBits.ManageMessages)) || reaction.emoji.name !== '🇬') {
       return;
@@ -151,53 +145,31 @@ export class Detector {
       return;
     }
 
-    const { level, logs } = await this.fetchDetectorData(member.guild.id);
+    const { level, logs } = this.fetchDetectorData(member.guild.id);
 
-    return Promise.all([
-      this.count(reaction.message.guild.id, user.id),
-      this.log({ member, level, logs, reaction, type: LogType.Reaction, guildId: reaction.message.guild.id })
-    ]);
+    this.#count(reaction.message.guild.id, user.id);
+    return this.#log({ member, level, logs, reaction, type: LogType.Reaction, guildId: reaction.message.guild.id });
   }
 
-  private async count(guildId: string, userId: string): Promise<void> {
-    await this.client.prisma.global.update({
-      where: {
-        id: 0
-      },
-      data: {
-        count: {
-          increment: 1
-        }
-      }
-    });
-    await this.client.prisma.guild.update({
-      where: {
-        id: BigInt(guildId)
-      },
-      data: {
-        count: {
-          increment: 1
-        }
-      }
-    });
-    await this.client.prisma.user.upsert({
-      where: {
-        id: BigInt(userId)
-      },
-      update: {
-        count: {
-          increment: 1
-        }
-      },
-      create: {
-        id: BigInt(userId),
-        count: 1
-      }
-    });
+  static #updateGlobalCountStatement = database.prepare('UPDATE global SET count = count + 1');
+  static #updateGuildCountStatement = database.prepare(`
+    INSERT INTO guilds (id, count) VALUES (?, 1) ON CONFLICT (id) DO
+    UPDATE SET count = count + 1
+  `);
+  static #updateUserCountStatement = database.prepare(`
+    INSERT INTO users (id, count) VALUES (?, 1) ON CONFLICT (id) DO
+    UPDATE SET count = count + 1
+  `);
+  #count(guildId: string, userId: string) {
+    Detector.#updateGlobalCountStatement.run();
+    Detector.#updateGuildCountStatement.run(BigInt(guildId));
+    Detector.#updateUserCountStatement.run(BigInt(userId));
   }
 
-  private async log(options: LogOptions): Promise<unknown> {
-    const channel = this.client.channels.cache.get(options.logs?.toString() ?? '') as GuildTextBasedChannel | undefined;
+  async #log(options: LogOptions): Promise<unknown> {
+    const channel = this.#client.channels.cache.get(options.logs?.toString() ?? '') as
+      | GuildTextBasedChannel
+      | undefined;
 
     const fields: APIEmbedField[] = [
       {
@@ -205,7 +177,7 @@ export class Detector {
         value: logTypeNames[options.type],
         inline: true
       },
-      { name: 'Level', value: Level[options.level ?? Level.Medium].replace('g', 'q'), inline: true },
+      { name: 'Level', value: Level[options.level].replace('g', 'q'), inline: true },
       { name: 'User', value: `${options.member} (${options.member.id})` }
     ];
 
@@ -240,7 +212,7 @@ export class Detector {
           {
             title: 'G Removal',
             url: 'https://h-projects.github.io/app/fuck-g/',
-            color: this.client.color,
+            color: this.#client.color,
             fields,
             thumbnail: {
               url: options.member.displayAvatarURL()
@@ -256,13 +228,13 @@ export class Detector {
 
     fields.splice(2, 0, { name: 'Server', value: `${options.member.guild} (${options.guildId})` });
 
-    const globalLogs = this.client.channels.cache.get(env.GLOBAL_DETECTOR_LOGS) as GuildTextBasedChannel;
+    const globalLogs = this.#client.channels.cache.get(env.GLOBAL_DETECTOR_LOGS) as GuildTextBasedChannel;
     return globalLogs.send({
       embeds: [
         {
           title: 'G Removal',
           url: 'https://h-projects.github.io/app/fuck-g/',
-          color: this.client.color,
+          color: this.#client.color,
           fields,
           thumbnail: {
             url: options.member.displayAvatarURL()

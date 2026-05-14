@@ -10,8 +10,13 @@ import {
   type UserContextMenuCommandInteraction
 } from 'discord.js';
 import type { Application } from '#classes';
+import { database } from '#database';
 
-export async function onCommand(
+const globalCountStatement = database.prepare('SELECT count FROM global');
+const guildCountStatement = database.prepare('SELECT count FROM guilds WHERE id = ?');
+const userCountStatement = database.prepare('SELECT count FROM users WHERE id = ?');
+
+export function onCommand(
   client: Application,
   interaction: ChatInputCommandInteraction | UserContextMenuCommandInteraction
 ) {
@@ -23,20 +28,8 @@ export async function onCommand(
     });
   }
 
-  const { count: globalCount } = await client.prisma.global.findFirstOrThrow({
-    select: { count: true }
-  });
-
-  const { count: userCount } = await client.prisma.user.upsert({
-    select: { count: true },
-    where: {
-      id: BigInt(user.id)
-    },
-    create: {
-      id: BigInt(user.id)
-    },
-    update: {}
-  });
+  const globalCount = globalCountStatement.get()?.count as bigint;
+  const userCount = userCountStatement.get(BigInt(user.id))?.count as bigint | null;
 
   const components: ComponentInContainerData[] = [
     {
@@ -57,16 +50,7 @@ export async function onCommand(
   ];
 
   if (interaction.inGuild()) {
-    const { count: guildCount } = await client.prisma.guild.upsert({
-      select: { count: true },
-      where: {
-        id: BigInt(interaction.guildId)
-      },
-      create: {
-        id: BigInt(interaction.guildId)
-      },
-      update: {}
-    });
+    const guildCount = guildCountStatement.get(BigInt(interaction.guildId))?.count as bigint | null;
 
     components.push(
       { type: ComponentType.Separator },
