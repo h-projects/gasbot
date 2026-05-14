@@ -16,18 +16,5 @@ export async function run(client: Application<true>, message: Message<true>) {
     return message.channel.send('Hi! Type `/` to see my commands');
   }
 
-  const [commandName] = message.content.slice(2).split(' ');
-  const command = client.chatInputCommands.get(commandName);
-
-  if (message.content.startsWith('h!') && command && !command.dev && (await isSendable(message.channel))) {
-    const commands = client.application.commands.cache.size
-      ? client.application.commands.cache
-      : await client.application.commands.fetch();
-    const command = commands.find(c => c.name === commandName);
-    const mention = command ? `</${commandName}:${command.id}>` : `/${commandName}`;
-
-    return message.channel.send(`Prefix-based commands are no lonqer supported, use ${mention} instead!`);
-  }
-
   return client.detector.detectMessage(message, false);
 }
