@@ -25,21 +25,21 @@
     }
   },
   "dependencies": {
-    "@discordjs/builders": "2.0.0-dev.1777075897-40ce0791a",
+    "@discordjs/builders": "2.0.0-pr-11006.1765452229-e636950b2",
     "bufferutil": "^4.1.0",
     "dedent": "^1.7.2",
-    "discord.js": "15.0.0-dev.1777075897-40ce0791a",
+    "discord.js": "15.0.0-pr-11006.1765452229-e636950b2",
     "g-detector": "^1.0.0",
     "typed-env": "^2.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
-    "@types/node": "^25.7.0",
+    "@types/node": "^25.9.1",
     "standard-changelog": "^7.0.1",
     "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=24.4.0"
   },
-  "packageManager": "pnpm@11.1.1"
+  "packageManager": "pnpm@11.1.3"
 }
