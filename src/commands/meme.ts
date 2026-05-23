@@ -12,20 +12,13 @@ import {
 import type { Application } from '#classes';
 
 interface RedditResponse {
-  data: {
-    children: {
-      data: {
-        author: string;
-        is_reddit_media_domain: boolean;
-        is_video: boolean;
-        over_18: boolean;
-        permalink: string;
-        subreddit_name_prefixed: string;
-        title: string;
-        url: string;
-      };
-    }[];
-  };
+  memes: {
+    postLink: string;
+    subreddit: string;
+    title: string;
+    url: string;
+    author: string;
+  }[];
 }
 
 const subreddits = ['comedynecrophilia', 'theletterh', 'okbuddyretard', '196', 'rustjerk', 'thomastheplankengine'];
@@ -33,13 +26,19 @@ const subreddits = ['comedynecrophilia', 'theletterh', 'okbuddyretard', '196', '
 export async function onInteraction(client: Application, interaction: ChatInputCommandInteraction | ButtonInteraction) {
   const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 
-  const json = (await fetch(`https://www.reddit.com/r/${subreddit}/hot.json`).then(r => r.json())) as RedditResponse;
-  const listing = Iterator.from(json.data.children)
-    .filter(p => !p.data.over_18 && p.data.is_reddit_media_domain && !p.data.is_video)
-    .map(c => c.data)
-    .toArray();
+  const response = await fetch(`https://meme-api.com/gimme/${subreddit}/1`);
 
-  const post = listing[Math.floor(Math.random() * listing.length)];
+  if (!response.ok) {
+    console.warn(`Error getting Reddit posts, status code ${response.status}`);
+    return interaction.reply({
+      content:
+        'Reddit returned an error ☹️ if this problem persists [open an issue here](<https://github.com/h-projects/gasbot/issues/new>)',
+      flags: MessageFlags.Ephemeral
+    });
+  }
+
+  const json = (await response.json()) as RedditResponse;
+  const post = json.memes[0];
 
   const options = {
     flags: MessageFlags.IsComponentsV2,
@@ -50,7 +49,7 @@ export async function onInteraction(client: Application, interaction: ChatInputC
         components: [
           {
             type: ComponentType.TextDisplay,
-            content: `## [${post.title.replaceAll('g', 'q').replaceAll('G', 'Q')}](https://reddit.com${post.permalink})`
+            content: `## ${post.title.replaceAll('g', 'q').replaceAll('G', 'Q')}`
           },
           {
             type: ComponentType.MediaGallery,
@@ -61,7 +60,7 @@ export async function onInteraction(client: Application, interaction: ChatInputC
             components: [
               {
                 type: ComponentType.TextDisplay,
-                content: `-# ${post.subreddit_name_prefixed} • u/${post.author}`
+                content: `-# r/${post.subreddit} • u/${post.author} • [permalink](<${post.postLink}>)`
               }
             ],
             accessory: {
