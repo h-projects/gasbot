@@ -31,8 +31,8 @@ importers:
         specifier: ^2.4.15
         version: 2.4.15
       '@types/node':
-        specifier: ^25.7.0
-        version: 25.7.0
+        specifier: ^26.6.6
+        version: 26.6.6
       standard-changelog:
         specifier: ^7.0.1
         version: 7.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
@@ -114,26 +114,32 @@ packages:
   '@discordjs/builders@2.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-XhbWWIaJqgClkC+qJZ8aqOwgecDsMdTUw2Tcq85KCnn/KMx8ZWWRqs6QJ84KOPnLUDDwwQ5edymA8Uyzijr0EQ==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/collection@3.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-3PFhL0bqx/Q1GGKTn0toIWpcL98F7uWTNSPSwW5uYP7gNRkfkqKFS3SlwO5Kccz66FuLBNMmStHCzTJiY7HKkQ==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/formatters@1.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-54IR+KbvhEDaajwxTGtEJoLm70gUVwH31+fPYHFJNQ6qX0ZizKXe/vtGQKVu5VAXoKRQYLGbugDnUr7vF/3Tzw==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/rest@3.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-McNzPSR58rjSo9YOE+Ii79zlBw87u5k5ThuPevoephf4ywocsm5d2LD56YwPqV9GW6MNZ6TIgD0kh3NXNWfPtA==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/util@2.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-yIa780MuRzCS0wuNxwVtiOi4qttKWV15RdpsIv1AIlxolRPbn6/AagwlpVkGRC78BUTIdctYYD5sNc3EaqfLDw==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@discordjs/ws@3.0.0-dev.1777075897-40ce0791a':
     resolution: {integrity: sha512-3o1MUjXTAH3VHQ/kOUcDKS0tTh3F4H85v/TCll0FLen17vD9vpnJeikcX2/pkwGCbTSPLBdyHBioMKyWlSc91Q==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   '@sapphire/async-queue@1.5.5':
     resolution: {integrity: sha512-cvGzxbba6sav2zZkH8GPf2oGk9yYoD5qrNWdu9fRehifgnFZJMV+nuy2nON2roRO4yQQ+v7MK/Pktl/HgfsUXg==}
@@ -155,8 +161,8 @@ packages:
     resolution: {integrity: sha512-KxXvfapcixpz6rVEB6HPjOUZT22yN6v0vI0urQSk1L8MlEWPDFCZkhw2xmkyoTGYeFw7tWTZd7e3lVzRZRN/EA==}
     engines: {node: '>=18'}
 
-  '@types/node@25.7.0':
-    resolution: {integrity: sha512-z+pdZyxE+RTQE9AcboAZCb4otwcrvgHD+GlBpPgn0emDVt0ohrTMhAwlr2Wd9nZ+nihhYFxO2pThz3C5qSu2Eg==}
+  '@types/node@26.6.6':
+    resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -219,6 +225,7 @@ packages:
   discord.js@15.0.0-dev.1777075897-40ce0791a:
     resolution: {integrity: sha512-Z+aLMhj8eJp619IwQB+Ii1kVh+tfluxgxtsnzokZ8THnA88dIsFxcyur8KVL5FKMCstmcSDlUc9vqdYsms1Jag==}
     engines: {node: '>=22.12.0'}
+    deprecated: This version is deprecated. Please use a newer version.
 
   dot-prop@5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
@@ -320,8 +327,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  undici-types@7.21.0:
-    resolution: {integrity: sha512-w9IMgQrz4O0YN1LtB7K5P63vhlIOvC7opSmouCJ+ZywlPAlO9gIkJ+otk6LvGpAs2wg4econaCz3TvQ9xPoyuQ==}
+  undici-types@8.9.0:
+    resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
   undici@7.24.6:
     resolution: {integrity: sha512-Xi4agocCbRzt0yYMZGMA6ApD7gvtUFaxm4ZmeacWI4cZxaF6C+8I8QfofC20NAePiB/IcvZmzkJ7XPa471AEtA==}
@@ -459,15 +466,15 @@ snapshots:
 
   '@simple-libs/stream-utils@1.2.0': {}
 
-  '@types/node@25.7.0':
+  '@types/node@26.6.6':
     dependencies:
-      undici-types: 7.21.0
+      undici-types: 8.9.0
 
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.7.0
+      '@types/node': 26.6.6
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
 
@@ -626,7 +633,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  undici-types@7.21.0: {}
+  undici-types@8.9.0: {}
 
   undici@7.24.6: {}
 
